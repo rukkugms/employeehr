@@ -616,11 +616,11 @@
 - (IBAction)continuebtn:(id)sender {
     [self UpdateApplicantRequirements];
     
-    if (!self.raceVCtrl) {
-        _raceVCtrl=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
-    }
-    _raceVCtrl.applicantId=_Applicantid;
-    [self.navigationController pushViewController:_raceVCtrl animated:YES];
+//    if (!self.raceVCtrl) {
+//        _raceVCtrl=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
+//    }
+//    _raceVCtrl.applicantId=_Applicantid;
+//    [self.navigationController pushViewController:_raceVCtrl animated:YES];
 }
 
 -(IBAction)selectMonth:(id)sender
