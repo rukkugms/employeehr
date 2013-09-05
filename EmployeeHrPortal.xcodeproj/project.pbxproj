@@ -19,6 +19,19 @@
 		D4E1006D17D84F8B006336F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1006C17D84F8B006336F8 /* ViewController.m */; };
 		D4E1007017D84F8B006336F8 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E1006E17D84F8B006336F8 /* ViewController_iPhone.xib */; };
 		D4E1007317D84F8B006336F8 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E1007117D84F8B006336F8 /* ViewController_iPad.xib */; };
+		D4E1007C17D8511C006336F8 /* JobsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1007A17D8511C006336F8 /* JobsiteViewController.m */; };
+		D4E1007D17D8511C006336F8 /* JobsiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E1007B17D8511C006336F8 /* JobsiteViewController.xib */; };
+		D4E1008117D85161006336F8 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1007F17D85161006336F8 /* RegisterViewController.m */; };
+		D4E1008217D85161006336F8 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E1008017D85161006336F8 /* RegisterViewController.xib */; };
+		D4E1008617D85173006336F8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1008417D85173006336F8 /* LoginViewController.m */; };
+		D4E1008717D85173006336F8 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E1008517D85173006336F8 /* LoginViewController.xib */; };
+		D4E1008C17D85200006336F8 /* char4.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E1008917D85200006336F8 /* char4.png */; };
+		D4E1008D17D85200006336F8 /* char1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E1008A17D85200006336F8 /* char1.png */; };
+		D4E1008E17D85200006336F8 /* char2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E1008B17D85200006336F8 /* char2.png */; };
+		D4E1009017D854BC006336F8 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E1008F17D854BC006336F8 /* bg.png */; };
+		D4E1009217D854CF006336F8 /* squareimage1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E1009117D854CF006336F8 /* squareimage1.png */; };
+		D4E1009417D854D5006336F8 /* squareimage1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E1009317D854D5006336F8 /* squareimage1@2x.png */; };
+		D4E1009617D85574006336F8 /* JobsiteViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E1009517D85574006336F8 /* JobsiteViewController_iphone.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +52,22 @@
 		D4E1006C17D84F8B006336F8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D4E1006F17D84F8B006336F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		D4E1007217D84F8B006336F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		D4E1007917D8511C006336F8 /* JobsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsiteViewController.h; sourceTree = "<group>"; };
+		D4E1007A17D8511C006336F8 /* JobsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsiteViewController.m; sourceTree = "<group>"; };
+		D4E1007B17D8511C006336F8 /* JobsiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobsiteViewController.xib; sourceTree = "<group>"; };
+		D4E1007E17D85161006336F8 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		D4E1007F17D85161006336F8 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		D4E1008017D85161006336F8 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		D4E1008317D85173006336F8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D4E1008417D85173006336F8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D4E1008517D85173006336F8 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		D4E1008917D85200006336F8 /* char4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = char4.png; sourceTree = "<group>"; };
+		D4E1008A17D85200006336F8 /* char1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = char1.png; sourceTree = "<group>"; };
+		D4E1008B17D85200006336F8 /* char2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = char2.png; sourceTree = "<group>"; };
+		D4E1008F17D854BC006336F8 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		D4E1009117D854CF006336F8 /* squareimage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squareimage1.png; sourceTree = "<group>"; };
+		D4E1009317D854D5006336F8 /* squareimage1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "squareimage1@2x.png"; sourceTree = "<group>"; };
+		D4E1009517D85574006336F8 /* JobsiteViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobsiteViewController_iphone.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +87,7 @@
 		D4E1004717D84F8B006336F8 = {
 			isa = PBXGroup;
 			children = (
+				D4E1008817D851E5006336F8 /* Images */,
 				D4E1005917D84F8B006336F8 /* EmployeeHrPortal */,
 				D4E1005217D84F8B006336F8 /* Frameworks */,
 				D4E1005117D84F8B006336F8 /* Products */,
@@ -91,6 +121,16 @@
 				D4E1006C17D84F8B006336F8 /* ViewController.m */,
 				D4E1006E17D84F8B006336F8 /* ViewController_iPhone.xib */,
 				D4E1007117D84F8B006336F8 /* ViewController_iPad.xib */,
+				D4E1007917D8511C006336F8 /* JobsiteViewController.h */,
+				D4E1007A17D8511C006336F8 /* JobsiteViewController.m */,
+				D4E1007B17D8511C006336F8 /* JobsiteViewController.xib */,
+				D4E1009517D85574006336F8 /* JobsiteViewController_iphone.xib */,
+				D4E1007E17D85161006336F8 /* RegisterViewController.h */,
+				D4E1007F17D85161006336F8 /* RegisterViewController.m */,
+				D4E1008017D85161006336F8 /* RegisterViewController.xib */,
+				D4E1008317D85173006336F8 /* LoginViewController.h */,
+				D4E1008417D85173006336F8 /* LoginViewController.m */,
+				D4E1008517D85173006336F8 /* LoginViewController.xib */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
 			path = EmployeeHrPortal;
@@ -108,6 +148,19 @@
 				D4E1006917D84F8B006336F8 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4E1008817D851E5006336F8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D4E1008F17D854BC006336F8 /* bg.png */,
+				D4E1009117D854CF006336F8 /* squareimage1.png */,
+				D4E1009317D854D5006336F8 /* squareimage1@2x.png */,
+				D4E1008917D85200006336F8 /* char4.png */,
+				D4E1008A17D85200006336F8 /* char1.png */,
+				D4E1008B17D85200006336F8 /* char2.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +220,16 @@
 				D4E1006A17D84F8B006336F8 /* Default-568h@2x.png in Resources */,
 				D4E1007017D84F8B006336F8 /* ViewController_iPhone.xib in Resources */,
 				D4E1007317D84F8B006336F8 /* ViewController_iPad.xib in Resources */,
+				D4E1007D17D8511C006336F8 /* JobsiteViewController.xib in Resources */,
+				D4E1008217D85161006336F8 /* RegisterViewController.xib in Resources */,
+				D4E1008717D85173006336F8 /* LoginViewController.xib in Resources */,
+				D4E1008C17D85200006336F8 /* char4.png in Resources */,
+				D4E1008D17D85200006336F8 /* char1.png in Resources */,
+				D4E1008E17D85200006336F8 /* char2.png in Resources */,
+				D4E1009017D854BC006336F8 /* bg.png in Resources */,
+				D4E1009217D854CF006336F8 /* squareimage1.png in Resources */,
+				D4E1009417D854D5006336F8 /* squareimage1@2x.png in Resources */,
+				D4E1009617D85574006336F8 /* JobsiteViewController_iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +243,9 @@
 				D4E1006017D84F8B006336F8 /* main.m in Sources */,
 				D4E1006417D84F8B006336F8 /* AppDelegate.m in Sources */,
 				D4E1006D17D84F8B006336F8 /* ViewController.m in Sources */,
+				D4E1007C17D8511C006336F8 /* JobsiteViewController.m in Sources */,
+				D4E1008117D85161006336F8 /* RegisterViewController.m in Sources */,
+				D4E1008617D85173006336F8 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
