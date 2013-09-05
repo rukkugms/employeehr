@@ -42,11 +42,6 @@
 		D4E100AB17D860B7006336F8 /* EducationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E100A817D860B6006336F8 /* EducationViewController.xib */; };
 		D4E100AC17D860B7006336F8 /* EducationCertificatecell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E100A917D860B7006336F8 /* EducationCertificatecell.xib */; };
 		D4E100AE17D860C6006336F8 /* CellEducationtable.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E100AD17D860C5006336F8 /* CellEducationtable.xib */; };
-		D4E100C017D861C5006336F8 /* certificateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100B317D861C5006336F8 /* certificateModel.m */; };
-		D4E100C117D861C5006336F8 /* Educationdetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100B517D861C5006336F8 /* Educationdetails.m */; };
-		D4E100C217D861C5006336F8 /* previousemp.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100B717D861C5006336F8 /* previousemp.m */; };
-		D4E100C317D861C5006336F8 /* Ethicity.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100B917D861C5006336F8 /* Ethicity.m */; };
-		D4E100C417D861C5006336F8 /* Medicalmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100BB17D861C5006336F8 /* Medicalmodel.m */; };
 		D4E100C517D861C5006336F8 /* Drugmdel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100BD17D861C5006336F8 /* Drugmdel.m */; };
 		D4E100C617D861C5006336F8 /* Detailcourse.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100BF17D861C5006336F8 /* Detailcourse.m */; };
 		D4E100C917D861CE006336F8 /* Coursemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100C817D861CE006336F8 /* Coursemdl.m */; };
@@ -63,6 +58,11 @@
 		D4E100E917D886B9006336F8 /* CourseDrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100DE17D886B7006336F8 /* CourseDrugViewController.m */; };
 		D4E100EA17D886B9006336F8 /* CourseDrugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E100DF17D886B7006336F8 /* CourseDrugViewController.xib */; };
 		D4E100EB17D886B9006336F8 /* CourseDrugCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E100E017D886B8006336F8 /* CourseDrugCellView.xib */; };
+		D4E100F417D88C22006336F8 /* certificateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100ED17D88C22006336F8 /* certificateModel.m */; };
+		D4E100F517D88C22006336F8 /* Educationdetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100EF17D88C22006336F8 /* Educationdetails.m */; };
+		D4E100F617D88C22006336F8 /* previousemp.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F117D88C22006336F8 /* previousemp.m */; };
+		D4E100F717D88C22006336F8 /* Ethicity.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F317D88C22006336F8 /* Ethicity.m */; };
+		D4E100FA17D88C31006336F8 /* Medicalmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F917D88C31006336F8 /* Medicalmodel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,16 +112,6 @@
 		D4E100A817D860B6006336F8 /* EducationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationViewController.xib; sourceTree = "<group>"; };
 		D4E100A917D860B7006336F8 /* EducationCertificatecell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationCertificatecell.xib; sourceTree = "<group>"; };
 		D4E100AD17D860C5006336F8 /* CellEducationtable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellEducationtable.xib; sourceTree = "<group>"; };
-		D4E100B217D861C5006336F8 /* certificateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = certificateModel.h; sourceTree = "<group>"; };
-		D4E100B317D861C5006336F8 /* certificateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = certificateModel.m; sourceTree = "<group>"; };
-		D4E100B417D861C5006336F8 /* Educationdetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Educationdetails.h; sourceTree = "<group>"; };
-		D4E100B517D861C5006336F8 /* Educationdetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Educationdetails.m; sourceTree = "<group>"; };
-		D4E100B617D861C5006336F8 /* previousemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = previousemp.h; sourceTree = "<group>"; };
-		D4E100B717D861C5006336F8 /* previousemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = previousemp.m; sourceTree = "<group>"; };
-		D4E100B817D861C5006336F8 /* Ethicity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ethicity.h; sourceTree = "<group>"; };
-		D4E100B917D861C5006336F8 /* Ethicity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ethicity.m; sourceTree = "<group>"; };
-		D4E100BA17D861C5006336F8 /* Medicalmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicalmodel.h; sourceTree = "<group>"; };
-		D4E100BB17D861C5006336F8 /* Medicalmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicalmodel.m; sourceTree = "<group>"; };
 		D4E100BC17D861C5006336F8 /* Drugmdel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drugmdel.h; sourceTree = "<group>"; };
 		D4E100BD17D861C5006336F8 /* Drugmdel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drugmdel.m; sourceTree = "<group>"; };
 		D4E100BE17D861C5006336F8 /* Detailcourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Detailcourse.h; sourceTree = "<group>"; };
@@ -146,6 +136,16 @@
 		D4E100DE17D886B7006336F8 /* CourseDrugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDrugViewController.m; sourceTree = "<group>"; };
 		D4E100DF17D886B7006336F8 /* CourseDrugViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDrugViewController.xib; sourceTree = "<group>"; };
 		D4E100E017D886B8006336F8 /* CourseDrugCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDrugCellView.xib; sourceTree = "<group>"; };
+		D4E100EC17D88C21006336F8 /* certificateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = certificateModel.h; sourceTree = "<group>"; };
+		D4E100ED17D88C22006336F8 /* certificateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = certificateModel.m; sourceTree = "<group>"; };
+		D4E100EE17D88C22006336F8 /* Educationdetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Educationdetails.h; sourceTree = "<group>"; };
+		D4E100EF17D88C22006336F8 /* Educationdetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Educationdetails.m; sourceTree = "<group>"; };
+		D4E100F017D88C22006336F8 /* previousemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = previousemp.h; sourceTree = "<group>"; };
+		D4E100F117D88C22006336F8 /* previousemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = previousemp.m; sourceTree = "<group>"; };
+		D4E100F217D88C22006336F8 /* Ethicity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ethicity.h; sourceTree = "<group>"; };
+		D4E100F317D88C22006336F8 /* Ethicity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ethicity.m; sourceTree = "<group>"; };
+		D4E100F817D88C31006336F8 /* Medicalmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicalmodel.h; sourceTree = "<group>"; };
+		D4E100F917D88C31006336F8 /* Medicalmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicalmodel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,16 +277,16 @@
 				D4E1009917D85A27006336F8 /* jobsite.m */,
 				D4E100D117D868D2006336F8 /* CKCalendarView.h */,
 				D4E100CF17D868C6006336F8 /* CKCalendarView.m */,
-				D4E100B217D861C5006336F8 /* certificateModel.h */,
-				D4E100B317D861C5006336F8 /* certificateModel.m */,
-				D4E100B417D861C5006336F8 /* Educationdetails.h */,
-				D4E100B517D861C5006336F8 /* Educationdetails.m */,
-				D4E100B617D861C5006336F8 /* previousemp.h */,
-				D4E100B717D861C5006336F8 /* previousemp.m */,
-				D4E100B817D861C5006336F8 /* Ethicity.h */,
-				D4E100B917D861C5006336F8 /* Ethicity.m */,
-				D4E100BA17D861C5006336F8 /* Medicalmodel.h */,
-				D4E100BB17D861C5006336F8 /* Medicalmodel.m */,
+				D4E100EC17D88C21006336F8 /* certificateModel.h */,
+				D4E100ED17D88C22006336F8 /* certificateModel.m */,
+				D4E100EE17D88C22006336F8 /* Educationdetails.h */,
+				D4E100EF17D88C22006336F8 /* Educationdetails.m */,
+				D4E100F017D88C22006336F8 /* previousemp.h */,
+				D4E100F117D88C22006336F8 /* previousemp.m */,
+				D4E100F817D88C31006336F8 /* Medicalmodel.h */,
+				D4E100F917D88C31006336F8 /* Medicalmodel.m */,
+				D4E100F217D88C22006336F8 /* Ethicity.h */,
+				D4E100F317D88C22006336F8 /* Ethicity.m */,
 				D4E100BC17D861C5006336F8 /* Drugmdel.h */,
 				D4E100BD17D861C5006336F8 /* Drugmdel.m */,
 				D4E100BE17D861C5006336F8 /* Detailcourse.h */,
@@ -397,11 +397,6 @@
 				D4E1009A17D85A27006336F8 /* jobsite.m in Sources */,
 				D4E100A317D86060006336F8 /* BasicdetailsViewController.m in Sources */,
 				D4E100AA17D860B7006336F8 /* EducationViewController.m in Sources */,
-				D4E100C017D861C5006336F8 /* certificateModel.m in Sources */,
-				D4E100C117D861C5006336F8 /* Educationdetails.m in Sources */,
-				D4E100C217D861C5006336F8 /* previousemp.m in Sources */,
-				D4E100C317D861C5006336F8 /* Ethicity.m in Sources */,
-				D4E100C417D861C5006336F8 /* Medicalmodel.m in Sources */,
 				D4E100C517D861C5006336F8 /* Drugmdel.m in Sources */,
 				D4E100C617D861C5006336F8 /* Detailcourse.m in Sources */,
 				D4E100C917D861CE006336F8 /* Coursemdl.m in Sources */,
@@ -410,6 +405,11 @@
 				D4E100E417D886B9006336F8 /* EmployeeViewController.m in Sources */,
 				D4E100E717D886B9006336F8 /* RaceViewController.m in Sources */,
 				D4E100E917D886B9006336F8 /* CourseDrugViewController.m in Sources */,
+				D4E100F417D88C22006336F8 /* certificateModel.m in Sources */,
+				D4E100F517D88C22006336F8 /* Educationdetails.m in Sources */,
+				D4E100F617D88C22006336F8 /* previousemp.m in Sources */,
+				D4E100F717D88C22006336F8 /* Ethicity.m in Sources */,
+				D4E100FA17D88C31006336F8 /* Medicalmodel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
