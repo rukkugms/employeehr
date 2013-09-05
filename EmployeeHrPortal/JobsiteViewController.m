@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title=NSLocalizedString(@"Jobsite Details", @"Jobsite Details");
     }
     return self;
 }
@@ -27,12 +28,1294 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self SelectEmployeeSkills];
+    
+    _scrollview.frame=CGRectMake(0, 0,1024, 768);
+    [ _scrollview setContentSize:CGSizeMake(1024,850)];
+    buttonclicked=0;
+    _listtable.layer.borderWidth = 4.0;
+    _listtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+    _selectedtable.layer.borderWidth = 4.0;
+    _selectedtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+    _monthArray=[[NSMutableArray alloc]initWithObjects:@"JAN",@"FEB",@"MAR",@"APR",@"MAY",@"JUN",@"JUL",@"AUG",@"SEP",@"OCT",@"NOV",@"DEC",nil];
+    _monthdictArray=[[NSMutableArray alloc]initWithObjects:@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12", nil];
+    _monthDictionary=[[NSMutableDictionary alloc]initWithObjects:_monthdictArray forKeys:_monthArray];
+    _remonthDictionary=[[NSMutableDictionary alloc]initWithObjects:_monthArray forKeys:_monthdictArray];
+    _yearArray=[[NSMutableArray alloc]initWithObjects:@"2013",@"2014",@"2015",@"2016",@"2017",@"2018",@"2019",@"2020",@"2021",@"2022",@"2023", nil];
+    
+//    UINavigationController *navCtrl1 = [[UINavigationController alloc] init];
+//   BasicdetailsViewController *viewController1 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
+//       
+//    navCtrl1.viewControllers = [NSArray arrayWithObject:viewController1];
+//    
+//    UINavigationController *navCtrl2 = [[UINavigationController alloc] init];
+//    EducationViewController *viewController2 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
+//    //viewController2.employeeArray=_employeedetailsArray;
+//    navCtrl2.viewControllers = [NSArray arrayWithObject:viewController2];
+//    NSArray *controllers = [NSArray arrayWithObjects:navCtrl1,navCtrl2,nil];
+//    
+//    self.tabbar.viewControllers = controllers;
+//    
+//    
+//    // }
+//    
+//    [self.navigationController pushViewController:self.tabBarCon animated:YES];
+//
+    
+    
+
 }
+//- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+//    switch (item.tag) {
+//        case 1:
+//                      break;
+//        case 2:
+//            if (_basicVCtrl == nil) {
+//                 _basicVCtrl=[[BasicdetailsViewController alloc]initWithNibName:@"BasicdetailsViewController" bundle:nil];
+//            }
+//            _basicVCtrl.Applicantid=_Applicantid;
+//            [self.navigationController pushViewController:_basicVCtrl animated:YES];
+//            
+//           // [self.view insertSubview:_basicVCtrl.view belowSubview:tabBar];
+//                        break;
+//    
+//     case 3:
+//            if (_educatnVCtrl == nil) {
+//                _educatnVCtrl=[[EducationViewController alloc]initWithNibName:@"EducationViewController" bundle:nil];
+//            }
+//    _educatnVCtrl.Applicantid=_Applicantid;
+//    [self.navigationController pushViewController:_educatnVCtrl animated:YES];
+//
+//           
+//
+//
+//        default:
+//            break;
+//    }
+//
+//}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Power_-_Standby"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    [self.navigationItem setRightBarButtonItem:logoutbutton animated:YES];
+    self.navigationItem.hidesBackButton=YES;
+    [self SelectJobs];
+    
+    
+    [self SelectApplicantDetails];
+    
+    [self SelectEmployeeCraft];
+}
+-(void)logoutAction{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
+
+
+#pragma mark - Actions
+
+//- (IBAction)employeebtn:(id)sender {
+//    
+//    [self UpdateApplicantDetails];
+//    if (!self.employeeVCtrl) {
+//        _employeeVCtrl=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
+//    }
+//    _employeeVCtrl.Applicantid=_Applicantid;
+//    _employeeVCtrl.jobsiteid=_Drugjobsiteid;
+//    
+//    _employeeVCtrl.craftid=_creftid;
+//    
+//    [self.navigationController pushViewController:_employeeVCtrl animated:YES];
+//    
+//    
+//}
+//
+//- (IBAction)continuebtn:(id)sender {
+//    // [self SelectEmployeeCraft];
+//    
+//    
+//    [self UpdateApplicantDetails];
+//    if (!self.basicVCtrl) {
+//        _basicVCtrl=[[BasicdetailsViewController alloc]initWithNibName:@"BasicdetailsViewController" bundle:nil];
+//    }
+//    _basicVCtrl.Applicantid=_Applicantid;
+//    
+//    
+//    [self.navigationController pushViewController:_basicVCtrl animated:YES];
+//    
+//    
+//    
+//}
+//
+//- (IBAction)edubtn:(id)sender {
+//    [self UpdateApplicantDetails];
+//    if (!self.educatnVCtrl) {
+//        _educatnVCtrl=[[EducationViewController alloc]initWithNibName:@"EducationViewController" bundle:nil];
+//    }
+//    _educatnVCtrl.Applicantid=_Applicantid;
+//    [self.navigationController pushViewController:_educatnVCtrl animated:YES];
+//    
+//}
+//
+//- (IBAction)medicalbtn:(id)sender {
+//    
+//    
+//    [self UpdateApplicantDetails];
+//    if (!self.newmedVCtrl) {
+//        _newmedVCtrl=[[NewMedicalViewController alloc]initWithNibName:@"NewMedicalViewController" bundle:nil];
+//    }
+//    _newmedVCtrl.Applicantid=_Applicantid;
+//    [self.navigationController pushViewController:_newmedVCtrl animated:YES];
+//    
+//    //    if (!self.medicalVctrl) {
+//    //        _medicalVctrl=[[MedicalViewController alloc]initWithNibName:@"MedicalViewController" bundle:nil];
+//    //    }
+//    //    _medicalVctrl.ApplicantId=_Applicantid;
+//    //    [self.navigationController pushViewController:_medicalVctrl animated:YES];
+//    //
+//    
+//}
+//
+//- (IBAction)basicbtn:(id)sender {
+//    [self UpdateApplicantDetails];
+//    if (!self.basicVCtrl) {
+//        _basicVCtrl=[[BasicdetailsViewController alloc]initWithNibName:@"BasicdetailsViewController" bundle:nil];
+//    }
+//    _basicVCtrl.Applicantid=_Applicantid;
+//    [self.navigationController pushViewController:_basicVCtrl animated:YES];
+//    
+//    
+//    
+//}
+
+- (IBAction)clickbtn:(id)sender {
+    _nw=@"";
+    if (buttonclicked==0) {
+        //  _clickedbtnlbl.imageView.image=[UIImage imageNamed:@"check"];
+        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+        buttonclicked=1;
+        // [_listtable reloadData];
+    }
+    else if(buttonclicked==1){
+        [_clickedbtnlbl setSelected:NO];
+        
+        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+        buttonclicked=0;
+        
+    }
+    // [_listtable reloadData];
+    
+}
+/*Popover*/
+- (IBAction)SelectMonth:(id)sender
+{
+    Poptype=1;
+    UIViewController* popoverContent = [[UIViewController alloc]
+                                        init];
+    UIView* popoverView = [[UIView alloc]
+                           initWithFrame:CGRectMake(0, 0, 60, 250)];
+    //200,250
+    popoverView.backgroundColor = [UIColor lightTextColor];
+    _popOverTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 60, 250)];
+    _popOverTableView.delegate=(id)self;
+    _popOverTableView.dataSource=(id)self;
+    _popOverTableView.rowHeight= 32;
+    _popOverTableView.separatorColor=[UIColor cyanColor];
+    
+    [popoverView addSubview:_popOverTableView];
+    popoverContent.view = popoverView;
+    
+    //resize the popover view shown
+    //in the current view to the view's size
+    popoverContent.contentSizeForViewInPopover = CGSizeMake(60, 250);
+    
+    //create a popover controller
+    self.popOverController1 = [[UIPopoverController alloc]
+                               initWithContentViewController:popoverContent];
+    [self.popOverController1 presentPopoverFromRect:_monthBtn.frame
+                                             inView:self.view
+                           permittedArrowDirections:UIPopoverArrowDirectionUp
+                                           animated:YES];
+    
+    
+}
+
+- (IBAction)SelectYear:(id)sender
+{
+    Poptype=2;
+    UIViewController* popoverContent = [[UIViewController alloc]
+                                        init];
+    UIView* popoverView = [[UIView alloc]
+                           initWithFrame:CGRectMake(0, 0, 60, 250)];
+    
+    popoverView.backgroundColor = [UIColor lightTextColor];
+    _popOverTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 60, 250)];
+    _popOverTableView.delegate=(id)self;
+    _popOverTableView.dataSource=(id)self;
+    _popOverTableView.rowHeight= 32;
+    _popOverTableView.separatorColor=[UIColor cyanColor];
+    
+    [popoverView addSubview:_popOverTableView];
+    popoverContent.view = popoverView;
+    
+    //resize the popover view shown
+    //in the current view to the view's size
+    popoverContent.contentSizeForViewInPopover = CGSizeMake(60, 250);
+    
+    //create a popover controller
+    self.popOverController1 = [[UIPopoverController alloc]
+                               initWithContentViewController:popoverContent];
+    [self.popOverController1 presentPopoverFromRect:_yearBtn.frame
+                                             inView:self.view
+                           permittedArrowDirections:UIPopoverArrowDirectionUp
+                                           animated:YES];
+    
+}
+-(void)skillsPopover
+{
+    Poptype=3;
+    UIViewController* popoverContent = [[UIViewController alloc]
+                                        init];
+    UIView* popoverView = [[UIView alloc]
+                           initWithFrame:CGRectMake(0, 0, 200, 250)];
+    
+    popoverView.backgroundColor = [UIColor lightTextColor];
+    _popOverTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 200, 250)];
+    _popOverTableView.delegate=(id)self;
+    _popOverTableView.dataSource=(id)self;
+    _popOverTableView.rowHeight= 32;
+    _popOverTableView.separatorColor=[UIColor cyanColor];
+    
+    [popoverView addSubview:_popOverTableView];
+    popoverContent.view = popoverView;
+    
+    //resize the popover view shown
+    //in the current view to the view's size
+    popoverContent.contentSizeForViewInPopover = CGSizeMake(200, 250);
+    
+    //create a popover controller
+    self.popOverController1 = [[UIPopoverController alloc]
+                               initWithContentViewController:popoverContent];
+    [self.popOverController1 presentPopoverFromRect:_skillbtnlbl.frame
+                                             inView:self.scrollview
+                           permittedArrowDirections:UIPopoverArrowDirectionUp
+                                           animated:YES];
+    
+}
+-(void)craftsPopover
+{
+    Poptype=4;
+    UIViewController* popoverContent = [[UIViewController alloc]
+                                        init];
+    UIView* popoverView = [[UIView alloc]
+                           initWithFrame:CGRectMake(0, 0, 200, 250)];
+    
+    popoverView.backgroundColor = [UIColor lightTextColor];
+    _popOverTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 200, 250)];
+    _popOverTableView.delegate=(id)self;
+    _popOverTableView.dataSource=(id)self;
+    _popOverTableView.rowHeight= 32;
+    _popOverTableView.separatorColor=[UIColor cyanColor];
+    
+    [popoverView addSubview:_popOverTableView];
+    popoverContent.view = popoverView;
+    
+    //resize the popover view shown
+    //in the current view to the view's size
+    popoverContent.contentSizeForViewInPopover = CGSizeMake(200, 250);
+    
+    //create a popover controller
+    self.popOverController1 = [[UIPopoverController alloc]
+                               initWithContentViewController:popoverContent];
+    [self.popOverController1 presentPopoverFromRect:_craftbtnlbl.frame
+                                             inView:self.scrollview
+                           permittedArrowDirections:UIPopoverArrowDirectionUp
+                                           animated:YES];
+    
+}
+
+- (IBAction)skillbtn:(id)sender {
+    Poptype=3;
+    [self SelectEmployeeSkills];
+    [self skillsPopover];
+    
+}
+
+- (IBAction)craftbtn:(id)sender {
+    Poptype=4;
+    [self SelectEmployeeCraft];
+    [self craftsPopover];
+}
+
+//- (IBAction)race:(id)sender {
+//    if (!self.raceVCtrl) {
+//        _raceVCtrl=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
+//    }
+//    _raceVCtrl.applicantId=_Applicantid;
+//    [self.navigationController pushViewController:_raceVCtrl animated:YES];
+//    
+//    
+//    
+//}
+//
+//- (IBAction)drugbtn:(id)sender {
+//    [self UpdateApplicantDetails];
+//    if (!self.drugVctrl) {
+//        _drugVctrl=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
+//    }
+//    
+//    _drugVctrl.Applicantid=_Applicantid;
+//    _drugVctrl.jobsiteid=_Drugjobsiteid;
+//    _drugVctrl.craftid=_creftid;
+//    
+//    _drugVctrl.Applicantid=_Applicantid;
+//    [self.navigationController pushViewController:_drugVctrl animated:YES];
+//    
+//}
+
+
+#pragma mark - Tableview
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView==_popOverTableView) {
+        
+        switch (Poptype) {
+            case 1:
+                return [_monthArray count];
+                break;
+            case 2:
+                return [_yearArray count];
+                break;
+            case 3:
+                return [_skillsArray count];
+                break;
+            case 4:
+                return [_craftsArray count];
+                break;
+            default:
+                break;
+        }
+        
+    }
+    
+    
+    if (tableView==_listtable) {
+        return [_jobsiteArray count];
+    }
+    
+    return YES;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"mycell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        if (tableView==_listtable) {
+            [[NSBundle mainBundle]loadNibNamed:@"JobsiteViewControlleripadcell" owner:self options:nil];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell=_listtablecell;
+            
+        }
+        
+    }
+    
+    if (tableView==_popOverTableView) {
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:12];
+        cell.textLabel.font = [UIFont systemFontOfSize:12.0];
+        
+        switch (Poptype) {
+            case 1:
+                cell.textLabel.text=[_monthArray objectAtIndex:indexPath.row];
+                break;
+            case 2:
+                cell.textLabel.text=[_yearArray objectAtIndex:indexPath.row];
+                break;
+            case 3:
+                cell.textLabel.text=[_skillsArray objectAtIndex:indexPath.row];
+                break;
+            case 4:
+                cell.textLabel.text=[_craftsArray objectAtIndex:indexPath.row];
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+    
+    if (tableView==_listtable) {
+        
+        _jobnamelbl=(UILabel*)[cell viewWithTag:1];
+        
+        
+        _jobnamelbl.text=[_jobsiteArray objectAtIndex:indexPath.row];
+        
+        
+        
+        NSString*jobs=[_jobsiteArray objectAtIndex:indexPath.row];
+        
+        
+        
+        
+        if([_nw isEqualToString:@"SelectApplicant"])
+        {
+            
+            
+            NSLog(@"jobsite%@",_jobsite.jobsiteid);
+            
+            
+            //NSString*jn=[_rejobiddict objectForKey:_jobsite.jobsiteid];
+            
+            //[arr objectAtIndex:[(_jobsite.jobsiteid)integerValue]-1];
+            NSString *jn=[_rejobiddict objectForKey:[_jobsite.jobsiteid stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+            
+            _Drugjobsiteid=_jobsite.jobsiteid;
+            NSLog(@"jobsite%@",jn);
+            if([jn isEqualToString:jobs])
+            {
+                
+                
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                _clickedbtnlbl.enabled=NO;
+                [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+                // buttonclicked=1;
+            }
+            
+        }
+        
+        
+        if ([_selectedrow isEqualToString:@"Selected"]) {
+            
+            if(indexPath.row == selectedcell)
+            {
+                if(cell.accessoryType==UITableViewCellAccessoryNone)
+                {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    //cell.selected = NO;
+                    _clickedbtnlbl.enabled=NO;
+                    [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+                    buttonclicked=0;
+                }
+                
+                
+                else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
+                {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    //cell.selected = NO;
+                    _clickedbtnlbl.enabled=YES;
+                    //   [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+                    buttonclicked=1;
+                }
+            }
+            
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (tableView==_listtable) {
+        _selectedrow=@"Selected";
+        _nw=@"";
+        selectedcell=indexPath.row;
+        [_listtable reloadData];
+    }
+    if (tableView==_popOverTableView) {
+        
+        
+        
+        switch (Poptype) {
+            case 1:
+                
+                [_monthBtn setTitle:[_monthArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                
+                
+                break;
+            case 2:
+                
+                [_yearBtn setTitle:[_yearArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                
+                
+                
+                break;
+            case 3:
+                
+                [_skillbtnlbl setTitle:[_skillsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                
+                
+                
+                break;
+            case 4:
+                
+                [_craftbtnlbl setTitle:[_craftsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                // _creftid=   [_craftdict objectForKey:[_craftsArray objectAtIndex:indexPath.row]];
+                
+                
+                break;
+            default:
+                break;
+        }
+        
+    }
+    
+}
+
+
+#pragma mark - Webservice
+/*webservices*/
+
+-(void)SelectJobs{
+    //Poptype=3;
+    recordResults = FALSE;
+    NSString *soapMessage;
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<SelectJobs xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "</SelectJobs>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n"];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://webserv.kontract360.com/SelectJobs" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+    
+}
+
+
+-(void)SelectEmployeeCraft{
+    Poptype=4;
+    recordResults = FALSE;
+    NSString *soapMessage;
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<SelectEmployeeCraft xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<SubType>%@</SubType>\n"
+                   "</SelectEmployeeCraft>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n",_skillbtnlbl.titleLabel.text];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://webserv.kontract360.com/SelectEmployeeCraft" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+    
+}
+-(void)SelectEmployeeSkills{
+    Poptype=3;
+    recordResults = FALSE;
+    NSString *soapMessage;
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<SelectEmployeeSkills xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "</SelectEmployeeSkills>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n"];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://webserv.kontract360.com/SelectEmployeeSkills" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+    
+}
+-(void)SelectApplicantDetails{
+    //Poptype=3;
+    
+    recordResults = FALSE;
+    NSString *soapMessage;
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<SelectApplicantDetails xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<AppId>%d</AppId>\n"
+                   "</SelectApplicantDetails>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n",_Applicantid];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://webserv.kontract360.com/SelectApplicantDetails" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+    
+}
+-(void)UpdateApplicantDetails
+{
+    recordResults = FALSE;
+    if(_basicPlussegment.selectedSegmentIndex==0)
+    {
+        basicPlus=1;
+    }
+    else if(_basicPlussegment.selectedSegmentIndex==1)
+    {
+        basicPlus=0;
+    }
+    if(_ncerSegment.selectedSegmentIndex==0)
+    {
+        ncer=1;
+    }
+    else if(_ncerSegment.selectedSegmentIndex==1)
+    {
+        ncer=0;
+    }
+    NSString *skill=[_skilldict objectForKey: _skillbtnlbl.titleLabel.text];
+    NSString *craft;
+    if ([_craftdict count]==0) {
+        craft =_creftid;
+    }
+    
+    else{
+        craft= [_craftdict objectForKey: _craftbtnlbl.titleLabel.text];
+        
+    }
+    
+    
+    
+    NSString *ncerdesc=_otherdesc.text;
+    NSString *soapMessage;
+    NSString *jobsite;
+    if(_clickedbtnlbl.enabled==NO)
+    {
+        jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
+        
+    }
+    else if(_clickedbtnlbl.enabled==YES)
+    {
+        jobsite=@"0";
+    }
+    NSString *month=[_monthDictionary objectForKey:_monthBtn.titleLabel.text];
+    NSString *year=_yearBtn.titleLabel.text;
+    NSString *day=@"01";
+    NSString *dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<UpdateApplicantDetails xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<ApplicantId>%d</ApplicantId>\n"
+                   "<JobsiteId>%@</JobsiteId>\n"
+                   "<ApplicantSafetyCouncilStatus>%d</ApplicantSafetyCouncilStatus>\n"
+                   "<ApplicantSafetyCouncilExpiry>%@</ApplicantSafetyCouncilExpiry>\n"
+                   "<ApplicantNCERStatus>%d</ApplicantNCERStatus>\n"
+                   "<ApplicantNCERDescription>%@</ApplicantNCERDescription>\n"
+                   "<Skill>%@</Skill>\n"
+                   "<Craft>%@</Craft>\n"
+                   "</UpdateApplicantDetails>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,dateString,ncer,ncerdesc,skill,craft];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://webserv.kontract360.com/UpdateApplicantDetails" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+    
+}
+
+
+#pragma mark - Connection
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+	[_webData setLength: 0];
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+   	[_webData appendData:data];
+}
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    UIAlertView *  Alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"ERROR with theConenction" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    
+    [Alert show];
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"DONE. Received Bytes: %d", [_webData length]);
+	NSString *theXML = [[NSString alloc] initWithBytes: [_webData mutableBytes] length:[_webData length] encoding:NSUTF8StringEncoding];
+	NSLog(@"xml===== %@",theXML);
+	
+	
+	if( _xmlParser )
+	{
+		
+	}
+	
+	_xmlParser = [[NSXMLParser alloc] initWithData: _webData];
+	[_xmlParser setDelegate:(id)self];
+	[_xmlParser setShouldResolveExternalEntities: YES];
+	[_xmlParser parse];
+    [_listtable reloadData];
+    
+    [_popOverTableView reloadData];
+    
+}
+
+
+#pragma mark - XMLParser
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *) namespaceURI qualifiedName:(NSString *)qName
+   attributes: (NSDictionary *)attributeDict{
+    
+    
+    if([elementName isEqualToString:@"SelectJobsResult"])
+    {
+        _jobsiteArray=[[NSMutableArray alloc]init];
+        _jobiddict=[[NSMutableDictionary alloc]init];
+        _rejobiddict=[[NSMutableDictionary alloc]init];
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"JobSiteName"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"Id"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"SelectEmployeeSkillsResult"])
+    {
+        _skillsArray=[[NSMutableArray alloc]init];
+        _skilldict=[[NSMutableDictionary alloc]init];
+        _skillArraydict=[[NSMutableDictionary alloc]init];
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"SkillId"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"SkillName"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"SelectEmployeeCraftResult"])
+    {
+        _craftsArray=[[NSMutableArray alloc]init];
+        _craftdict=[[NSMutableDictionary alloc]init];
+        _craftArraydict=[[NSMutableDictionary alloc]init];
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"CraftId"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"CraftName"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"EntryId"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"Description"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"SelectApplicantDetailsResult"])
+    {
+        _jobsitemodelarray=[[NSMutableArray alloc]init];
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"JobSiteId"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"SafetyCouncilStatus"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"SafetyCouncilExpiry"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"NCCERTStatus"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"NCCERTDescription"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"ApplicantSkill"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"ApplicantCraft"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"craftname"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    
+}
+-(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    
+    
+    
+	if( recordResults )
+        
+	{
+        
+        
+		[_soapResults appendString: string];
+    }
+}
+-(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    if([elementName isEqualToString:@"JobSiteName"])
+    {
+        
+        recordResults = FALSE;
+        [_jobsiteArray addObject:_soapResults];
+        [_jobiddict setObject:_unitstring forKey:_soapResults];
+        
+        [_rejobiddict setObject:_soapResults forKey:_unitstring];
+        
+        _soapResults = nil;
+    }
+    
+    
+    if([elementName isEqualToString:@"Id"])
+    {
+        recordResults = FALSE;
+        _unitstring=_soapResults;
+        
+        _soapResults = nil;
+        
+    }
+    if([elementName isEqualToString:@"SkillId"])
+    {
+        
+        recordResults = FALSE;
+        _unitstring=_soapResults;
+        _soapResults = nil;
+    }
+    if([elementName isEqualToString:@"SkillName"])
+    {
+        
+        recordResults = FALSE;
+        [_skilldict setObject:_unitstring forKey:_soapResults];
+        [_skillArraydict setObject:_soapResults forKey:_unitstring];
+        [_skillsArray addObject:_soapResults];
+        _soapResults = nil;
+    }
+    if([elementName isEqualToString:@"CraftId"])
+    {
+        
+        recordResults = FALSE;
+        _unitstring=_soapResults;
+        _soapResults = nil;
+    }
+    if([elementName isEqualToString:@"CraftName"])
+    {
+        
+        recordResults = FALSE;
+        [_craftsArray addObject:_soapResults];
+        [_craftdict setObject:_unitstring forKey:_soapResults];
+        [_craftArraydict setObject:_soapResults forKey:_unitstring];
+        _soapResults = nil;
+    }
+    if([elementName isEqualToString:@"EntryId"])
+    {
+        
+        recordResults = FALSE;
+        _unitstring=_soapResults;
+        _soapResults = nil;
+    }
+    if([elementName isEqualToString:@"Description"])
+    {
+        
+        recordResults = FALSE;
+        [_craftsArray addObject:_soapResults];
+        [_craftdict setObject:_unitstring forKey:_soapResults];
+        _soapResults = nil;
+    }
+    
+    
+    
+    
+    if([elementName isEqualToString:@"JobSiteId"])
+        
+    { _nw=@"SelectApplicant";
+        _jobsite=[[jobsite alloc]init];
+        recordResults = FALSE;
+        _jobsite.jobsiteid=_soapResults;
+        [_listtable reloadData];
+        _soapResults = nil;
+        
+    }
+    
+    if([elementName isEqualToString:@"SafetyCouncilStatus"])
+    {
+        recordResults = FALSE;
+        _jobsite.safetycouncilstatus=_soapResults;
+        
+        if ([_soapResults isEqualToString:@"true"]) {
+            _basicPlussegment.selectedSegmentIndex=0;
+            
+            
+        }
+        else  if ([_soapResults isEqualToString:@"false"]) {
+            _basicPlussegment.selectedSegmentIndex=1;
+            
+        }
+        _soapResults = nil;
+    }
+    
+    if([elementName isEqualToString:@"SafetyCouncilExpiry"])
+    {
+        recordResults = FALSE;
+        _jobsite.safetycouncilexpiry=_soapResults;
+        NSArray*Array=[[NSArray alloc]init];
+        Array=[_soapResults componentsSeparatedByString:@"T"];
+        NSArray*arry1=[[NSArray alloc]init];
+        arry1=[[Array objectAtIndex:0]componentsSeparatedByString:@"-" ];
+        
+        [_yearBtn setTitle:[arry1 objectAtIndex:0] forState:UIControlStateNormal];
+        NSLog(@"a%@",[arry1 objectAtIndex:1]);
+        [_monthBtn setTitle:[_remonthDictionary objectForKey:[arry1 objectAtIndex:1]] forState:UIControlStateNormal];
+        _soapResults = nil;
+    }
+    
+    if([elementName isEqualToString:@"NCCERTStatus"])
+    {
+        recordResults = FALSE;
+        
+        _jobsite.nccertstatus=_soapResults;
+        if ([_soapResults isEqualToString:@"true"]) {
+            _ncerSegment.selectedSegmentIndex=0;
+            
+            
+        }
+        else  if ([_soapResults isEqualToString:@"false"]) {
+            _ncerSegment.selectedSegmentIndex=1;
+            
+            
+        }
+        
+        _soapResults = nil;
+    }
+    
+    if([elementName isEqualToString:@"NCCERTDescription"])
+    {
+        recordResults = FALSE;
+        _jobsite.NCCERTDescription=_soapResults;
+        _otherdesc.text=_soapResults;
+        
+        _soapResults = nil;
+    }
+    
+    if([elementName isEqualToString:@"ApplicantSkill"])
+    {
+        recordResults = FALSE;
+        _jobsite.ApplicantSkill=_soapResults;
+        
+        
+        
+        
+        
+        
+        
+        [_skillbtnlbl setTitle:[_skillArraydict objectForKey:_soapResults] forState:UIControlStateNormal];
+        
+        
+        _soapResults = nil;
+    }
+    if([elementName isEqualToString:@"ApplicantCraft"])
+    {
+        recordResults = FALSE;
+        _creftid=_soapResults;
+        
+        //        _jobsite.ApplicantCraft=_soapResults;
+        //
+        //       _creftid=[_craftdict objectForKey:_soapResults];
+        // [_craftbtnlbl setTitle:[_craftArraydict objectForKey:_soapResults] forState:UIControlStateNormal];
+        //
+        _soapResults = nil;
+    }
+    
+    if([elementName isEqualToString:@"craftname"])
+    {
+        recordResults = FALSE;
+        _jobsite.ApplicantCraft=_soapResults;
+        
+        [_craftbtnlbl setTitle:_soapResults forState:UIControlStateNormal];
+        [_jobsitemodelarray addObject:_jobsite];
+        _soapResults = nil;
+    }
+    
+    
 }
 
 @end

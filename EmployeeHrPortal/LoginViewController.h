@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "JobsiteViewController.h"
+#import "NewMedicalViewController.h"
+#import "RaceViewController.h"
+#import "EmployeeViewController.h"
+#import "CourseDrugViewController.h"
 @interface LoginViewController : UIViewController{
     BOOL recordResults;
  NSInteger Applicantid;
@@ -15,7 +19,7 @@
 /*Outlets */
 @property (strong, nonatomic) IBOutlet UITextField *ssntxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *passwordtxtfld;
-
+@property (strong, nonatomic)UITabBarController*tabbarcntrl;
 @property(strong,nonatomic)JobsiteViewController*firstVCtrl;
 /*Xmlparser*/
 @property(strong,nonatomic)NSXMLParser *xmlParser;

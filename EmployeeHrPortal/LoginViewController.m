@@ -167,14 +167,40 @@
         
         recordResults = FALSE;
         Applicantid=[_soapResults integerValue];
+              
+//        if (!self.firstVCtrl) {
+//            _firstVCtrl=[[JobsiteViewController alloc]initWithNibName:@"JobsiteViewController" bundle:nil];
+//        }
+//       // _firstVCtrl.Applicantid=Applicantid;
+//        [self.navigationController pushViewController:_firstVCtrl animated:YES];
         
-        if (!self.firstVCtrl) {
-            _firstVCtrl=[[JobsiteViewController alloc]initWithNibName:@"JobsiteViewController" bundle:nil];
-        }
-       // _firstVCtrl.Applicantid=Applicantid;
-        [self.navigationController pushViewController:_firstVCtrl animated:YES];
         
         
+/*Code for tabbarcontroller*/
+        
+        _tabbarcntrl=[[UITabBarController alloc]init];
+          _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
+    
+    BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
+    EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
+              
+        JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
+         NewMedicalViewController *viewController4 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
+        EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
+        CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
+        RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
+        
+        NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,nil];
+        self.tabbarcntrl.viewControllers = controllers;
+//        CGRect viewframe=_tabbarcntrl.view.frame;
+//        viewframe.origin.y=40;
+//        
+//        _tabbarcntrl.inputView.frame =viewframe;
+        
+        
+        [self.navigationController pushViewController:_tabbarcntrl animated:YES];
+        
+
         _soapResults = nil;
     }
     
@@ -186,6 +212,5 @@
 
 - (IBAction)cancelbtn:(id)sender {
 }
-
 
 @end
