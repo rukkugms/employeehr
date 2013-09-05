@@ -182,14 +182,19 @@
           _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
     
     BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
+        viewController2.Applicantid=Applicantid;
     EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
-              
+        viewController3.Applicantid=Applicantid;
         JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
+        viewController1.Applicantid=Applicantid;
          NewMedicalViewController *viewController4 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
+        viewController4.Applicantid=Applicantid;
         EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
+        viewcontroller5.Applicantid=Applicantid;
         CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
+        viewcontroller6.Applicantid=Applicantid;
         RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
-        
+        viewcontroller7.applicantId=Applicantid;
         NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,nil];
         self.tabbarcntrl.viewControllers = controllers;
 //        CGRect viewframe=_tabbarcntrl.view.frame;

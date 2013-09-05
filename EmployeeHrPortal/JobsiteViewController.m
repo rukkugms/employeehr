@@ -43,58 +43,7 @@
     _remonthDictionary=[[NSMutableDictionary alloc]initWithObjects:_monthArray forKeys:_monthdictArray];
     _yearArray=[[NSMutableArray alloc]initWithObjects:@"2013",@"2014",@"2015",@"2016",@"2017",@"2018",@"2019",@"2020",@"2021",@"2022",@"2023", nil];
     
-//    UINavigationController *navCtrl1 = [[UINavigationController alloc] init];
-//   BasicdetailsViewController *viewController1 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
-//       
-//    navCtrl1.viewControllers = [NSArray arrayWithObject:viewController1];
-//    
-//    UINavigationController *navCtrl2 = [[UINavigationController alloc] init];
-//    EducationViewController *viewController2 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
-//    //viewController2.employeeArray=_employeedetailsArray;
-//    navCtrl2.viewControllers = [NSArray arrayWithObject:viewController2];
-//    NSArray *controllers = [NSArray arrayWithObjects:navCtrl1,navCtrl2,nil];
-//    
-//    self.tabbar.viewControllers = controllers;
-//    
-//    
-//    // }
-//    
-//    [self.navigationController pushViewController:self.tabBarCon animated:YES];
-//
-    
-    
-
 }
-//- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-//    switch (item.tag) {
-//        case 1:
-//                      break;
-//        case 2:
-//            if (_basicVCtrl == nil) {
-//                 _basicVCtrl=[[BasicdetailsViewController alloc]initWithNibName:@"BasicdetailsViewController" bundle:nil];
-//            }
-//            _basicVCtrl.Applicantid=_Applicantid;
-//            [self.navigationController pushViewController:_basicVCtrl animated:YES];
-//            
-//           // [self.view insertSubview:_basicVCtrl.view belowSubview:tabBar];
-//                        break;
-//    
-//     case 3:
-//            if (_educatnVCtrl == nil) {
-//                _educatnVCtrl=[[EducationViewController alloc]initWithNibName:@"EducationViewController" bundle:nil];
-//            }
-//    _educatnVCtrl.Applicantid=_Applicantid;
-//    [self.navigationController pushViewController:_educatnVCtrl animated:YES];
-//
-//           
-//
-//
-//        default:
-//            break;
-//    }
-//
-//}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
