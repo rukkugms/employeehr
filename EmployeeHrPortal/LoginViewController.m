@@ -51,7 +51,7 @@
     
     recordResults = FALSE;
     NSString *soapMessage;
-    
+     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -95,6 +95,60 @@
     {
         ////NSLog(@"theConnection is NULL");
     }
+     }
+    
+     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+         soapMessage = [NSString stringWithFormat:
+                        
+                        @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                        "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                        
+                        
+                        "<soap:Body>\n"
+                        
+                        "<GetApplicantId1 xmlns=\"http://webserv.kontract360.com/\">\n"
+                        "<ApplicantSSN>%@</ApplicantSSN>\n"
+                        "<Password>%@</Password>\n"
+                        "</GetApplicantId1>\n"
+                        "</soap:Body>\n"
+                        "</soap:Envelope>\n",_SSNtxtfld_iphone.text,_passwordtxtfld_iphone.text];
+         NSLog(@"soapmsg%@",soapMessage);
+         
+         
+         // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+         NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+         
+         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+         
+         NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+         
+         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+         
+         [theRequest addValue: @"http://webserv.kontract360.com/GetApplicantId1" forHTTPHeaderField:@"Soapaction"];
+         
+         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+         [theRequest setHTTPMethod:@"POST"];
+         [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+         
+         
+         NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+         
+         if( theConnection )
+         {
+             _webData = [NSMutableData data];
+         }
+         else
+         {
+             ////NSLog(@"theConnection is NULL");
+         }
+
+         
+         
+         
+         
+     }
+    
+    
     
     
 }
@@ -210,7 +264,26 @@
              _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
    
              
+             BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController_iphone" bundle:nil];
+             viewController2.Applicantid=Applicantid;
+             EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
+             viewController3.Applicantid=Applicantid;
+             JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController_iphone" bundle:nil];
+             viewController1.Applicantid=Applicantid;
+             NewMedicalViewController *viewController4 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController_iphone" bundle:nil];
+             viewController4.Applicantid=Applicantid;
+             EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController_iphone" bundle:nil];
+             viewcontroller5.Applicantid=Applicantid;
+             CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController_iphone" bundle:nil];
+             viewcontroller6.Applicantid=Applicantid;
+             RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
+             viewcontroller7.applicantId=Applicantid;
+             NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,nil];
+             self.tabbarcntrl.viewControllers = controllers;
              
+             
+             [self.navigationController pushViewController:_tabbarcntrl animated:YES];
+
              
          }
         
@@ -234,6 +307,6 @@
 - (IBAction)loginbtn_iphone:(id)sender {
     
     
-    
+    [self GetApplicantId1];
 }
 @end
