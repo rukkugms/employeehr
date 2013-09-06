@@ -18,6 +18,12 @@
 		64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE217D895DA00503D23 /* left_arrow@2x.png */; };
 		64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */; };
 		64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */; };
+		64921A4317D99BAC00AB642E /* BasicdetailsViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4217D99BAC00AB642E /* BasicdetailsViewController_iphone.xib */; };
+		64921A4517D99BD200AB642E /* EducationViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4417D99BD200AB642E /* EducationViewController_iphone.xib */; };
+		64921A4717D99BF500AB642E /* NewMedicalViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4617D99BF500AB642E /* NewMedicalViewController_iphone.xib */; };
+		64921A4917D99C1800AB642E /* EmployeeViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4817D99C1800AB642E /* EmployeeViewController_iphone.xib */; };
+		64921A4B17D99C4600AB642E /* RaceViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4A17D99C4600AB642E /* RaceViewController_iphone.xib */; };
+		64921A4D17D99C7100AB642E /* CourseDrugViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */; };
 		D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */; };
 		D4E1005417D84F8B006336F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005317D84F8B006336F8 /* UIKit.framework */; };
 		D4E1005617D84F8B006336F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005517D84F8B006336F8 /* Foundation.framework */; };
@@ -89,6 +95,12 @@
 		64085EE217D895DA00503D23 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.png; sourceTree = "<group>"; };
 		64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.unchecked.png; sourceTree = "<group>"; };
+		64921A4217D99BAC00AB642E /* BasicdetailsViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicdetailsViewController_iphone.xib; sourceTree = "<group>"; };
+		64921A4417D99BD200AB642E /* EducationViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationViewController_iphone.xib; sourceTree = "<group>"; };
+		64921A4617D99BF500AB642E /* NewMedicalViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewMedicalViewController_iphone.xib; sourceTree = "<group>"; };
+		64921A4817D99C1800AB642E /* EmployeeViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeViewController_iphone.xib; sourceTree = "<group>"; };
+		64921A4A17D99C4600AB642E /* RaceViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaceViewController_iphone.xib; sourceTree = "<group>"; };
+		64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDrugViewController_iphone.xib; sourceTree = "<group>"; };
 		D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController_iphone.xib; sourceTree = "<group>"; };
 		D4E1005017D84F8B006336F8 /* EmployeeHrPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeHrPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E1005317D84F8B006336F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -241,25 +253,31 @@
 				D4E100A117D8605F006336F8 /* BasicdetailsViewController.h */,
 				D4E100A217D86060006336F8 /* BasicdetailsViewController.m */,
 				D4E100A417D86071006336F8 /* BasicdetailsViewController.xib */,
+				64921A4217D99BAC00AB642E /* BasicdetailsViewController_iphone.xib */,
 				D4E100A617D860B5006336F8 /* EducationViewController.h */,
 				D4E100A717D860B5006336F8 /* EducationViewController.m */,
 				D4E100A817D860B6006336F8 /* EducationViewController.xib */,
+				64921A4417D99BD200AB642E /* EducationViewController_iphone.xib */,
 				D4E100A917D860B7006336F8 /* EducationCertificatecell.xib */,
 				D4E100AD17D860C5006336F8 /* CellEducationtable.xib */,
 				D4E100D217D88688006336F8 /* NewMedicalViewController.h */,
 				D4E100D317D8868F006336F8 /* NewMedicalViewController.m */,
 				D4E100D417D88690006336F8 /* NewMedicalViewController.xib */,
+				64921A4617D99BF500AB642E /* NewMedicalViewController_iphone.xib */,
 				D4E100D517D88693006336F8 /* newmedicalcell.xib */,
 				D4E100D617D88697006336F8 /* EmployeeViewController.h */,
 				D4E100D717D886A1006336F8 /* EmployeeViewController.m */,
 				D4E100D817D886AA006336F8 /* EmployeeViewController.xib */,
+				64921A4817D99C1800AB642E /* EmployeeViewController_iphone.xib */,
 				D4E100D917D886AD006336F8 /* customprevious.xib */,
 				D4E100DA17D886B1006336F8 /* RaceViewController.h */,
 				D4E100DB17D886B7006336F8 /* RaceViewController.m */,
 				D4E100DC17D886B7006336F8 /* RaceViewController.xib */,
+				64921A4A17D99C4600AB642E /* RaceViewController_iphone.xib */,
 				D4E100DD17D886B7006336F8 /* CourseDrugViewController.h */,
 				D4E100DE17D886B7006336F8 /* CourseDrugViewController.m */,
 				D4E100DF17D886B7006336F8 /* CourseDrugViewController.xib */,
+				64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */,
 				D4E100E017D886B8006336F8 /* CourseDrugCellView.xib */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
@@ -426,6 +444,12 @@
 				64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */,
 				64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */,
 				D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */,
+				64921A4317D99BAC00AB642E /* BasicdetailsViewController_iphone.xib in Resources */,
+				64921A4517D99BD200AB642E /* EducationViewController_iphone.xib in Resources */,
+				64921A4717D99BF500AB642E /* NewMedicalViewController_iphone.xib in Resources */,
+				64921A4917D99C1800AB642E /* EmployeeViewController_iphone.xib in Resources */,
+				64921A4B17D99C4600AB642E /* RaceViewController_iphone.xib in Resources */,
+				64921A4D17D99C7100AB642E /* CourseDrugViewController_iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
