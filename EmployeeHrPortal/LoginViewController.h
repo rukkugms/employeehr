@@ -29,4 +29,12 @@
 - (IBAction)loginbtn:(id)sender;
 - (IBAction)cancelbtn:(id)sender;
 
+
+/*iphone Outlets*/
+@property (strong, nonatomic) IBOutlet UITextField *SSNtxtfld_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *passwordtxtfld_iphone;
+
+- (IBAction)loginbtn_iphone:(id)sender;
+
+
 @end

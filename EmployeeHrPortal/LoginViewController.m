@@ -178,6 +178,8 @@
         
 /*Code for tabbarcontroller*/
         
+        
+         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         _tabbarcntrl=[[UITabBarController alloc]init];
           _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
     
@@ -197,20 +199,28 @@
         viewcontroller7.applicantId=Applicantid;
         NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,nil];
         self.tabbarcntrl.viewControllers = controllers;
-//        CGRect viewframe=_tabbarcntrl.view.frame;
-//        viewframe.origin.y=40;
-//        
-//        _tabbarcntrl.inputView.frame =viewframe;
         
         
         [self.navigationController pushViewController:_tabbarcntrl animated:YES];
         
-
+         }
+        
+         else {
+             _tabbarcntrl=[[UITabBarController alloc]init];
+             _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
+   
+             
+             
+             
+         }
+        
+        
+        
         _soapResults = nil;
     }
     
 }
-#pragma mark - Action
+#pragma mark -Ipad Action
 - (IBAction)loginbtn:(id)sender {
     [self GetApplicantId1];
 }
@@ -218,4 +228,12 @@
 - (IBAction)cancelbtn:(id)sender {
 }
 
+#pragma mark -Iphone Actions
+
+
+- (IBAction)loginbtn_iphone:(id)sender {
+    
+    
+    
+}
 @end

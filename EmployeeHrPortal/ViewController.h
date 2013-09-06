@@ -19,4 +19,16 @@
 
 - (IBAction)employee:(id)sender;
 - (IBAction)Alreadyregistered:(id)sender;
+
+
+/*iphoneOutlets*/
+
+- (IBAction)registerbtn_iphone:(id)sender;
+
+- (IBAction)Alreadyregisterd_iphone:(id)sender;
+
+- (IBAction)employee_iphone:(id)sender;
+
+
+
 @end
