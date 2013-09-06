@@ -27,6 +27,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - ipad Button Actions
+
+
 - (IBAction)registerbtn:(id)sender {
     
     
@@ -54,4 +58,26 @@
     
 }
 
+
+
+
+
+#pragma mark - ipone Button Actions
+
+- (IBAction)registerbtn_iphone:(id)sender {
+    
+    
+}
+
+- (IBAction)Alreadyregisterd_iphone:(id)sender {
+    
+    if (!self.loginVCtrl) {
+        _loginVCtrl=[[LoginViewController alloc]initWithNibName:@"LoginViewController_iphone" bundle:nil];
+    }
+    [self.navigationController pushViewController:_loginVCtrl animated:YES];
+
+}
+
+- (IBAction)employee_iphone:(id)sender {
+}
 @end

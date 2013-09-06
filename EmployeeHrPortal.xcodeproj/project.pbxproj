@@ -18,6 +18,7 @@
 		64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE217D895DA00503D23 /* left_arrow@2x.png */; };
 		64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */; };
 		64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */; };
+		D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */; };
 		D4E1005417D84F8B006336F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005317D84F8B006336F8 /* UIKit.framework */; };
 		D4E1005617D84F8B006336F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005517D84F8B006336F8 /* Foundation.framework */; };
 		D4E1005817D84F8B006336F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005717D84F8B006336F8 /* CoreGraphics.framework */; };
@@ -88,6 +89,7 @@
 		64085EE217D895DA00503D23 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.png; sourceTree = "<group>"; };
 		64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.unchecked.png; sourceTree = "<group>"; };
+		D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController_iphone.xib; sourceTree = "<group>"; };
 		D4E1005017D84F8B006336F8 /* EmployeeHrPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeHrPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E1005317D84F8B006336F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D4E1005517D84F8B006336F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -235,6 +237,7 @@
 				D4E1008317D85173006336F8 /* LoginViewController.h */,
 				D4E1008417D85173006336F8 /* LoginViewController.m */,
 				D4E1008517D85173006336F8 /* LoginViewController.xib */,
+				D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */,
 				D4E100A117D8605F006336F8 /* BasicdetailsViewController.h */,
 				D4E100A217D86060006336F8 /* BasicdetailsViewController.m */,
 				D4E100A417D86071006336F8 /* BasicdetailsViewController.xib */,
@@ -422,6 +425,7 @@
 				64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */,
 				64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */,
 				64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */,
+				D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
