@@ -10,13 +10,17 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Coursemdl.h"
 #import "RaceViewController.h"
-@interface CourseDrugViewController : UIViewController{
+@interface CourseDrugViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+{
     NSInteger selectedcell;
      BOOL recordResults;
      NSInteger Poptype;
     UIButton *button;
      UIButton *yearbutton;
+    UIButton *monthbtn_iphone;
+    UIButton *yearbtn_iphone;
     NSInteger path;
+    NSString *pickerstring;
 }
 @property (strong, nonatomic) IBOutlet UITableView *detailstable;
 @property(readwrite)NSInteger Applicantid;
@@ -52,6 +56,18 @@
 @property(strong,nonatomic)NSMutableArray *requirementArray;
 @property(strong,nonatomic)NSMutableDictionary *monthDictionary;
 @property(strong,nonatomic)NSMutableDictionary *remonthDictionary;
+//iphone
 
+@property(strong,nonatomic)IBOutlet UITableView *reqtable_iphone;
+@property(strong,nonatomic)IBOutlet UITableViewCell *reqcell_iphone;
+@property(strong,nonatomic)IBOutlet UILabel *reqlabel_iphone;
+@property(strong,nonatomic)IBOutlet UIButton *month_iphone;
+@property(strong,nonatomic)IBOutlet UIButton *year_iphone;
+
+@property(strong,nonatomic)IBOutlet UIPickerView *monthpicker_iphone;
+@property(strong,nonatomic)IBOutlet UIPickerView *yearpicker_iphone;
+
+-(IBAction)selectmonth_iphone:(id)sender;
+-(IBAction)selectyear_iphone:(id)sender;
 
 @end
