@@ -34,6 +34,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+   
+}
 #pragma mark - Actions
 - (IBAction)medicalcndtnbtn:(id)sender {
     _picker.hidden=NO;
@@ -41,12 +46,22 @@
     
 }
 - (IBAction)savebtn:(id)sender {
+    [self insertMedicalcondition];
+}
+-(IBAction)returnkey:(id)sender{
+    [sender resignFirstResponder];
 }
 #pragma mark - webservice
--(void)selectApplicantMedicalCondition
+-(void)insertMedicalcondition
 {
     
+    webtype=1;
+    
+    NSString*medid=[__medicaliddict objectForKey:_medcndtnbtnlbl.titleLabel.text];
+    NSString*EduName=@"";
     recordResults = FALSE;
+    
+    NSInteger medstatus=1;
     NSString *soapMessage;
     
     soapMessage = [NSString stringWithFormat:
@@ -57,11 +72,15 @@
                    
                    "<soap:Body>\n"
                    
-                   "<SelectApplicantMedicalCondition xmlns=\"http://webserv.kontract360.com/\">\n"
-                   "<AppId>%d</AppId>\n"
-                   "</SelectApplicantMedicalCondition>\n"
+                   "<InsertApplicantMedicalCondition xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<ApplicantId>%d</ApplicantId>\n"
+                   "<MedConditionId>%d</MedConditionId>\n"
+                   "<EduName>%@</EduName>\n"
+                   "<MedStatus>%d</MedStatus>\n"
+                   "<MedDescription>%@</MedDescription>\n"
+                   "</InsertApplicantMedicalCondition>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",Applicantid];
+                   "</soap:Envelope>\n",Applicantid,[medid integerValue],EduName,medstatus,_descptntxtfld.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -74,7 +93,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://webserv.kontract360.com/SelectApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://webserv.kontract360.com/InsertApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -93,66 +112,6 @@
     }
     
 }
-//-(void)insertMedicalcondition
-//{
-//    
-//    //webtype=1;
-//    
-//    //NSString*medid=[_medicaliddict objectForKey:_medicalconditinbtnlbl.titleLabel.text];
-//    NSString*EduName=@"";
-//    recordResults = FALSE;
-//    
-//    NSInteger medstatus=1;
-//    NSString *soapMessage;
-//    
-//    soapMessage = [NSString stringWithFormat:
-//                   
-//                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-//                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-//                   
-//                   
-//                   "<soap:Body>\n"
-//                   
-//                   "<InsertApplicantMedicalCondition xmlns=\"http://webserv.kontract360.com/\">\n"
-//                   "<ApplicantId>%d</ApplicantId>\n"
-//                   "<MedConditionId>%d</MedConditionId>\n"
-//                   "<EduName>%@</EduName>\n"
-//                   "<MedStatus>%d</MedStatus>\n"
-//                   "<MedDescription>%@</MedDescription>\n"
-//                   "</InsertApplicantMedicalCondition>\n"
-//                   "</soap:Body>\n"
-//                   "</soap:Envelope>\n",Applicantid,[medid integerValue],EduName,medstatus,_medicaldistxtfld.text];
-//    NSLog(@"soapmsg%@",soapMessage);
-//    
-//    
-//    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-//    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
-//    
-//    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-//    
-//    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
-//    
-//    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-//    
-//    [theRequest addValue: @"http://webserv.kontract360.com/InsertApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
-//    
-//    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-//    [theRequest setHTTPMethod:@"POST"];
-//    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-//    
-//    
-//    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-//    
-//    if( theConnection )
-//    {
-//        _webData = [NSMutableData data];
-//    }
-//    else
-//    {
-//        ////NSLog(@"theConnection is NULL");
-//    }
-//    
-//}
 -(void)selectMedicalCondition
 {
     
@@ -233,10 +192,13 @@
 	[_xmlParser setDelegate:(id)self];
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
+    [_picker reloadAllComponents];
     
     
-    
+       
+
 }
+# pragma mark- Xml parser
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *) namespaceURI qualifiedName:(NSString *)qName
    attributes: (NSDictionary *)attributeDict{
     
@@ -267,6 +229,7 @@
         }
         recordResults = TRUE;
     }
+   
 }
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
@@ -302,5 +265,46 @@
         _soapResults = nil;
         
     }
+    
 }
+#pragma mark - Picker delegate
+- (NSInteger)numberOfComponentsInPickerView:
+(UIPickerView *)pickerView
+{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component
+{
+    if (pickerView==_picker) {
+        return [_medicalnamearray count];
+    }
+      return YES;
+    
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
+{
+    
+    
+    if (pickerView==_picker) {
+        return [_medicalnamearray objectAtIndex:row];
+    }
+   }
+
+
+#pragma mark -
+#pragma mark PickerView Delegate
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    if (pickerView==_picker) {
+        [_medcndtnbtnlbl setTitle:[_medicalnamearray objectAtIndex:row] forState:UIControlStateNormal];
+        _picker.hidden=YES;
+    }
+        
+    
+}
+
 @end
