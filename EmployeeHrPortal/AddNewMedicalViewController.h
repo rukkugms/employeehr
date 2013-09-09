@@ -10,9 +10,10 @@
 
 @interface AddNewMedicalViewController : UIViewController{
     BOOL recordResults ;
-    NSInteger Applicantid;
+   
     NSInteger webtype;
 }
+@property(readwrite) NSInteger Applicantid;
 
 /*Xmlparser*/
 @property(strong,nonatomic)NSXMLParser *xmlParser;
