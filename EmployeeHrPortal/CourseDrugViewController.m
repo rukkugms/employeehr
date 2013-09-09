@@ -82,11 +82,12 @@
                 break;
         }
     }
-        if(tableView==_detailstable)
-        {
-            return [_requirementArray count];
-    
-        }
+    if(tableView==_detailstable||tableView==_reqtable_iphone)
+    {
+        return [_requirementArray count];
+        
+    }
+  
     return YES;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,11 +100,20 @@
         if(tableView==_detailstable)
         {
             
-           
-        [[NSBundle mainBundle]loadNibNamed:@"CourseDrugCellView" owner:self options:nil];
-         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell=_detailcell;
-       }  
+            
+            [[NSBundle mainBundle]loadNibNamed:@"CourseDrugCellView" owner:self options:nil];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell=_detailcell;
+        }
+        if(tableView==_reqtable_iphone)
+        {
+            
+            
+            [[NSBundle mainBundle]loadNibNamed:@"CourseDrugCell_iphone" owner:self options:nil];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell=_reqcell_iphone;
+        }
+
         
         
     }
@@ -123,59 +133,113 @@
     if(tableView==_detailstable)
         
         
-{
-    Coursemdl*coursemdl1=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
-    _requirmentlbl=(UILabel *)[cell viewWithTag:1];
-    _requirmentlbl.text=coursemdl1.itemname;
-    //NSLog(@"lbl%@",)
-   button=(UIButton*)[cell viewWithTag:2];
-    [button setTitle:coursemdl1.month forState:UIControlStateNormal];
-    yearbutton=(UIButton *)[cell viewWithTag:3];
-    
-[yearbutton setTitle:coursemdl1.year forState:UIControlStateNormal];
-    _codelbl=(UILabel *)[cell viewWithTag:4];
-    _codelbl.text=coursemdl1.Code;
-    
-    if (coursemdl1.course_status==1) {
-           cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    {
+        Coursemdl*coursemdl1=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+        _requirmentlbl=(UILabel *)[cell viewWithTag:1];
+        _requirmentlbl.text=coursemdl1.itemname;
+        //NSLog(@"lbl%@",)
+        button=(UIButton*)[cell viewWithTag:2];
+        [button setTitle:coursemdl1.month forState:UIControlStateNormal];
+        yearbutton=(UIButton *)[cell viewWithTag:3];
         
-    }else if (coursemdl1.course_status==0){
-          cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    
-    if ([_selectedcellstring isEqualToString:@"selected"]) {
+        [yearbutton setTitle:coursemdl1.year forState:UIControlStateNormal];
+        _codelbl=(UILabel *)[cell viewWithTag:4];
+        _codelbl.text=coursemdl1.Code;
         
-         Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
-        
-        if(indexPath.row == selectedcell)
-        {
+        if (coursemdl1.course_status==1) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
             
-            if(cell.accessoryType==UITableViewCellAccessoryNone)
+        }else if (coursemdl1.course_status==0){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        
+        if ([_selectedcellstring isEqualToString:@"selected"]) {
+            
+            Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+            
+            if(indexPath.row == selectedcell)
             {
                 
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                coursemdl3.course_status=1;
-                //cell.selected = NO;
+                if(cell.accessoryType==UITableViewCellAccessoryNone)
+                {
+                    
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    coursemdl3.course_status=1;
+                    //cell.selected = NO;
+                    
+                    
+                }
+                else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
+                {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    coursemdl3.course_status=0;
+                    //cell.selected=NO;
+                    
+                }
                 
                 
             }
-            else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
-            {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-                 coursemdl3.course_status=0;
-                //cell.selected=NO;
-                
-            }
-            
             
         }
         
     }
-   
-}
-    
+    if(tableView==_reqtable_iphone)
+    {
+        Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+        _reqlabel_iphone=(UILabel *)[cell viewWithTag:1];
+        _reqlabel_iphone.text=coursemdl2.itemname;
+        //NSLog(@"lbl%@",)
+        monthbtn_iphone=(UIButton*)[cell viewWithTag:2];
+        [monthbtn_iphone setTitle:coursemdl2.month forState:UIControlStateNormal];
+        yearbtn_iphone=(UIButton *)[cell viewWithTag:3];
+        
+        [yearbtn_iphone setTitle:coursemdl2.year forState:UIControlStateNormal];
+//        _codelbl=(UILabel *)[cell viewWithTag:4];
+//        _codelbl.text=coursemdl2.Code;
+        
+        if (coursemdl2.course_status==1) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+        }else if (coursemdl2.course_status==0){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
 
+        if ([_selectedcellstring isEqualToString:@"selected"]) {
+            
+            Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+            
+            if(indexPath.row == selectedcell)
+            {
+                
+                if(cell.accessoryType==UITableViewCellAccessoryNone)
+                {
+                    
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    coursemdl3.course_status=1;
+                    //cell.selected = NO;
+                    
+                    
+                }
+                else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
+                {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    coursemdl3.course_status=0;
+                    //cell.selected=NO;
+                    
+                }
+                
+                
+            }
+            
+        }
+        
+    }
+
+    
+    
+    
     
     return cell;
 }
@@ -186,37 +250,37 @@
 {
     
     //UIButton *button=[[UIButton alloc]init];
-     UITableViewCell *cell = (UITableViewCell *)[[button superview] superview];
+    UITableViewCell *cell = (UITableViewCell *)[[button superview] superview];
     UITableView *table = (UITableView *)[cell superview];
     NSIndexPath *textFieldIndexPath = [table indexPathForCell:cell];
     NSLog(@"textFieldIndexPath%d",textFieldIndexPath.row);
-   
-   
- Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
+    
+    
+    Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
     UITableViewCell *cell1 = (UITableViewCell *)[[yearbutton superview] superview];
     UITableView *table1 = (UITableView *)[cell1 superview];
     NSIndexPath *textFieldIndexPath1 = [table1 indexPathForCell:cell];
     NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
- Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
+    Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
     
     
     
-
+    
     if (tableView==_popOverTableView) {
         
-          //Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
+        //Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
         
         switch (Poptype) {
                 
             case 1:
                 
                 path=indexPath.row;
-                       [button setTitle:[_monthArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                [button setTitle:[_monthArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                 
                 coursemdl2.month=button.titleLabel.text;
                 
                 NSLog(@"_monthbtn.tag%@",coursemdl2.month);
-
+                
                 
                 
                 break;
@@ -225,25 +289,32 @@
                 [yearbutton setTitle:[_yearArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                 
                 coursemdl3.year=yearbutton.titleLabel.text;
-            
+                
                 
                 break;
-                default:
+            default:
                 break;
         }
-//[_requirementArray addObject:coursemdl2];
-
+        //[_requirementArray addObject:coursemdl2];
+        
     }
     if(tableView==_detailstable)
     {
-       
-    selectedcell=indexPath.row;
-    _selectedcellstring=@"selected";
-    [_detailstable reloadData];
+        
+        selectedcell=indexPath.row;
+        _selectedcellstring=@"selected";
+        [_detailstable reloadData];
     }
+    if(tableView==_reqtable_iphone)
+    {
+        
+        selectedcell=indexPath.row;
+        NSLog(@"%d",indexPath.row);
+        _selectedcellstring=@"selected";
+        [_reqtable_iphone reloadData];
+    }
+
 }
-
-
 
 
 #pragma mark - Webservice
@@ -405,7 +476,7 @@
     
     
     [_detailstable reloadData];
-    
+    [_reqtable_iphone reloadData];
     
     
     
@@ -710,5 +781,77 @@ button = (UIButton *)sender;
                                            animated:YES];
 
 }
+-(IBAction)selectmonth_iphone:(id)sender
+{
+    monthbtn_iphone = (UIButton *)sender;
+    
+    //UITableViewCell *cell = (UITableViewCell *)[[monthbtn_iphone superview] superview];
+
+    pickerstring=@"month";
+    _monthpicker_iphone.hidden=NO;
+    _yearpicker_iphone.hidden=YES;
+    [_monthpicker_iphone reloadAllComponents];
+}
+-(IBAction)selectyear_iphone:(id)sender
+{
+    yearbtn_iphone = (UIButton *)sender;
+    
+    //UITableViewCell *cell = (UITableViewCell *)[[yearbtn_iphone superview] superview];
+    pickerstring=@"year";
+    _yearpicker_iphone.hidden=NO;
+     _monthpicker_iphone.hidden=YES;
+    [_yearpicker_iphone reloadAllComponents];
+}
+- (NSInteger)numberOfComponentsInPickerView:
+(UIPickerView *)pickerView
+{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component
+{
+    if([pickerstring isEqualToString:@"month"])
+    {
+        return [_monthArray count];
+    }
+    else
+    {
+        return [_yearArray count];
+    }
+    return YES;
+    
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
+{
+    if([pickerstring isEqualToString:@"month"])
+    {
+        return [_monthArray objectAtIndex:row];
+    }
+    else if([pickerstring isEqualToString:@"year"])
+    {
+        return [_yearArray objectAtIndex:row];
+    }
+    
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    if([pickerstring isEqualToString:@"month"])
+    {
+        [ _month_iphone setTitle:[_monthArray objectAtIndex:row] forState:UIControlStateNormal];
+        _monthpicker_iphone.hidden=YES;
+        
+    }
+    else if([pickerstring isEqualToString:@"year"])
+    {
+        [ _year_iphone setTitle:[_yearArray objectAtIndex:row] forState:UIControlStateNormal];
+        _yearpicker_iphone.hidden=YES;
+        
+    }
+    
+}
+
 
 @end
