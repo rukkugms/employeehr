@@ -24,6 +24,10 @@
 		64921A4917D99C1800AB642E /* EmployeeViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4817D99C1800AB642E /* EmployeeViewController_iphone.xib */; };
 		64921A4B17D99C4600AB642E /* RaceViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4A17D99C4600AB642E /* RaceViewController_iphone.xib */; };
 		64921A4D17D99C7100AB642E /* CourseDrugViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */; };
+		64921A5217D9AC0400AB642E /* disclsurebtndwn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4E17D9AC0400AB642E /* disclsurebtndwn@2x.png */; };
+		64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */; };
+		64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */; };
+		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
 		D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */; };
 		D4E1005417D84F8B006336F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005317D84F8B006336F8 /* UIKit.framework */; };
 		D4E1005617D84F8B006336F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005517D84F8B006336F8 /* Foundation.framework */; };
@@ -101,6 +105,10 @@
 		64921A4817D99C1800AB642E /* EmployeeViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeViewController_iphone.xib; sourceTree = "<group>"; };
 		64921A4A17D99C4600AB642E /* RaceViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaceViewController_iphone.xib; sourceTree = "<group>"; };
 		64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDrugViewController_iphone.xib; sourceTree = "<group>"; };
+		64921A4E17D9AC0400AB642E /* disclsurebtndwn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclsurebtndwn@2x.png"; sourceTree = "<group>"; };
+		64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtndwn.png; sourceTree = "<group>"; };
+		64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclsurebtn@2x.png"; sourceTree = "<group>"; };
+		64921A5117D9AC0400AB642E /* disclsurebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtn.png; sourceTree = "<group>"; };
 		D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController_iphone.xib; sourceTree = "<group>"; };
 		D4E1005017D84F8B006336F8 /* EmployeeHrPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeHrPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E1005317D84F8B006336F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -320,6 +328,10 @@
 				D4E1008A17D85200006336F8 /* char1.png */,
 				64085ED917D8914E00503D23 /* rectangle3.png */,
 				D4E1008B17D85200006336F8 /* char2.png */,
+				64921A4E17D9AC0400AB642E /* disclsurebtndwn@2x.png */,
+				64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */,
+				64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */,
+				64921A5117D9AC0400AB642E /* disclsurebtn.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -450,6 +462,10 @@
 				64921A4917D99C1800AB642E /* EmployeeViewController_iphone.xib in Resources */,
 				64921A4B17D99C4600AB642E /* RaceViewController_iphone.xib in Resources */,
 				64921A4D17D99C7100AB642E /* CourseDrugViewController_iphone.xib in Resources */,
+				64921A5217D9AC0400AB642E /* disclsurebtndwn@2x.png in Resources */,
+				64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */,
+				64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */,
+				64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
