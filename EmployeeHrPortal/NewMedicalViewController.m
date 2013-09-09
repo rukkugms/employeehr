@@ -36,6 +36,10 @@
     [_scroll_iphone setContentSize:CGSizeMake(320, 700)];
     _medicaltable.layer.borderWidth = 2.0;
     _medicaltable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+    
+    _medicaltable_iphone.layer.borderWidth = 2.0;
+    _medicaltable_iphone.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.frame.size.width, self.medicaltable_iphone.contentSize.height);
     [self selectMedicalCondition];
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     // Do any additional setup after loading the view from its nib.
@@ -505,6 +509,7 @@
     
     [_popOverTableView reloadData];
     [_medicaltable reloadData];
+    [_medicaltable_iphone reloadData];
     if (webtype==1) {
         [self selectApplicantMedicalCondition];
         webtype=0;
@@ -526,7 +531,7 @@
     if (tableView==_popOverTableView) {
         return [_medicalnamearray count];
     }
-    if (tableView==_medicaltable) {
+    if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
         return [_applicantmedicalcntnarray count];
     }
     return YES;
@@ -542,7 +547,7 @@
         
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:12];
         cell.textLabel.font = [UIFont systemFontOfSize:12.0];
- if (tableView==_medicaltable) {
+ if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
         
        [[NSBundle mainBundle]loadNibNamed:@"newmedicalcell" owner:self options:nil];
             cell=_medicalcell;
@@ -553,7 +558,7 @@
         cell.textLabel.text=[_medicalnamearray objectAtIndex:indexPath.row];
     }
     
-    if (tableView==_medicaltable) {
+    if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
         Medicalmodel*medmdl1=(Medicalmodel *)[_applicantmedicalcntnarray objectAtIndex:indexPath.row];
         _medicalnamelbl=(UILabel*)[cell viewWithTag:1];
         _medicalnamelbl.text=[_medicalnamedict objectForKey:medmdl1.medicalid];
@@ -801,5 +806,15 @@
 }
 
 - (IBAction)updatebtn:(id)sender {
+}
+- (IBAction)Addbtn_iphone:(id)sender {
+    
+    if (!self.AddmedCondtnVCtrl) {
+        _AddmedCondtnVCtrl=[[AddNewMedicalViewController alloc]initWithNibName:@"AddNewMedicalViewController" bundle:nil];
+    }
+    [self.navigationController pushViewController:_AddmedCondtnVCtrl animated:YES];
+}
+
+- (IBAction)deletebtn_iphone:(id)sender {
 }
 @end

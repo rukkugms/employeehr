@@ -29,6 +29,9 @@
 		64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */; };
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
 		D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */; };
+		D4DBE22817DD9EBF008010D9 /* AddNewMedicalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBE22617DD9EBF008010D9 /* AddNewMedicalViewController.m */; };
+		D4DBE22917DD9EBF008010D9 /* AddNewMedicalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4DBE22717DD9EBF008010D9 /* AddNewMedicalViewController.xib */; };
+		D4DBE22B17DDA8C4008010D9 /* CourseDrugCell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4DBE22A17DDA8C4008010D9 /* CourseDrugCell_iphone.xib */; };
 		D4E1005417D84F8B006336F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005317D84F8B006336F8 /* UIKit.framework */; };
 		D4E1005617D84F8B006336F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005517D84F8B006336F8 /* Foundation.framework */; };
 		D4E1005817D84F8B006336F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E1005717D84F8B006336F8 /* CoreGraphics.framework */; };
@@ -110,6 +113,10 @@
 		64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclsurebtn@2x.png"; sourceTree = "<group>"; };
 		64921A5117D9AC0400AB642E /* disclsurebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtn.png; sourceTree = "<group>"; };
 		D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController_iphone.xib; sourceTree = "<group>"; };
+		D4DBE22517DD9EBF008010D9 /* AddNewMedicalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewMedicalViewController.h; sourceTree = "<group>"; };
+		D4DBE22617DD9EBF008010D9 /* AddNewMedicalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewMedicalViewController.m; sourceTree = "<group>"; };
+		D4DBE22717DD9EBF008010D9 /* AddNewMedicalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewMedicalViewController.xib; sourceTree = "<group>"; };
+		D4DBE22A17DDA8C4008010D9 /* CourseDrugCell_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDrugCell_iphone.xib; sourceTree = "<group>"; };
 		D4E1005017D84F8B006336F8 /* EmployeeHrPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeHrPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E1005317D84F8B006336F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D4E1005517D84F8B006336F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -272,6 +279,9 @@
 				D4E100D317D8868F006336F8 /* NewMedicalViewController.m */,
 				D4E100D417D88690006336F8 /* NewMedicalViewController.xib */,
 				64921A4617D99BF500AB642E /* NewMedicalViewController_iphone.xib */,
+				D4DBE22517DD9EBF008010D9 /* AddNewMedicalViewController.h */,
+				D4DBE22617DD9EBF008010D9 /* AddNewMedicalViewController.m */,
+				D4DBE22717DD9EBF008010D9 /* AddNewMedicalViewController.xib */,
 				D4E100D517D88693006336F8 /* newmedicalcell.xib */,
 				D4E100D617D88697006336F8 /* EmployeeViewController.h */,
 				D4E100D717D886A1006336F8 /* EmployeeViewController.m */,
@@ -287,6 +297,7 @@
 				D4E100DF17D886B7006336F8 /* CourseDrugViewController.xib */,
 				64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */,
 				D4E100E017D886B8006336F8 /* CourseDrugCellView.xib */,
+				D4DBE22A17DDA8C4008010D9 /* CourseDrugCell_iphone.xib */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
 			path = EmployeeHrPortal;
@@ -466,6 +477,8 @@
 				64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */,
 				64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */,
 				64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */,
+				D4DBE22917DD9EBF008010D9 /* AddNewMedicalViewController.xib in Resources */,
+				D4DBE22B17DDA8C4008010D9 /* CourseDrugCell_iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +511,7 @@
 				D4E100F617D88C22006336F8 /* previousemp.m in Sources */,
 				D4E100F717D88C22006336F8 /* Ethicity.m in Sources */,
 				D4E100FA17D88C31006336F8 /* Medicalmodel.m in Sources */,
+				D4DBE22817DD9EBF008010D9 /* AddNewMedicalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

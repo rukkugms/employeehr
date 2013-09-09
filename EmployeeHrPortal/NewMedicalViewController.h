@@ -10,8 +10,9 @@
 #import "Medicalmodel.h"
 #import <QuartzCore/QuartzCore.h>
 #import "EmployeeViewController.h"
+#import "AddNewMedicalViewController.h"
 
-@interface NewMedicalViewController : UIViewController{
+@interface NewMedicalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     BOOL  recordResults;
     NSInteger identifier;
     NSInteger webtype;
@@ -60,6 +61,7 @@
 - (IBAction)deletebtn:(id)sender;
 - (IBAction)firstpage:(id)sender;
 /*Iphone outlets &Connections*/
+@property (strong, nonatomic)AddNewMedicalViewController*AddmedCondtnVCtrl;
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll_iphone;
 
 @property (strong, nonatomic) IBOutlet UITableView *medicaltable_iphone;
@@ -69,6 +71,11 @@
 
 - (IBAction)updatebtn:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *Addbtn_iphone;
+
+@property (strong, nonatomic) IBOutlet UIButton *deletebtn_iphone;
+- (IBAction)Addbtn_iphone:(id)sender;
+- (IBAction)deletebtn_iphone:(id)sender;
 
 
 @end
