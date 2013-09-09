@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BasicdetailsViewController.h"
 #import "EducationViewController.h"
-@interface JobsiteViewController : UIViewController<UITabBarDelegate>
+@interface JobsiteViewController : UIViewController<UITabBarDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     BOOL buttonclicked;
     NSInteger Poptype;
@@ -98,5 +98,25 @@
 
 - (IBAction)race:(id)sender;
 - (IBAction)drugbtn:(id)sender;
+
+
+/*iphoneOutlets&Connections*/
+@property (strong, nonatomic) IBOutlet UIScrollView *scroll_iphone;
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl *saftysegment_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *expirydatetxtfld_iphone;
+@property (strong, nonatomic) IBOutlet UITableView *jobsitetable_iphone;
+@property (strong, nonatomic) IBOutlet UIButton *checkbtnlbl_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *skilltextflield_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *crafttxtflield_iphone;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *nccersegment_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *Othrtraing_iphone;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datepicker_iphone;
+- (IBAction)checkbtn_iphone:(id)sender;
+- (IBAction)updatebtn_iphone:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIPickerView *datapicker1;
+-(IBAction)returnkey:(id)sender;
+@property (strong, nonatomic) IBOutlet UIPickerView *datapicker2;
 
 @end

@@ -59,5 +59,16 @@
 - (IBAction)continuebtn:(id)sender;
 - (IBAction)deletebtn:(id)sender;
 - (IBAction)firstpage:(id)sender;
+/*Iphone outlets &Connections*/
+@property (strong, nonatomic) IBOutlet UIScrollView *scroll_iphone;
+
+@property (strong, nonatomic) IBOutlet UITableView *medicaltable_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *medicationtxtfld_iphone;
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl *climbingsegment_iphone;
+
+- (IBAction)updatebtn:(id)sender;
+
+
 
 @end

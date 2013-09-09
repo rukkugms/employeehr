@@ -29,14 +29,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self SelectEmployeeSkills];
-    
+    _expirydatetxtfld_iphone.inputView=[[UIView alloc] initWithFrame:CGRectZero];
+    _skilltextflield_iphone.inputView=[[UIView alloc] initWithFrame:CGRectZero];
+    _crafttxtflield_iphone.inputView=[[UIView alloc] initWithFrame:CGRectZero];
     _scrollview.frame=CGRectMake(0, 0,1024, 768);
     [ _scrollview setContentSize:CGSizeMake(1024,850)];
+    
+    
+    _scroll_iphone.frame=CGRectMake(0, 0,320, 548);
+    [_scroll_iphone setContentSize:CGSizeMake(320,7000)];
+    
     buttonclicked=0;
     _listtable.layer.borderWidth = 4.0;
     _listtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     _selectedtable.layer.borderWidth = 4.0;
     _selectedtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+    
+    _jobsitetable_iphone.layer.borderWidth=4.0;
+    _jobsitetable_iphone.layer.borderColor=[UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     _monthArray=[[NSMutableArray alloc]initWithObjects:@"JAN",@"FEB",@"MAR",@"APR",@"MAY",@"JUN",@"JUL",@"AUG",@"SEP",@"OCT",@"NOV",@"DEC",nil];
     _monthdictArray=[[NSMutableArray alloc]initWithObjects:@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12", nil];
     _monthDictionary=[[NSMutableDictionary alloc]initWithObjects:_monthdictArray forKeys:_monthArray];
@@ -59,7 +69,7 @@
     
     [self SelectApplicantDetails];
     
-    [self SelectEmployeeCraft];
+    //[self SelectEmployeeCraft];
 }
 -(void)logoutAction{
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -361,7 +371,7 @@
     }
     
     
-    if (tableView==_listtable) {
+    if (tableView==_listtable||tableView==_jobsitetable_iphone) {
         return [_jobsiteArray count];
     }
     
@@ -374,7 +384,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        if (tableView==_listtable) {
+        
+              if (tableView==_listtable||tableView==_jobsitetable_iphone) {
             [[NSBundle mainBundle]loadNibNamed:@"JobsiteViewControlleripadcell" owner:self options:nil];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell=_listtablecell;
@@ -407,7 +418,7 @@
         
     }
     
-    if (tableView==_listtable) {
+    if (tableView==_listtable||tableView==_jobsitetable_iphone) {
         
         _jobnamelbl=(UILabel*)[cell viewWithTag:1];
         
@@ -419,6 +430,8 @@
         NSString*jobs=[_jobsiteArray objectAtIndex:indexPath.row];
         
         
+        if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
+            
         
         
         if([_nw isEqualToString:@"SelectApplicant"])
@@ -474,12 +487,73 @@
             
             
         }
+        }
+        else{  if([_nw isEqualToString:@"SelectApplicant"])
+        {
+            
+            
+        NSString *jn=[_rejobiddict objectForKey:[_jobsite.jobsiteid stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+            
+            _Drugjobsiteid=_jobsite.jobsiteid;
+            NSLog(@"jobsite%@",jn);
+            if([jn isEqualToString:jobs])
+            {
+                
+                
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                _checkbtnlbl_iphone.enabled=NO;
+                [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+                // buttonclicked=1;
+            }
+            
+        }
+            
+            
+            if ([_selectedrow isEqualToString:@"Selected"]) {
+                
+                if(indexPath.row == selectedcell)
+                {
+                    if(cell.accessoryType==UITableViewCellAccessoryNone)
+                    {
+                        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        //cell.selected = NO;
+                       _checkbtnlbl_iphone.enabled=NO;
+                        [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+                        buttonclicked=0;
+                    }
+                    
+                    
+                    else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
+                    {
+                        cell.accessoryType = UITableViewCellAccessoryNone;
+                        //cell.selected = NO;
+                       _checkbtnlbl_iphone.enabled=YES;
+                        //   [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+                        buttonclicked=1;
+                    }
+                
+                
+                
+            }
+        }
+
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
         
     }
     
     
-    
-    
+
+
     
     
     return cell;
@@ -492,6 +566,16 @@
         _nw=@"";
         selectedcell=indexPath.row;
         [_listtable reloadData];
+        
+    }
+    
+    if (tableView==_jobsitetable_iphone) {
+        _selectedrow=@"Selected";
+        _nw=@"";
+        selectedcell=indexPath.row;
+        [_jobsitetable_iphone reloadData];
+
+        
     }
     if (tableView==_popOverTableView) {
         
@@ -541,7 +625,7 @@
     //Poptype=3;
     recordResults = FALSE;
     NSString *soapMessage;
-    
+   
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -584,14 +668,17 @@
         ////NSLog(@"theConnection is NULL");
     }
     
+    }
     
-}
+    
 
 
 -(void)SelectEmployeeCraft{
     Poptype=4;
     recordResults = FALSE;
     NSString *soapMessage;
+    if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
+        
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -635,7 +722,52 @@
     {
         ////NSLog(@"theConnection is NULL");
     }
-    
+    }
+    else{
+        soapMessage = [NSString stringWithFormat:
+                       
+                       @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                       "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                       
+                       
+                       "<soap:Body>\n"
+                       
+                       "<SelectEmployeeCraft xmlns=\"http://webserv.kontract360.com/\">\n"
+                       "<SubType>%@</SubType>\n"
+                       "</SelectEmployeeCraft>\n"
+                       "</soap:Body>\n"
+                       "</soap:Envelope>\n",_skilltextflield_iphone.text];
+        NSLog(@"soapmsg%@",soapMessage);
+        
+        
+        // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+        NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+        
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+        
+        [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        
+        [theRequest addValue: @"http://webserv.kontract360.com/SelectEmployeeCraft" forHTTPHeaderField:@"Soapaction"];
+        
+        [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+        [theRequest setHTTPMethod:@"POST"];
+        [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
+        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+        
+        if( theConnection )
+        {
+            _webData = [NSMutableData data];
+        }
+        else
+        {
+            ////NSLog(@"theConnection is NULL");
+        }
+
+    }
     
 }
 -(void)SelectEmployeeSkills{
@@ -739,8 +871,11 @@
     
 }
 -(void)UpdateApplicantDetails
-{
-    recordResults = FALSE;
+{  recordResults = FALSE;
+    if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad ) {
+        
+    
+  
     if(_basicPlussegment.selectedSegmentIndex==0)
     {
         basicPlus=1;
@@ -786,6 +921,18 @@
     NSString *year=_yearBtn.titleLabel.text;
     NSString *day=@"01";
     NSString *dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+        
+       
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+        [dateFormat setDateFormat: @"MM-dd-yyyy"];
+        
+        NSDate *dateString1 = [dateFormat dateFromString:_expirydatetxtfld_iphone.text];
+        NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+        [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+        NSString* sqldate=[dateFormat1 stringFromDate:dateString1];
+
+        
+        
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -806,7 +953,7 @@
                    "<Craft>%@</Craft>\n"
                    "</UpdateApplicantDetails>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,dateString,ncer,ncerdesc,skill,craft];
+                   "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,dateString1,ncer,ncerdesc,skill,craft];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -836,7 +983,118 @@
     {
         ////NSLog(@"theConnection is NULL");
     }
+    }
+    else{
+        
+        if(_saftysegment_iphone.selectedSegmentIndex==0)
+        {
+            basicPlus=1;
+        }
+        else if(_saftysegment_iphone.selectedSegmentIndex==1)
+        {
+            basicPlus=0;
+        }
+        if(_nccersegment_iphone.selectedSegmentIndex==0)
+        {
+            ncer=1;
+        }
+        else if(_nccersegment_iphone.selectedSegmentIndex==1)
+        {
+            ncer=0;
+        }
+        NSString *skill=[_skilldict objectForKey: _skilltextflield_iphone.text];
+        NSString *craft;
+        if ([_craftdict count]==0) {
+            craft =_creftid;
+        }
+        
+        else{
+            craft= [_craftdict objectForKey: _crafttxtflield_iphone.text];
+            
+        }
+        
+        
+        
+        NSString *ncerdesc=_Othrtraing_iphone.text;
+        NSString *soapMessage;
+        NSString *jobsite;
+        if(_clickedbtnlbl.enabled==NO)
+        {
+            jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
+            
+        }
+        else if(_clickedbtnlbl.enabled==YES)
+        {
+            jobsite=@"0";
+        }
+        NSString *month=[_monthDictionary objectForKey:_monthBtn.titleLabel.text];
+        NSString *year=_yearBtn.titleLabel.text;
+        NSString *day=@"01";
+        NSString *dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+        
+        
+        
+        NSDate*pickerdate=_datepicker_iphone.date;
+        NSString *new=[NSString stringWithFormat:@"%@",pickerdate];
+        NSArray *dateArray=[[NSArray alloc]init];
+        dateArray=[new componentsSeparatedByString:@" "];
+        NSString *date1 =[dateArray objectAtIndex:0];
+        
+        
+        
+        soapMessage = [NSString stringWithFormat:
+                       
+                       @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                       "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                       
+                       
+                       "<soap:Body>\n"
+                       
+                       "<UpdateApplicantDetails xmlns=\"http://webserv.kontract360.com/\">\n"
+                       "<ApplicantId>%d</ApplicantId>\n"
+                       "<JobsiteId>%@</JobsiteId>\n"
+                       "<ApplicantSafetyCouncilStatus>%d</ApplicantSafetyCouncilStatus>\n"
+                       "<ApplicantSafetyCouncilExpiry>%@</ApplicantSafetyCouncilExpiry>\n"
+                       "<ApplicantNCERStatus>%d</ApplicantNCERStatus>\n"
+                       "<ApplicantNCERDescription>%@</ApplicantNCERDescription>\n"
+                       "<Skill>%@</Skill>\n"
+                       "<Craft>%@</Craft>\n"
+                       "</UpdateApplicantDetails>\n"
+                       "</soap:Body>\n"
+                       "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,date1,ncer,ncerdesc,skill,craft];
+        NSLog(@"soapmsg%@",soapMessage);
+        
+        
+        // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+        NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+        
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+        
+        [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        
+        [theRequest addValue: @"http://webserv.kontract360.com/UpdateApplicantDetails" forHTTPHeaderField:@"Soapaction"];
+        
+        [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+        [theRequest setHTTPMethod:@"POST"];
+        [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
+        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+        
+        if( theConnection )
+        {
+            _webData = [NSMutableData data];
+        }
+        else
+        {
+            ////NSLog(@"theConnection is NULL");
+        }
     
+
+        
+    }
     
 }
 
@@ -872,9 +1130,14 @@
 	[_xmlParser setDelegate:(id)self];
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
+    
+    
+    [_jobsitetable_iphone reloadData];
     [_listtable reloadData];
     
     [_popOverTableView reloadData];
+    [_datapicker1 reloadAllComponents];
+    [_datapicker2 reloadAllComponents];
     
 }
 
@@ -1172,13 +1435,15 @@
         
         if ([_soapResults isEqualToString:@"true"]) {
             _basicPlussegment.selectedSegmentIndex=0;
-            
+            _saftysegment_iphone.selectedSegmentIndex=0;
             
         }
         else  if ([_soapResults isEqualToString:@"false"]) {
             _basicPlussegment.selectedSegmentIndex=1;
-            
+            _saftysegment_iphone.selectedSegmentIndex=1;
+
         }
+       
         _soapResults = nil;
     }
     
@@ -1188,12 +1453,21 @@
         _jobsite.safetycouncilexpiry=_soapResults;
         NSArray*Array=[[NSArray alloc]init];
         Array=[_soapResults componentsSeparatedByString:@"T"];
+        
         NSArray*arry1=[[NSArray alloc]init];
         arry1=[[Array objectAtIndex:0]componentsSeparatedByString:@"-" ];
         
         [_yearBtn setTitle:[arry1 objectAtIndex:0] forState:UIControlStateNormal];
         NSLog(@"a%@",[arry1 objectAtIndex:1]);
         [_monthBtn setTitle:[_remonthDictionary objectForKey:[arry1 objectAtIndex:1]] forState:UIControlStateNormal];
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dates = [dateFormat dateFromString:[Array objectAtIndex:0]];
+        [dateFormat setDateFormat:@"MM-dd-yyy"];
+        NSString *myFormattedDate = [dateFormat stringFromDate:dates];
+        _expirydatetxtfld_iphone.text=myFormattedDate;
+        
         _soapResults = nil;
     }
     
@@ -1204,12 +1478,14 @@
         _jobsite.nccertstatus=_soapResults;
         if ([_soapResults isEqualToString:@"true"]) {
             _ncerSegment.selectedSegmentIndex=0;
+            _nccersegment_iphone.selectedSegmentIndex=0;
             
             
         }
         else  if ([_soapResults isEqualToString:@"false"]) {
             _ncerSegment.selectedSegmentIndex=1;
-            
+            _nccersegment_iphone.selectedSegmentIndex=1;
+
             
         }
         
@@ -1221,6 +1497,7 @@
         recordResults = FALSE;
         _jobsite.NCCERTDescription=_soapResults;
         _otherdesc.text=_soapResults;
+        _Othrtraing_iphone.text=_soapResults;
         
         _soapResults = nil;
     }
@@ -1237,7 +1514,7 @@
         
         
         [_skillbtnlbl setTitle:[_skillArraydict objectForKey:_soapResults] forState:UIControlStateNormal];
-        
+        _skilltextflield_iphone.text=[_skillArraydict objectForKey:_soapResults];
         
         _soapResults = nil;
     }
@@ -1251,6 +1528,7 @@
         //       _creftid=[_craftdict objectForKey:_soapResults];
         // [_craftbtnlbl setTitle:[_craftArraydict objectForKey:_soapResults] forState:UIControlStateNormal];
         //
+        
         _soapResults = nil;
     }
     
@@ -1260,6 +1538,7 @@
         _jobsite.ApplicantCraft=_soapResults;
         
         [_craftbtnlbl setTitle:_soapResults forState:UIControlStateNormal];
+        _crafttxtflield_iphone.text=_soapResults;
         [_jobsitemodelarray addObject:_jobsite];
         _soapResults = nil;
     }
@@ -1267,4 +1546,132 @@
     
 }
 
+
+
+
+#pragma mark - iphone Actions
+
+
+
+- (IBAction)checkbtn_iphone:(id)sender {
+    _nw=@"";
+    if (buttonclicked==0) {
+        //  _clickedbtnlbl.imageView.image=[UIImage imageNamed:@"check"];
+        [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+        buttonclicked=1;
+        // [_listtable reloadData];
+    }
+    else if(buttonclicked==1){
+        [_clickedbtnlbl setSelected:NO];
+        
+        [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+        buttonclicked=0;
+        
+    }
+
+    
+}
+#pragma mark - Textflield delegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    if (textField==_expirydatetxtfld_iphone) {
+        
+        NSDate *date1  = _datepicker_iphone.date;
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        dateFormat.dateStyle = NSDateFormatterMediumStyle;
+        dateFormat.dateFormat=@"MM/dd/yyyy";
+       _expirydatetxtfld_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+        
+        
+        
+    }
+    
+     if (textField==_skilltextflield_iphone) {
+         [self SelectEmployeeSkills];
+         _datapicker1.hidden=NO;
+     }
+    if (textField==_crafttxtflield_iphone) {
+        [self SelectEmployeeCraft];
+        _datapicker2.hidden=NO;
+    }
+
+    
+}
+    
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+     if (textField==_expirydatetxtfld_iphone) {
+    _datepicker_iphone.hidden=YES;
+     }
+    if (textField==_skilltextflield_iphone) {
+        _datapicker1.hidden=YES;
+    }
+ if (textField==_crafttxtflield_iphone) {
+       _datapicker2.hidden=YES;
+ }
+    
+}
+
+
+
+- (IBAction)updatebtn_iphone:(id)sender {
+    [self UpdateApplicantDetails];
+}
+
+
+-(IBAction)returnkey:(id)sender{
+    [sender resignFirstResponder];
+}
+
+#pragma mark - Picker delegate
+- (NSInteger)numberOfComponentsInPickerView:
+(UIPickerView *)pickerView
+{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component
+{
+    if (pickerView==_datapicker1) {
+         return [_skillsArray count];
+    }
+    else if (pickerView==_datapicker2){
+        
+         return [_craftsArray count];
+    }
+    return YES;
+   
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
+{
+   
+    
+    if (pickerView==_datapicker1) {
+         return [_skillsArray objectAtIndex:row];
+    }
+    else if (pickerView==_datapicker2){
+        
+         return [_craftsArray objectAtIndex:row];
+    }
+
+}
+
+
+#pragma mark -
+#pragma mark PickerView Delegate
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    if (pickerView==_datapicker1) {
+    _skilltextflield_iphone.text =[_skillsArray objectAtIndex:row];
+}
+     if (pickerView==_datapicker2) {
+         
+         _crafttxtflield_iphone.text=[_craftsArray objectAtIndex:row];
+     }
+    
+    
+}
 @end

@@ -81,5 +81,10 @@
 - (IBAction)certdeletebtn:(id)sender;
 -(IBAction)continueAction:(id)sender;
 
+/*iphone outlets&Connections*/
+@property (strong, nonatomic) IBOutlet UIScrollView *scroll_iphone;
+
+
+
 
 @end

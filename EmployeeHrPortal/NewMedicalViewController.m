@@ -31,6 +31,9 @@
     
     _scrollview.frame=CGRectMake(0, 0,1024, 768);
     [_scrollview setContentSize:CGSizeMake(1024,850)];
+    
+    _scroll_iphone.frame=CGRectMake(0, 0, 320, 548);
+    [_scroll_iphone setContentSize:CGSizeMake(320, 700)];
     _medicaltable.layer.borderWidth = 2.0;
     _medicaltable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     [self selectMedicalCondition];
@@ -797,4 +800,6 @@
     
 }
 
+- (IBAction)updatebtn:(id)sender {
+}
 @end
