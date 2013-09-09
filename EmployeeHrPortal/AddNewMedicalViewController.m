@@ -80,7 +80,7 @@
                    "<MedDescription>%@</MedDescription>\n"
                    "</InsertApplicantMedicalCondition>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",Applicantid,[medid integerValue],EduName,medstatus,_descptntxtfld.text];
+                   "</soap:Envelope>\n",_Applicantid,[medid integerValue],EduName,medstatus,_descptntxtfld.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     

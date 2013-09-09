@@ -418,6 +418,9 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
 }
 -(void)UpdateApplicantValue{
+    if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
+        
+    
     NSInteger Cablity;
     if (_climbingsegment.selectedSegmentIndex==1) {
         Cablity=0;
@@ -470,6 +473,66 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     {
         ////NSLog(@"theConnection is NULL");
     }
+    }
+else{
+    NSInteger Cablity;
+    if (_climbingsegment_iphone.selectedSegmentIndex==1) {
+                                                               Cablity=0;
+                                                           }
+                                                           else {
+                                                               Cablity=1;
+                                                           }
+                                                           recordResults= FALSE;
+                                                           NSString *soapMessage;
+                                                           
+                                                           soapMessage = [NSString stringWithFormat:
+                                                                          
+                                                                          @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                                                                          "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                                                                          "<soap:Body>\n"
+                                                                          
+                                                                          "<UpdateApplicantValues xmlns=\"http://webserv.kontract360.com/\">\n"
+                                                                          "<ApplicantId>%d</ApplicantId>\n"
+                                                                          "<ClimbingAbility>%d</ClimbingAbility>\n"
+                                                                          "<CurrentMedication>%@</CurrentMedication>\n"
+                                                                          "</UpdateApplicantValues>\n"
+                                                                          "</soap:Body>\n"
+                                                                          "</soap:Envelope>\n",_Applicantid,Cablity,_medicationtxtfld_iphone.text];
+                                                           NSLog(@"soapmsg%@",soapMessage);
+                                                           
+                                                           
+                                                           // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+                                                           NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+                                                           
+                                                           NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+                                                           
+                                                           NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+                                                           
+                                                           [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+                                                           
+                                                           [theRequest addValue: @"http://webserv.kontract360.com/UpdateApplicantValues" forHTTPHeaderField:@"Soapaction"];
+                                                           
+                                                           [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+                                                           [theRequest setHTTPMethod:@"POST"];
+                                                           [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+                                                           
+                                                           
+                                                           NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+                                                           
+                                                           if( theConnection )
+                                                           {
+                                                               _webData = [NSMutableData data];
+                                                           }
+                                                           else
+                                                           {
+                                                               ////NSLog(@"theConnection is NULL");
+                                                           }
+                                                       }
+
+                                                           
+                                                           
+                                                           
+                                                       
     
 }
 
@@ -751,6 +814,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
         if ([_soapResults isEqualToString:@"true"]) {
             _medmdl.medstatus=@"1";
             
+            
         }
         else if ([_soapResults isEqualToString:@"true"]){
             
@@ -771,13 +835,14 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
         if ([_soapResults isEqualToString:@"true"]) {
             
             _climbingsegment.selectedSegmentIndex=0;
-            
+            _climbingsegment_iphone.selectedSegmentIndex=0;
             
         }
         else  if([_soapResults isEqualToString:@"false"]){
             
             
               _climbingsegment.selectedSegmentIndex=1;
+            _climbingsegment_iphone.selectedSegmentIndex=1;
         }
        
         _soapResults = nil;
@@ -787,6 +852,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     {
         recordResults = FALSE;
         _medicationtxtfld.text=_soapResults;
+        _medicationtxtfld_iphone.text=_soapResults;
         _soapResults = nil;
         
     }
@@ -794,11 +860,11 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     if([elementName isEqualToString:@"UpdateApplicantValuesResponse"])
     {
        recordResults = FALSE;
-        if (!self.emplyeeVCtrl) {
-            _emplyeeVCtrl=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
-        }
-        _emplyeeVCtrl.Applicantid=_Applicantid;
-        [self.navigationController pushViewController:_emplyeeVCtrl animated:YES];
+//        if (!self.emplyeeVCtrl) {
+//            _emplyeeVCtrl=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
+//        }
+//        _emplyeeVCtrl.Applicantid=_Applicantid;
+//        [self.navigationController pushViewController:_emplyeeVCtrl animated:YES];
         _soapResults = nil;
     }
 
@@ -806,15 +872,21 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
 }
 
 - (IBAction)updatebtn:(id)sender {
+    [self UpdateApplicantValue];
+    
 }
 - (IBAction)Addbtn_iphone:(id)sender {
     
     if (!self.AddmedCondtnVCtrl) {
         _AddmedCondtnVCtrl=[[AddNewMedicalViewController alloc]initWithNibName:@"AddNewMedicalViewController" bundle:nil];
     }
+    _AddmedCondtnVCtrl.Applicantid=_Applicantid;
     [self.navigationController pushViewController:_AddmedCondtnVCtrl animated:YES];
 }
 
 - (IBAction)deletebtn_iphone:(id)sender {
+}
+-(IBAction)returnkey:(id)sender{
+    [sender resignFirstResponder];
 }
 @end
