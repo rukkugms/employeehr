@@ -27,9 +27,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    detailbtnclicked_iphone=0;
+[self getstates];
     _suffixarray=[[NSMutableArray alloc]initWithObjects:@"None",@"JR.",@"SR.",@"II",@"III" ,nil];
+    _suffixarray_iphone=[[NSMutableArray alloc]initWithObjects:@"None",@"JR.",@"SR.",@"II",@"III" ,nil];
     _scrollview.frame=CGRectMake(0, 0,1024, 768);
     [ _scrollview setContentSize:CGSizeMake(1024,850)];
+    _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
+    [_scroll_iphone setContentSize:CGSizeMake(500,1500)];
+
     _imgvw.userInteractionEnabled = YES;
     UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self action:@selector(handlePinch:)];
@@ -52,7 +58,7 @@
 //    
 //}
 -(void)homeAction
-{[self UpdateApplicantData];
+{ [self UpdateApplicantData];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"home" object:self userInfo:nil];
 }
 
@@ -287,8 +293,10 @@ _educationVCtrl.Applicantid=_Applicantid;
 
 
 -(void)UpdateApplicantData{
-    
-    
+    recordResults = FALSE;
+    NSString *soapMessage;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
     NSLog(@"date%@",_dobbtnlbl.titleLabel.text);
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat: @"MM-dd-yyyy"];
@@ -311,8 +319,7 @@ _educationVCtrl.Applicantid=_Applicantid;
     }
        
 
-    recordResults = FALSE;
-    NSString *soapMessage;
+    
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -376,7 +383,90 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         ////NSLog(@"theConnection is NULL");
     }
+     }
     
+     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+     {
+         if(_gendersegment_iphone.selectedSegmentIndex==0)
+         {
+             genderstg=1;
+         }
+         else if(_gendersegment_iphone.selectedSegmentIndex==1)
+         {
+             genderstg=0;
+         }
+         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+         [dateFormat setDateFormat: @"MM-dd-yyyy"];
+         
+         NSDate *dateString = [dateFormat dateFromString:_dobtext_iphone.text];
+         NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+         [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+         NSString* sqldate=[dateFormat1 stringFromDate:dateString];
+         
+         soapMessage = [NSString stringWithFormat:
+                        
+                        @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                        "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                        
+                        
+                        "<soap:Body>\n"
+                        
+                        "<UpdateApplicantData xmlns=\"http://webserv.kontract360.com/\">\n"
+                        "<ApplicantId>%d</ApplicantId>\n"
+                        "<NameSuffix>%@</NameSuffix>\n"
+                        "<FirstName>%@</FirstName>\n"
+                        "<LastName>%@</LastName>\n"
+                        "<Address>%@</Address>\n"
+                        "<City>%@</City>\n"
+                        "<State>%@</State>\n"
+                        "<Zip>%@</Zip>\n"
+                        "<SSN>%@</SSN>\n"
+                        "<DOB>%@</DOB>\n"
+                        "<Country>%@</Country>\n"
+                        "<Gender>%d</Gender>\n"
+                        "<Email>%@</Email>\n"
+                        "<CellphoneNo>%@</CellphoneNo>\n"
+                        "<PhoneNo>%@</PhoneNo>\n"
+                        "<AlternateNo>%@</AlternateNo>\n"
+                        "<EmergencyContactName>%@</EmergencyContactName>\n"
+                        "<EmergencyContactNo>%@</EmergencyContactNo>\n"
+                        "<DrivingLicenseNo>%@</DrivingLicenseNo>\n"
+                        "<LicenseIssuingState>%@</LicenseIssuingState>\n"
+                        "<NameInLicense>%@</NameInLicense>\n"
+                        "</UpdateApplicantData>\n"
+                        "</soap:Body>\n"
+                        "</soap:Envelope>\n",_Applicantid,_suffixbtn_iphone.titleLabel.text,_firstnametxt_iphone.text,_lastnametxt_iphone.text,_homeaddresstxt_iphone.text,_citytxt_iphone.text,_statebtn_iphone.titleLabel.text,_ziptxt_iphone.text,_ssntextfield_iphone.text,sqldate,_countrytxt_iphone.titleLabel.text,genderstg,_emailtxt_iphone.text,_mobilenotext_iphone.text,_homenotxt_iphone.text,_alternatenotxt_iphone.text,_emergencycontactnametxt_iphone.text,_contactnotxt_iphone.text,_drivinglicenceno_iphone.text,_stateissuetxt_iphone.text,_nameonlicenct_iphone.text];
+         NSLog(@"soapmsg%@",soapMessage);
+         
+         
+         // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+         NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+         
+         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+         
+         NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+         
+         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+         
+         [theRequest addValue: @"http://webserv.kontract360.com/UpdateApplicantData" forHTTPHeaderField:@"Soapaction"];
+         
+         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+         [theRequest setHTTPMethod:@"POST"];
+         [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+         
+         
+         NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+         
+         if( theConnection )
+         {
+             _webData = [NSMutableData data];
+         }
+         else
+         {
+             ////NSLog(@"theConnection is NULL");
+         }
+
+     }
     
 }
 -(void)getstates
@@ -756,30 +846,35 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         [_sufixbtnlbl setTitle:_soapResults forState:UIControlStateNormal];
+        [_suffixbtn_iphone setTitle:_soapResults forState:UIControlStateNormal];
         _soapResults=nil;
     }
     if([elementName isEqualToString:@"FirstName"])
     {
         recordResults = FALSE;
         _firstnametxtfld.text=_soapResults;
+        _firstnametxt_iphone.text=_soapResults;
         _soapResults=nil;    }
     
     if([elementName isEqualToString:@"LastName"])
     {
         recordResults = FALSE;
         _lastnametxtfld.text=_soapResults;
+        _lastnametxt_iphone.text=_soapResults;
         _soapResults=nil;    }
     
     if([elementName isEqualToString:@"appAddress"])
     {
         recordResults = FALSE;
         _Addresstxtfld.text=_soapResults;
+        _homeaddresstxt_iphone.text=_soapResults;
         _soapResults=nil;    }
        
     if([elementName isEqualToString:@"City"])
     {
         recordResults = FALSE;
         _citytxtfld.text=_soapResults;
+        _citytxt_iphone.text=_soapResults;
         _soapResults=nil;    }
     
     if([elementName isEqualToString:@"StateName"])
@@ -787,12 +882,15 @@ _educationVCtrl.Applicantid=_Applicantid;
         recordResults = FALSE;
        
            [_statebtnlbl setTitle:_soapResults forState:UIControlStateNormal];
+        [_statebtn_iphone setTitle:_soapResults forState:UIControlStateNormal];
         _soapResults=nil;
     }
     if([elementName isEqualToString:@"Zip"])
     {
         recordResults = FALSE;
         _ziptextflield.text=_soapResults;
+        _ziptxt_iphone.text=_soapResults;
+
         _soapResults=nil;    }
     
     
@@ -801,6 +899,8 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _ssntxtfld.text=_soapResults;
+        _ssntextfield_iphone.text=_soapResults;
+
         _soapResults=nil;    }
     
     
@@ -819,6 +919,7 @@ _educationVCtrl.Applicantid=_Applicantid;
 
       
         [_dobbtnlbl setTitle:myFormattedDate forState:UIControlStateNormal];
+        _dobtext_iphone.text=myFormattedDate;
         _soapResults=nil;    }
     
     
@@ -828,6 +929,7 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
           [_countrybtnlbl setTitle:_soapResults forState:UIControlStateNormal];
+          [_countrytxt_iphone setTitle:_soapResults forState:UIControlStateNormal];
         _soapResults=nil;
     }
     
@@ -837,11 +939,13 @@ _educationVCtrl.Applicantid=_Applicantid;
         recordResults = FALSE;
         if ([_soapResults isEqualToString:@"true"]) {
             _gendersegmentcntrl.selectedSegmentIndex=0;
+            _gendersegment_iphone.selectedSegmentIndex=0;
             
             
         }
         else  if ([_soapResults isEqualToString:@"false"]) {
             _gendersegmentcntrl.selectedSegmentIndex=1;
+            _gendersegment_iphone.selectedSegmentIndex=1;
             
             
         }
@@ -854,6 +958,7 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _emailtxtfld.text=_soapResults;
+        _emailtxt_iphone.text=_soapResults;
         _soapResults=nil;
     }
     
@@ -862,12 +967,14 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _mobiletxtfld.text=_soapResults;
+        _mobilenotext_iphone.text=_soapResults;
         _soapResults=nil;
     }
     if([elementName isEqualToString:@"PhoneNo"])
     {
         recordResults = FALSE;
         _homenumbertxtfld.text=_soapResults;
+        _homenotxt_iphone.text=_soapResults;
         _soapResults=nil;
     }
     
@@ -876,6 +983,7 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _alternativenumtxtfld.text=_soapResults;
+        _alternatenotxt_iphone.text=_soapResults;
         _soapResults=nil;
     }
     
@@ -883,12 +991,14 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _emergencytxtfld.text=_soapResults;
+        _emergencycontactnametxt_iphone.text=_soapResults;
         _soapResults=nil;
     }
     if([elementName isEqualToString:@"EmergencyContactNo"])
     {
         recordResults = FALSE;
         _contactnumbtxtfld.text=_soapResults;
+        _contactnotxt_iphone.text=_soapResults;
         _soapResults=nil;
     }
     
@@ -898,6 +1008,7 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _driverlicencetxtfld.text=_soapResults;
+        _drivinglicenceno_iphone.text=_soapResults;
         _soapResults=nil;
     }
     
@@ -907,6 +1018,7 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _stateissuetxtfld.text=_soapResults;
+        _stateissuetxt_iphone.text=_soapResults;
         _soapResults=nil;
     }
     
@@ -914,6 +1026,7 @@ _educationVCtrl.Applicantid=_Applicantid;
     {
         recordResults = FALSE;
         _nameinlicencetxtfld.text=_soapResults;
+        _nameonlicenct_iphone.text=_soapResults;
         _soapResults=nil;
     }
     if([elementName isEqualToString:@"state_id"])
@@ -1056,6 +1169,147 @@ _educationVCtrl.Applicantid=_Applicantid;
     
 }
 
+
+//iphone
+- (IBAction)detailbtn_iphone:(id)sender {
+    if (detailbtnclicked_iphone==0) {
+        _contactinfoview_iphone.hidden=NO;
+        [_infobtn_iphone setImage:[UIImage imageNamed:@"disclsurebtn"] forState:UIControlStateNormal];
+        detailbtnclicked_iphone=1;
+        
+    }
+    
+    else{
+        _contactinfoview_iphone.hidden=YES;
+        [_infobtn_iphone setImage:[UIImage imageNamed:@"disclsurebtndwn"] forState:UIControlStateNormal];
+        
+        
+    detailbtnclicked_iphone=0;
+    }
+    
+}
+
+- (NSInteger)numberOfComponentsInPickerView:
+(UIPickerView *)pickerView
+{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component
+{
+    if([pickerstring isEqualToString:@"suff"])
+    {
+        return [_suffixarray_iphone count];
+    }
+    else
+    {
+        return [_stateArray count];
+    }
+    return YES;
+
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
+{
+    if([pickerstring isEqualToString:@"suff"])
+    {
+        return [_suffixarray_iphone objectAtIndex:row];
+    }
+    else if([pickerstring isEqualToString:@"state"])
+    {
+        return [_stateArray objectAtIndex:row];
+    }
+
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+      if([pickerstring isEqualToString:@"suff"])
+      {
+    [ _suffixbtn_iphone setTitle:[_suffixarray_iphone objectAtIndex:row] forState:UIControlStateNormal];
+          _suffixpicker.hidden=YES;
+
+      }
+     else if([pickerstring isEqualToString:@"state"])
+     {
+    [ _statebtn_iphone setTitle:[_stateArray objectAtIndex:row] forState:UIControlStateNormal];
+         _statepicker.hidden=YES;
+
+     }
+   
+}
+
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+-(IBAction)selectsuffix_iphone:(id)sender
+{   pickerstring=@"suff";
+    _suffixpicker.hidden=NO;
+    [_suffixpicker reloadAllComponents];
+}
+-(IBAction)selectstate_iphone:(id)sender
+{
+    
+    pickerstring=@"state";
+    
+    _statepicker.hidden=NO;
+    [_statepicker reloadAllComponents];
+;
+}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    
+    
+    
+    if (textField==_dobtext_iphone) {
+        
+        [_dobtext_iphone resignFirstResponder];
+        
+        _datepicker_iphone.hidden=NO;
+        
+        [_datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
+    }
+    //_picker.hidden=YES;
+    return YES;
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField==_dobtext_iphone) {
+        
+        
+        [_dobtext_iphone resignFirstResponder];
+        
+        _datepicker_iphone.hidden=NO;
+        
+        
+        [  _datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
+    }
+    
+    //_picker.hidden=YES;
+    return YES;
+}
+-(void)picker1action{
+    NSDate *date1  = _datepicker_iphone.date;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateStyle = NSDateFormatterMediumStyle;
+//    dateFormat.dateFormat=@"MM/dd/yyyy";
+    dateFormat.dateFormat=@"yyyy-MM-dd";
+    _dobtext_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+    _datepicker_iphone.hidden=YES;
+    
+}
+
+-(IBAction)update_iphone:(id)sender
+{
+    [self UpdateApplicantData];
+
+}
+-(IBAction)cancel_iphone:(id)sender
+{
+    
+}
 
 
 @end

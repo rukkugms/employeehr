@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "EducationViewController.h"
 #import "CKCalendarView.h"
-@interface BasicdetailsViewController : UIViewController{
+@interface BasicdetailsViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
+{
     BOOL recordResults;
     NSInteger genderstg;
     NSInteger popovertype;
+    //iphone
+    NSInteger detailbtnclicked_iphone;
+    NSString *pickerstring;
 }
 @property(readwrite)NSInteger Applicantid;
 @property(nonatomic, weak) CKCalendarView *calendar;
@@ -63,5 +67,47 @@
 - (IBAction)gendersegmentcntrl:(id)sender;
 - (IBAction)continuebtn:(id)sender;
 - (IBAction)cancelbtn:(id)sender;
+
+
+/*for iphone*/
+@property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
+@property(strong,nonatomic)IBOutlet UIView *contactinfoview_iphone;
+@property(strong,nonatomic)IBOutlet UIButton *infobtn_iphone;
+@property(strong,nonatomic)IBOutlet UIButton *suffixbtn_iphone;
+@property(strong,nonatomic)IBOutlet UIPickerView *suffixpicker;
+@property(strong,nonatomic)IBOutlet UIPickerView *statepicker;
+@property(strong,nonatomic)IBOutlet UIButton *statebtn_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *lastnametxt_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *firstnametxt_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *homeaddresstxt_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *ziptxt_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *ssntextfield_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *dobtext_iphone;
+@property(strong,nonatomic)IBOutlet UIButton *countrytxt_iphone;
+@property(strong,nonatomic)IBOutlet UIDatePicker *datepicker_iphone;
+@property(strong,nonatomic)IBOutlet UISegmentedControl *gendersegment_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *citytxt_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *emailtxt_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *mobilenotext_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *homenotxt_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *alternatenotxt_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *emergencycontactnametxt_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *contactnotxt_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *drivinglicenceno_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *stateissuetxt_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *nameonlicenct_iphone;
+ 
+//array
+@property(strong,nonatomic)NSMutableArray *suffixarray_iphone;
+
+
+//actions
+
+- (IBAction)detailbtn_iphone:(id)sender;
+-(IBAction)textFieldReturn:(id)sender;
+-(IBAction)selectsuffix_iphone:(id)sender;
+-(IBAction)selectstate_iphone:(id)sender;
+-(IBAction)update_iphone:(id)sender;
+-(IBAction)cancel_iphone:(id)sender;
 
 @end
