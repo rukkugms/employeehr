@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Coursemdl.h"
 #import "RaceViewController.h"
-@interface CourseDrugViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+@interface CourseDrugViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource>
 {
     NSInteger selectedcell;
      BOOL recordResults;
@@ -57,7 +57,7 @@
 @property(strong,nonatomic)NSMutableDictionary *monthDictionary;
 @property(strong,nonatomic)NSMutableDictionary *remonthDictionary;
 //iphone
-
+@property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
 @property(strong,nonatomic)IBOutlet UITableView *reqtable_iphone;
 @property(strong,nonatomic)IBOutlet UITableViewCell *reqcell_iphone;
 @property(strong,nonatomic)IBOutlet UILabel *reqlabel_iphone;
@@ -69,5 +69,8 @@
 
 -(IBAction)selectmonth_iphone:(id)sender;
 -(IBAction)selectyear_iphone:(id)sender;
+-(IBAction)update_iphone:(id)sender;
+-(IBAction)cancel_iphone:(id)sender;
+
 
 @end

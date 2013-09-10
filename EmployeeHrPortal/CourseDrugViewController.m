@@ -27,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
+    [_scroll_iphone setContentSize:CGSizeMake(500,640)];
     // Do any additional setup after loading the view from its nib.
     _detailstable.layer.borderWidth = 2.0;
      _detailstable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
@@ -264,8 +266,7 @@
     Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
     
     
-    
-    
+       
     if (tableView==_popOverTableView) {
         
         //Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
@@ -295,7 +296,7 @@
             default:
                 break;
         }
-        //[_requirementArray addObject:coursemdl2];
+      
         
     }
     if(tableView==_detailstable)
@@ -374,10 +375,13 @@
 
 -(void)UpdateApplicantRequirements
 {
-    for(int i=0;i<[_requirementArray count];i++)
+    recordResults = FALSE;
+    NSString *soapMessage;
+     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+     {
+         for(int i=0;i<[_requirementArray count];i++)
     {
-        recordResults = FALSE;
-        NSInteger verifctnstatus=0;
+               NSInteger verifctnstatus=0;
             //NSInteger courseinteger=1;
         NSString*day=@"01";
        
@@ -390,7 +394,7 @@
         NSString*mnth=[_monthDictionary objectForKey:coursemdl1.month];
          NSString*expirydate=[NSString stringWithFormat:@"%@-%@-%@",coursemdl1.year,mnth,day];
     
-    NSString *soapMessage;
+   
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -440,6 +444,77 @@
         ////NSLog(@"theConnection is NULL");
     }
     
+    }
+     }
+     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        for(int i=0;i<[_requirementArray count];i++)
+        {
+            NSInteger verifctnstatus=0;
+            //NSInteger jobsiteid=1;
+            NSString*day=@"01";
+            
+            
+            // NSLog(@"exdate%@",expirydate);
+            
+            Coursemdl*coursemdliphone=(Coursemdl *)[_requirementArray objectAtIndex:i];
+            
+            NSInteger reqid=coursemdliphone.reqid;
+            NSString*mnth=[_monthDictionary objectForKey:coursemdliphone.month];
+            NSString*expirydate=[NSString stringWithFormat:@"%@-%@-%@",coursemdliphone.year,mnth,day];
+            
+            
+            
+            soapMessage = [NSString stringWithFormat:
+                           
+                           @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                           
+                           
+                           "<soap:Body>\n"
+                           
+                           "<UpdateApplicantRequirements xmlns=\"http://webserv.kontract360.com/\">\n"
+                           "<AppId>%d</AppId>\n"
+                           "<JobId>%d</JobId>\n"
+                           "<ReqId>%d</ReqId>\n"
+                           "<ExpiryDate>%@</ExpiryDate>\n"
+                           "<CourseStatus>%d</CourseStatus>\n"
+                           "<VerificationStatus>%d</VerificationStatus>\n"
+                           "</UpdateApplicantRequirements>\n"
+                           "</soap:Body>\n"
+                           "</soap:Envelope>\n",_Applicantid,[_jobsiteid integerValue],reqid,expirydate,coursemdliphone.course_status,verifctnstatus];
+            NSLog(@"soapmsg%@",soapMessage);
+            
+            
+            // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+            NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+            
+            NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+            
+            NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+            
+            [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+            
+            [theRequest addValue: @"http://webserv.kontract360.com/UpdateApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
+            
+            [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+            [theRequest setHTTPMethod:@"POST"];
+            [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            
+            NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+            
+            if( theConnection )
+            {
+                _webData = [NSMutableData data];
+            }
+            else
+            {
+                ////NSLog(@"theConnection is NULL");
+            }
+            
+        }
+
     }
 }
 #pragma mark - Connection
@@ -794,7 +869,7 @@ button = (UIButton *)sender;
 }
 -(IBAction)selectyear_iphone:(id)sender
 {
-    yearbtn_iphone = (UIButton *)sender;
+   yearbtn_iphone = (UIButton *)sender;
     
     //UITableViewCell *cell = (UITableViewCell *)[[yearbtn_iphone superview] superview];
     pickerstring=@"year";
@@ -810,11 +885,11 @@ button = (UIButton *)sender;
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component
 {
-    if([pickerstring isEqualToString:@"month"])
+    if(pickerView==_monthpicker_iphone)
     {
         return [_monthArray count];
     }
-    else
+    else if(pickerView==_yearpicker_iphone)
     {
         return [_yearArray count];
     }
@@ -825,11 +900,10 @@ numberOfRowsInComponent:(NSInteger)component
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component
 {
-    if([pickerstring isEqualToString:@"month"])
-    {
+    if(pickerView==_monthpicker_iphone)    {
         return [_monthArray objectAtIndex:row];
     }
-    else if([pickerstring isEqualToString:@"year"])
+    else if(pickerView==_yearpicker_iphone)
     {
         return [_yearArray objectAtIndex:row];
     }
@@ -838,18 +912,39 @@ numberOfRowsInComponent:(NSInteger)component
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    if([pickerstring isEqualToString:@"month"])
+    UITableViewCell *cell = (UITableViewCell *)[[monthbtn_iphone superview] superview];
+    UITableView *table = (UITableView *)[cell superview];
+    NSIndexPath *textFieldIndexPath = [table indexPathForCell:cell];
+    NSLog(@"textFieldIndexPath%d",textFieldIndexPath.row);
+    
+    
+    UITableViewCell *cell1 = (UITableViewCell *)[[yearbtn_iphone superview] superview];
+    UITableView *table1 = (UITableView *)[cell1 superview];
+    NSIndexPath *textFieldIndexPath1 = [table1 indexPathForCell:cell];
+    NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
+ Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
+   if(pickerView==_monthpicker_iphone)  
     {
-        [ _month_iphone setTitle:[_monthArray objectAtIndex:row] forState:UIControlStateNormal];
+        [ monthbtn_iphone setTitle:[_monthArray objectAtIndex:row] forState:UIControlStateNormal];
+        coursemdl3.month=monthbtn_iphone.titleLabel.text;
         _monthpicker_iphone.hidden=YES;
-        
+                
     }
-    else if([pickerstring isEqualToString:@"year"])
+    else if(pickerView==_yearpicker_iphone)
     {
-        [ _year_iphone setTitle:[_yearArray objectAtIndex:row] forState:UIControlStateNormal];
+        [ yearbtn_iphone setTitle:[_yearArray objectAtIndex:row] forState:UIControlStateNormal];
+         coursemdl3.year=yearbtn_iphone.titleLabel.text;
         _yearpicker_iphone.hidden=YES;
         
     }
+    
+}
+-(IBAction)update_iphone:(id)sender
+{
+    [self UpdateApplicantRequirements];
+}
+-(IBAction)cancel_iphone:(id)sender
+{
     
 }
 
