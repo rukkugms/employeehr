@@ -1572,46 +1572,67 @@
     
 }
 #pragma mark - Textflield delegate
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    
+    
     
     if (textField==_expirydatetxtfld_iphone) {
         
-        NSDate *date1  = _datepicker_iphone.date;
+       
         
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        dateFormat.dateStyle = NSDateFormatterMediumStyle;
-        dateFormat.dateFormat=@"MM/dd/yyyy";
-       _expirydatetxtfld_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+        _datepicker_iphone.hidden=NO;
         
-        
-        
+        [_datepicker_iphone addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
     }
-    
-     if (textField==_skilltextflield_iphone) {
-         [self SelectEmployeeSkills];
-         _datapicker1.hidden=NO;
-     }
+    if (textField==_skilltextflield_iphone) {
+        [self SelectEmployeeSkills];
+        _datapicker1.hidden=NO;
+    }
     if (textField==_crafttxtflield_iphone) {
         [self SelectEmployeeCraft];
         _datapicker2.hidden=NO;
     }
 
-    
+    //_picker.hidden=YES;
+    return YES;
 }
-    
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-     if (textField==_expirydatetxtfld_iphone) {
-    _datepicker_iphone.hidden=YES;
-     }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField==_expirydatetxtfld_iphone)  {
+        
+        
+        
+       
+        _datepicker_iphone.hidden=NO;
+        
+        [_datepicker_iphone addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
+    }
+    if (textField==_expirydatetxtfld_iphone) {
+        _datepicker_iphone.hidden=YES;
+    }
     if (textField==_skilltextflield_iphone) {
         _datapicker1.hidden=YES;
     }
- if (textField==_crafttxtflield_iphone) {
-       _datapicker2.hidden=YES;
- }
-    
+    if (textField==_crafttxtflield_iphone) {
+        _datapicker2.hidden=YES;
+    }
+
+    //_picker.hidden=YES;
+    return YES;
 }
 
+-(void)pickeraction{
+    NSDate *date1  = _datepicker_iphone.date;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateStyle = NSDateFormatterMediumStyle;
+    dateFormat.dateFormat=@"MM/dd/yyyy";
+    _expirydatetxtfld_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+    _datepicker_iphone.hidden=YES;
+    
+    
+}
 
 
 - (IBAction)updatebtn_iphone:(id)sender {

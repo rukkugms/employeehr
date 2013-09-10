@@ -885,6 +885,26 @@ else{
 }
 
 - (IBAction)deletebtn_iphone:(id)sender {
+    if (self.editing) {
+        [super setEditing:NO animated:NO];
+        [_medicaltable_iphone setEditing:NO animated:NO];
+        [_medicaltable_iphone reloadData];
+        
+        // [_delete_ipad setTitle:@"Done"];
+        
+    }
+    
+    else{
+        [super setEditing:YES animated:YES];
+        [_medicaltable_iphone setEditing:YES animated:YES];
+        [_medicaltable_iphone reloadData];
+        // [_delete_ipad setTitle:@"Delete"];
+        
+        
+        
+        
+    }
+
 }
 -(IBAction)returnkey:(id)sender{
     [sender resignFirstResponder];
