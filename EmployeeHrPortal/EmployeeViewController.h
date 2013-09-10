@@ -12,7 +12,7 @@
 #import "previousemp.h"
 
 #import "CourseDrugViewController.h"
-@interface EmployeeViewController : UIViewController
+@interface EmployeeViewController : UIViewController<UITextFieldDelegate>
 {
     BOOL recordResults;
     NSInteger identifr;
@@ -59,4 +59,23 @@
 
 @property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
 @property(strong,nonatomic)IBOutlet UITableView *previousemptable_iphone;
+@property(strong,nonatomic)IBOutlet UITableViewCell *empcell_iphone;
+@property(strong,nonatomic)IBOutlet UILabel *companynamelbl_iphone;
+@property(strong,nonatomic)IBOutlet UILabel *rateofpaylbl_iphone;
+@property(strong,nonatomic)IBOutlet UIButton *deletebtn_iphone;
+@property(strong,nonatomic)IBOutlet UIView *addview_iphone;
+
+@property(strong,nonatomic)IBOutlet UITextField *companynametxtfld_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *empdatetextfld_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *positionheldtxtfld_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *rateofpaytxtfld_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *reasonlvtxtfld_iphone;
+@property(strong,nonatomic)IBOutlet UIDatePicker *datepicker_iphone;
+-(IBAction)save_iphone:(id)sender;
+-(IBAction)addemp_iphone:(id)sender;
+-(IBAction)deleteemp_iphone:(id)sender;
+-(IBAction)cancel_iphone:(id)sender;
+-(IBAction)textFieldReturn:(id)sender;
+-(IBAction)close_iphone:(id)sender;
+
 @end

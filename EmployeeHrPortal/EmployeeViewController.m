@@ -31,9 +31,13 @@
     [ _scroll setContentSize:CGSizeMake(1024,850)];
     _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
     [_scroll_iphone setContentSize:CGSizeMake(500,640)];
-
+    _datepicker_iphone.hidden=YES;
+    _addview_iphone.hidden=YES;
+    _empdatetextfld_iphone.inputView=[[UIView alloc]initWithFrame:CGRectZero];
     _prevousEmpTable.layer.borderWidth = 2.0;
     _prevousEmpTable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+    _previousemptable_iphone.layer.borderWidth = 2.0;
+    _previousemptable_iphone.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     [self selectApplicantPreviousEmployer];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
@@ -179,7 +183,12 @@
         
         
     }
-       
+     if (tableView==_previousemptable_iphone)
+     {
+         return [_previousemployeeArray count];
+ 
+     }
+         
     return YES;
     
     
@@ -191,15 +200,24 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-       
+        if (tableView==_prevousEmpTable)
+        {
             [[NSBundle mainBundle]loadNibNamed:@"customprevious" owner:self options:nil];
             cell=_previouscell;
+
+        }
+        if(tableView==_previousemptable_iphone)
+        {
+            [[NSBundle mainBundle]loadNibNamed:@"Employeecell_iphone" owner:self options:nil];
+            cell=_empcell_iphone;
+        }
         
                
         
     }
     
-       
+       if (tableView==_prevousEmpTable)
+       {
         _previous=(previousemp *)[_previousemployeeArray objectAtIndex:indexPath.row];
         _companynamelabel=(UILabel*)[cell viewWithTag:1];
         _companynamelabel.text=_previous.previouscompany;
@@ -213,8 +231,16 @@
         _reasonforleavinglabel.text=_previous.reasonforleaving;
         
         
-        
-        
+       }
+     if(tableView==_previousemptable_iphone)
+     {
+         _previous=(previousemp *)[_previousemployeeArray objectAtIndex:indexPath.row];
+         _companynamelbl_iphone=(UILabel*)[cell viewWithTag:1];
+         _companynamelbl_iphone.text=_previous.previouscompany;
+         _rateofpaylbl_iphone=(UILabel*)[cell viewWithTag:2];
+         _rateofpaylbl_iphone.text=_previous.previousrateofpay;
+     }
+    
       return cell;
 }
 
@@ -242,7 +268,12 @@
 #pragma mark - webservice
 
 -(void)insertPreviousEmployer
-{   webtype=1;
+{
+    recordResults = FALSE;
+    NSString *soapMessage;
+     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+     {
+    webtype=1;
     NSLog(@"date%@",_datebtn.titleLabel.text);
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
    [dateFormat setDateFormat: @"MM-dd-yyyy"];
@@ -263,8 +294,7 @@
     NSString *modifieddate=@"2013-01-01";
 
     _previousid=0;
-    recordResults = FALSE;
-    NSString *soapMessage;
+    
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -319,7 +349,87 @@
         ////NSLog(@"theConnection is NULL");
     }
     
+     }
+   else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+   {
+       webtype=1;
+       NSLog(@"date%@",_empdatetextfld_iphone.text);
+//       NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+//       [dateFormat setDateFormat: @"MM-dd-yyyy"];
+//       
+//       NSDate *dateString = [dateFormat dateFromString:_empdatetextfld_iphone.text];
+//       NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+//       [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+//       NSString* sqldate=[dateFormat1 stringFromDate:dateString];
 
+     //  NSLog(@"s%@",sqldate);
+       NSString *compnyname=_companynametxtfld_iphone.text;
+       //NSString *rateofpay=_rateofpaytxt.text;
+       
+       NSString *prevoiusposition=_positionheldtxtfld_iphone.text;
+       NSString *reasonforleaving=_reasonlvtxtfld_iphone.text;
+       NSInteger createdUser=0;
+       NSInteger modifieduser=0;
+       NSString *createdDate=@"2013-01-01";
+       NSString *modifieddate=@"2013-01-01";
+       
+       _previousid=0;
+       
+       
+       soapMessage = [NSString stringWithFormat:
+                      
+                      @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                      "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                      
+                      
+                      "<soap:Body>\n"
+                      
+                      "<InsertApplicantPreviousEmployer xmlns=\"http://webserv.kontract360.com/\">\n"
+                      "<ApplicantId>%d</ApplicantId>\n"
+                      "<PreviousId>%d</PreviousId>\n"
+                      "<PreviousCompany>%@</PreviousCompany>\n"
+                      "<EmploymentDate>%@</EmploymentDate>\n"
+                      "<PreviousRateofPay>%f</PreviousRateofPay>\n"
+                      "<PreviousPosition>%@</PreviousPosition>\n"
+                      "<LeavingReason>%@</LeavingReason>\n"
+                      "<CreatedDate>%@</CreatedDate>\n"
+                      "<CreatedUser>%d</CreatedUser>\n"
+                      "<ModifiedDate>%@</ModifiedDate>\n"
+                      "<ModifiedUser>%d</ModifiedUser>\n"
+                      "</InsertApplicantPreviousEmployer>\n"
+                      "</soap:Body>\n"
+                      "</soap:Envelope>\n",_Applicantid,_previousid,compnyname,_empdatetextfld_iphone.text,[_rateofpaytxtfld_iphone.text floatValue],prevoiusposition,reasonforleaving,createdDate,createdUser,modifieddate,modifieduser];
+       NSLog(@"soapmsg%@",soapMessage);
+       
+       
+       // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+       NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+       
+       NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+       
+       NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+       
+       [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+       
+       [theRequest addValue: @"http://webserv.kontract360.com/InsertApplicantPreviousEmployer" forHTTPHeaderField:@"Soapaction"];
+       
+       [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+       [theRequest setHTTPMethod:@"POST"];
+       [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+       
+       
+       NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+       
+       if( theConnection )
+       {
+           _webData = [NSMutableData data];
+       }
+       else
+       {
+           ////NSLog(@"theConnection is NULL");
+       }
+
+   }
 }
 -(void)selectApplicantPreviousEmployer
 {
@@ -455,6 +565,7 @@
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
     [_prevousEmpTable reloadData];
+    [_previousemptable_iphone reloadData];
     if (webtype==1) {
         [self selectApplicantPreviousEmployer];
         webtype=0;
@@ -639,4 +750,96 @@
     
     
 }
+//iphone
+
+-(IBAction)save_iphone:(id)sender
+{
+    [self insertPreviousEmployer];
+}
+-(IBAction)cancel_iphone:(id)sender
+{
+    
+}
+-(IBAction)deleteemp_iphone:(id)sender
+{
+    if (self.editing) {
+        [super setEditing:NO animated:NO];
+        [_previousemptable_iphone setEditing:NO animated:NO];
+        [_previousemptable_iphone reloadData];
+        
+        
+        [_deletebtn_iphone setTitle:@"Delete" forState:UIControlStateNormal];
+        
+        
+        
+    }
+    
+    else{
+        [super setEditing:YES animated:YES];
+        [_previousemptable_iphone setEditing:YES animated:YES];
+        [_previousemptable_iphone reloadData];
+        
+        [_deletebtn_iphone setTitle:@"Done" forState:UIControlStateNormal];
+        
+    }
+ 
+}
+-(IBAction)addemp_iphone:(id)sender
+{
+    _addview_iphone.hidden=NO;
+}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    
+    
+    
+    if (textField==_empdatetextfld_iphone) {
+        
+        [_empdatetextfld_iphone resignFirstResponder];
+        
+        _datepicker_iphone.hidden=NO;
+        
+        [_datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
+    }
+    //_picker.hidden=YES;
+    return YES;
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField==_empdatetextfld_iphone) {
+        
+        
+        [_empdatetextfld_iphone resignFirstResponder];
+        
+        _datepicker_iphone.hidden=NO;
+        
+        
+        [  _datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
+    }
+    
+    //_picker.hidden=YES;
+    return YES;
+}
+-(void)picker1action{
+    NSDate *date1  = _datepicker_iphone.date;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateStyle = NSDateFormatterMediumStyle;
+    //    dateFormat.dateFormat=@"MM/dd/yyyy";
+    dateFormat.dateFormat=@"yyyy-MM-dd";
+    _empdatetextfld_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+    _datepicker_iphone.hidden=YES;
+    
+}
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
+-(IBAction)close_iphone:(id)sender
+{
+    _addview_iphone.hidden=YES;
+}
+
+
+
 @end
