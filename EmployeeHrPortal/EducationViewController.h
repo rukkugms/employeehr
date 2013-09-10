@@ -11,6 +11,7 @@
 #import "CKCalendarView.h"
 #import "certificateModel.h"
 #import "Educationdetails.h"
+#import "AddEducationViewController.h"
 ///#import "NewMedicalViewController.h"
 @interface EducationViewController : UIViewController{
      BOOL recordResults;
@@ -82,9 +83,19 @@
 -(IBAction)continueAction:(id)sender;
 
 /*iphone outlets&Connections*/
+@property(strong,nonatomic)AddEducationViewController*AddeduVCtrl;
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll_iphone;
 
+@property (strong, nonatomic) IBOutlet UILabel *namelbl_iphone;
+@property (strong, nonatomic) IBOutlet UILabel *yearlbl_iphone;
 
+@property (strong, nonatomic) IBOutlet UITableViewCell *_educell_iphone;
+@property (strong, nonatomic) IBOutlet UITableView *edutable_iphone;
 
+@property (strong, nonatomic) IBOutlet UITableView *certtable_iphone;
+- (IBAction)Addedu_iphone:(id)sender;
+- (IBAction)Addcert_iphone:(id)sender;
+- (IBAction)deleteedu_iphone:(id)sender;
+- (IBAction)deletecert_iphone:(id)sender;
 
 @end

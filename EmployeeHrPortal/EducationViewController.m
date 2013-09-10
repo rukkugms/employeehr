@@ -38,6 +38,10 @@
     _educationtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     _certificatetable.layer.borderWidth = 2.0;
     _certificatetable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+    _edutable_iphone.layer.borderWidth = 2.0;
+    _edutable_iphone.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
+    _certtable_iphone.layer.borderWidth = 2.0;
+   _certtable_iphone.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     _edunamearray=[[NSMutableArray alloc]initWithObjects:@"High School",@"College",@"Other", nil];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
@@ -477,6 +481,8 @@
 	[_xmlParser parse];
     [_certificatetable reloadData];
     [_educationtable reloadData];
+    [_edutable_iphone reloadData];
+    [_certtable_iphone reloadData];
     if (webtype==2) {
         [self SelectApplicantCertificates];
         webtype=0;
@@ -718,12 +724,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView==_certificatetable) {
+    if (tableView==_certificatetable||tableView==_certtable_iphone) {
         return [_certifctearray count];
 
         
     }
-    if (tableView==_educationtable) {
+    if (tableView==_educationtable||tableView==_edutable_iphone) {
         return [_eduarray count];
         
         
@@ -745,7 +751,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-         if (tableView==_certificatetable) {
+        
+        if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
+            
+        if (tableView==_certificatetable) {
         [[NSBundle mainBundle]loadNibNamed:@"EducationCertificatecell" owner:self options:nil];
         cell=_certificatecell;
          }
@@ -753,10 +762,25 @@
             [[NSBundle mainBundle]loadNibNamed:@"CellEducationtable" owner:self options:nil];
             cell=_educell;
         }
-
+        }
+        
+        else {
+            
+            
+            [[NSBundle mainBundle]loadNibNamed:@"EducationCell_iphone" owner:self options:nil];
+            
+            cell=__educell_iphone;
+            
+            
+        }
+        
+        
+        
                
     }
     
+    
+     if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
       if (tableView==_popOverTableView) {
           cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:12];
           cell.textLabel.font = [UIFont systemFontOfSize:12.0];
@@ -791,6 +815,29 @@
     _cdatelbl.text=certifictem.date;
     
      }
+     }
+    
+     else{
+         if (tableView==_edutable_iphone) {
+               _Edumodel=(Educationdetails *)[_eduarray objectAtIndex:indexPath.row];
+             _namelbl_iphone=(UILabel *)[cell viewWithTag:1];
+             _namelbl_iphone.text=_Edumodel.educationname;
+             _yearlbl_iphone=(UILabel *)[cell viewWithTag:2];
+             _yearlbl_iphone.text=[NSString stringWithFormat:@"%d",_Edumodel.yearscompleted];
+         }
+         
+         
+         if (tableView==_certtable_iphone) {
+              certificateModel*certifictem=(certificateModel*)[_certifctearray objectAtIndex:indexPath.row];
+              _namelbl_iphone=(UILabel *)[cell viewWithTag:1];
+             _namelbl_iphone.text=certifictem.certificatename;
+              _yearlbl_iphone=(UILabel *)[cell viewWithTag:2];
+              _yearlbl_iphone.text=certifictem.date;
+         }
+         
+         
+     }
+    
     return cell;
 }
 
@@ -912,12 +959,41 @@
         
         
     }
+}
+
+  /*iphone Actions*/
+- (IBAction)Addedu_iphone:(id)sender {
+    if (!self.AddeduVCtrl) {
+        _AddeduVCtrl=[[AddEducationViewController alloc]initWithNibName:@"AddEducationViewController" bundle:nil];
+    }
+    _AddeduVCtrl.Applicantid=_Applicantid;
+    [self.navigationController pushViewController:_AddeduVCtrl animated:YES];
     
+    }
+    
+- (IBAction)Addcert_iphone:(id)sender {
+    
+    if (!self.AddeduVCtrl) {
+        _AddeduVCtrl=[[AddEducationViewController alloc]initWithNibName:@"AddEducationViewController" bundle:nil];
+    }
+    [self.navigationController pushViewController:_AddeduVCtrl animated:YES];
+    
+}
+
+
+    
+    
+- (IBAction)deleteedu_iphone:(id)sender {
+    }
+    
+- (IBAction)deletecert_iphone:(id)sender {
+    }
 
     
     
     
-}
+    
+
 #pragma mark - Calendar
 -(void)createCalenderPopover
 {
