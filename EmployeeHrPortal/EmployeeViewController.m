@@ -29,6 +29,9 @@
     [super viewDidLoad];
     _scroll.frame=CGRectMake(0, 0,1024, 768);
     [ _scroll setContentSize:CGSizeMake(1024,850)];
+    _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
+    [_scroll_iphone setContentSize:CGSizeMake(500,640)];
+
     _prevousEmpTable.layer.borderWidth = 2.0;
     _prevousEmpTable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     [self selectApplicantPreviousEmployer];

@@ -54,4 +54,9 @@
 
 @property(strong,nonatomic)IBOutlet UIButton *deletebtn;
 -(IBAction)continueaction:(id)sender;
+//iphone
+
+
+@property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
+@property(strong,nonatomic)IBOutlet UITableView *previousemptable_iphone;
 @end
