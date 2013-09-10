@@ -18,6 +18,9 @@
     NSInteger webtype;
      NSInteger identifr;
 }
+@property(strong,nonatomic)NSString*eduview;
+@property(strong,nonatomic)NSString*cerview;
+
 //@property(strong,nonatomic)NewMedicalViewController *newmedVCtrl;
 @property(readwrite)NSInteger Applicantid;
 @property(nonatomic, weak) CKCalendarView *calendar;

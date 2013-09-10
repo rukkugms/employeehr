@@ -867,6 +867,25 @@
 
     }
     
+    
+    if (tableView==_edutable_iphone) {
+        identifr=indexPath.row;
+        if (editingStyle==UITableViewCellEditingStyleDelete) {
+            [self DeleteApplicantEducation];
+            [_eduarray removeObjectAtIndex:indexPath.row];
+        }
+
+    }
+    
+    
+    if (tableView==_certtable_iphone) {
+        identifr=indexPath.row;
+        if (editingStyle==UITableViewCellEditingStyleDelete) {
+            [self DeleteApplicantCertificates];
+            [_certifctearray removeObjectAtIndex:indexPath.row];
+        }
+
+    }
 }
 
 
@@ -963,19 +982,24 @@
 
   /*iphone Actions*/
 - (IBAction)Addedu_iphone:(id)sender {
+    _eduview=@"edu";
     if (!self.AddeduVCtrl) {
         _AddeduVCtrl=[[AddEducationViewController alloc]initWithNibName:@"AddEducationViewController" bundle:nil];
     }
     _AddeduVCtrl.Applicantid=_Applicantid;
+    _AddeduVCtrl.eduview=_eduview;
+    
     [self.navigationController pushViewController:_AddeduVCtrl animated:YES];
     
     }
     
 - (IBAction)Addcert_iphone:(id)sender {
-    
+    _eduview=@"cert";
     if (!self.AddeduVCtrl) {
         _AddeduVCtrl=[[AddEducationViewController alloc]initWithNibName:@"AddEducationViewController" bundle:nil];
     }
+    _AddeduVCtrl.eduview=_eduview;
+    _AddeduVCtrl.Applicantid=_Applicantid;
     [self.navigationController pushViewController:_AddeduVCtrl animated:YES];
     
 }
@@ -984,9 +1008,50 @@
     
     
 - (IBAction)deleteedu_iphone:(id)sender {
+    if (self.editing) {
+        [super setEditing:NO animated:NO];
+        [_edutable_iphone setEditing:NO animated:NO];
+        [_edutable_iphone reloadData];
+        
+        // [_delete_ipad setTitle:@"Done"];
+        
+    }
+    
+    else{
+        [super setEditing:YES animated:YES];
+        [_edutable_iphone setEditing:YES animated:YES];
+        [_edutable_iphone reloadData];
+        // [_delete_ipad setTitle:@"Delete"];
+        
+        
+        
+        
+    }
+    
+
     }
     
 - (IBAction)deletecert_iphone:(id)sender {
+    if (self.editing) {
+        [super setEditing:NO animated:NO];
+        [_certtable_iphone setEditing:NO animated:NO];
+        [_certtable_iphone  reloadData];
+        
+        // [_delete_ipad setTitle:@"Done"];
+        
+    }
+    
+    else{
+        [super setEditing:YES animated:YES];
+        [_certtable_iphone  setEditing:YES animated:YES];
+        [_certtable_iphone  reloadData];
+        // [_delete_ipad setTitle:@"Delete"];
+        
+        
+        
+        
+    }
+
     }
 
     

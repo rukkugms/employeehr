@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddEducationViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource>{
+@interface AddEducationViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>{
     BOOL recordResults;
    
 }
-
+@property(strong,nonatomic)NSString*eduview;
+@property(strong,nonatomic)NSString*cerview;
 @property (strong, nonatomic) IBOutlet UIButton *edunamelbl;
 @property (strong, nonatomic) IBOutlet UITextField *yrstxtfld;
 
@@ -21,6 +22,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *statetxtfld;
 @property (strong, nonatomic) IBOutlet UIView *view1;
 @property (strong, nonatomic) IBOutlet UIPickerView *edupicker;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datepicker;
+@property (strong, nonatomic) IBOutlet UIView *view2;
 
 - (IBAction)savebtn:(id)sender;
 - (IBAction)cancelbtn:(id)sender;
@@ -36,4 +39,12 @@
 /*arrays*/
 @property(readwrite) NSInteger Applicantid;
 @property(strong,nonatomic)NSMutableArray*edunamearray;
+@property (strong, nonatomic) IBOutlet UITextField *name;
+@property (strong, nonatomic) IBOutlet UIButton *date;
+- (IBAction)savecer:(id)sender;
+- (IBAction)cancelcer:(id)sender;
+
+- (IBAction)cerdatebtn:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *cerdatetxtfld;
+
 @end
