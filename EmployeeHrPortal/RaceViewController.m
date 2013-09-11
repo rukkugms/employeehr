@@ -870,4 +870,10 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 }
 
 
+- (IBAction)nextbtn:(id)sender {
+    if (!self.secondVCtrl) {
+        _secondVCtrl=[[SecondRaceViewController alloc]initWithNibName:@"SecondRaceViewController" bundle:nil];
+    }
+    [self.navigationController pushViewController:_secondVCtrl animated:YES];
+}
 @end
