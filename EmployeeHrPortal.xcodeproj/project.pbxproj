@@ -92,6 +92,8 @@
 		D4E100F617D88C22006336F8 /* previousemp.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F117D88C22006336F8 /* previousemp.m */; };
 		D4E100F717D88C22006336F8 /* Ethicity.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F317D88C22006336F8 /* Ethicity.m */; };
 		D4E100FA17D88C31006336F8 /* Medicalmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F917D88C31006336F8 /* Medicalmodel.m */; };
+		D4F94EEF17E024C8005D0AFE /* SecondRaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F94EED17E024C8005D0AFE /* SecondRaceViewController.m */; };
+		D4F94EF017E024C8005D0AFE /* SecondRaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4F94EEE17E024C8005D0AFE /* SecondRaceViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,6 +208,9 @@
 		D4E100F317D88C22006336F8 /* Ethicity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ethicity.m; sourceTree = "<group>"; };
 		D4E100F817D88C31006336F8 /* Medicalmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicalmodel.h; sourceTree = "<group>"; };
 		D4E100F917D88C31006336F8 /* Medicalmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicalmodel.m; sourceTree = "<group>"; };
+		D4F94EEC17E024C8005D0AFE /* SecondRaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondRaceViewController.h; sourceTree = "<group>"; };
+		D4F94EED17E024C8005D0AFE /* SecondRaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondRaceViewController.m; sourceTree = "<group>"; };
+		D4F94EEE17E024C8005D0AFE /* SecondRaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondRaceViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +311,9 @@
 				D4E100DB17D886B7006336F8 /* RaceViewController.m */,
 				D4E100DC17D886B7006336F8 /* RaceViewController.xib */,
 				64921A4A17D99C4600AB642E /* RaceViewController_iphone.xib */,
+				D4F94EEC17E024C8005D0AFE /* SecondRaceViewController.h */,
+				D4F94EED17E024C8005D0AFE /* SecondRaceViewController.m */,
+				D4F94EEE17E024C8005D0AFE /* SecondRaceViewController.xib */,
 				D4E100DD17D886B7006336F8 /* CourseDrugViewController.h */,
 				D4E100DE17D886B7006336F8 /* CourseDrugViewController.m */,
 				D4E100DF17D886B7006336F8 /* CourseDrugViewController.xib */,
@@ -496,6 +504,7 @@
 				D4D0E8C417DED36700C16158 /* EducationCell_iphone.xib in Resources */,
 				D4D0E8C917DED91700C16158 /* AddEducationViewController.xib in Resources */,
 				D4D0E8CB17DEEF3F00C16158 /* Employeecell_iphone.xib in Resources */,
+				D4F94EF017E024C8005D0AFE /* SecondRaceViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +539,7 @@
 				D4E100FA17D88C31006336F8 /* Medicalmodel.m in Sources */,
 				D4DBE22817DD9EBF008010D9 /* AddNewMedicalViewController.m in Sources */,
 				D4D0E8C817DED91700C16158 /* AddEducationViewController.m in Sources */,
+				D4F94EEF17E024C8005D0AFE /* SecondRaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
