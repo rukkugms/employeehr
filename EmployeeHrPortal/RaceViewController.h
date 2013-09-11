@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Ethicity.h"
-
+#import "SecondRaceViewController.h"
 @interface RaceViewController : UIViewController
 {
     BOOL recordResults;
@@ -22,7 +22,7 @@
 @property(strong,nonatomic)NSXMLParser *xmlParser;
 @property(strong,nonatomic)NSMutableString *soapResults;
 @property(strong,nonatomic)NSMutableData *webData;
-
+@property(strong,nonatomic)SecondRaceViewController*secondVCtrl;
 
 @property(strong,nonatomic)IBOutlet UISegmentedControl *isconvictSegment;
 @property(strong,nonatomic)IBOutlet UITextField *convictExplanationText;
@@ -71,4 +71,7 @@
 //array
 
 @property(strong,nonatomic)NSMutableArray *refferArray;
+- (IBAction)nextbtn:(id)sender;
+
+
 @end
