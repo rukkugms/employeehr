@@ -30,7 +30,7 @@
     _scrollview.frame=CGRectMake(0, 0, 320, 548);
      [ _scrollview setContentSize:CGSizeMake(320,850)];
     
-    
+    NSLog(@"race %d",_race1.isConvicted);
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +42,10 @@
 #pragma webservice
 -(void)UpdateApplicantInformations
 {
+    
     recordResults = FALSE;
+    
+    
     NSString *soapMessage;
     
     soapMessage = [NSString stringWithFormat:
@@ -74,10 +77,9 @@
                    "<IsSeperatedVeteran>%d</IsSeperatedVeteran>\n"
                    "</UpdateApplicantInformations>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_applicantId,_isconvictvalue,_convictExplanationText.text,_twicnumberText.text,_agelimitvalue,_legalrightsvalue,_workedovertimevalue,_workedearliervalue,_workedperiodText.text,_workoutoftownvalue,_refferbtn.titleLabel.text,_refferedagencyText.text,_IsProtectedVeteranValue,_IsDisablevalue,_IsVietnamEravalue,_IsActiveReservistvalue,_IsDisabledVeteranvalue,_IsSeperatedVeteranvalue];
+                   "</soap:Envelope>\n",_applicantId,_race1.isConvicted,_race1.convictexplanation,_race1.twiccardno,_race1.agelimit,_race1.legalrights,_race1.WorkOverTime,_race1.WorkedEarlier,_race1.WorkedPeriod,_race1.WorkedOutofTown,_race1.reffered,_race1.reffereagency,_IsProtectedVeteranValue,_IsDisablevalue,_IsVietnamEravalue,_IsActiveReservistvalue,_IsDisabledVeteranvalue,_IsSeperatedVeteranvalue];
     NSLog(@"soapmsg%@",soapMessage);
-    
-    
+        
     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
     NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
     
@@ -146,7 +148,7 @@
 
 - (IBAction)submitbtn:(id)sender {
     
-      if(_ agencysgmnt.selectedSegmentIndex==0)
+      if(_agencysgmnt.selectedSegmentIndex==0)
     {
         _IsProtectedVeteranValue=1;
     }
@@ -154,7 +156,7 @@
     {
         _IsProtectedVeteranValue=0;
     }
-    if(_ campaignsgmt.selectedSegmentIndex==0)
+    if(_campaignsgmt.selectedSegmentIndex==0)
     {
         _IsDisablevalue=1;
     }
@@ -199,6 +201,7 @@
 
     
     
+    [self UpdateApplicantInformations];
     
 }
 @end

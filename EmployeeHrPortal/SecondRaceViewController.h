@@ -12,7 +12,7 @@
     BOOL recordResults;
 }
 
-@property(strong,nonatomic)racemdl*racemdl1;
+@property(strong,nonatomic)racemdl*race1;
 /*xmlparser*/
 
 @property(strong,nonatomic)NSXMLParser *xmlParser;
@@ -31,7 +31,7 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *departmentsgmnt;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *seperatedsegmnt;
 
-
+@property(readwrite)NSInteger applicantId;
 @property(readwrite)NSInteger IsProtectedVeteranValue;
 @property(readwrite)NSInteger IsDisablevalue;
 @property(readwrite)NSInteger IsVietnamEravalue;

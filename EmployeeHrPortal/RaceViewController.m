@@ -951,7 +951,8 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     if (!self.secondVCtrl) {
         _secondVCtrl=[[SecondRaceViewController alloc]initWithNibName:@"SecondRaceViewController" bundle:nil];
     }
-    _secondVCtrl.racemdl1=_racemdl;
+    _secondVCtrl.race1=_racemdl;
+    _secondVCtrl.applicantId=_applicantId;
     [self.navigationController pushViewController:_secondVCtrl animated:YES];
 }
 - (NSInteger)numberOfComponentsInPickerView:
