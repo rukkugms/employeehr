@@ -9,14 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "Ethicity.h"
 #import "SecondRaceViewController.h"
-@interface RaceViewController : UIViewController
+#import "racemdl.h"
+@interface RaceViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource>
 {
     BOOL recordResults;
     BOOL buttonclicked;
+        
 
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollview;
-
+@property(strong,nonatomic)racemdl *racemdl;
 @property(strong,nonatomic)Ethicity *ethmdl;
 @property(readwrite)NSInteger applicantId;
 @property(strong,nonatomic)NSXMLParser *xmlParser;
@@ -73,5 +75,21 @@
 @property(strong,nonatomic)NSMutableArray *refferArray;
 - (IBAction)nextbtn:(id)sender;
 
+//iphone
+@property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
+@property(strong,nonatomic)IBOutlet UIPickerView *refferpicker_iphone;
+@property(strong,nonatomic)NSMutableArray *refferArray_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *reffertext_iphone;
+
+@property(strong,nonatomic)IBOutlet UISegmentedControl *isconvictSegment_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *convictExplanationText_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *twicnumberText_iphone;
+@property(strong,nonatomic)IBOutlet UISegmentedControl *agelimitsegment_iphone;
+@property(strong,nonatomic)IBOutlet UISegmentedControl *legalsrightssegment_iphone;
+@property(strong,nonatomic)IBOutlet UISegmentedControl *workovertimesegment_iphone;
+@property(strong,nonatomic)IBOutlet UISegmentedControl *workedearliersegment_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *workedperiodText_iphone;
+@property(strong,nonatomic)IBOutlet UISegmentedControl *workoutoftownSegment_iphone;
+@property(strong,nonatomic)IBOutlet UITextField *refferedagencyText_iphone;
 
 @end

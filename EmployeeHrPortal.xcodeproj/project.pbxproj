@@ -28,6 +28,7 @@
 		64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */; };
 		64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */; };
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
+		649ED93017E06F770064C5DB /* racemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = 649ED92F17E06F770064C5DB /* racemdl.m */; };
 		D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */; };
 		D4D0E8C417DED36700C16158 /* EducationCell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D0E8C317DED36700C16158 /* EducationCell_iphone.xib */; };
 		D4D0E8C817DED91700C16158 /* AddEducationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D0E8C617DED91700C16158 /* AddEducationViewController.m */; };
@@ -118,6 +119,8 @@
 		64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtndwn.png; sourceTree = "<group>"; };
 		64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclsurebtn@2x.png"; sourceTree = "<group>"; };
 		64921A5117D9AC0400AB642E /* disclsurebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtn.png; sourceTree = "<group>"; };
+		649ED92E17E06F770064C5DB /* racemdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = racemdl.h; sourceTree = "<group>"; };
+		649ED92F17E06F770064C5DB /* racemdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = racemdl.m; sourceTree = "<group>"; };
 		D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController_iphone.xib; sourceTree = "<group>"; };
 		D4D0E8C317DED36700C16158 /* EducationCell_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationCell_iphone.xib; sourceTree = "<group>"; };
 		D4D0E8C517DED91700C16158 /* AddEducationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEducationViewController.h; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				D4E100F917D88C31006336F8 /* Medicalmodel.m */,
 				D4E100F217D88C22006336F8 /* Ethicity.h */,
 				D4E100F317D88C22006336F8 /* Ethicity.m */,
+				649ED92E17E06F770064C5DB /* racemdl.h */,
+				649ED92F17E06F770064C5DB /* racemdl.m */,
 				D4E100BC17D861C5006336F8 /* Drugmdel.h */,
 				D4E100BD17D861C5006336F8 /* Drugmdel.m */,
 				D4E100BE17D861C5006336F8 /* Detailcourse.h */,
@@ -540,6 +545,7 @@
 				D4DBE22817DD9EBF008010D9 /* AddNewMedicalViewController.m in Sources */,
 				D4D0E8C817DED91700C16158 /* AddEducationViewController.m in Sources */,
 				D4F94EEF17E024C8005D0AFE /* SecondRaceViewController.m in Sources */,
+				649ED93017E06F770064C5DB /* racemdl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

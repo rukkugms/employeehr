@@ -32,7 +32,10 @@
     // Do any additional setup after loading the view from its nib.
     _scrollview.frame=CGRectMake(0, 0,1024, 768);
     [ _scrollview setContentSize:CGSizeMake(1024,850)];
+    _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
+    [_scroll_iphone setContentSize:CGSizeMake(500,640)];
     _refferArray=[[NSMutableArray alloc]initWithObjects:@"Contacted  on my own",@"Referred by employee",@"Company Website",@"State Employment agency",@"National Publication",@"Newspaper Advertisement",@"Private Employment agency",@"Another Company",@"Other", nil];
+    _refferArray_iphone=[[NSMutableArray alloc]initWithObjects:@"Contacted  on my own",@"Referred by employee",@"Company Website",@"State Employment agency",@"National Publication",@"Newspaper Advertisement",@"Private Employment agency",@"Another Company",@"Other", nil];
 self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     UIBarButtonItem *homebutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"rounded"] style:UIBarButtonItemStylePlain target:self action:@selector(homeAction)];
     [self.navigationItem setRightBarButtonItem:homebutton animated:YES];
@@ -56,6 +59,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 {
     recordResults = FALSE;
     NSString *soapMessage;
+   
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -116,8 +120,8 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     {
         ////NSLog(@"theConnection is NULL");
     }
+    }
     
-}
 -(void)GetApplicantInformations
 {
     recordResults = FALSE;
@@ -400,11 +404,14 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         if ([_soapResults isEqualToString:@"true"]) {
             _ethmdl.isConvicted=0;
             _isconvictSegment.selectedSegmentIndex=0;
+            _isconvictSegment_iphone.selectedSegmentIndex=0;
+
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
             _ethmdl.isConvicted=1;
             _isconvictSegment.selectedSegmentIndex=1;
+             _isconvictSegment_iphone.selectedSegmentIndex=1;
             
         }
 
@@ -416,6 +423,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
                recordResults = FALSE;
         _ethmdl.convictexplanation=_soapResults;
         _convictExplanationText.text=_soapResults;
+        _convictExplanationText_iphone.text=_soapResults;
         _soapResults = nil;
     }
 
@@ -425,6 +433,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         _ethmdl.twiccardno=_soapResults;
         _twicnumberText.text=_soapResults;
+        _twicnumberText_iphone.text=_soapResults;
         _soapResults = nil;
     }
     
@@ -436,12 +445,13 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         if ([_soapResults isEqualToString:@"true"]) {
             _ethmdl.agelimit=0;
             _agelimitsegment.selectedSegmentIndex=0;
+            _agelimitsegment_iphone.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
             _ethmdl.agelimit=1;
             _agelimitsegment.selectedSegmentIndex=1;
-            
+            _agelimitsegment_iphone.selectedSegmentIndex=1;
         }
         
         _soapResults = nil;
@@ -454,12 +464,13 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         if ([_soapResults isEqualToString:@"true"]) {
             _ethmdl.legalrights=0;
             _legalsrightssegment.selectedSegmentIndex=0;
+             _legalsrightssegment_iphone.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
             _ethmdl.legalrights=1;
             _legalsrightssegment.selectedSegmentIndex=1;
-            
+            _legalsrightssegment_iphone.selectedSegmentIndex=1;
         }
         
         _soapResults = nil;
@@ -472,11 +483,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         if ([_soapResults isEqualToString:@"true"]) {
             _ethmdl.legalrights=0;
             _legalsrightssegment.selectedSegmentIndex=0;
-            
+            _legalsrightssegment_iphone.selectedSegmentIndex=0;
         }
         else if ([_soapResults isEqualToString:@"false"]){
             _ethmdl.legalrights=1;
             _legalsrightssegment.selectedSegmentIndex=1;
+             _legalsrightssegment_iphone.selectedSegmentIndex=1;
             
         }
         
@@ -491,12 +503,13 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         if ([_soapResults isEqualToString:@"true"]) {
             _ethmdl.WorkOverTime=0;
             _workovertimesegment.selectedSegmentIndex=0;
+            _workovertimesegment_iphone.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
             _ethmdl.WorkOverTime=1;
             _workovertimesegment.selectedSegmentIndex=1;
-            
+            _workovertimesegment_iphone.selectedSegmentIndex=1;
         }
         
         _soapResults = nil;
@@ -509,12 +522,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         if ([_soapResults isEqualToString:@"true"]) {
             _ethmdl.WorkedEarlier=0;
             _workedearliersegment.selectedSegmentIndex=0;
-            
+             _workedearliersegment_iphone.selectedSegmentIndex=0;
         }
         else if ([_soapResults isEqualToString:@"false"]){
             _ethmdl.WorkedEarlier=1;
             _workedearliersegment.selectedSegmentIndex=1;
-            
+            _workedearliersegment_iphone.selectedSegmentIndex=1;
         }
         
         _soapResults = nil;
@@ -525,6 +538,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         _workedperiodText.text=_soapResults;
+        _workedperiodText_iphone.text=_soapResults;
         _ethmdl.WorkedPeriod=_soapResults;
         _soapResults = nil;
     }
@@ -538,12 +552,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         if ([_soapResults isEqualToString:@"true"]) {
             _ethmdl.WorkedOutofTown=0;
             _workoutoftownSegment.selectedSegmentIndex=0;
-            
+             _workoutoftownSegment_iphone.selectedSegmentIndex=0;
         }
         else if ([_soapResults isEqualToString:@"false"]){
             _ethmdl.WorkedOutofTown=1;
             _workoutoftownSegment.selectedSegmentIndex=1;
-            
+            _workoutoftownSegment_iphone.selectedSegmentIndex=1;
         }
         
         _soapResults = nil;
@@ -554,6 +568,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         recordResults = FALSE;
         [_refferbtn setTitle:_soapResults forState:UIControlStateNormal];
+        _reffertext_iphone.text=_soapResults;
         _ethmdl.reffered=_soapResults;
         _soapResults = nil;
     }
@@ -562,6 +577,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         recordResults = FALSE;
         _refferedagencyText.text=_soapResults;
+        _refferedagencyText_iphone.text=_soapResults;
         _ethmdl.reffereagency=_soapResults;
         _soapResults = nil;
     }
@@ -871,9 +887,100 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 
 
 - (IBAction)nextbtn:(id)sender {
+    if(_isconvictSegment_iphone.selectedSegmentIndex==0)
+    {
+        _isconvictvalue=1;
+    }
+    else if(_isconvictSegment_iphone.selectedSegmentIndex==1)
+    {
+        _isconvictvalue=0;
+    }
+    if(_agelimitsegment_iphone.selectedSegmentIndex==0)
+    {
+        _agelimitvalue=1;
+    }
+    else if(_agelimitsegment_iphone.selectedSegmentIndex==1)
+    {
+        _agelimitvalue=0;
+    }
+    if(_legalsrightssegment_iphone.selectedSegmentIndex==0)
+    {
+        _legalrightsvalue=1;
+    }
+    else if(_legalsrightssegment_iphone.selectedSegmentIndex==1)
+    {
+        _legalrightsvalue=0;
+    }
+    if(_workovertimesegment_iphone.selectedSegmentIndex==0)
+    {
+        _workedovertimevalue=1;
+    }
+    else if(_workovertimesegment_iphone.selectedSegmentIndex==1)
+    {
+        _workedovertimevalue=0;
+    }
+    if(_workedearliersegment_iphone.selectedSegmentIndex==0)
+    {
+        _workedearliervalue=1;
+    }
+    else if(_workedearliersegment_iphone.selectedSegmentIndex==1)
+    {
+        _workedearliervalue=0;
+    }
+    
+    if(_workoutoftownSegment_iphone.selectedSegmentIndex==0)
+    {
+        _workoutoftownvalue=1;
+    }
+    else if(_workoutoftownSegment_iphone.selectedSegmentIndex==1)
+    {
+        _workoutoftownvalue=0;
+    }
+    _racemdl=[[racemdl alloc]init];
+    _racemdl.isConvicted=_isconvictvalue;
+    _racemdl.agelimit=_agelimitvalue;
+    _racemdl.legalrights=_legalrightsvalue;
+    _racemdl.WorkOverTime=_workedovertimevalue;
+    _racemdl.WorkedEarlier=_workedearliervalue;
+    _racemdl.WorkedOutofTown=_workoutoftownvalue;
+    _racemdl.convictexplanation=_convictExplanationText_iphone.text;
+    _racemdl.twiccardno=_twicnumberText_iphone.text;
+    _racemdl.WorkedPeriod=_workedperiodText_iphone.text;
+    _racemdl.reffered=_reffertext_iphone.text;
+    _racemdl.reffereagency=_refferedagencyText_iphone.text;
     if (!self.secondVCtrl) {
         _secondVCtrl=[[SecondRaceViewController alloc]initWithNibName:@"SecondRaceViewController" bundle:nil];
     }
     [self.navigationController pushViewController:_secondVCtrl animated:YES];
 }
+- (NSInteger)numberOfComponentsInPickerView:
+(UIPickerView *)pickerView
+{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component
+{
+           return [_refferArray_iphone count];
+      
+    
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
+{
+   
+   
+        return [_refferArray_iphone objectAtIndex:row];
+      
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    _reffertext_iphone .text=[_refferArray_iphone objectAtIndex:row] ;
+        _refferpicker_iphone.hidden=YES;
+        [_refferpicker_iphone reloadAllComponents];
+      
+}
+
 @end
