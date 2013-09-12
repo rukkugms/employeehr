@@ -234,7 +234,7 @@
     }
     else if(_departmentsgmnt.selectedSegmentIndex==1)
     {
-         _IsDisabledVeteranvalue=1;
+         _IsDisabledVeteranvalue=0;
     }
 
     
