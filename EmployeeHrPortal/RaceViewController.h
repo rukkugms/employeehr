@@ -74,12 +74,13 @@
 
 @property(strong,nonatomic)NSMutableArray *refferArray;
 - (IBAction)nextbtn:(id)sender;
+- (IBAction)refferselect:(id)sender;
 
 //iphone
 @property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
 @property(strong,nonatomic)IBOutlet UIPickerView *refferpicker_iphone;
 @property(strong,nonatomic)NSMutableArray *refferArray_iphone;
-@property(strong,nonatomic)IBOutlet UITextField *reffertext_iphone;
+@property(strong,nonatomic)IBOutlet UIButton *reffertext_iphone;
 
 @property(strong,nonatomic)IBOutlet UISegmentedControl *isconvictSegment_iphone;
 @property(strong,nonatomic)IBOutlet UITextField *convictExplanationText_iphone;

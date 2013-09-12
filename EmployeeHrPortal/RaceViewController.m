@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
     [self GetApplicantInformations];
+    
     // Do any additional setup after loading the view from its nib.
     _scrollview.frame=CGRectMake(0, 0,1024, 768);
     [ _scrollview setContentSize:CGSizeMake(1024,850)];
@@ -568,7 +569,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         recordResults = FALSE;
         [_refferbtn setTitle:_soapResults forState:UIControlStateNormal];
-        _reffertext_iphone.text=_soapResults;
+       [_reffertext_iphone setTitle:_soapResults forState:UIControlStateNormal];
         _ethmdl.reffered=_soapResults;
         _soapResults = nil;
     }
@@ -946,7 +947,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     _racemdl.convictexplanation=_convictExplanationText_iphone.text;
     _racemdl.twiccardno=_twicnumberText_iphone.text;
     _racemdl.WorkedPeriod=_workedperiodText_iphone.text;
-    _racemdl.reffered=_reffertext_iphone.text;
+    _racemdl.reffered=_reffertext_iphone.titleLabel.text;
     _racemdl.reffereagency=_refferedagencyText_iphone.text;
     if (!self.secondVCtrl) {
         _secondVCtrl=[[SecondRaceViewController alloc]initWithNibName:@"SecondRaceViewController" bundle:nil];
@@ -978,11 +979,16 @@ numberOfRowsInComponent:(NSInteger)component
 }
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
-{
-    _reffertext_iphone .text=[_refferArray_iphone objectAtIndex:row] ;
+{  
+    [_reffertext_iphone setTitle:[_refferArray_iphone objectAtIndex:row] forState:UIControlStateNormal];
         _refferpicker_iphone.hidden=YES;
-        [_refferpicker_iphone reloadAllComponents];
+        
       
+}
+- (IBAction)refferselect:(id)sender
+{
+     _refferpicker_iphone.hidden=NO;
+    [_refferpicker_iphone reloadAllComponents];
 }
 
 @end
