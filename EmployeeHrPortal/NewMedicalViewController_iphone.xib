@@ -254,7 +254,7 @@
 									<object class="IBUILabel" id="957612631">
 										<reference key="NSNextResponder" ref="248132148"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{0, 357}, {146, 54}}</string>
+										<string key="NSFrame">{{7, 362}, {146, 54}}</string>
 										<reference key="NSSuperview" ref="248132148"/>
 										<reference key="NSNextKeyView" ref="300913767"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -278,6 +278,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{117, 434}, {101, 24}}</string>
 										<reference key="NSSuperview" ref="248132148"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -297,7 +298,7 @@
 									<object class="IBUISegmentedControl" id="300913767">
 										<reference key="NSNextResponder" ref="248132148"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{187, 362}, {100, 30}}</string>
+										<string key="NSFrame">{{183, 362}, {104, 30}}</string>
 										<reference key="NSSuperview" ref="248132148"/>
 										<reference key="NSNextKeyView" ref="502648051"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -307,7 +308,7 @@
 										<int key="IBNumberOfSegments">2</int>
 										<int key="IBSelectedSegmentIndex">0</int>
 										<array key="IBSegmentTitles">
-											<string>First</string>
+											<string>Yes</string>
 											<string>No</string>
 										</array>
 										<array class="NSMutableArray" key="IBSegmentWidths">
@@ -520,9 +521,9 @@
 							<reference ref="446261117"/>
 							<reference ref="457226159"/>
 							<reference ref="159087682"/>
-							<reference ref="957612631"/>
 							<reference ref="300913767"/>
 							<reference ref="502648051"/>
+							<reference ref="957612631"/>
 						</array>
 						<reference key="parent" ref="110493259"/>
 					</object>
