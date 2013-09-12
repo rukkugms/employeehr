@@ -39,6 +39,54 @@
     // Dispose of any resources that can be recreated.
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+  if (_ethicity1.IsProtectedVeteran==1) {
+        _campaignsgmt.selectedSegmentIndex=0;
+    }
+    else if (_ethicity1.IsProtectedVeteran==0){
+          _campaignsgmt.selectedSegmentIndex=1;
+    }
+    
+    
+    if (_ethicity1.IsDisable==1) {
+        _Affirmatvesgmt.selectedSegmentIndex=0;
+    }
+    else if (_ethicity1.IsDisable==0){
+        _Affirmatvesgmt.selectedSegmentIndex=1;
+    }
+    
+    if (_ethicity1.IsVietnamEra==1) {
+        _activedutysgmnt.selectedSegmentIndex=0;
+    }
+    else  if (_ethicity1.IsVietnamEra==0){
+         _activedutysgmnt.selectedSegmentIndex=1;
+    }
+    
+    if (_ethicity1.IsActiveReservist==1) {
+        _reservistsgmnt.selectedSegmentIndex=0;
+    }
+    else   if (_ethicity1.IsActiveReservist==0) {
+        _reservistsgmnt.selectedSegmentIndex=1;
+    }
+    
+    if (_ethicity1.IsDisbledVeteran==1) {
+        _departmentsgmnt.selectedSegmentIndex=0;
+    }
+    else if (_ethicity1.IsDisbledVeteran==0){
+        _departmentsgmnt.selectedSegmentIndex=1;
+    }
+    
+    if (_ethicity1.IsSeperatedVeteran==1) {
+        _seperatedsegmnt.selectedSegmentIndex=0;
+    }
+    else  if (_ethicity1.IsSeperatedVeteran==0){
+        _seperatedsegmnt.selectedSegmentIndex=1;
+    }
+
+}
 #pragma webservice
 -(void)UpdateApplicantInformations
 {
@@ -148,29 +196,29 @@
 
 - (IBAction)submitbtn:(id)sender {
     
-      if(_agencysgmnt.selectedSegmentIndex==0)
-    {
-        _IsProtectedVeteranValue=1;
-    }
-    else if(_agencysgmnt.selectedSegmentIndex==1)
-    {
-        _IsProtectedVeteranValue=0;
-    }
-    if(_campaignsgmt.selectedSegmentIndex==0)
-    {
-        _IsDisablevalue=1;
+       if(_campaignsgmt.selectedSegmentIndex==0)
+    {_IsProtectedVeteranValue=1;
+       
     }
     else if(_campaignsgmt.selectedSegmentIndex==1)
-    {
-        _IsDisablevalue=0;
+    {_IsProtectedVeteranValue=0;
+       
+    }
+    
+    if(_Affirmatvesgmt.selectedSegmentIndex==0)
+    { _IsDisablevalue=1;
+           }
+    else if(_Affirmatvesgmt.selectedSegmentIndex==1)
+    { _IsDisablevalue=0;
+       
     }
     if(_activedutysgmnt.selectedSegmentIndex==0)
-    {
-        _IsVietnamEravalue=1;
-    }
+    { _IsVietnamEravalue=1;
+
+            }
     else if(_activedutysgmnt.selectedSegmentIndex==1)
-    {
-        _IsVietnamEravalue=0;
+    { _IsVietnamEravalue=0;
+       
     }
     if(_reservistsgmnt.selectedSegmentIndex==0)
     {
@@ -178,7 +226,7 @@
     }
     else if(_reservistsgmnt.selectedSegmentIndex==1)
     {
-        _IsActiveReservistvalue=0;
+         _IsActiveReservistvalue=0;
     }
     if(_departmentsgmnt.selectedSegmentIndex==0)
     {
@@ -186,8 +234,9 @@
     }
     else if(_departmentsgmnt.selectedSegmentIndex==1)
     {
-        _IsDisabledVeteranvalue=0;
+         _IsDisabledVeteranvalue=1;
     }
+
     
     if(_seperatedsegmnt.selectedSegmentIndex==0)
     {

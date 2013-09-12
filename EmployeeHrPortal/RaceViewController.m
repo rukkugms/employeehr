@@ -403,14 +403,14 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.isConvicted=0;
+            _ethmdl.isConvicted=1;
             _isconvictSegment.selectedSegmentIndex=0;
             _isconvictSegment_iphone.selectedSegmentIndex=0;
 
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.isConvicted=1;
+            _ethmdl.isConvicted=0;
             _isconvictSegment.selectedSegmentIndex=1;
              _isconvictSegment_iphone.selectedSegmentIndex=1;
             
@@ -444,13 +444,13 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.agelimit=0;
+            _ethmdl.agelimit=1;
             _agelimitsegment.selectedSegmentIndex=0;
             _agelimitsegment_iphone.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.agelimit=1;
+            _ethmdl.agelimit=0;
             _agelimitsegment.selectedSegmentIndex=1;
             _agelimitsegment_iphone.selectedSegmentIndex=1;
         }
@@ -463,13 +463,13 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.legalrights=0;
+            _ethmdl.legalrights=1;
             _legalsrightssegment.selectedSegmentIndex=0;
              _legalsrightssegment_iphone.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.legalrights=1;
+            _ethmdl.legalrights=0;
             _legalsrightssegment.selectedSegmentIndex=1;
             _legalsrightssegment_iphone.selectedSegmentIndex=1;
         }
@@ -482,12 +482,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.legalrights=0;
+            _ethmdl.legalrights=1;
             _legalsrightssegment.selectedSegmentIndex=0;
             _legalsrightssegment_iphone.selectedSegmentIndex=0;
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.legalrights=1;
+            _ethmdl.legalrights=0;
             _legalsrightssegment.selectedSegmentIndex=1;
              _legalsrightssegment_iphone.selectedSegmentIndex=1;
             
@@ -502,13 +502,13 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.WorkOverTime=0;
+            _ethmdl.WorkOverTime=1;
             _workovertimesegment.selectedSegmentIndex=0;
             _workovertimesegment_iphone.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.WorkOverTime=1;
+            _ethmdl.WorkOverTime=0;
             _workovertimesegment.selectedSegmentIndex=1;
             _workovertimesegment_iphone.selectedSegmentIndex=1;
         }
@@ -521,12 +521,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.WorkedEarlier=0;
+            _ethmdl.WorkedEarlier=1;
             _workedearliersegment.selectedSegmentIndex=0;
              _workedearliersegment_iphone.selectedSegmentIndex=0;
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.WorkedEarlier=1;
+            _ethmdl.WorkedEarlier=0;
             _workedearliersegment.selectedSegmentIndex=1;
             _workedearliersegment_iphone.selectedSegmentIndex=1;
         }
@@ -551,12 +551,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.WorkedOutofTown=0;
+            _ethmdl.WorkedOutofTown=1;
             _workoutoftownSegment.selectedSegmentIndex=0;
              _workoutoftownSegment_iphone.selectedSegmentIndex=0;
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.WorkedOutofTown=1;
+            _ethmdl.WorkedOutofTown=0;
             _workoutoftownSegment.selectedSegmentIndex=1;
             _workoutoftownSegment_iphone.selectedSegmentIndex=1;
         }
@@ -591,12 +591,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.IsProtectedVeteran=0;
+            _ethmdl.IsProtectedVeteran=1;
             _IsProtectedVeteransegment.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.IsProtectedVeteran=1;
+            _ethmdl.IsProtectedVeteran=0;
             _IsProtectedVeteransegment.selectedSegmentIndex=1;
             
         }
@@ -610,12 +610,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.IsDisable=0;
+            _ethmdl.IsDisable=1;
             _isdisableSegment.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.IsDisable=1;
+            _ethmdl.IsDisable=0;
             _isdisableSegment.selectedSegmentIndex=1;
             
         }
@@ -631,12 +631,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.IsVietnamEra=0;
+            _ethmdl.IsVietnamEra=1;
             _IsVietnamEraSegment.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.IsVietnamEra=1;
+            _ethmdl.IsVietnamEra=0;
             _IsVietnamEraSegment.selectedSegmentIndex=1;
             
         }
@@ -650,12 +650,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.IsActiveReservist=0;
+            _ethmdl.IsActiveReservist=1;
             _IsActiveReservistSegment.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.IsActiveReservist=1;
+            _ethmdl.IsActiveReservist=0;
             _IsActiveReservistSegment.selectedSegmentIndex=1;
             
         }
@@ -668,12 +668,12 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.IsDisbledVeteran=0;
+            _ethmdl.IsDisbledVeteran=1;
             _IsDisabledVeteranSegment.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.IsDisbledVeteran=1;
+            _ethmdl.IsDisbledVeteran=0;
             _IsDisabledVeteranSegment.selectedSegmentIndex=1;
             
         }
@@ -687,15 +687,17 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = FALSE;
         
         if ([_soapResults isEqualToString:@"true"]) {
-            _ethmdl.IsSeperatedVeteran=0;
+            _ethmdl.IsSeperatedVeteran=1;
             _IsSeperatedVeteranSegment.selectedSegmentIndex=0;
             
         }
         else if ([_soapResults isEqualToString:@"false"]){
-            _ethmdl.IsSeperatedVeteran=1;
+            _ethmdl.IsSeperatedVeteran=0;
             _IsSeperatedVeteranSegment.selectedSegmentIndex=1;
             
         }
+        
+        
         
         _soapResults = nil;
     }
@@ -954,6 +956,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     }
     _secondVCtrl.race1=_racemdl;
     _secondVCtrl.applicantId=_applicantId;
+    _secondVCtrl.ethicity1=_ethmdl;
     [self.navigationController pushViewController:_secondVCtrl animated:YES];
 }
 - (NSInteger)numberOfComponentsInPickerView:

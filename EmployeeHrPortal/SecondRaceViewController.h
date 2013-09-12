@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "racemdl.h"
+#import "Ethicity.h"
 @interface SecondRaceViewController : UIViewController{
     BOOL recordResults;
 }
 
 @property(strong,nonatomic)racemdl*race1;
+@property(strong,nonatomic)Ethicity*ethicity1;
 /*xmlparser*/
 
 @property(strong,nonatomic)NSXMLParser *xmlParser;
