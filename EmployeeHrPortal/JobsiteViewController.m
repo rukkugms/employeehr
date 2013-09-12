@@ -1608,9 +1608,9 @@
         
         [_datepicker_iphone addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
     }
-    if (textField==_expirydatetxtfld_iphone) {
-        _datepicker_iphone.hidden=YES;
-    }
+//    if (textField==_expirydatetxtfld_iphone) {
+//        _datepicker_iphone.hidden=YES;
+//    }
     if (textField==_skilltextflield_iphone) {
         _datapicker1.hidden=YES;
     }
@@ -1687,10 +1687,12 @@ numberOfRowsInComponent:(NSInteger)component
 {
     if (pickerView==_datapicker1) {
     _skilltextflield_iphone.text =[_skillsArray objectAtIndex:row];
+        _datapicker1.hidden=YES;
 }
      if (pickerView==_datapicker2) {
          
          _crafttxtflield_iphone.text=[_craftsArray objectAtIndex:row];
+           _datapicker2.hidden=YES;
      }
     
     

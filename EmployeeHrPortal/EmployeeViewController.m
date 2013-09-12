@@ -43,7 +43,9 @@
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     UIBarButtonItem *homebutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"rounded"] style:UIBarButtonItemStylePlain target:self action:@selector(homeAction)];
     [self.navigationItem setRightBarButtonItem:homebutton animated:YES];
-      self.navigationItem.hidesBackButton=YES;    
+      self.navigationItem.hidesBackButton=YES;
+    self.navigationController.navigationBarHidden=YES;
+    
 }
 -(void)homeAction{
     [self updateViewConstraints];
