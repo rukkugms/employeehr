@@ -990,5 +990,10 @@ numberOfRowsInComponent:(NSInteger)component
      _refferpicker_iphone.hidden=NO;
     [_refferpicker_iphone reloadAllComponents];
 }
+-(IBAction)textfieldshouldreturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
 
 @end

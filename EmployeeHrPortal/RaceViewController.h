@@ -74,7 +74,7 @@
 
 @property(strong,nonatomic)NSMutableArray *refferArray;
 - (IBAction)nextbtn:(id)sender;
-- (IBAction)refferselect:(id)sender;
+
 
 //iphone
 @property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
@@ -92,5 +92,6 @@
 @property(strong,nonatomic)IBOutlet UITextField *workedperiodText_iphone;
 @property(strong,nonatomic)IBOutlet UISegmentedControl *workoutoftownSegment_iphone;
 @property(strong,nonatomic)IBOutlet UITextField *refferedagencyText_iphone;
-
+- (IBAction)refferselect:(id)sender;
+-(IBAction)textfieldshouldreturn:(id)sender;
 @end
