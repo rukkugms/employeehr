@@ -49,9 +49,19 @@
 
 -(void)GetApplicantId1{
     
+
     recordResults = FALSE;
     NSString *soapMessage;
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+         ssnstring=_ssntxtfld.text;
+         NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
+         NSLog(@"%@",subString);
+         NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
+         NSLog(@"%@",substring2);
+         NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
+         NSLog(@"%@",substring3);
+         NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+         NSLog(@"%@",connectstring);
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -65,7 +75,7 @@
                    "<Password>%@</Password>\n"
                    "</GetApplicantId1>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_ssntxtfld.text,_passwordtxtfld.text];
+                   "</soap:Envelope>\n",connectstring,_passwordtxtfld.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -98,6 +108,16 @@
      }
     
      else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+         ssnstring=_SSNtxtfld_iphone.text;
+         NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
+         NSLog(@"%@",subString);
+         NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
+         NSLog(@"%@",substring2);
+         NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
+         NSLog(@"%@",substring3);
+         NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+         NSLog(@"%@",connectstring);
+
          soapMessage = [NSString stringWithFormat:
                         
                         @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -111,7 +131,7 @@
                         "<Password>%@</Password>\n"
                         "</GetApplicantId1>\n"
                         "</soap:Body>\n"
-                        "</soap:Envelope>\n",_SSNtxtfld_iphone.text,_passwordtxtfld_iphone.text];
+                        "</soap:Envelope>\n",connectstring,_passwordtxtfld_iphone.text];
          NSLog(@"soapmsg%@",soapMessage);
          
          
@@ -309,4 +329,9 @@
     
     [self GetApplicantId1];
 }
+-(IBAction)textfldshouldreturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
 @end

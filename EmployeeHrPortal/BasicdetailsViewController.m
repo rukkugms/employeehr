@@ -395,13 +395,13 @@ _educationVCtrl.Applicantid=_Applicantid;
          {
              genderstg=0;
          }
-         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-         [dateFormat setDateFormat: @"MM-dd-yyyy"];
-         
-         NSDate *dateString = [dateFormat dateFromString:_dobtext_iphone.text];
-         NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
-         [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
-         NSString* sqldate=[dateFormat1 stringFromDate:dateString];
+//         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+//         [dateFormat setDateFormat: @"MM-dd-yyyy"];
+//         
+//         NSDate *dateString = [dateFormat dateFromString:_dobtext_iphone.text];
+//         NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+//         [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+//         NSString* sqldate=[dateFormat1 stringFromDate:dateString];
          
          soapMessage = [NSString stringWithFormat:
                         
@@ -435,7 +435,7 @@ _educationVCtrl.Applicantid=_Applicantid;
                         "<NameInLicense>%@</NameInLicense>\n"
                         "</UpdateApplicantData>\n"
                         "</soap:Body>\n"
-                        "</soap:Envelope>\n",_Applicantid,_suffixbtn_iphone.titleLabel.text,_firstnametxt_iphone.text,_lastnametxt_iphone.text,_homeaddresstxt_iphone.text,_citytxt_iphone.text,_statebtn_iphone.titleLabel.text,_ziptxt_iphone.text,_ssntextfield_iphone.text,sqldate,_countrytxt_iphone.titleLabel.text,genderstg,_emailtxt_iphone.text,_mobilenotext_iphone.text,_homenotxt_iphone.text,_alternatenotxt_iphone.text,_emergencycontactnametxt_iphone.text,_contactnotxt_iphone.text,_drivinglicenceno_iphone.text,_stateissuetxt_iphone.text,_nameonlicenct_iphone.text];
+                        "</soap:Envelope>\n",_Applicantid,_suffixbtn_iphone.titleLabel.text,_firstnametxt_iphone.text,_lastnametxt_iphone.text,_homeaddresstxt_iphone.text,_citytxt_iphone.text,_statebtn_iphone.titleLabel.text,_ziptxt_iphone.text,_ssntextfield_iphone.text,_dobtext_iphone.text,_countrytxt_iphone.titleLabel.text,genderstg,_emailtxt_iphone.text,_mobilenotext_iphone.text,_homenotxt_iphone.text,_alternatenotxt_iphone.text,_emergencycontactnametxt_iphone.text,_contactnotxt_iphone.text,_drivinglicenceno_iphone.text,_stateissuetxt_iphone.text,_nameonlicenct_iphone.text];
          NSLog(@"soapmsg%@",soapMessage);
          
          

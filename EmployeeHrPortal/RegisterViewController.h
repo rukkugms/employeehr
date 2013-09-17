@@ -12,6 +12,7 @@
         BOOL recordResults;
     NSInteger Applicantid;
     NSInteger webtype;
+    NSString *ssnstring;
 }
 @property(strong,nonatomic)JobsiteViewController*firstVCtrl;
 
@@ -27,5 +28,6 @@
 
 
 - (IBAction)continuebtn:(id)sender;
+
 
 @end

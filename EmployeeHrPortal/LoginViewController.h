@@ -12,9 +12,11 @@
 #import "RaceViewController.h"
 #import "EmployeeViewController.h"
 #import "CourseDrugViewController.h"
-@interface LoginViewController : UIViewController{
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
+{
     BOOL recordResults;
  NSInteger Applicantid;
+    NSString *ssnstring;
 }
 /*Outlets */
 @property (strong, nonatomic) IBOutlet UITextField *ssntxtfld;
@@ -35,6 +37,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordtxtfld_iphone;
 
 - (IBAction)loginbtn_iphone:(id)sender;
-
+-(IBAction)textfldshouldreturn:(id)sender;
 
 @end

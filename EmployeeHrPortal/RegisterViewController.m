@@ -72,6 +72,16 @@
 
 -(void)GetApplicantId{
     webtype=2;
+    ssnstring=_Ssntxtfld.text;
+    NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
+    NSLog(@"%@",subString);
+    NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
+    NSLog(@"%@",substring2);
+    NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
+    NSLog(@"%@",substring3);
+    NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+    NSLog(@"%@",connectstring);
+
     recordResults = FALSE;
     NSString *soapMessage;
     
@@ -88,7 +98,7 @@
                    "<Password>%@</Password>\n"
                    "</GetApplicantId>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Ssntxtfld.text,_confirmpasswrd.text];
+                   "</soap:Envelope>\n",connectstring,_confirmpasswrd.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -124,7 +134,16 @@
 
 -(void)GetApplicantId2{
     webtype=1;
-    
+    ssnstring=_Ssntxtfld.text;
+    NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
+    NSLog(@"%@",subString);
+    NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
+    NSLog(@"%@",substring2);
+    NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
+    NSLog(@"%@",substring3);
+    NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+    NSLog(@"%@",connectstring);
+
     recordResults = FALSE;
     NSString *soapMessage;
     
@@ -141,7 +160,7 @@
                    "<Password>%@</Password>\n"
                    "</GetApplicantId2>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Ssntxtfld.text,_confirmpasswrd.text];
+                   "</soap:Envelope>\n",connectstring,_confirmpasswrd.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
