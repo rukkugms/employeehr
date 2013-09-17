@@ -19,6 +19,8 @@
     NSString *ssnstring;
 }
 /*Outlets */
+
+@property (strong, nonatomic) NSString *connectstring;
 @property (strong, nonatomic) IBOutlet UITextField *ssntxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *passwordtxtfld;
 @property (strong, nonatomic)UITabBarController*tabbarcntrl;

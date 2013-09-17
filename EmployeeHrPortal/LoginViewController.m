@@ -42,6 +42,109 @@
     [self.navigationController popToViewController:self.firstVCtrl animated:YES];
      //[NSUserDefaults standardUserDefaults]
      }
+#pragma mark - Textfield Delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        ssnstring=_ssntxtfld.text;
+        //checking a particular charector
+        // NSString *connectstring;
+        NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+        NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+        
+        
+        
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        NSLog (@"Result: %@", resultString);
+        
+        
+        
+        if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+            _connectstring=resultString;
+        }
+        
+        
+        
+        
+        
+        else {
+            
+            
+            
+            
+            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+            NSLog(@"%@",subString);
+            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+            NSLog(@"%@",substring2);
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,3)];
+            NSLog(@"%@",substring3);
+            _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",_connectstring);
+            _ssntxtfld.text=_connectstring;
+            
+        }
+
+    
+        
+        
+    }
+
+    else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        
+        ssnstring=_SSNtxtfld_iphone.text;
+        
+        //checking a particular charector
+        NSString *connectstring;
+        NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+        NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+        
+        
+        
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        NSLog (@"Result: %@", resultString);
+        
+        
+        
+        if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+            connectstring=resultString;
+        }
+        
+        
+        
+        
+        
+        else {
+            
+            
+            
+            
+            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+            NSLog(@"%@",subString);
+            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+            NSLog(@"%@",substring2);
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,3)];
+            NSLog(@"%@",substring3);
+            connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",connectstring);
+            
+            
+            
+        }
+
+    }
+
+        return YES;
+    }
+
+
+
+
+
 
 
 #pragma mark - Webservice
@@ -53,15 +156,6 @@
     recordResults = FALSE;
     NSString *soapMessage;
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-         ssnstring=_ssntxtfld.text;
-         NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
-         NSLog(@"%@",subString);
-         NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
-         NSLog(@"%@",substring2);
-         NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
-         NSLog(@"%@",substring3);
-         NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
-         NSLog(@"%@",connectstring);
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -75,7 +169,7 @@
                    "<Password>%@</Password>\n"
                    "</GetApplicantId1>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",connectstring,_passwordtxtfld.text];
+                   "</soap:Envelope>\n",_connectstring,_passwordtxtfld.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -108,16 +202,8 @@
      }
     
      else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-         ssnstring=_SSNtxtfld_iphone.text;
-         NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
-         NSLog(@"%@",subString);
-         NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
-         NSLog(@"%@",substring2);
-         NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
-         NSLog(@"%@",substring3);
-         NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
-         NSLog(@"%@",connectstring);
-
+        
+         
          soapMessage = [NSString stringWithFormat:
                         
                         @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -131,7 +217,7 @@
                         "<Password>%@</Password>\n"
                         "</GetApplicantId1>\n"
                         "</soap:Body>\n"
-                        "</soap:Envelope>\n",connectstring,_passwordtxtfld_iphone.text];
+                        "</soap:Envelope>\n",_connectstring,_passwordtxtfld_iphone.text];
          NSLog(@"soapmsg%@",soapMessage);
          
          
