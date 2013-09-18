@@ -96,9 +96,8 @@
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         
         ssnstring=_SSNtxtfld_iphone.text;
-        
         //checking a particular charector
-        NSString *connectstring;
+        // NSString *connectstring;
         NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
         NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
         
@@ -111,7 +110,7 @@
         
         
         if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
-            connectstring=resultString;
+            _connectstring=resultString;
         }
         
         
@@ -129,15 +128,12 @@
             NSLog(@"%@",substring2);
             NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,3)];
             NSLog(@"%@",substring3);
-            connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
-            NSLog(@"%@",connectstring);
-            
-            
+            _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",_connectstring);
+            _SSNtxtfld_iphone.text=_connectstring;
             
         }
-
     }
-
         return YES;
     }
 
