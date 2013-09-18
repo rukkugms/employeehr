@@ -66,24 +66,160 @@
     
  }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+        
+        if (textField==_passwdtxtfld) {
+            
+            
+            ssnstring=_Ssntxtfld.text;
+            
+            
+            //checking a particular charector
+            // NSString *connectstring;
+            NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+            NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+            
+            
+            
+            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+            NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+            NSLog (@"Result: %@", resultString);
+            
+            if ([resultString length]==9) {
+                
+                
+                
+                
+                
+                
+                if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                    _connectstring=resultString;
+                }
+                
+                
+                
+                
+                
+                else {
+                    
+                    
+                    
+                    
+                    NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+                    NSLog(@"%@",subString);
+                    NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+                    NSLog(@"%@",substring2);
+                    NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
+                    NSLog(@"%@",substring3);
+                    _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+                    NSLog(@"%@",_connectstring);
+                    _Ssntxtfld.text=_connectstring;
+                    
+                }
+                
+            }
+            
+            
+            
+            else{
+                
+                
+                
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+            }
+            
+        }
+    }
+    
+    else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        
+        ssnstring=_Ssntxtfld_iphone.text;
+        //checking a particular charector
+        // NSString *connectstring;
+        NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+        NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+        
+        
+        
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        NSLog (@"Result: %@", resultString);
+        
+        if ([resultString length]==9) {
+            
+            if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                _connectstring=resultString;
+            }
+            
+            
+            
+            
+            
+            else {
+                
+                
+                
+                
+                NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+                NSLog(@"%@",subString);
+                NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+                NSLog(@"%@",substring2);
+                NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
+                NSLog(@"%@",substring3);
+                _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+                NSLog(@"%@",_connectstring);
+                _Ssntxtfld_iphone.text=_connectstring;
+                
+            }
+            
+        }
+        else{
+            
+            
+            
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+        }
+        
+        
+        
+    }
+    return YES;
+}
+
+
+
+
 
 #pragma mark - Webservice
 /*webservices*/
 
 -(void)GetApplicantId{
     webtype=2;
-    ssnstring=_Ssntxtfld.text;
-    NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
-    NSLog(@"%@",subString);
-    NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
-    NSLog(@"%@",substring2);
-    NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
-    NSLog(@"%@",substring3);
-    NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
-    NSLog(@"%@",connectstring);
+//    ssnstring=_Ssntxtfld.text;
+//    NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
+//    NSLog(@"%@",subString);
+//    NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
+//    NSLog(@"%@",substring2);
+//    NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
+//    NSLog(@"%@",substring3);
+//    NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+//    NSLog(@"%@",connectstring);
 
     recordResults = FALSE;
     NSString *soapMessage;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -98,7 +234,7 @@
                    "<Password>%@</Password>\n"
                    "</GetApplicantId>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",connectstring,_confirmpasswrd.text];
+                   "</soap:Envelope>\n",_connectstring,_confirmpasswrd.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -129,24 +265,72 @@
         ////NSLog(@"theConnection is NULL");
     }
     
-    
+    }
+ else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+ {
+     soapMessage = [NSString stringWithFormat:
+                    
+                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                    "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                    
+                    
+                    "<soap:Body>\n"
+                    
+                    "<GetApplicantId xmlns=\"http://webserv.kontract360.com/\">\n"
+                    "<ApplicantSSN>%@</ApplicantSSN>\n"
+                    "<Password>%@</Password>\n"
+                    "</GetApplicantId>\n"
+                    "</soap:Body>\n"
+                    "</soap:Envelope>\n",_connectstring,_confirmpasswrd_iphone.text];
+     NSLog(@"soapmsg%@",soapMessage);
+     
+     
+     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+     NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+     
+     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+     
+     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+     
+     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+     
+     [theRequest addValue: @"http://webserv.kontract360.com/GetApplicantId" forHTTPHeaderField:@"Soapaction"];
+     
+     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+     [theRequest setHTTPMethod:@"POST"];
+     [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+     
+     
+     NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+     
+     if( theConnection )
+     {
+         _webData = [NSMutableData data];
+     }
+     else
+     {
+         ////NSLog(@"theConnection is NULL");
+     }
+
+ }
 }
 
 -(void)GetApplicantId2{
     webtype=1;
-    ssnstring=_Ssntxtfld.text;
-    NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
-    NSLog(@"%@",subString);
-    NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
-    NSLog(@"%@",substring2);
-    NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
-    NSLog(@"%@",substring3);
-    NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
-    NSLog(@"%@",connectstring);
+//    ssnstring=_Ssntxtfld.text;
+//    NSString *subString = [ssnstring substringWithRange:NSMakeRange(0,3)];
+//    NSLog(@"%@",subString);
+//    NSString *substring2=[ssnstring substringWithRange:NSMakeRange(3,2)];
+//    NSLog(@"%@",substring2);
+//    NSString *substring3=[ssnstring substringWithRange:NSMakeRange(5,4)];
+//    NSLog(@"%@",substring3);
+//    NSString *connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+//    NSLog(@"%@",connectstring);
 
     recordResults = FALSE;
     NSString *soapMessage;
-    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -160,7 +344,7 @@
                    "<Password>%@</Password>\n"
                    "</GetApplicantId2>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",connectstring,_confirmpasswrd.text];
+                   "</soap:Envelope>\n",_connectstring,_confirmpasswrd.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -189,6 +373,54 @@
     else
     {
         ////NSLog(@"theConnection is NULL");
+    }
+}
+    else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        soapMessage = [NSString stringWithFormat:
+                       
+                       @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                       "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                       
+                       
+                       "<soap:Body>\n"
+                       
+                       "<GetApplicantId2 xmlns=\"http://webserv.kontract360.com/\">\n"
+                       "<ApplicantSSN>%@</ApplicantSSN>\n"
+                       "<Password>%@</Password>\n"
+                       "</GetApplicantId2>\n"
+                       "</soap:Body>\n"
+                       "</soap:Envelope>\n",_connectstring,_confirmpasswrd_iphone.text];
+        NSLog(@"soapmsg%@",soapMessage);
+        
+        
+        // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+        NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+        
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+        
+        [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        
+        [theRequest addValue: @"http://webserv.kontract360.com/GetApplicantId2" forHTTPHeaderField:@"Soapaction"];
+        
+        [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+        [theRequest setHTTPMethod:@"POST"];
+        [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
+        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+        
+        if( theConnection )
+        {
+            _webData = [NSMutableData data];
+        }
+        else
+        {
+            ////NSLog(@"theConnection is NULL");
+        }
+
     }
     
     
@@ -273,12 +505,22 @@
         Applicantid=[_soapResults integerValue];;
         
         if (webtype==2) {
+              if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+              {
             if (!self.firstVCtrl) {
                 _firstVCtrl=[[JobsiteViewController alloc]initWithNibName:@"JobsiteViewController" bundle:nil];
             }
             //_firstVCtrl.Applicantid=Applicantid;
             [self.navigationController pushViewController:_firstVCtrl animated:YES];
-            
+              }
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+            {
+                if (!self.firstVCtrl) {
+                    _firstVCtrl=[[JobsiteViewController alloc]initWithNibName:@"JobsiteViewController_iphone" bundle:nil];
+                }
+                //_firstVCtrl.Applicantid=Applicantid;
+                [self.navigationController pushViewController:_firstVCtrl animated:YES];
+            }
             
         }
             
@@ -320,7 +562,25 @@ if([elementName isEqualToString:@"result"])
       [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+-(IBAction)continue_iphone:(id)sender
+{
+    if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
+        [self GetApplicantId2];
+        
+        
+    }
+    else{
+        
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Password does not match" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    
 
-
+}
+-(IBAction)textfldshouldreturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
 
 @end
