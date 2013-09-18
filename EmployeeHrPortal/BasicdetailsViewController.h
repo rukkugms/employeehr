@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EducationViewController.h"
 #import "CKCalendarView.h"
-@interface BasicdetailsViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+@interface BasicdetailsViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
 {
     BOOL recordResults;
     NSInteger genderstg;
@@ -30,7 +32,7 @@
 @property(strong,nonatomic)NSMutableArray *stateArray;
 /*Outlets*/
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollview;
-@property(strong,nonatomic)IBOutlet UIImageView *imgvw;
+
 @property (strong, nonatomic) IBOutlet UIButton *sufixbtnlbl;
 @property (strong, nonatomic) IBOutlet UITextField *lastnametxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *firstnametxtfld;
@@ -109,5 +111,16 @@
 -(IBAction)selectstate_iphone:(id)sender;
 -(IBAction)update_iphone:(id)sender;
 -(IBAction)cancel_iphone:(id)sender;
+
+
+
+/*cameraAction*/
+@property (nonatomic) BOOL newMedia;
+@property(strong,nonatomic)NSData*basedata;
+@property(strong,nonatomic)NSString*encodedString;
+
+@property(strong,nonatomic)IBOutlet UIImageView *imgvw;
+- (IBAction)uploadimage:(id)sender;
+
 
 @end

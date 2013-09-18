@@ -7,7 +7,7 @@
 //
 
 #import "BasicdetailsViewController.h"
-
+#import "Base64.h"
 @interface BasicdetailsViewController ()
 
 @end
@@ -76,13 +76,6 @@
 
 }
 
-
-- (void)handlePinch:(UITapGestureRecognizer *)pinchGestureRecognizer
-{
-    //handle pinch...
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"It works" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-    [alert show];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -834,7 +827,24 @@ _educationVCtrl.Applicantid=_Applicantid;
         
     }
 
-    
+    if([elementName isEqualToString:@"UploadImageResult"])
+    {
+        
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"url"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+
   
 }
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -1060,6 +1070,15 @@ _educationVCtrl.Applicantid=_Applicantid;
         _soapResults=nil;
     }
     
+    if([elementName isEqualToString:@"url"])
+    {
+        
+        recordResults = FALSE;
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        _soapResults = nil;
+    }
 
 
     
@@ -1320,6 +1339,156 @@ numberOfRowsInComponent:(NSInteger)component
 {
     
 }
+#pragma mark - Uploadimage
 
 
+-(void)UploadImage{
+    recordResults = FALSE;
+    NSString *soapMessage;
+    NSString *imagename=@"abc.png";
+    // NSString *cmpnyname=@"webserv";
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<UploadImage xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<f>%@</f>\n"
+                   "<fileName>%@</fileName>\n"
+                   
+                   "</UploadImage>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n",_encodedString,imagename];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://webserv.kontract360.com/UploadImage" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+}
+
+
+
+- (void)handlePinch:(UITapGestureRecognizer *)pinchGestureRecognizer
+{
+    //handle pinch...
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeCamera])
+    {
+        
+        
+        UIImagePickerController *imagePicker =
+        [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType =
+        UIImagePickerControllerSourceTypeCamera;
+        imagePicker.showsCameraControls=YES;
+        
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  nil];
+        imagePicker.allowsEditing = NO;
+        // imagePicker.cameraCaptureMode=YES;
+        [self presentModalViewController:imagePicker
+                                animated:YES];
+        _newMedia = YES;
+    }
+}
+-(void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    // [self.popoverController dismissPopoverAnimated:true];
+    NSString *mediaType = [info
+                           objectForKey:UIImagePickerControllerMediaType];
+    
+    
+    
+    
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = [info
+                          objectForKey:UIImagePickerControllerOriginalImage];
+        NSLog(@"dict%@",info);
+        
+        
+        _imgvw.image =image;
+        [self dismissModalViewControllerAnimated:YES];
+        if (_newMedia)
+            UIImageWriteToSavedPhotosAlbum(image,
+                                           self,
+                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           nil);
+    }
+    
+    
+    
+}
+
+-(void)image:(UIImage *)image
+finishedSavingWithError:(NSError *)error
+ contextInfo:(void *)contextInfo
+{
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Save failed"
+                              message: @"Failed to save image"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    else{
+        
+        [self dismissModalViewControllerAnimated:YES];
+        
+    }
+}
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    
+    
+    // [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+
+- (IBAction)uploadimage:(id)sender {
+    UIImage *image =_imgvw.image;
+    NSData *data = UIImagePNGRepresentation(image);
+    _encodedString = [data base64EncodedString];
+    
+    NSLog(@"result%@",_encodedString);
+    
+    [self UploadImage];
+
+    
+}
 @end

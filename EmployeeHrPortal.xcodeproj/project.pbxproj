@@ -30,6 +30,12 @@
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
 		649ED93017E06F770064C5DB /* racemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = 649ED92F17E06F770064C5DB /* racemdl.m */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
+		D4C7CD3117E9B3F000484F94 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3017E9B3F000484F94 /* Base64.m */; };
+		D4C7CD3417E9B40000484F94 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3317E9B40000484F94 /* NSData+Base64.m */; };
+		D4C7CD3617E9B5AA00484F94 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */; };
+		D4C7CD3817E9B5C500484F94 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C7CD3717E9B5C500484F94 /* AssetsLibrary.framework */; };
+		D4C7CD3C17E9BEE000484F94 /* UploadImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3A17E9BEE000484F94 /* UploadImageViewController.m */; };
+		D4C7CD3D17E9BEE000484F94 /* UploadImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4C7CD3B17E9BEE000484F94 /* UploadImageViewController.xib */; };
 		D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */; };
 		D4D0E8C417DED36700C16158 /* EducationCell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D0E8C317DED36700C16158 /* EducationCell_iphone.xib */; };
 		D4D0E8C817DED91700C16158 /* AddEducationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D0E8C617DED91700C16158 /* AddEducationViewController.m */; };
@@ -123,6 +129,15 @@
 		649ED92E17E06F770064C5DB /* racemdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = racemdl.h; sourceTree = "<group>"; };
 		649ED92F17E06F770064C5DB /* racemdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = racemdl.m; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
+		D4C7CD2F17E9B3F000484F94 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		D4C7CD3017E9B3F000484F94 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		D4C7CD3217E9B40000484F94 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		D4C7CD3317E9B40000484F94 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D4C7CD3717E9B5C500484F94 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		D4C7CD3917E9BEE000484F94 /* UploadImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageViewController.h; sourceTree = "<group>"; };
+		D4C7CD3A17E9BEE000484F94 /* UploadImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageViewController.m; sourceTree = "<group>"; };
+		D4C7CD3B17E9BEE000484F94 /* UploadImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadImageViewController.xib; sourceTree = "<group>"; };
 		D4CF26D717D994EA00F7651A /* LoginViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController_iphone.xib; sourceTree = "<group>"; };
 		D4D0E8C317DED36700C16158 /* EducationCell_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationCell_iphone.xib; sourceTree = "<group>"; };
 		D4D0E8C517DED91700C16158 /* AddEducationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEducationViewController.h; sourceTree = "<group>"; };
@@ -223,6 +238,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C7CD3817E9B5C500484F94 /* AssetsLibrary.framework in Frameworks */,
+				D4C7CD3617E9B5AA00484F94 /* MobileCoreServices.framework in Frameworks */,
 				D4E100CE17D8686F006336F8 /* QuartzCore.framework in Frameworks */,
 				D4E1005417D84F8B006336F8 /* UIKit.framework in Frameworks */,
 				D4E1005617D84F8B006336F8 /* Foundation.framework in Frameworks */,
@@ -236,6 +253,12 @@
 		D4E1004717D84F8B006336F8 = {
 			isa = PBXGroup;
 			children = (
+				D4C7CD3717E9B5C500484F94 /* AssetsLibrary.framework */,
+				D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */,
+				D4C7CD3217E9B40000484F94 /* NSData+Base64.h */,
+				D4C7CD3317E9B40000484F94 /* NSData+Base64.m */,
+				D4C7CD2F17E9B3F000484F94 /* Base64.h */,
+				D4C7CD3017E9B3F000484F94 /* Base64.m */,
 				D4E100CD17D8686F006336F8 /* QuartzCore.framework */,
 				D4E1009717D85A0C006336F8 /* Models */,
 				D4E1008817D851E5006336F8 /* Images */,
@@ -289,6 +312,9 @@
 				D4E100A217D86060006336F8 /* BasicdetailsViewController.m */,
 				D4E100A417D86071006336F8 /* BasicdetailsViewController.xib */,
 				64921A4217D99BAC00AB642E /* BasicdetailsViewController_iphone.xib */,
+				D4C7CD3917E9BEE000484F94 /* UploadImageViewController.h */,
+				D4C7CD3A17E9BEE000484F94 /* UploadImageViewController.m */,
+				D4C7CD3B17E9BEE000484F94 /* UploadImageViewController.xib */,
 				D4E100A617D860B5006336F8 /* EducationViewController.h */,
 				D4E100A717D860B5006336F8 /* EducationViewController.m */,
 				D4E100A817D860B6006336F8 /* EducationViewController.xib */,
@@ -514,6 +540,7 @@
 				D4D0E8CB17DEEF3F00C16158 /* Employeecell_iphone.xib in Resources */,
 				D4F94EF017E024C8005D0AFE /* SecondRaceViewController.xib in Resources */,
 				64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */,
+				D4C7CD3D17E9BEE000484F94 /* UploadImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +577,9 @@
 				D4D0E8C817DED91700C16158 /* AddEducationViewController.m in Sources */,
 				D4F94EEF17E024C8005D0AFE /* SecondRaceViewController.m in Sources */,
 				649ED93017E06F770064C5DB /* racemdl.m in Sources */,
+				D4C7CD3117E9B3F000484F94 /* Base64.m in Sources */,
+				D4C7CD3417E9B40000484F94 /* NSData+Base64.m in Sources */,
+				D4C7CD3C17E9BEE000484F94 /* UploadImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
