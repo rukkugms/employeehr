@@ -332,6 +332,13 @@
 #pragma mark - Webservice
 
 -(void)InsertApplicantRequirements{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
+    NSLog(@"%@",fetchVariable);
+    NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
+    NSString *fetchVariable1 = [defaults1 objectForKey:@"CraftId"];
+    NSLog(@"%@",fetchVariable1);
+
     recordResults = FALSE;
     NSString *soapMessage;
     
@@ -349,7 +356,7 @@
                    "<AppId>%d</AppId>\n"
                    "</InsertApplicantRequirements>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",[_jobsiteid integerValue],[_craftid integerValue] ,_Applicantid];
+                   "</soap:Envelope>\n",[fetchVariable integerValue],[fetchVariable1 integerValue] ,_Applicantid];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -405,7 +412,9 @@
         NSString*mnth=[_monthDictionary objectForKey:coursemdl1.month];
          NSString*expirydate=[NSString stringWithFormat:@"%@-%@-%@",coursemdl1.year,mnth,day];
     
-   
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
+        NSLog(@"%@",fetchVariable);
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -424,7 +433,7 @@
                    "<VerificationStatus>%d</VerificationStatus>\n"
                    "</UpdateApplicantRequirements>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,[_jobsiteid integerValue],reqid,expirydate,coursemdl1.course_status,verifctnstatus];
+                   "</soap:Envelope>\n",_Applicantid,[fetchVariable integerValue],reqid,expirydate,coursemdl1.course_status,verifctnstatus];
     NSLog(@"soapmsg%@",soapMessage);
     
     

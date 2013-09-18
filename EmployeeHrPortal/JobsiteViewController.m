@@ -1372,6 +1372,10 @@
         recordResults = FALSE;
         _unitstring=_soapResults;
         
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:_soapResults forKey:@"jobsiteid"];
+        [defaults synchronize];
         _soapResults = nil;
         
     }
@@ -1396,6 +1400,7 @@
         
         recordResults = FALSE;
         _unitstring=_soapResults;
+    
         _soapResults = nil;
     }
     if([elementName isEqualToString:@"CraftName"])
@@ -1531,6 +1536,11 @@
     {
         recordResults = FALSE;
         _creftid=_soapResults;
+        
+        NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
+        [defaults1 setObject:_soapResults forKey:@"CraftId"];
+        [defaults1 synchronize];
+
         
         //        _jobsite.ApplicantCraft=_soapResults;
         //
