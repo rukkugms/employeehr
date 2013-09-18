@@ -55,6 +55,13 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    [self UpdateApplicantValue];
+    
+    
+}
 
 
 -(void)viewWillAppear:(BOOL)animated{

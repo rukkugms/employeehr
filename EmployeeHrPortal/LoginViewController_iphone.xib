@@ -175,14 +175,13 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{129, 272}, {78, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Log In</string>
+						<string key="IBUINormalTitle">Continue</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="856770971">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>

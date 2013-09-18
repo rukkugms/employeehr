@@ -71,6 +71,15 @@
     
     //[self SelectEmployeeCraft];
 }
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    [self UpdateApplicantDetails];
+    
+    
+}
+
 -(void)logoutAction{
     [self.navigationController popToRootViewControllerAnimated:YES];
     

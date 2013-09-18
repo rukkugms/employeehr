@@ -49,6 +49,13 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    [self UpdateApplicantInformations];
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning

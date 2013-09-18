@@ -186,7 +186,7 @@
 					<object class="IBUIButton" id="655589060">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{463, 372}, {78, 30}}</string>
+						<string key="NSFrame">{{486, 372}, {78, 30}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSNextKeyView" ref="251240217"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -195,7 +195,7 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Log In</string>
+						<string key="IBUINormalTitle">Continue</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="64978872">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -402,10 +402,10 @@
 							<reference ref="377310403"/>
 							<reference ref="853520491"/>
 							<reference ref="377126688"/>
-							<reference ref="655589060"/>
 							<reference ref="384722002"/>
 							<reference ref="101566860"/>
 							<reference ref="251240217"/>
+							<reference ref="655589060"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

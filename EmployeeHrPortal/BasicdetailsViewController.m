@@ -67,6 +67,16 @@
     [self GetApplicantDetails];
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    [self UpdateApplicantData];
+    
+
+}
+
+
 - (void)handlePinch:(UITapGestureRecognizer *)pinchGestureRecognizer
 {
     //handle pinch...
