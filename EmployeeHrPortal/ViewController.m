@@ -66,7 +66,10 @@
 
 - (IBAction)registerbtn_iphone:(id)sender {
     
-    
+    if (!self.registerVCtrl) {
+        _registerVCtrl=[[RegisterViewController alloc]initWithNibName:@"RegisterViewController_iphone" bundle:nil];
+    }
+    [self.navigationController pushViewController:_registerVCtrl animated:YES];
 }
 
 - (IBAction)Alreadyregisterd_iphone:(id)sender {

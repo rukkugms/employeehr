@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "JobsiteViewController.h"
-@interface RegisterViewController : UIViewController{
+@interface RegisterViewController : UIViewController<UITextFieldDelegate>
+{
         BOOL recordResults;
     NSInteger Applicantid;
     NSInteger webtype;
     NSString *ssnstring;
 }
 @property(strong,nonatomic)JobsiteViewController*firstVCtrl;
-
+@property (strong, nonatomic) NSString *connectstring;
 @property (strong, nonatomic) IBOutlet UITextField *Ssntxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *passwdtxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *confirmpasswrd;
@@ -29,5 +30,11 @@
 
 - (IBAction)continuebtn:(id)sender;
 
+//iphone
+@property (strong, nonatomic) IBOutlet UITextField *Ssntxtfld_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *passwdtxtfld_iphone;
+@property (strong, nonatomic) IBOutlet UITextField *confirmpasswrd_iphone;
+-(IBAction)continue_iphone:(id)sender;
+-(IBAction)textfldshouldreturn:(id)sender;
 
 @end
