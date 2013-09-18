@@ -49,8 +49,15 @@
     
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+        
+                if (textField==_passwordtxtfld) {
+            
+        
         ssnstring=_ssntxtfld.text;
-        //checking a particular charector
+                    
+                    
+                            //checking a particular charector
         // NSString *connectstring;
         NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
         NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
@@ -61,7 +68,12 @@
         NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
         NSLog (@"Result: %@", resultString);
         
-        
+                    if ([resultString length]==9) {
+                        
+                        
+                        
+                    
+
         
         if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
             _connectstring=resultString;
@@ -80,7 +92,7 @@
             NSLog(@"%@",subString);
             NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
             NSLog(@"%@",substring2);
-            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,3)];
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
             NSLog(@"%@",substring3);
             _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
             NSLog(@"%@",_connectstring);
@@ -88,9 +100,21 @@
             
         }
 
-    
+                    }
+                    
+                    
+                    
+                    else{
+                        
+                        
+                        
+                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                        
+                        [alert show];
+                        
+                    }
         
-        
+        }
     }
 
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
@@ -107,7 +131,7 @@
         NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
         NSLog (@"Result: %@", resultString);
         
-        
+          if ([resultString length]==9) {
         
         if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
             _connectstring=resultString;
@@ -126,13 +150,27 @@
             NSLog(@"%@",subString);
             NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
             NSLog(@"%@",substring2);
-            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,3)];
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
             NSLog(@"%@",substring3);
             _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
             NSLog(@"%@",_connectstring);
             _SSNtxtfld_iphone.text=_connectstring;
             
         }
+              
+          }
+          else{
+              
+              
+              
+              UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+              
+              [alert show];
+              
+          }
+
+        
+        
     }
         return YES;
     }
@@ -148,10 +186,13 @@
 
 -(void)GetApplicantId1{
     
-
-    recordResults = FALSE;
+    
+    NSLog(@"length%d",[_connectstring length]);
+      recordResults = FALSE;
     NSString *soapMessage;
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+         
+                
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
