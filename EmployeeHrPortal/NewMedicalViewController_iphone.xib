@@ -276,8 +276,9 @@
 									<object class="IBUIButton" id="502648051">
 										<reference key="NSNextResponder" ref="248132148"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{117, 434}, {101, 24}}</string>
+										<string key="NSFrame">{{117.5, 433}, {100, 26}}</string>
 										<reference key="NSSuperview" ref="248132148"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -291,8 +292,8 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="139128387"/>
-										<reference key="IBUIFontDescription" ref="820459236"/>
-										<reference key="IBUIFont" ref="974756312"/>
+										<reference key="IBUIFontDescription" ref="270011133"/>
+										<reference key="IBUIFont" ref="693783032"/>
 									</object>
 									<object class="IBUISegmentedControl" id="300913767">
 										<reference key="NSNextResponder" ref="248132148"/>
@@ -521,8 +522,8 @@
 							<reference ref="457226159"/>
 							<reference ref="159087682"/>
 							<reference ref="300913767"/>
-							<reference ref="502648051"/>
 							<reference ref="957612631"/>
+							<reference ref="502648051"/>
 						</array>
 						<reference key="parent" ref="110493259"/>
 					</object>
