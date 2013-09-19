@@ -580,7 +580,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{197, 106}, {500, 30}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
-										<reference key="NSNextKeyView" ref="1042506913"/>
+										<reference key="NSNextKeyView" ref="421952496"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -996,7 +996,7 @@
 									<object class="IBUIButton" id="654996721">
 										<reference key="NSNextResponder" ref="411571396"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{417, 615}, {85, 34}}</string>
+										<string key="NSFrame">{{408, 619}, {122, 26}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
 										<reference key="NSNextKeyView" ref="629020513"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -1018,8 +1018,9 @@
 									<object class="IBUIButton" id="629020513">
 										<reference key="NSNextResponder" ref="411571396"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{540, 615}, {85, 34}}</string>
+										<string key="NSFrame">{{572, 619}, {122, 26}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -1061,6 +1062,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{48, 172}, {93, 23}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
+										<reference key="NSNextKeyView" ref="1042506913"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -1449,10 +1451,10 @@
 							<reference ref="961893818"/>
 							<reference ref="1014764325"/>
 							<reference ref="500104777"/>
-							<reference ref="654996721"/>
-							<reference ref="629020513"/>
 							<reference ref="819499064"/>
 							<reference ref="421952496"/>
+							<reference ref="654996721"/>
+							<reference ref="629020513"/>
 						</array>
 						<reference key="parent" ref="626393930"/>
 					</object>
