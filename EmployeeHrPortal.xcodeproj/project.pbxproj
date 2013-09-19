@@ -28,6 +28,7 @@
 		64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */; };
 		64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */; };
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
+		64964F7417EAB6A000857E1E /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 64964F7317EAB6A000857E1E /* Validation.m */; };
 		649ED93017E06F770064C5DB /* racemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = 649ED92F17E06F770064C5DB /* racemdl.m */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
 		D4C7CD3117E9B3F000484F94 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3017E9B3F000484F94 /* Base64.m */; };
@@ -126,6 +127,8 @@
 		64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtndwn.png; sourceTree = "<group>"; };
 		64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclsurebtn@2x.png"; sourceTree = "<group>"; };
 		64921A5117D9AC0400AB642E /* disclsurebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtn.png; sourceTree = "<group>"; };
+		64964F7217EAB6A000857E1E /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
+		64964F7317EAB6A000857E1E /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
 		649ED92E17E06F770064C5DB /* racemdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = racemdl.h; sourceTree = "<group>"; };
 		649ED92F17E06F770064C5DB /* racemdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = racemdl.m; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 				D4E100BF17D861C5006336F8 /* Detailcourse.m */,
 				D4E100C717D861CE006336F8 /* Coursemdl.h */,
 				D4E100C817D861CE006336F8 /* Coursemdl.m */,
+				64964F7217EAB6A000857E1E /* Validation.h */,
+				64964F7317EAB6A000857E1E /* Validation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 				D4C7CD3117E9B3F000484F94 /* Base64.m in Sources */,
 				D4C7CD3417E9B40000484F94 /* NSData+Base64.m in Sources */,
 				D4C7CD3C17E9BEE000484F94 /* UploadImageViewController.m in Sources */,
+				64964F7417EAB6A000857E1E /* Validation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
