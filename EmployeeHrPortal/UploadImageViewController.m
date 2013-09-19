@@ -47,7 +47,10 @@
     NSString *soapMessage;
     NSString *imagename=@"abc.png";
     // NSString *cmpnyname=@"webserv";
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
+    NSLog(@"%@",fetchVariable);
+
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -59,10 +62,10 @@
                    "<UploadImage xmlns=\"http://webserv.kontract360.com/\">\n"
                    "<f>%@</f>\n"
                    "<fileName>%@</fileName>\n"
-                   
+                    "<appid>%d</appid>\n"
                    "</UploadImage>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_encodedString,imagename];
+                   "</soap:Envelope>\n",_encodedString,imagename,[fetchVariable integerValue]];
     NSLog(@"soapmsg%@",soapMessage);
     
     

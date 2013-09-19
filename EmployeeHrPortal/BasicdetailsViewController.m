@@ -1355,10 +1355,10 @@ numberOfRowsInComponent:(NSInteger)component
                    "<UploadImage xmlns=\"http://webserv.kontract360.com/\">\n"
                    "<f>%@</f>\n"
                    "<fileName>%@</fileName>\n"
-                   
+                   "<appid>%d</appid>\n"
                    "</UploadImage>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_encodedString,imagename];
+                   "</soap:Envelope>\n",_encodedString,imagename,_Applicantid];
     NSLog(@"soapmsg%@",soapMessage);
     
     
