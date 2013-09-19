@@ -141,11 +141,7 @@
     
     [self UpdateApplicantData];
     
-    if (!self.educationVCtrl) {
-        _educationVCtrl=[[EducationViewController alloc]initWithNibName:@"EducationViewController" bundle:nil];
-    }
-_educationVCtrl.Applicantid=_Applicantid;
-    [self.navigationController pushViewController:_educationVCtrl animated:YES];
+    
     
 }
 
