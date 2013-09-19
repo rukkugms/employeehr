@@ -103,24 +103,16 @@
 //    
 //    
 //}
-//
-//- (IBAction)continuebtn:(id)sender {
-//    // [self SelectEmployeeCraft];
-//    
-//    
-//    [self UpdateApplicantDetails];
-//    if (!self.basicVCtrl) {
-//        _basicVCtrl=[[BasicdetailsViewController alloc]initWithNibName:@"BasicdetailsViewController" bundle:nil];
-//    }
-//    _basicVCtrl.Applicantid=_Applicantid;
-//    
-//    
-//    [self.navigationController pushViewController:_basicVCtrl animated:YES];
-//    
-//    
-//    
-//}
-//
+
+- (IBAction)continuebtn:(id)sender {
+    // [self SelectEmployeeCraft];
+    
+    
+    [self UpdateApplicantDetails];
+    
+    
+}
+
 //- (IBAction)edubtn:(id)sender {
 //    [self UpdateApplicantDetails];
 //    if (!self.educatnVCtrl) {
@@ -161,25 +153,25 @@
 //    
 //    
 //}
-
-- (IBAction)clickbtn:(id)sender {
-    _nw=@"";
-    if (buttonclicked==0) {
-        //  _clickedbtnlbl.imageView.image=[UIImage imageNamed:@"check"];
-        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
-        buttonclicked=1;
-        // [_listtable reloadData];
-    }
-    else if(buttonclicked==1){
-        [_clickedbtnlbl setSelected:NO];
-        
-        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
-        buttonclicked=0;
-        
-    }
-    // [_listtable reloadData];
-    
-}
+//
+//- (IBAction)clickbtn:(id)sender {
+//    _nw=@"";
+//    if (buttonclicked==0) {
+//        //  _clickedbtnlbl.imageView.image=[UIImage imageNamed:@"check"];
+//        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+//        buttonclicked=1;
+//        // [_listtable reloadData];
+//    }
+//    else if(buttonclicked==1){
+//        [_clickedbtnlbl setSelected:NO];
+//        
+//        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+//        buttonclicked=0;
+//        
+//    }
+//    // [_listtable reloadData];
+//    
+//}
 /*Popover*/
 - (IBAction)SelectMonth:(id)sender
 {
@@ -932,14 +924,14 @@
     NSString *dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
         
        
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-        [dateFormat setDateFormat: @"MM-dd-yyyy"];
-        
-        NSDate *dateString1 = [dateFormat dateFromString:_expirydatetxtfld_iphone.text];
-        NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
-        [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
-        NSString* sqldate=[dateFormat1 stringFromDate:dateString1];
-
+//        NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+//        [dateFormat setDateFormat: @"MM-dd-yyyy"];
+//        
+//        NSDate *dateString1 = [dateFormat dateFromString:_expirydatetxtfld_iphone.text];
+//        NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+//        [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+//        NSString* sqldate=[dateFormat1 stringFromDate:dateString1];
+//
         
         
     
@@ -962,7 +954,7 @@
                    "<Craft>%@</Craft>\n"
                    "</UpdateApplicantDetails>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,dateString1,ncer,ncerdesc,skill,craft];
+                   "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,dateString,ncer,ncerdesc,skill,craft];
     NSLog(@"soapmsg%@",soapMessage);
     
     
