@@ -12,6 +12,7 @@
 #import "RaceViewController.h"
 #import "EmployeeViewController.h"
 #import "CourseDrugViewController.h"
+#import "UploadImageViewController.h"
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 {
     BOOL recordResults;

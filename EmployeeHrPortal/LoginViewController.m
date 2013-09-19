@@ -408,21 +408,24 @@
              _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
    
              
-             BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController_iphone" bundle:nil];
-             viewController2.Applicantid=Applicantid;
-             EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
+             BasicdetailsViewController *viewController3 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController_iphone" bundle:nil];
              viewController3.Applicantid=Applicantid;
+             
+             UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
+             
+             EducationViewController *viewController4 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
+             viewController4.Applicantid=Applicantid;
              JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController_iphone" bundle:nil];
              viewController1.Applicantid=Applicantid;
-             NewMedicalViewController *viewController4 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController_iphone" bundle:nil];
-             viewController4.Applicantid=Applicantid;
-             EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController_iphone" bundle:nil];
-             viewcontroller5.Applicantid=Applicantid;
-             CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController_iphone" bundle:nil];
+             NewMedicalViewController *viewController5 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController_iphone" bundle:nil];
+             viewController5.Applicantid=Applicantid;
+             EmployeeViewController*viewcontroller6=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController_iphone" bundle:nil];
              viewcontroller6.Applicantid=Applicantid;
-             RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
-             viewcontroller7.applicantId=Applicantid;
-             NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,nil];
+             CourseDrugViewController*viewcontroller7=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController_iphone" bundle:nil];
+             viewcontroller7.Applicantid=Applicantid;
+             RaceViewController*viewcontroller8=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
+             viewcontroller8.applicantId=Applicantid;
+             NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewController5,viewcontroller6,viewcontroller7,viewcontroller8,nil];
              self.tabbarcntrl.viewControllers = controllers;
              
              
