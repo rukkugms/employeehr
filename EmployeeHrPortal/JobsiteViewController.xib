@@ -345,7 +345,7 @@
 									<object class="IBUIButton" id="141151859">
 										<reference key="NSNextResponder" ref="614088217"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{422.5, 606}, {85, 34}}</string>
+										<string key="NSFrame">{{354, 610}, {122, 26}}</string>
 										<reference key="NSSuperview" ref="614088217"/>
 										<reference key="NSNextKeyView" ref="329895488"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -361,8 +361,8 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="713828126"/>
-										<reference key="IBUIFontDescription" ref="563685852"/>
-										<reference key="IBUIFont" ref="696319097"/>
+										<reference key="IBUIFontDescription" ref="1047762448"/>
+										<reference key="IBUIFont" ref="1025928526"/>
 									</object>
 									<object class="IBUIView" id="344093615">
 										<reference key="NSNextResponder" ref="614088217"/>
@@ -636,7 +636,7 @@
 									<object class="IBUIButton" id="329895488">
 										<reference key="NSNextResponder" ref="614088217"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{512.5, 606}, {85, 34}}</string>
+										<string key="NSFrame">{{490, 610}, {122, 26}}</string>
 										<reference key="NSSuperview" ref="614088217"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
@@ -651,8 +651,8 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="713828126"/>
-										<reference key="IBUIFontDescription" ref="563685852"/>
-										<reference key="IBUIFont" ref="696319097"/>
+										<reference key="IBUIFontDescription" ref="1047762448"/>
+										<reference key="IBUIFont" ref="1025928526"/>
 									</object>
 								</array>
 								<string key="NSFrameSize">{1024, 748}</string>

@@ -558,9 +558,13 @@ if([elementName isEqualToString:@"result"])
 }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if ([alertView.message isEqualToString:@"Already Registered"]) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+
+        
+    }
     
-      [self.navigationController popToRootViewControllerAnimated:YES];
-}
+      }
 
 -(IBAction)continue_iphone:(id)sender
 {
