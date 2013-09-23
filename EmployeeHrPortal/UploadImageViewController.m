@@ -46,7 +46,7 @@
     recordResults = FALSE;
     NSString *soapMessage;
     NSString *imagename=@"abc.png";
-    // NSString *cmpnyname=@"webserv";
+    // NSString *cmpnyname=@"arvin";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
     NSLog(@"%@",fetchVariable);

@@ -104,7 +104,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<UpdateApplicantInformations xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<UpdateApplicantInformations xmlns=\"http://arvin.kontract360.com/\">\n"
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<IsConvict>%d</IsConvict>\n"
                    "<ConvictExplanation>%@</ConvictExplanation>\n"
@@ -129,7 +129,7 @@
     NSLog(@"soapmsg%@",soapMessage);
         
     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -137,7 +137,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://webserv.kontract360.com/UpdateApplicantInformations" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://arvin.kontract360.com/UpdateApplicantInformations" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];

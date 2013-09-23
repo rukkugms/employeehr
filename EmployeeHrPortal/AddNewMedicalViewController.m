@@ -72,7 +72,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<InsertApplicantMedicalCondition xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<InsertApplicantMedicalCondition xmlns=\"http://arvin.kontract360.com/\">\n"
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<MedConditionId>%d</MedConditionId>\n"
                    "<EduName>%@</EduName>\n"
@@ -85,7 +85,7 @@
     
     
     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -93,7 +93,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://webserv.kontract360.com/InsertApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://arvin.kontract360.com/InsertApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -126,7 +126,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<SelectMedicalCondition xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<SelectMedicalCondition xmlns=\"http://arvin.kontract360.com/\">\n"
                    "</SelectMedicalCondition>\n"
                    "</soap:Body>\n"
                    "</soap:Envelope>\n"];
@@ -134,7 +134,7 @@
     
     
     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -142,7 +142,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://webserv.kontract360.com/SelectMedicalCondition" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://arvin.kontract360.com/SelectMedicalCondition" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];

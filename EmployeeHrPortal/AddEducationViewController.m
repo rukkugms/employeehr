@@ -50,7 +50,7 @@
     }
 }
 
-#pragma mark - Webservice
+#pragma mark - webservice
 /*webservices*/
 -(void)InsertApplicantEducation{
    // webtype=1;
@@ -66,7 +66,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<InsertApplicantEducation xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<InsertApplicantEducation xmlns=\"http://arvin.kontract360.com/\">\n"
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<EduId>%d</EduId>\n"
                    "<EduName>%@</EduName>\n"
@@ -81,7 +81,7 @@
     
     
     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -89,7 +89,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://webserv.kontract360.com/InsertApplicantEducation" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://arvin.kontract360.com/InsertApplicantEducation" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -130,7 +130,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<InsertApplicantCertificates xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<InsertApplicantCertificates xmlns=\"http://arvin.kontract360.com/\">\n"
                    
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<CertificateId>%d</CertificateId>\n"
@@ -143,7 +143,7 @@
     
     
     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -151,7 +151,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://webserv.kontract360.com/InsertApplicantCertificates" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://arvin.kontract360.com/InsertApplicantCertificates" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
