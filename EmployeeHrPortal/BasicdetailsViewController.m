@@ -1352,7 +1352,7 @@ numberOfRowsInComponent:(NSInteger)component
                    
                    "<soap:Body>\n"
                    
-                   "<UploadImage xmlns=\"http://webserv.kontract360.com/\">\n"
+                   "<UploadImage xmlns=\"http://arvin.kontract360.com/\">\n"
                    "<f>%@</f>\n"
                    "<fileName>%@</fileName>\n"
                    "<appid>%d</appid>\n"
@@ -1363,7 +1363,7 @@ numberOfRowsInComponent:(NSInteger)component
     
     
     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-    NSURL *url = [NSURL URLWithString:@"http://webserv.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -1371,7 +1371,7 @@ numberOfRowsInComponent:(NSInteger)component
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://webserv.kontract360.com/UploadImage" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://arvin.kontract360.com/UploadImage" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];

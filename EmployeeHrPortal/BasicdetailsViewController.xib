@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12C2034</string>
+		<string key="IBDocument.SystemVersion">11G63</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -554,7 +554,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{751, 180}, {140, 30}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
-										<reference key="NSNextKeyView" ref="850255304"/>
+										<reference key="NSNextKeyView" ref="421952496"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -580,7 +580,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{197, 106}, {500, 30}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
-										<reference key="NSNextKeyView" ref="421952496"/>
+										<reference key="NSNextKeyView" ref="1042506913"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -604,7 +604,7 @@
 									<object class="IBUIImageView" id="517310253">
 										<reference key="NSNextResponder" ref="411571396"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{35, 35}, {149, 123}}</string>
+										<string key="NSFrame">{{20, 28}, {164, 142}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
 										<reference key="NSNextKeyView" ref="1010968399"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -919,7 +919,7 @@
 									<object class="IBUIImageView" id="805033123">
 										<reference key="NSNextResponder" ref="411571396"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{41, 41}, {134, 110}}</string>
+										<string key="NSFrame">{{37, 42}, {131, 108}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
 										<reference key="NSNextKeyView" ref="374720869"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -1020,7 +1020,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{572, 619}, {122, 26}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
-										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -1060,9 +1059,9 @@
 									<object class="IBUIButton" id="421952496">
 										<reference key="NSNextResponder" ref="411571396"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{48, 172}, {93, 23}}</string>
+										<string key="NSFrame">{{10, 261}, {110, 27}}</string>
 										<reference key="NSSuperview" ref="411571396"/>
-										<reference key="NSNextKeyView" ref="1042506913"/>
+										<reference key="NSNextKeyView" ref="850255304"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -1411,7 +1410,6 @@
 						<reference key="object" ref="411571396"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="517310253"/>
-							<reference ref="805033123"/>
 							<reference ref="374720869"/>
 							<reference ref="728051754"/>
 							<reference ref="239411360"/>
@@ -1452,9 +1450,10 @@
 							<reference ref="1014764325"/>
 							<reference ref="500104777"/>
 							<reference ref="819499064"/>
-							<reference ref="421952496"/>
 							<reference ref="654996721"/>
 							<reference ref="629020513"/>
+							<reference ref="805033123"/>
+							<reference ref="421952496"/>
 						</array>
 						<reference key="parent" ref="626393930"/>
 					</object>
