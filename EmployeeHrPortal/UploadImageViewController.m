@@ -45,12 +45,12 @@
 -(void)UploadImage{
     recordResults = FALSE;
     NSString *soapMessage;
-    NSString *imagename=@"abc.png";
+   NSString *imagename=@"abc.png";
     // NSString *cmpnyname=@"arvin";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
     NSLog(@"%@",fetchVariable);
-
+ // NSString *imagename=[NSString stringWithFormat:@"Photo_%@",];
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"

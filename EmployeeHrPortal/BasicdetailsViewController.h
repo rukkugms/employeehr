@@ -14,6 +14,7 @@
 @interface BasicdetailsViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
 {
     BOOL recordResults;
+    NSInteger upint;
     NSInteger genderstg;
     NSInteger popovertype;
     //iphone

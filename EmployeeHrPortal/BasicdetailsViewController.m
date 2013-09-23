@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     detailbtnclicked_iphone=0;
-[self getstates];
+  [self getstates];
     _suffixarray=[[NSMutableArray alloc]initWithObjects:@"None",@"JR.",@"SR.",@"II",@"III" ,nil];
     _suffixarray_iphone=[[NSMutableArray alloc]initWithObjects:@"None",@"JR.",@"SR.",@"II",@"III" ,nil];
     _scrollview.frame=CGRectMake(0, 0,1024, 768);
@@ -64,6 +64,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self FetchImage];
+
     [self GetApplicantDetails];
 }
 
@@ -840,6 +842,7 @@
         }
         recordResults = TRUE;
     }
+    
 
   
 }
@@ -1070,8 +1073,20 @@
     {
         
         recordResults = FALSE;
+        if (upint==1) {
+            
+        
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
+        }
+        if (upint==2) {
+            NSData *data1=[_soapResults base64DecodedData];
+            
+            UIImage *image1=[[UIImage alloc]initWithData:data1];
+            _imgvw.image=image1;
+
+            
+        }
         
         _soapResults = nil;
     }
@@ -1339,9 +1354,15 @@ numberOfRowsInComponent:(NSInteger)component
 
 
 -(void)UploadImage{
+    upint=1;
     recordResults = FALSE;
     NSString *soapMessage;
-    NSString *imagename=@"abc.png";
+    
+    
+ 
+               NSString *imagename=[NSString stringWithFormat:@"Photo_%@.png",_ssntxtfld.text];
+        
+    
     // NSString *cmpnyname=@"arvin";
     
     soapMessage = [NSString stringWithFormat:
@@ -1372,6 +1393,63 @@ numberOfRowsInComponent:(NSInteger)component
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
     [theRequest addValue: @"http://arvin.kontract360.com/UploadImage" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+}
+-(void)FetchImage{
+    upint=2;
+    recordResults = FALSE;
+    NSString *soapMessage;
+    
+    
+    
+  //  NSString *imagename=[NSString stringWithFormat:@"Photo_%@.png",_ssntxtfld.text];
+    
+    
+    // NSString *cmpnyname=@"arvin";
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<FetchImage xmlns=\"http://arvin.kontract360.com/\">\n"
+                                     
+                   "<appid>%d</appid>\n"
+                   "</FetchImage>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n",_Applicantid];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://arvin.kontract360.com/FetchImage" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -1485,6 +1563,7 @@ finishedSavingWithError:(NSError *)error
     
     [self UploadImage];
 
+    
     
 }
 @end
