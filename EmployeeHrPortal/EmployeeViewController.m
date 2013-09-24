@@ -128,7 +128,7 @@
     
     calendar.selectedDate = [self.dateFormatter dateFromString:dateString];
     
-    calendar.minimumDate = [self.dateFormatter dateFromString:@"09/07/2011"];
+    calendar.minimumDate = [self.dateFormatter dateFromString:@"09/07/2009"];
     calendar.maximumDate =[self.dateFormatter dateFromString:@"1/07/2014"];
     calendar.shouldFillCalendar = YES;
     calendar.adaptHeightToNumberOfWeeksInMonth = NO;
@@ -807,6 +807,7 @@
     return YES;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+  
     if (textField==_empdatetextfld_iphone) {
         
         
@@ -817,6 +818,50 @@
         
         [  _datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
     }
+        if(textField==_companynametxtfld_iphone)
+        {
+            NSUInteger newLength = [_companynametxtfld_iphone.text length] + [string length] - range.length;
+            return (newLength > 50) ? NO : YES;
+        }
+        if(textField==_rateofpaytxtfld_iphone)
+        {
+            NSUInteger newLength = [_rateofpaytxtfld_iphone.text length] + [string length] - range.length;
+            return (newLength > 25) ? NO : YES;
+        }
+        if(textField==_reasonlvtxtfld_iphone)
+        {
+            NSUInteger newLength = [_reasonlvtxtfld_iphone.text length] + [string length] - range.length;
+            return (newLength > 100) ? NO : YES;
+        }
+        if(textField==_positionheldtxtfld_iphone)
+        {
+            NSUInteger newLength = [_positionheldtxtfld_iphone.text length] + [string length] - range.length;
+            return (newLength > 50) ? NO : YES;
+        }
+        
+    
+    
+    if(textField==_previouscompanytxt)
+    {
+        NSUInteger newLength = [_previouscompanytxt.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    if(textField==_rateofpaytxt)
+    {
+        NSUInteger newLength = [_rateofpaytxt.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_reasonforleavingtxt)
+    {
+        NSUInteger newLength = [_reasonforleavingtxt.text length] + [string length] - range.length;
+        return (newLength > 100) ? NO : YES;
+    }
+    if(textField==_positionheldtxt)
+    {
+        NSUInteger newLength = [_reasonforleavingtxt.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    
     
     //_picker.hidden=YES;
     return YES;

@@ -460,5 +460,18 @@
 {
     [sender resignFirstResponder];
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if(textField==_passwordtxtfld)
+    {
+    NSUInteger newLength = [_passwordtxtfld.text length] + [string length] - range.length;
+    return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_passwordtxtfld_iphone)
+    {
+        NSUInteger newLength = [_passwordtxtfld_iphone.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+
+}
 
 @end

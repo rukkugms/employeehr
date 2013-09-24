@@ -35,7 +35,8 @@
     [ _scrollview setContentSize:CGSizeMake(1024,850)];
     _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
     [_scroll_iphone setContentSize:CGSizeMake(500,1500)];
-
+    _ssntxtfld.enabled=NO;
+    _ssntextfield_iphone.enabled=NO;
     _imgvw.userInteractionEnabled = YES;
     UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self action:@selector(handlePinch:)];
@@ -298,14 +299,14 @@
     NSString *soapMessage;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-    NSLog(@"date%@",_dobbtnlbl.titleLabel.text);
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat: @"MM-dd-yyyy"];
-    
-    NSDate *dateString = [dateFormat dateFromString:_dobbtnlbl.titleLabel.text];
-    NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
-    [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
-    NSString* sqldate=[dateFormat1 stringFromDate:dateString];
+//    NSLog(@"date%@",_datetextfld_ipad.text);
+//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+//    [dateFormat setDateFormat: @"MM-dd-yyyy"];
+//    
+//    NSDate *dateString = [dateFormat dateFromString:_datetextfld_ipad.text];
+//    NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+//    [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+//    NSString* sqldate=[dateFormat1 stringFromDate:dateString];
     
    
 
@@ -354,7 +355,7 @@
                    "<NameInLicense>%@</NameInLicense>\n"
                    "</UpdateApplicantData>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,_sufixbtnlbl.titleLabel.text,_firstnametxtfld.text,_lastnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,sqldate,_countrybtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_alternativenumtxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_driverlicencetxtfld.text,_stateissuetxtfld.text,_nameinlicencetxtfld.text];
+                   "</soap:Envelope>\n",_Applicantid,_sufixbtnlbl.titleLabel.text,_firstnametxtfld.text,_lastnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_datetextfld_ipad.text,_countrybtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_alternativenumtxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_driverlicencetxtfld.text,_stateissuetxtfld.text,_nameinlicencetxtfld.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -937,7 +938,7 @@
         NSString *myFormattedDate = [dateFormat stringFromDate:dates];
 
       
-        [_dobbtnlbl setTitle:myFormattedDate forState:UIControlStateNormal];
+        _datetextfld_ipad .text=myFormattedDate;
         _dobtext_iphone.text=myFormattedDate;
         _soapResults=nil;    }
     
@@ -1311,6 +1312,15 @@ numberOfRowsInComponent:(NSInteger)component
         
         [_datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
     }
+    if (textField==_datetextfld_ipad) {
+        
+        [_datetextfld_ipad resignFirstResponder];
+        
+        _datepicker_ipad.hidden=NO;
+        
+        [_datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
+    }
+
     //_picker.hidden=YES;
     return YES;
 }
@@ -1325,7 +1335,169 @@ numberOfRowsInComponent:(NSInteger)component
         
         [  _datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
     }
+    if (textField==_datetextfld_ipad) {
+        
+        
+        [_datepicker_ipad resignFirstResponder];
+        
+        _datepicker_ipad.hidden=NO;
+        
+        
+        [  _datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
+    }
+
+    if(textField==_firstnametxtfld)
+    {
+        NSUInteger newLength = [_firstnametxtfld.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_lastnametxtfld)
+    {
+        NSUInteger newLength = [_lastnametxtfld.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_Addresstxtfld)
+    {
+        NSUInteger newLength = [_Addresstxtfld.text length] + [string length] - range.length;
+        return (newLength > 250) ? NO : YES;
+    }
+
+    if(textField==_mobiletxtfld)
+    {
+        NSUInteger newLength = [_mobiletxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_homenumbertxtfld)
+    {
+        NSUInteger newLength = [_homenumbertxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+
+    if(textField==_citytxtfld)
+    {
+        NSUInteger newLength = [_citytxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_ziptextflield)
+    {
+        NSUInteger newLength = [_ziptextflield.text length] + [string length] - range.length;
+        return (newLength > 10) ? NO : YES;
+    }
+    if(textField==_driverlicencetxtfld)
+    {
+        NSUInteger newLength = [_driverlicencetxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_nameinlicencetxtfld)
+    {
+        NSUInteger newLength = [_nameinlicencetxtfld.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    if(textField==_emergencytxtfld)
+    {
+        NSUInteger newLength = [_emergencytxtfld.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+
+    if(textField==_contactnumbtxtfld)
+    {
+        NSUInteger newLength = [_contactnumbtxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_emailtxtfld)
+    {
+        NSUInteger newLength = [_emailtxtfld.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+
+    if(textField==_alternativenumtxtfld)
+    {
+        NSUInteger newLength = [_alternativenumtxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_stateissuetxtfld)
+    {
+        NSUInteger newLength = [_stateissuetxtfld.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    if(textField==_firstnametxt_iphone)
+    {
+        NSUInteger newLength = [_firstnametxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_lastnametxt_iphone)
+    {
+        NSUInteger newLength = [_lastnametxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_homeaddresstxt_iphone)
+    {
+        NSUInteger newLength = [_homeaddresstxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 250) ? NO : YES;
+    }
     
+    if(textField==_mobilenotext_iphone)
+    {
+        NSUInteger newLength = [_mobilenotext_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_homenotxt_iphone)
+    {
+        NSUInteger newLength = [_homenotxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    
+    if(textField==_citytxt_iphone)
+    {
+        NSUInteger newLength = [_citytxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_ziptxt_iphone)
+    {
+        NSUInteger newLength = [_ziptxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 10) ? NO : YES;
+    }
+    if(textField==_drivinglicenceno_iphone)
+    {
+        NSUInteger newLength = [_drivinglicenceno_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_nameonlicenct_iphone)
+    {
+        NSUInteger newLength = [_nameonlicenct_iphone.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    if(textField==_emergencycontactnametxt_iphone)
+    {
+        NSUInteger newLength = [_emergencycontactnametxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    
+    if(textField==_contactnotxt_iphone)
+    {
+        NSUInteger newLength = [_contactnotxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_emailtxt_iphone)
+    {
+        NSUInteger newLength = [_emailtxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    
+    if(textField==_alternatenotxt_iphone)
+    {
+        NSUInteger newLength = [_alternatenotxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_stateissuetxt_iphone)
+    {
+        NSUInteger newLength = [_stateissuetxt_iphone.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+
+
+
+        
     //_picker.hidden=YES;
     return YES;
 }
@@ -1340,6 +1512,18 @@ numberOfRowsInComponent:(NSInteger)component
     _datepicker_iphone.hidden=YES;
     
 }
+-(void)picker2action{
+    NSDate *date1  = _datepicker_ipad.date;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateStyle = NSDateFormatterMediumStyle;
+    //    dateFormat.dateFormat=@"MM/dd/yyyy";
+    dateFormat.dateFormat=@"yyyy-MM-dd";
+    _datetextfld_ipad.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+    _datepicker_ipad.hidden=YES;
+    
+}
+
 
 -(IBAction)update_iphone:(id)sender
 {

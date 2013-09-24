@@ -13,7 +13,8 @@
 #import "Educationdetails.h"
 #import "AddEducationViewController.h"
 ///#import "NewMedicalViewController.h"
-@interface EducationViewController : UIViewController{
+@interface EducationViewController : UIViewController<UITextFieldDelegate>
+{
      BOOL recordResults;
     NSInteger webtype;
      NSInteger identifr;

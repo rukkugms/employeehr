@@ -1004,6 +1004,58 @@ numberOfRowsInComponent:(NSInteger)component
 {
     [sender resignFirstResponder];
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if(textField==_workedperiodText)
+    {
+    NSUInteger newLength = [_workedperiodText.text length] + [string length] - range.length;
+    return (newLength > 50) ? NO : YES;
+    }
+    if(textField==_convictExplanationText)
+    {
+        NSUInteger newLength = [_convictExplanationText.text length] + [string length] - range.length;
+        return (newLength > 100) ? NO : YES;
+    }
+    if(textField==_twicnumberText)
+    {
+        NSUInteger newLength = [_twicnumberText.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    
+    if(textField==_refferedagencyText)
+    {
+        NSUInteger newLength = [_refferedagencyText.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
+    
+    
+        if(textField==_workedperiodText_iphone)
+        {
+            NSUInteger newLength = [_workedperiodText_iphone.text length] + [string length] - range.length;
+            return (newLength > 50) ? NO : YES;
+        }
+        if(textField==_convictExplanationText_iphone)
+        {
+            NSUInteger newLength = [_convictExplanationText_iphone.text length] + [string length] - range.length;
+            return (newLength > 100) ? NO : YES;
+        }
+        if(textField==_twicnumberText_iphone)
+        {
+            NSUInteger newLength = [_twicnumberText_iphone.text length] + [string length] - range.length;
+            return (newLength > 50) ? NO : YES;
+        }
+        
+        if(textField==_refferedagencyText_iphone)
+        {
+            NSUInteger newLength = [_refferedagencyText_iphone.text length] + [string length] - range.length;
+            return (newLength > 50) ? NO : YES;
+        }
 
+        
+    
+
+    
+
+}
 
 @end

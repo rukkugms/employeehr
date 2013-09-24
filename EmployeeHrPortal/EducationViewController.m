@@ -1103,7 +1103,7 @@
     calendar.selectedDate = [self.dateFormatter dateFromString:dateString];
     
     calendar.minimumDate = [self.dateFormatter dateFromString:@"09/07/2011"];
-    calendar.maximumDate =[self.dateFormatter dateFromString:@"1/07/2020"];
+    calendar.maximumDate =[self.dateFormatter dateFromString:@"1/07/2050"];
     calendar.shouldFillCalendar = YES;
     calendar.adaptHeightToNumberOfWeeksInMonth = NO;
     
@@ -1158,5 +1158,29 @@
 //    [self.navigationController pushViewController:_newmedVCtrl animated:YES];
 
     }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if(textField==_insitutionname)
+    {
+    NSUInteger newLength = [_insitutionname.text length] + [string length] - range.length;
+    return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_citytxtfld)
+    {
+        NSUInteger newLength = [_citytxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_statetxtfld)
+    {
+        NSUInteger newLength = [_statetxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_certifcatenametxt)
+    {
+        NSUInteger newLength = [_certifcatenametxt.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
 
+
+
+}
 @end

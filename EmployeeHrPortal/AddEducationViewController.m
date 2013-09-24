@@ -283,6 +283,27 @@ numberOfRowsInComponent:(NSInteger)component
         
         [_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
     }
+    if(textField==_institutenametxtfld)
+    {
+        NSUInteger newLength = [_institutenametxtfld.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+    if(textField==_citytxtfld)
+    {
+        NSUInteger newLength = [_citytxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_statetxtfld)
+    {
+        NSUInteger newLength = [_statetxtfld.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_name)
+    {
+        NSUInteger newLength = [_name.text length] + [string length] - range.length;
+        return (newLength > 25) ? NO : YES;
+    }
+
     
     //_picker.hidden=YES;
     return YES;

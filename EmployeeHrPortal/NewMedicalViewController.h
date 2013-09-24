@@ -12,7 +12,7 @@
 #import "EmployeeViewController.h"
 #import "AddNewMedicalViewController.h"
 
-@interface NewMedicalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface NewMedicalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     BOOL  recordResults;
     NSInteger identifier;
     NSInteger webtype;

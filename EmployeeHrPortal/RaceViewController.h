@@ -10,7 +10,7 @@
 #import "Ethicity.h"
 #import "SecondRaceViewController.h"
 #import "racemdl.h"
-@interface RaceViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource>
+@interface RaceViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
 {
     BOOL recordResults;
     BOOL buttonclicked;

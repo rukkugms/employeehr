@@ -1623,12 +1623,27 @@
 //        _datepicker_iphone.hidden=YES;
 //    }
     if (textField==_skilltextflield_iphone) {
+        NSUInteger newLength = [_skilltextflield_iphone.text length] + [string length] - range.length;
+        return (newLength > 100) ? NO : YES;
+
         _datapicker1.hidden=YES;
     }
     if (textField==_crafttxtflield_iphone) {
+        NSUInteger newLength = [_crafttxtflield_iphone.text length] + [string length] - range.length;
+        return (newLength > 100) ? NO : YES;
+
         _datapicker2.hidden=YES;
     }
-
+    if(textField==_otherdesc)
+    {
+    NSUInteger newLength = [_otherdesc.text length] + [string length] - range.length;
+    return (newLength > 50) ? NO : YES;
+    }
+    if(textField==_Othrtraing_iphone)
+    {
+        NSUInteger newLength = [_Othrtraing_iphone.text length] + [string length] - range.length;
+        return (newLength > 50) ? NO : YES;
+    }
     //_picker.hidden=YES;
     return YES;
 }

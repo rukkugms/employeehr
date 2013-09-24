@@ -11,7 +11,7 @@
 #import "CKCalendarView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-@interface BasicdetailsViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
+@interface BasicdetailsViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate,UITextFieldDelegate>
 {
     BOOL recordResults;
     NSInteger upint;
@@ -54,8 +54,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *driverlicencetxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *stateissuetxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *nameinlicencetxtfld;
-
-
+@property(strong,nonatomic)IBOutlet UIDatePicker *datepicker_ipad;
+@property(strong,nonatomic)IBOutlet UITextField *datetextfld_ipad;
 
 
 /*Xmlparser*/

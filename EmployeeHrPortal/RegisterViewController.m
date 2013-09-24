@@ -586,5 +586,28 @@ if([elementName isEqualToString:@"result"])
 {
     [sender resignFirstResponder];
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if(textField==_passwdtxtfld)
+    {
+    NSUInteger newLength = [_passwdtxtfld.text length] + [string length] - range.length;
+    return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_confirmpasswrd)
+    {
+        NSUInteger newLength = [_confirmpasswrd.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_passwdtxtfld_iphone)
+    {
+        NSUInteger newLength = [_passwdtxtfld_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+    if(textField==_confirmpasswrd_iphone)
+    {
+        NSUInteger newLength = [_confirmpasswrd_iphone.text length] + [string length] - range.length;
+        return (newLength > 20) ? NO : YES;
+    }
+
+}
 
 @end

@@ -913,6 +913,23 @@ else{
     }
 
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+   
+    if(textField==_medicationtxtfld)
+    {
+    NSUInteger newLength = [_medicationtxtfld.text length] + [string length] - range.length;
+    return (newLength > 50) ? NO : YES;
+    }
+    
+   
+    if(textField==_medicationtxtfld_iphone)
+        {
+            NSUInteger newLength = [_medicationtxtfld_iphone.text length] + [string length] - range.length;
+            return (newLength > 50) ? NO : YES;
+        }
+ 
+    
+}
 -(IBAction)returnkey:(id)sender{
     [sender resignFirstResponder];
 }
