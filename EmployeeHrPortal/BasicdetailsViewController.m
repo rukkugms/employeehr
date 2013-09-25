@@ -919,6 +919,10 @@
     {
         recordResults = FALSE;
         _ssntxtfld.text=_soapResults;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:_soapResults forKey:@"ssn"];
+        [defaults synchronize];
+
         _ssntextfield_iphone.text=_soapResults;
 
         _soapResults=nil;    }

@@ -365,6 +365,10 @@
         
         recordResults = FALSE;
         Applicantid=[_soapResults integerValue];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:_soapResults forKey:@"app"];
+        [defaults synchronize];
+
               
 //        if (!self.firstVCtrl) {
 //            _firstVCtrl=[[JobsiteViewController alloc]initWithNibName:@"JobsiteViewController" bundle:nil];
