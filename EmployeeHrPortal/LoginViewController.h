@@ -13,6 +13,7 @@
 #import "EmployeeViewController.h"
 #import "CourseDrugViewController.h"
 #import "UploadImageViewController.h"
+#import "Validation.h"
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 {
     BOOL recordResults;
@@ -20,7 +21,7 @@
     NSString *ssnstring;
 }
 /*Outlets */
-
+@property(strong,nonatomic)Validation *val;
 @property (strong, nonatomic) NSString *connectstring;
 @property (strong, nonatomic) IBOutlet UITextField *ssntxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *passwordtxtfld;

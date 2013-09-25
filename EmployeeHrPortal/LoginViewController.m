@@ -446,8 +446,27 @@
 }
 #pragma mark -Ipad Action
 - (IBAction)loginbtn:(id)sender {
+    Validation *val=[[Validation alloc]init];
+    int value1=[val isBlank:_ssntxtfld.text];
+    int value2=[val isBlank:_passwordtxtfld.text];
+       if (value1==0||value2==0) {
+        if(value1==0)
+        {
+            UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter Your Social Security Number" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert1 show];
+        }
+        else if(value2==0)
+           {
+               UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter Your Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+               [alert1 show];
+           }
+       }
+else
+{
+
     [self GetApplicantId1];
 }
+       }
 
 - (IBAction)cancelbtn:(id)sender {
 }
@@ -456,9 +475,27 @@
 
 
 - (IBAction)loginbtn_iphone:(id)sender {
+    Validation *val=[[Validation alloc]init];
+    int value1=[val isBlank:_SSNtxtfld_iphone.text];
+    int value2=[val isBlank:_passwordtxtfld_iphone.text];
+    if (value1==0||value2==0) {
+        if(value1==0)
+        {
+            UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter Your Social Security Number" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert1 show];
+        }
+        else if(value2==0)
+        {
+            UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter Your Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert1 show];
+        }
+    }
+else
+{
     
     
     [self GetApplicantId1];
+}
 }
 -(IBAction)textfldshouldreturn:(id)sender
 {

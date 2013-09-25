@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 
+
 @interface RegisterViewController ()
 
 @end
@@ -48,8 +49,34 @@
 }
 
 - (IBAction)continuebtn:(id)sender {
-    
-    if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
+    Validation *val=[[Validation alloc]init];
+    int value1=[val isBlank:_Ssntxtfld.text];
+    int value2=[val isBlank:_passwdtxtfld.text];
+    int value3=[val isBlank:_confirmpasswrd.text];
+    if (value1==0||value2==0||value3==0) {
+        if(value1==0)
+        {
+            UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter Your Social Security Number" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert1 show];
+        }
+        
+        
+        else if(value2==0)
+        {
+            UIAlertView *alert2=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter your Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert2 show];
+            
+        }
+        else if(value3==0)
+        {
+            UIAlertView *alert2=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Confirm your Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert2 show];
+            
+        }
+
+    }
+
+   else if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
         [self GetApplicantId2];
 
         
@@ -568,7 +595,35 @@ if([elementName isEqualToString:@"result"])
 
 -(IBAction)continue_iphone:(id)sender
 {
-    if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
+    Validation *val=[[Validation alloc]init];
+    int value1=[val isBlank:_Ssntxtfld_iphone.text];
+    int value2=[val isBlank:_passwdtxtfld_iphone.text];
+    int value3=[val isBlank:_confirmpasswrd_iphone.text];
+    if (value1==0||value2==0||value3==0) {
+        if(value1==0)
+        {
+            UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter Your Social Security Number" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert1 show];
+        }
+        
+        
+        else if(value2==0)
+        {
+            UIAlertView *alert2=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Enter your Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert2 show];
+            
+        }
+        else if(value3==0)
+        {
+            UIAlertView *alert2=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Confirm your Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert2 show];
+            
+        }
+        
+    }
+    
+
+   else if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
         [self GetApplicantId2];
         
         

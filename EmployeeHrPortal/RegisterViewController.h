@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JobsiteViewController.h"
+#import "Validation.h"
 @interface RegisterViewController : UIViewController<UITextFieldDelegate>
 {
         BOOL recordResults;
@@ -20,7 +21,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *Ssntxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *passwdtxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *confirmpasswrd;
-
+@property(strong,nonatomic)Validation *val;
 
 /*Xmlparser*/
 @property(strong,nonatomic)NSXMLParser *xmlParser;
