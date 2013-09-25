@@ -299,14 +299,14 @@
     NSString *soapMessage;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-//    NSLog(@"date%@",_datetextfld_ipad.text);
-//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-//    [dateFormat setDateFormat: @"MM-dd-yyyy"];
-//    
-//    NSDate *dateString = [dateFormat dateFromString:_datetextfld_ipad.text];
-//    NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
-//    [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
-//    NSString* sqldate=[dateFormat1 stringFromDate:dateString];
+    NSLog(@"date%@",_datetextfld_ipad.text);
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat: @"MM-dd-yyyy"];
+    
+    NSDate *dateString = [dateFormat dateFromString:_datetextfld_ipad.text];
+    NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+    [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+    NSString* sqldate=[dateFormat1 stringFromDate:dateString];
     
    
 
@@ -355,7 +355,7 @@
                    "<NameInLicense>%@</NameInLicense>\n"
                    "</UpdateApplicantData>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,_sufixbtnlbl.titleLabel.text,_firstnametxtfld.text,_lastnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_datetextfld_ipad.text,_countrybtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_alternativenumtxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_driverlicencetxtfld.text,_stateissuetxtfld.text,_nameinlicencetxtfld.text];
+                   "</soap:Envelope>\n",_Applicantid,_sufixbtnlbl.titleLabel.text,_firstnametxtfld.text,_lastnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,sqldate,_countrybtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_alternativenumtxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_driverlicencetxtfld.text,_stateissuetxtfld.text,_nameinlicencetxtfld.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -397,13 +397,13 @@
          {
              genderstg=0;
          }
-//         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-//         [dateFormat setDateFormat: @"MM-dd-yyyy"];
-//         
-//         NSDate *dateString = [dateFormat dateFromString:_dobtext_iphone.text];
-//         NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
-//         [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
-//         NSString* sqldate=[dateFormat1 stringFromDate:dateString];
+         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+         [dateFormat setDateFormat: @"MM-dd-yyyy"];
+         
+         NSDate *dateString = [dateFormat dateFromString:_dobtext_iphone.text];
+         NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+         [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+         NSString* sqldate=[dateFormat1 stringFromDate:dateString];
          
          soapMessage = [NSString stringWithFormat:
                         
@@ -437,7 +437,7 @@
                         "<NameInLicense>%@</NameInLicense>\n"
                         "</UpdateApplicantData>\n"
                         "</soap:Body>\n"
-                        "</soap:Envelope>\n",_Applicantid,_suffixbtn_iphone.titleLabel.text,_firstnametxt_iphone.text,_lastnametxt_iphone.text,_homeaddresstxt_iphone.text,_citytxt_iphone.text,_statebtn_iphone.titleLabel.text,_ziptxt_iphone.text,_ssntextfield_iphone.text,_dobtext_iphone.text,_countrytxt_iphone.titleLabel.text,genderstg,_emailtxt_iphone.text,_mobilenotext_iphone.text,_homenotxt_iphone.text,_alternatenotxt_iphone.text,_emergencycontactnametxt_iphone.text,_contactnotxt_iphone.text,_drivinglicenceno_iphone.text,_stateissuetxt_iphone.text,_nameonlicenct_iphone.text];
+                        "</soap:Envelope>\n",_Applicantid,_suffixbtn_iphone.titleLabel.text,_firstnametxt_iphone.text,_lastnametxt_iphone.text,_homeaddresstxt_iphone.text,_citytxt_iphone.text,_statebtn_iphone.titleLabel.text,_ziptxt_iphone.text,_ssntextfield_iphone.text,sqldate,_countrytxt_iphone.titleLabel.text,genderstg,_emailtxt_iphone.text,_mobilenotext_iphone.text,_homenotxt_iphone.text,_alternatenotxt_iphone.text,_emergencycontactnametxt_iphone.text,_contactnotxt_iphone.text,_drivinglicenceno_iphone.text,_stateissuetxt_iphone.text,_nameonlicenct_iphone.text];
          NSLog(@"soapmsg%@",soapMessage);
          
          
@@ -1511,7 +1511,7 @@ numberOfRowsInComponent:(NSInteger)component
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateStyle = NSDateFormatterMediumStyle;
 //    dateFormat.dateFormat=@"MM/dd/yyyy";
-    dateFormat.dateFormat=@"yyyy-MM-dd";
+    dateFormat.dateFormat=@"MM-dd-yyyy";
     _dobtext_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
     _datepicker_iphone.hidden=YES;
     
@@ -1522,7 +1522,7 @@ numberOfRowsInComponent:(NSInteger)component
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateStyle = NSDateFormatterMediumStyle;
     //    dateFormat.dateFormat=@"MM/dd/yyyy";
-    dateFormat.dateFormat=@"yyyy-MM-dd";
+   dateFormat.dateFormat=@"MM-dd-yyyy";
     _datetextfld_ipad.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
     _datepicker_ipad.hidden=YES;
     
