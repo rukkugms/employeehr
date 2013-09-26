@@ -20,6 +20,7 @@
     // NSInteger Applicantid;
     NSInteger basicPlus;
     NSInteger ncer;
+    NSInteger webtype;
     
 }
 @property(readwrite)  NSInteger Applicantid;

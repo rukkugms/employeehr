@@ -54,6 +54,7 @@
 										<int key="NSvFlags">274</int>
 										<string key="NSFrameSize">{1102, 756}</string>
 										<reference key="NSSuperview" ref="614088217"/>
+										<reference key="NSNextKeyView" ref="344093615"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -605,7 +606,7 @@
 									<object class="IBUIButton" id="868763411">
 										<reference key="NSNextResponder" ref="614088217"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{378, 294}, {30, 30}}</string>
+										<string key="NSFrame">{{334, 298}, {29, 26}}</string>
 										<reference key="NSSuperview" ref="614088217"/>
 										<reference key="NSNextKeyView" ref="278373507"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -638,6 +639,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{490, 610}, {122, 26}}</string>
 										<reference key="NSSuperview" ref="614088217"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -778,6 +780,14 @@
 					<int key="connectionID">190</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">clickedbtnlbl</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="868763411"/>
+					</object>
+					<int key="connectionID">216</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">continuebtn:</string>
 						<reference key="source" ref="141151859"/>
@@ -793,7 +803,7 @@
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">191</int>
+					<int key="connectionID">215</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -906,7 +916,6 @@
 							<reference ref="570812051"/>
 							<reference ref="963837758"/>
 							<reference ref="902111683"/>
-							<reference ref="868763411"/>
 							<reference ref="95077345"/>
 							<reference ref="784205359"/>
 							<reference ref="562794577"/>
@@ -919,6 +928,7 @@
 							<reference ref="702761923"/>
 							<reference ref="141151859"/>
 							<reference ref="329895488"/>
+							<reference ref="868763411"/>
 						</array>
 						<reference key="parent" ref="73473598"/>
 					</object>
@@ -1124,7 +1134,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">214</int>
+			<int key="maxID">216</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

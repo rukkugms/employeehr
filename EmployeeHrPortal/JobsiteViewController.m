@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    buttonclicked=0;
     // Do any additional setup after loading the view from its nib.
     [self SelectEmployeeSkills];
     _expirydatetxtfld_iphone.inputView=[[UIView alloc] initWithFrame:CGRectZero];
@@ -39,7 +40,7 @@
     _scroll_iphone.frame=CGRectMake(0, 0,320, 548);
     [_scroll_iphone setContentSize:CGSizeMake(320,7000)];
     
-    buttonclicked=0;
+   
     _listtable.layer.borderWidth = 4.0;
     _listtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     _selectedtable.layer.borderWidth = 4.0;
@@ -61,6 +62,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    buttonclicked=0;
     UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Power_-_Standby"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     [self.navigationItem setRightBarButtonItem:logoutbutton animated:YES];
     self.navigationItem.hidesBackButton=YES;
@@ -154,7 +156,7 @@
 //    
 //}
 //
-//- (IBAction)clickbtn:(id)sender {
+- (IBAction)clickbtn:(id)sender {
 //    _nw=@"";
 //    if (buttonclicked==0) {
 //        //  _clickedbtnlbl.imageView.image=[UIImage imageNamed:@"check"];
@@ -169,9 +171,24 @@
 //        buttonclicked=0;
 //        
 //    }
-//    // [_listtable reloadData];
-//    
-//}
+    _nw=@"";
+    if (buttonclicked==0) {
+        //  _clickedbtnlbl.imageView.image=[UIImage imageNamed:@"check"];
+        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+        buttonclicked=1;
+        // [_listtable reloadData];
+    }
+    else if(buttonclicked==1){
+        [_clickedbtnlbl setSelected:NO];
+        
+        [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
+        buttonclicked=0;
+        
+    }
+
+    // [_listtable reloadData];
+    
+}
 /*Popover*/
 - (IBAction)SelectMonth:(id)sender
 {
@@ -481,7 +498,7 @@
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     //cell.selected = NO;
                     _clickedbtnlbl.enabled=YES;
-                    //   [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+                     //  [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
                     buttonclicked=1;
                 }
             }
@@ -489,7 +506,8 @@
             
         }
         }
-        else{  if([_nw isEqualToString:@"SelectApplicant"])
+        else{
+        if([_nw isEqualToString:@"SelectApplicant"])
         {
             
             
@@ -504,8 +522,15 @@
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 _checkbtnlbl_iphone.enabled=NO;
                 [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_off"] forState:UIControlStateNormal];
-                // buttonclicked=1;
+                // buttonclicked=0;
             }
+//            else{
+//                cell.accessoryType = UITableViewCellAccessoryNone;
+//                _checkbtnlbl_iphone.enabled=YES;
+//                [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+//                 buttonclicked=1;
+//            }
+
             
         }
             
@@ -872,7 +897,8 @@
     
 }
 -(void)UpdateApplicantDetails
-{  recordResults = FALSE;
+{ webtype=1;
+    recordResults = FALSE;
     if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad ) {
         
     
@@ -909,12 +935,12 @@
     NSString *ncerdesc=_otherdesc.text;
     NSString *soapMessage;
     NSString *jobsite;
-    if(_clickedbtnlbl.enabled==NO)
+    if(buttonclicked==0)
     {
         jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
         
     }
-    else if(_clickedbtnlbl.enabled==YES)
+    else if(buttonclicked==1)
     {
         jobsite=@"0";
     }
@@ -1019,12 +1045,12 @@
         NSString *ncerdesc=_Othrtraing_iphone.text;
         NSString *soapMessage;
         NSString *jobsite;
-        if(_clickedbtnlbl.enabled==NO)
+        if(buttonclicked==0)
         {
             jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
             
         }
-        else if(_clickedbtnlbl.enabled==YES)
+        else if(buttonclicked==1)
         {
             jobsite=@"0";
         }
@@ -1134,6 +1160,11 @@
     
     
     [_jobsitetable_iphone reloadData];
+    if (webtype==1) {
+        [self SelectApplicantDetails];
+        
+        webtype=0;
+    }
     [_listtable reloadData];
     
     [_popOverTableView reloadData];
@@ -1425,10 +1456,19 @@
     
     if([elementName isEqualToString:@"JobSiteId"])
         
-    { _nw=@"SelectApplicant";
+    {
+        _nw=@"SelectApplicant";
         _jobsite=[[jobsite alloc]init];
         recordResults = FALSE;
         _jobsite.jobsiteid=_soapResults;
+        if([_soapResults integerValue]==0)
+        {
+            _checkbtnlbl_iphone.enabled=YES;
+            _clickedbtnlbl.enabled=YES;
+             [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+            [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+            
+        }
         [_listtable reloadData];
         _soapResults = nil;
         
