@@ -1161,8 +1161,10 @@
     
     [_jobsitetable_iphone reloadData];
     if (webtype==1) {
+        _selectedrow=@"";
+
         [self SelectApplicantDetails];
-        
+
         webtype=0;
     }
     [_listtable reloadData];
@@ -1469,7 +1471,9 @@
             [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
             
         }
+       
         [_listtable reloadData];
+        
         _soapResults = nil;
         
     }
