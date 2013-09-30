@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "JobsiteViewController.h"
+#import "NewMedicalViewController.h"
+#import "RaceViewController.h"
+#import "EmployeeViewController.h"
+#import "CourseDrugViewController.h"
+#import "UploadImageViewController.h"
 #import "Validation.h"
 @interface RegisterViewController : UIViewController<UITextFieldDelegate>
 {
@@ -21,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *Ssntxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *passwdtxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *confirmpasswrd;
+@property (strong, nonatomic)UITabBarController*tabbarcntrl;
 @property(strong,nonatomic)Validation *val;
 
 /*Xmlparser*/
