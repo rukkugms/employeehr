@@ -1088,7 +1088,11 @@
             NSData *data1=[_soapResults base64DecodedData];
             
             UIImage *image1=[[UIImage alloc]initWithData:data1];
+            //[NSData dataWithData:UIImagePNGRepresentation(image.image)];
+            
+         
             _imgvw.image=image1;
+            NSLog(@"img%@",image1);
 
             
         }
