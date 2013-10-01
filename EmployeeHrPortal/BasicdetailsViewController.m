@@ -1548,7 +1548,7 @@ numberOfRowsInComponent:(NSInteger)component
     
     
  
-               NSString *imagename=[NSString stringWithFormat:@"Photo_%@.png",_ssntxtfld.text];
+               NSString *imagename=[NSString stringWithFormat:@"Photo_%@.jpg",_ssntxtfld.text];
         
     
     // NSString *cmpnyname=@"arvin";
@@ -1700,10 +1700,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         NSLog(@"dict%@",info);
         
         
-        _imgvw.image =image;
+        
+        UIGraphicsBeginImageContext(CGSizeMake(480,320));
+        
+        CGContextRef            context = UIGraphicsGetCurrentContext();
+        
+        [image drawInRect: CGRectMake(0, 0, 480, 320)];
+        
+        UIImage        *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+        
+        _imgvw.image =smallImage;
         [self dismissModalViewControllerAnimated:YES];
         if (_newMedia)
-            UIImageWriteToSavedPhotosAlbum(image,
+            UIImageWriteToSavedPhotosAlbum(smallImage,
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
@@ -1744,7 +1755,10 @@ finishedSavingWithError:(NSError *)error
 
 - (IBAction)uploadimage:(id)sender {
     UIImage *image =_imgvw.image;
-    NSData *data = UIImagePNGRepresentation(image);
+    //NSData *data = UIImagePNGRepresentation(image);
+    NSData *data = UIImageJPEGRepresentation(image, 1.0);
+
+    
     _encodedString = [data base64EncodedString];
     
     NSLog(@"result%@",_encodedString);
