@@ -200,12 +200,22 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImage *image = [info
                           objectForKey:UIImagePickerControllerOriginalImage];
         NSLog(@"dict%@",info);
+        UIGraphicsBeginImageContext(CGSizeMake(480,320));
         
+        CGContextRef            context = UIGraphicsGetCurrentContext();
         
-        _imageview.image =image;
+        [image drawInRect: CGRectMake(0, 0, 480, 320)];
+        
+        UIImage        *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+        
+
+        
+        _imageview.image =smallImage;
         [self dismissModalViewControllerAnimated:YES];
         if (_newMedia)
-            UIImageWriteToSavedPhotosAlbum(image,
+            UIImageWriteToSavedPhotosAlbum(smallImage,
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
@@ -245,7 +255,8 @@ finishedSavingWithError:(NSError *)error
 
 - (IBAction)upload:(id)sender {
     UIImage *image =_imageview.image;
-    NSData *data = UIImagePNGRepresentation(image);
+   // NSData *data = UIImagePNGRepresentation(image);
+     NSData *data = UIImageJPEGRepresentation(image, 1.0);
     _encodedString = [data base64EncodedString];
     
     NSLog(@"result%@",_encodedString);
