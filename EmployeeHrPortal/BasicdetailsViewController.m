@@ -1087,7 +1087,8 @@
         if (upint==2) {
             NSData *data1=[_soapResults base64DecodedData];
             
-            UIImage *image1=[[UIImage alloc]initWithData:data1];
+            UIImage *image1=  [[UIImage alloc]initWithData:data1];
+          
             //[NSData dataWithData:UIImagePNGRepresentation(image.image)];
             
          
