@@ -287,7 +287,7 @@
     Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
     UITableViewCell *cell1 = (UITableViewCell *)[[yearbutton superview] superview];
     UITableView *table1 = (UITableView *)[cell1 superview];
-    NSIndexPath *textFieldIndexPath1 = [table1 indexPathForCell:cell];
+    NSIndexPath *textFieldIndexPath1 = [table1 indexPathForCell:cell1];
     NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
     Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
     
