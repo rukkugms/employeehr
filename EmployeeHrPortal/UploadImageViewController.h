@@ -13,7 +13,7 @@
 @interface UploadImageViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     BOOL recordResults;
 }
-
+@property(readwrite)NSInteger Applicantid;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (strong, nonatomic) IBOutlet UIImageView *imageview;
 

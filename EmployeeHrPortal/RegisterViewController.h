@@ -43,5 +43,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *confirmpasswrd_iphone;
 -(IBAction)continue_iphone:(id)sender;
 -(IBAction)textfldshouldreturn:(id)sender;
+-(void)processLogout:(NSNotification *)aNotification;
 
 @end

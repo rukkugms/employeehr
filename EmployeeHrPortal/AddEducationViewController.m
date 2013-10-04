@@ -214,6 +214,11 @@
 }
 
 - (IBAction)cancelbtn:(id)sender {
+    [_edunamelbl setTitle:@"Select" forState:UIControlStateNormal];
+    _yrstxtfld.text=@"";
+    _institutenametxtfld.text=@"";
+    _citytxtfld.text=@"";
+    _statetxtfld.text=@"";
     
     
 }
@@ -339,6 +344,9 @@ numberOfRowsInComponent:(NSInteger)component
 }
 
 - (IBAction)cancelcer:(id)sender {
+    _cerdatetxtfld.text=@"";
+    _name.text=@"";
+    
 }
 
 - (IBAction)cerdatebtn:(id)sender {

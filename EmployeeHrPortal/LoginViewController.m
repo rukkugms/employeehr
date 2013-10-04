@@ -29,8 +29,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-      self.navigationItem.hidesBackButton=YES;
-     [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processhome:) name:@"home" object:nil];
+    self.navigationController.navigationBar.hidden=YES;
+    
+    self.navigationItem.hidesBackButton=YES;
+   [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processLogout:) name:@"logout" object:nil];
+    
+
 }
 
 
@@ -39,10 +43,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)processhome:(NSNotification *)aNotification{
-    [self.navigationController popToViewController:self.firstVCtrl animated:YES];
-     //[NSUserDefaults standardUserDefaults]
-     }
+-(void)processLogout:(NSNotification *)aNotification{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[NSUserDefaults standardUserDefaults]
+}
+
 #pragma mark - Textfield Delegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -54,7 +59,15 @@
         
                 if (textField==_passwordtxtfld) {
             
-        
+        if([_ssntxtfld.text isEqualToString:@""])
+        {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+
+        }
+                    else
+                    {
         ssnstring=_ssntxtfld.text;
                     
                     
@@ -114,12 +127,24 @@
                         [alert show];
                         
                     }
+                    }
         
         }
     }
 
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        
+        if (textField==_passwordtxtfld_iphone) {
+            
+            if([_SSNtxtfld_iphone.text isEqualToString:@""])
+            {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+            }
+            else
+            {
+
         ssnstring=_SSNtxtfld_iphone.text;
         //checking a particular charector
         // NSString *connectstring;
@@ -170,7 +195,8 @@
               
           }
 
-        
+            }
+        }
         
     }
         return YES;
@@ -386,20 +412,27 @@
           _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
     
     BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
+             UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
         viewController2.Applicantid=Applicantid;
     EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
+        UINavigationController *navedu=[[UINavigationController alloc]initWithRootViewController:viewController3];
         viewController3.Applicantid=Applicantid;
+        
         JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
+              UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
         viewController1.Applicantid=Applicantid;
          NewMedicalViewController *viewController4 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
+             UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
         viewController4.Applicantid=Applicantid;
         EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
+             UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
         viewcontroller5.Applicantid=Applicantid;
         CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
+             UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
         viewcontroller6.Applicantid=Applicantid;
         RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
-        viewcontroller7.applicantId=Applicantid;
-        NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,nil];
+             UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];        viewcontroller7.applicantId=Applicantid;
+        NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,coursenav,racenav,nil];
         self.tabbarcntrl.viewControllers = controllers;
         
         
@@ -413,23 +446,32 @@
    
              
              BasicdetailsViewController *viewController3 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController_iphone" bundle:nil];
+             UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];
              viewController3.Applicantid=Applicantid;
              
              UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
-             
+             UINavigationController *uploadnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
+             viewController2.Applicantid=Applicantid;
              EducationViewController *viewController4 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
+             UINavigationController *navedu=[[UINavigationController alloc]initWithRootViewController:viewController4];
              viewController4.Applicantid=Applicantid;
              JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController_iphone" bundle:nil];
+             UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
              viewController1.Applicantid=Applicantid;
              NewMedicalViewController *viewController5 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController_iphone" bundle:nil];
+             UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController5];
+
              viewController5.Applicantid=Applicantid;
              EmployeeViewController*viewcontroller6=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController_iphone" bundle:nil];
+              UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
              viewcontroller6.Applicantid=Applicantid;
              CourseDrugViewController*viewcontroller7=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController_iphone" bundle:nil];
+              UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
              viewcontroller7.Applicantid=Applicantid;
              RaceViewController*viewcontroller8=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
+             UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
              viewcontroller8.applicantId=Applicantid;
-             NSArray *controllers = [NSArray arrayWithObjects:viewController1,viewController2,viewController3,viewController4,viewController5,viewcontroller6,viewcontroller7,viewcontroller8,nil];
+             NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,navedu,mednav,empnav,coursenav,racenav,nil];
              self.tabbarcntrl.viewControllers = controllers;
              
              

@@ -42,5 +42,7 @@
 
 - (IBAction)loginbtn_iphone:(id)sender;
 -(IBAction)textfldshouldreturn:(id)sender;
+-(void)processLogout:(NSNotification *)aNotification;
+
 
 @end

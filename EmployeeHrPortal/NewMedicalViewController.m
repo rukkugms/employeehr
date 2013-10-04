@@ -43,18 +43,33 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     [self selectMedicalCondition];
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     // Do any additional setup after loading the view from its nib.
-    UIBarButtonItem *homebutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"rounded"] style:UIBarButtonItemStylePlain target:self action:@selector(homeAction)];
-    [self.navigationItem setRightBarButtonItem:homebutton animated:YES];
-      self.navigationItem.hidesBackButton=YES;    
-}
--(void)homeAction{
-    [self UpdateApplicantValue];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     
-    //[self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"home" object:self userInfo:nil];
     
-}
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+    self.navigationController.navigationBarHidden=NO;
+    
 
+}
+-(void)logoutAction{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"buttonIndex%d",buttonIndex);
+    
+    
+    
+    if (buttonIndex==0) {
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
+        
+    }
+    
+    
+}
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
@@ -932,5 +947,10 @@ else{
 }
 -(IBAction)returnkey:(id)sender{
     [sender resignFirstResponder];
+}
+-(IBAction)cancel:(id)sender
+{
+    [_medicalconditinbtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+    _meddistxtfld.text=@"";
 }
 @end

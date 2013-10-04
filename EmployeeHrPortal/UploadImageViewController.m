@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view from its nib.
     _scrollview.frame=CGRectMake(0, 0,320, 548);
     [ _scrollview setContentSize:CGSizeMake(320,7000)];
+    self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,6 +39,34 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+}
+-(void)logoutAction{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"buttonIndex%d",buttonIndex);
+    
+    
+    
+    if (buttonIndex==0) {
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
+        
+    }
+    
+    
+}
+
 
 
 #pragma mark - Uploadimage
@@ -105,8 +134,8 @@
     recordResults = FALSE;
     NSString *soapMessage;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *fetchVariable = [defaults objectForKey:@"app"];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSString *fetchVariable = [defaults objectForKey:@"app"];
   
     
     
@@ -125,7 +154,7 @@
                    "<appid>%d</appid>\n"
                    "</FetchImage>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",[fetchVariable integerValue]];
+                   "</soap:Envelope>\n",_Applicantid];
     NSLog(@"soapmsg%@",soapMessage);
     
     

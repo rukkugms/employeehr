@@ -45,30 +45,48 @@
     // Do any additional setup after loading the view from its nib.
   
 //self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:0.2 green:0.5 blue:0.5 alpha:1];
-    self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-       //self.navigationController.navigationBar.tintColor=[UIColor cyanColor];
-    
-    
-    UIBarButtonItem *homebutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"rounded"] style:UIBarButtonItemStylePlain target:self action:@selector(homeAction)];
-    [self.navigationItem setRightBarButtonItem:homebutton animated:YES];
+           
       self.navigationItem.hidesBackButton=YES;
 }
-//-(void)homeAction{
-//   [self UpdateApplicantData];
-//    [self.navigationController popViewControllerAnimated:YES];
-//    
-//}
--(void)homeAction
-{ [self UpdateApplicantData];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"home" object:self userInfo:nil];
+-(void)homeAction{
+   [self UpdateApplicantData];
+    [self.navigationController popViewControllerAnimated:YES];
+     
 }
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
+
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+    self.navigationController.navigationBarHidden=NO;
+    
+
     [self FetchImage];
 
     [self GetApplicantDetails];
 }
+-(void)logoutAction{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"buttonIndex%d",buttonIndex);
+    
+    if (buttonIndex==0) {
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
+    }
+    
+    
+}
+
 
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -149,6 +167,17 @@
 }
 
 - (IBAction)cancelbtn:(id)sender {
+//    [_sufixbtnlbl setTitle:@"" forState:UIControlStateNormal];
+//    _lastnametxtfld.text=@"";
+//    _firstnametxtfld.text=@"";
+//    _Addresstxtfld.text=@"";
+//    _citytxtfld.text=@"";
+//    [_statebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+//    _ziptextflield.text=@"";
+//    _datetextfld_ipad.text=@"";
+//    _emailtxtfld.text=@"";
+//    _mobiletxtfld.text=@"";
+//    _homenumbertxtfld.text=@"";
 }
 
 #pragma mark - Tableview

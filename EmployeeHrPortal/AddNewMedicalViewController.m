@@ -306,5 +306,11 @@ numberOfRowsInComponent:(NSInteger)component
         
     
 }
+-(IBAction)cancel:(id)sender
+{
+    [_medcndtnbtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+    _descptntxtfld.text=@"";
+    
+}
 
 @end

@@ -99,6 +99,7 @@
 
 - (IBAction)race:(id)sender;
 - (IBAction)drugbtn:(id)sender;
+-(IBAction)CancelAction:(id)sender;
 
 
 /*iphoneOutlets&Connections*/
@@ -115,6 +116,7 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datepicker_iphone;
 - (IBAction)checkbtn_iphone:(id)sender;
 - (IBAction)updatebtn_iphone:(id)sender;
+-(IBAction)cancelaction_iphone:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIPickerView *datapicker1;
 -(IBAction)returnkey:(id)sender;

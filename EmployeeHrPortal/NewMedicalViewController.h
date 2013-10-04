@@ -60,6 +60,7 @@
 - (IBAction)continuebtn:(id)sender;
 - (IBAction)deletebtn:(id)sender;
 - (IBAction)firstpage:(id)sender;
+-(IBAction)cancel:(id)sender;
 /*Iphone outlets &Connections*/
 @property (strong, nonatomic)AddNewMedicalViewController*AddmedCondtnVCtrl;
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll_iphone;

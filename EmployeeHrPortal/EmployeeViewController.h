@@ -27,6 +27,7 @@
 - (IBAction)SavePreviousemployee:(id)sender;
 - (IBAction)selectdate:(id)sender;
 -(IBAction)deletepreviousemp:(id)sender;
+-(IBAction)cancel:(id)sender;
 @property(readwrite)NSInteger Applicantid;
 @property(readwrite)NSInteger previousid;
 @property(strong,nonatomic)NSXMLParser *xmlParser;

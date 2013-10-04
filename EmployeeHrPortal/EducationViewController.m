@@ -45,25 +45,37 @@
     _edunamearray=[[NSMutableArray alloc]initWithObjects:@"High School",@"College",@"Other", nil];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-    UIBarButtonItem *homebutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"rounded"] style:UIBarButtonItemStylePlain target:self action:@selector(homeAction)];
-    [self.navigationItem setRightBarButtonItem:homebutton animated:YES];
-      self.navigationItem.hidesBackButton=YES;    
-}
-//-(void)homeAction{
-//   
-// //   [self.navigationController popToViewController: animated:<#(BOOL)#>
-//    
-//}
-
--(void)homeAction
-{
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"home" object:self userInfo:nil];
+    self.navigationController.navigationBarHidden=NO;
 }
+-(void)logoutAction{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"buttonIndex%d",buttonIndex);
+    
+    
+    
+    if (buttonIndex==0) {
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
+        
+    }
+    
+    
+}
+
 
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     
     [self SelectApplicantEducation];
     
@@ -928,7 +940,10 @@
     [self InsertApplicantCertificates];
 }
 
-- (IBAction)cancelbtn:(id)sender {
+- (IBAction)cancelbtn:(id)sender
+{
+    _certifcatenametxt.text=@"";
+    [_certificatedatebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
 }
 
 - (IBAction)edusavebtn:(id)sender {
@@ -936,8 +951,12 @@
 }
 
 - (IBAction)educancelbtn:(id)sender {
+    [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+    _yearscompleted.text=@"";
+    _insitutionname.text=@"";
+    _citytxtfld.text=@"";
+    _statetxtfld.text=@"";
     
-       
     
 }
 

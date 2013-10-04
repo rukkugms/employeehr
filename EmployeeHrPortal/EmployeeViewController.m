@@ -41,19 +41,32 @@
     [self selectApplicantPreviousEmployer];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-    UIBarButtonItem *homebutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"rounded"] style:UIBarButtonItemStylePlain target:self action:@selector(homeAction)];
-    [self.navigationItem setRightBarButtonItem:homebutton animated:YES];
-      self.navigationItem.hidesBackButton=YES;
-    self.navigationController.navigationBarHidden=YES;
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+    self.navigationController.navigationBarHidden=NO;
+ 
+}
+-(void)logoutAction{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"buttonIndex%d",buttonIndex);
+    
+    
+    
+    if (buttonIndex==0) {
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
+        
+    }
+    
     
 }
--(void)homeAction{
-    [self updateViewConstraints];
-   // [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"home" object:self userInfo:nil];
-    
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -760,7 +773,11 @@
 }
 -(IBAction)cancel_iphone:(id)sender
 {
-    
+    _companynametxtfld_iphone.text=@"";
+    _empdatetextfld_iphone.text=@"";
+    _rateofpaytxtfld_iphone.text=@"";
+    _positionheldtxtfld_iphone.text=@"";
+    _reasonlvtxtfld_iphone.text=@"";
 }
 -(IBAction)deleteemp_iphone:(id)sender
 {
@@ -887,6 +904,13 @@
     _addview_iphone.hidden=YES;
 }
 
-
+-(IBAction)cancel:(id)sender
+{
+    _previouscompanytxt.text=@"";
+    [_datebtn setTitle:@"Select" forState:UIControlStateNormal];
+    _rateofpaytxt.text=@"";
+    _positionheldtxt.text=@"";
+    _reasonforleavingtxt.text=@"";
+}
 
 @end

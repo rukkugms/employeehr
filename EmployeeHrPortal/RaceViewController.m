@@ -38,14 +38,30 @@
     _refferArray=[[NSMutableArray alloc]initWithObjects:@"Contacted  on my own",@"Referred by employee",@"Company Website",@"State Employment agency",@"National Publication",@"Newspaper Advertisement",@"Private Employment agency",@"Another Company",@"Other", nil];
     _refferArray_iphone=[[NSMutableArray alloc]initWithObjects:@"Contacted  on my own",@"Referred by employee",@"Company Website",@"State Employment agency",@"National Publication",@"Newspaper Advertisement",@"Private Employment agency",@"Another Company",@"Other", nil];
 self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-    UIBarButtonItem *homebutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"rounded"] style:UIBarButtonItemStylePlain target:self action:@selector(homeAction)];
-    [self.navigationItem setRightBarButtonItem:homebutton animated:YES];
-      self.navigationItem.hidesBackButton=YES;    
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+    self.navigationController.navigationBarHidden=NO;
+
 }
--(void)homeAction{
-    [self UpdateApplicantInformations];
-   // [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"home" object:self userInfo:nil];
+-(void)logoutAction{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"buttonIndex%d",buttonIndex);
+    
+    
+    
+    if (buttonIndex==0) {
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
+        
+    }
+    
     
 }
 
@@ -429,9 +445,18 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     if([elementName isEqualToString:@"ConvictExplanation"])
     {
                recordResults = FALSE;
+        if([_soapResults isEqualToString:@"(null)"])
+        {
+            _convictExplanationText.text=@"";
+             _convictExplanationText_iphone.text=@"";
+            _ethmdl.convictexplanation=@"";
+        }
+        else
+        {
         _ethmdl.convictexplanation=_soapResults;
         _convictExplanationText.text=_soapResults;
         _convictExplanationText_iphone.text=_soapResults;
+        }
         _soapResults = nil;
     }
 
@@ -439,9 +464,18 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     if([elementName isEqualToString:@"TWIC_CardNo"])
     {
         recordResults = FALSE;
+        if([_soapResults isEqualToString:@"(null)"])
+        {
+            _ethmdl.twiccardno=@"";
+            _twicnumberText.text=@"";
+            _twicnumberText_iphone.text=@"";
+        }
+        else
+        {
         _ethmdl.twiccardno=_soapResults;
         _twicnumberText.text=_soapResults;
         _twicnumberText_iphone.text=_soapResults;
+        }
         _soapResults = nil;
     }
     
@@ -545,9 +579,19 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         recordResults = FALSE;
         
+        if([_soapResults isEqualToString:@"(null)"])
+        {
+            _workedperiodText.text=@"";
+            _workedperiodText_iphone.text=@"";
+            _ethmdl.WorkedPeriod=@"";
+
+        }
+        else
+        {
         _workedperiodText.text=_soapResults;
         _workedperiodText_iphone.text=_soapResults;
         _ethmdl.WorkedPeriod=_soapResults;
+        }
         _soapResults = nil;
     }
 
@@ -575,18 +619,37 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     {
         
         recordResults = FALSE;
+        if([_soapResults isEqualToString:@"(null)"])
+        {
+            [_refferbtn setTitle:@"" forState:UIControlStateNormal];
+            [_reffertext_iphone setTitle:@"" forState:UIControlStateNormal];
+            _ethmdl.reffered=@"";
+        }
+        else
+        {
         [_refferbtn setTitle:_soapResults forState:UIControlStateNormal];
        [_reffertext_iphone setTitle:_soapResults forState:UIControlStateNormal];
         _ethmdl.reffered=_soapResults;
+        }
         _soapResults = nil;
     }
     if([elementName isEqualToString:@"RefferedAgency"])
     {
         
         recordResults = FALSE;
+        if([_soapResults isEqualToString:@"(null)"])
+        {
+            _refferedagencyText.text=@"";
+            _refferedagencyText_iphone.text=@"";
+            _ethmdl.reffereagency=@"";
+
+        }
+        else
+        {
         _refferedagencyText.text=_soapResults;
         _refferedagencyText_iphone.text=_soapResults;
         _ethmdl.reffereagency=_soapResults;
+        }
         _soapResults = nil;
     }
 

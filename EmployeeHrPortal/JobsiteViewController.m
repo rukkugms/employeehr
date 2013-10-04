@@ -63,9 +63,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     buttonclicked=0;
-    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Power_-_Standby"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
-    [self.navigationItem setRightBarButtonItem:logoutbutton animated:YES];
+    self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationItem.hidesBackButton=YES;
+   
     [self SelectJobs];
     
     
@@ -83,7 +88,21 @@
 }
 
 -(void)logoutAction{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"buttonIndex%d",buttonIndex);
+    
+    
+    
+    if (buttonIndex==0) {
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
+        
+    }
+    
     
 }
 
@@ -1766,5 +1785,21 @@ numberOfRowsInComponent:(NSInteger)component
      }
     
     
+}
+-(IBAction)CancelAction:(id)sender
+{
+//    [_monthBtn setTitle:@"" forState:UIControlStateNormal];
+//    [_yearBtn setTitle:@""forState:UIControlStateNormal];
+//    [_skillbtnlbl setTitle:@""forState:UIControlStateNormal];
+//    [_craftbtnlbl setTitle:@""forState:UIControlStateNormal];
+//     _otherdesc.text=@"";
+}
+-(IBAction)cancelaction_iphone:(id)sender
+{
+//    _expirydatetxtfld_iphone.text=@"";
+//    _skilltextflield_iphone.text=@"";
+//    _crafttxtflield_iphone.text=@"";
+//    
+//    _otherdesc.text=@"";
 }
 @end

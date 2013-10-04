@@ -34,5 +34,6 @@
 - (IBAction)medicalcndtnbtn:(id)sender;
 - (IBAction)savebtn:(id)sender;
 -(IBAction)returnkey:(id)sender;
+-(IBAction)cancel:(id)sender;
 
 @end

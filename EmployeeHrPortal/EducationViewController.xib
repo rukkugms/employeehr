@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12C2034</string>
+		<string key="IBDocument.SystemVersion">12F37</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -49,7 +49,7 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{1068, 748}</string>
 								<reference key="NSSuperview" ref="287129986"/>
-								<reference key="NSNextKeyView" ref="449626808"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -862,6 +862,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{219, 161.5}, {122, 26}}</string>
 										<reference key="NSSuperview" ref="181461820"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -917,8 +918,8 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="635611262"/>
-										<reference key="IBUIFontDescription" ref="655031239"/>
-										<reference key="IBUIFont" ref="487022552"/>
+										<reference key="IBUIFontDescription" ref="822668722"/>
+										<reference key="IBUIFont" ref="453696500"/>
 									</object>
 								</array>
 								<string key="NSFrame">{{308, 387}, {414, 203}}</string>
@@ -1591,7 +1592,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">359</int>
+			<int key="maxID">367</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
