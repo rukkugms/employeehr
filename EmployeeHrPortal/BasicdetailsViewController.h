@@ -20,6 +20,7 @@
     //iphone
     NSInteger detailbtnclicked_iphone;
     NSString *pickerstring;
+    
 }
 @property(readwrite)NSInteger Applicantid;
 @property(nonatomic, weak) CKCalendarView *calendar;

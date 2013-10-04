@@ -67,8 +67,7 @@
     self.navigationController.navigationBarHidden=NO;
     
 
-    [self FetchImage];
-
+    
     [self GetApplicantDetails];
 }
 -(void)logoutAction{
@@ -272,7 +271,7 @@
 
 
 -(void)GetApplicantDetails{
-    
+    upint=3;
     recordResults = FALSE;
     NSString *soapMessage;
     
@@ -580,6 +579,11 @@
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
     [_popOverTableView reloadData];
+    if(upint==3)
+    {
+        [self FetchImage];
+ 
+    }
     
         
      
@@ -1105,7 +1109,7 @@
     
     if([elementName isEqualToString:@"url"])
     {
-        
+           NSLog(@"upint%d",upint);
         recordResults = FALSE;
         if (upint==1) {
             
@@ -1582,7 +1586,7 @@ numberOfRowsInComponent:(NSInteger)component
     
     
  
-               NSString *imagename=[NSString stringWithFormat:@"Photo_%@.jpg",_ssntxtfld.text];
+               NSString *imagename=[NSString stringWithFormat:@"Photo_%@.png",_ssntxtfld.text];
         
     
     // NSString *cmpnyname=@"arvin";
@@ -1735,20 +1739,20 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         
         
-        UIGraphicsBeginImageContext(CGSizeMake(480,320));
+//        UIGraphicsBeginImageContext(CGSizeMake(480,320));
+//        
+//        CGContextRef            context = UIGraphicsGetCurrentContext();
+//        
+//        [image drawInRect: CGRectMake(0, 0, 480, 320)];
+//        
+//        UIImage        *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+//        
+//        UIGraphicsEndImageContext();
         
-        CGContextRef            context = UIGraphicsGetCurrentContext();
-        
-        [image drawInRect: CGRectMake(0, 0, 480, 320)];
-        
-        UIImage        *smallImage = UIGraphicsGetImageFromCurrentImageContext();
-        
-        UIGraphicsEndImageContext();
-        
-        _imgvw.image =smallImage;
+        _imgvw.image =image;
         [self dismissModalViewControllerAnimated:YES];
         if (_newMedia)
-            UIImageWriteToSavedPhotosAlbum(smallImage,
+            UIImageWriteToSavedPhotosAlbum(image,
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
@@ -1789,8 +1793,8 @@ finishedSavingWithError:(NSError *)error
 
 - (IBAction)uploadimage:(id)sender {
     UIImage *image =_imgvw.image;
-    //NSData *data = UIImagePNGRepresentation(image);
-    NSData *data = UIImageJPEGRepresentation(image, 1.0);
+    NSData *data = UIImagePNGRepresentation(image);
+   // NSData *data = UIImageJPEGRepresentation(image, 1.0);
 
     
     _encodedString = [data base64EncodedString];
