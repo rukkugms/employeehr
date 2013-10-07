@@ -632,25 +632,43 @@ else{
         
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:12];
         cell.textLabel.font = [UIFont systemFontOfSize:12.0];
- if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
+        if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
+// if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
         
        [[NSBundle mainBundle]loadNibNamed:@"newmedicalcell" owner:self options:nil];
             cell=_medicalcell;
  }
+        else
+        {
+            [[NSBundle mainBundle]loadNibNamed:@"medicell" owner:self options:nil];
+            cell=_medcell_iphone;
+        }
     }
     
     if (tableView==_popOverTableView) {
         cell.textLabel.text=[_medicalnamearray objectAtIndex:indexPath.row];
     }
-    
-    if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
+    if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
+
+//    if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
         Medicalmodel*medmdl1=(Medicalmodel *)[_applicantmedicalcntnarray objectAtIndex:indexPath.row];
         _medicalnamelbl=(UILabel*)[cell viewWithTag:1];
         _medicalnamelbl.text=[_medicalnamedict objectForKey:medmdl1.medicalid];
         NSLog(@"%@",medmdl1.medicalid);
         _meddescptnlbl=(UILabel*)[cell viewWithTag:2];
         _meddescptnlbl.text=medmdl1.meddescptn;
+         NSLog(@"%@",medmdl1.meddescptn);
         
+    }
+    else
+    {
+        Medicalmodel*medmdl1=(Medicalmodel *)[_applicantmedicalcntnarray objectAtIndex:indexPath.row];
+        _mednamelabel_iphone=(UILabel*)[cell viewWithTag:1];
+        _mednamelabel_iphone.text=[_medicalnamedict objectForKey:medmdl1.medicalid];
+        NSLog(@"%@",medmdl1.medicalid);
+        _meddescptnlabel_iphone=(UILabel*)[cell viewWithTag:2];
+        _meddescptnlabel_iphone.text=medmdl1.meddescptn;
+        NSLog(@"%@",medmdl1.meddescptn);
     }
     
     
@@ -665,12 +683,23 @@ else{
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView==_medicaltable) {
+        identifier=indexPath.row;
+        if (editingStyle==UITableViewCellEditingStyleDelete) {
+            [self DeleteApplicantMedicalCondition];
+            [_applicantmedicalcntnarray removeObjectAtIndex:indexPath.row];
+        }
+
+            }
+        if(tableView==_medicaltable_iphone)
+        {
         identifier=indexPath.row;
         if (editingStyle==UITableViewCellEditingStyleDelete) {
           [self DeleteApplicantMedicalCondition];
           [_applicantmedicalcntnarray removeObjectAtIndex:indexPath.row];
           
       }
+        }
 
 }
 #pragma mark - XMLParser

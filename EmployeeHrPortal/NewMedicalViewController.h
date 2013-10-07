@@ -66,6 +66,9 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll_iphone;
 
 @property (strong, nonatomic) IBOutlet UITableView *medicaltable_iphone;
+@property(strong,nonatomic)IBOutlet UITableViewCell *medcell_iphone;
+@property(strong,nonatomic)IBOutlet UILabel *mednamelabel_iphone;
+@property(strong,nonatomic)IBOutlet UILabel *meddescptnlabel_iphone;
 @property (strong, nonatomic) IBOutlet UITextField *medicationtxtfld_iphone;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *climbingsegment_iphone;

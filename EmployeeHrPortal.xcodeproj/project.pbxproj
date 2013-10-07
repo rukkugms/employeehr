@@ -30,6 +30,7 @@
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
 		6494D29217FD72EA00D462B2 /* logout1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6494D29117FD72EA00D462B2 /* logout1.png */; };
 		64964F7417EAB6A000857E1E /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 64964F7317EAB6A000857E1E /* Validation.m */; };
+		6497998718026FA2002EC54A /* medicell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6497998618026FA2002EC54A /* medicell.xib */; };
 		649ED93017E06F770064C5DB /* racemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = 649ED92F17E06F770064C5DB /* racemdl.m */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
 		D4C7CD3117E9B3F000484F94 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3017E9B3F000484F94 /* Base64.m */; };
@@ -131,6 +132,7 @@
 		6494D29117FD72EA00D462B2 /* logout1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout1.png; sourceTree = "<group>"; };
 		64964F7217EAB6A000857E1E /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
 		64964F7317EAB6A000857E1E /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
+		6497998618026FA2002EC54A /* medicell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = medicell.xib; sourceTree = "<group>"; };
 		649ED92E17E06F770064C5DB /* racemdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = racemdl.h; sourceTree = "<group>"; };
 		649ED92F17E06F770064C5DB /* racemdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = racemdl.m; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				D4DBE22617DD9EBF008010D9 /* AddNewMedicalViewController.m */,
 				D4DBE22717DD9EBF008010D9 /* AddNewMedicalViewController.xib */,
 				D4E100D517D88693006336F8 /* newmedicalcell.xib */,
+				6497998618026FA2002EC54A /* medicell.xib */,
 				D4E100D617D88697006336F8 /* EmployeeViewController.h */,
 				D4E100D717D886A1006336F8 /* EmployeeViewController.m */,
 				D4E100D817D886AA006336F8 /* EmployeeViewController.xib */,
@@ -550,6 +553,7 @@
 				64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */,
 				D4C7CD3D17E9BEE000484F94 /* UploadImageViewController.xib in Resources */,
 				6494D29217FD72EA00D462B2 /* logout1.png in Resources */,
+				6497998718026FA2002EC54A /* medicell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
