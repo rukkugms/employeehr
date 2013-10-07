@@ -582,6 +582,7 @@
     if(upint==3)
     {
         [self FetchImage];
+        
  
     }
     

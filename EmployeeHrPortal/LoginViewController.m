@@ -28,6 +28,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _ssntxtfld.text=@"";
+    _passwordtxtfld.text=@"";
+  
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     self.navigationController.navigationBar.hidden=YES;
     
@@ -56,7 +59,7 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         
-        
+        ssnstring=_ssntxtfld.text;
                 if (textField==_passwordtxtfld) {
             
         if([_ssntxtfld.text isEqualToString:@""])
@@ -66,7 +69,17 @@
             [alert show];
 
         }
-                    else
+                    
+                    
+    if ([ssnstring length]<9||[ssnstring length]>9) {
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+        
+        [alert show];
+  
+        
+        
+                    }
+                    else if ([ssnstring length]==9)
                     {
         ssnstring=_ssntxtfld.text;
                     
@@ -118,7 +131,7 @@
                     
                     
                     
-                    else{
+                    else  {
                         
                         
                         
@@ -133,6 +146,7 @@
     }
 
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            ssnstring=_SSNtxtfld_iphone.text;
         if (textField==_passwordtxtfld_iphone) {
             
             if([_SSNtxtfld_iphone.text isEqualToString:@""])
@@ -142,7 +156,18 @@
                 [alert show];
                 
             }
-            else
+            
+            if ([ssnstring length]<9||[ssnstring length]>9) {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+                
+                
+            }
+            else if ([ssnstring length]==9)
+
+         
             {
 
         ssnstring=_SSNtxtfld_iphone.text;
@@ -488,6 +513,54 @@
 }
 #pragma mark -Ipad Action
 - (IBAction)loginbtn:(id)sender {
+    
+    ssnstring=_ssntxtfld.text;
+    
+    
+    //checking a particular charector
+    // NSString *connectstring;
+    NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+    NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+    
+    
+    
+    NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+    NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+    NSLog (@"Result: %@", resultString);
+    
+    if ([resultString length]==9) {
+        
+        
+        
+        
+        
+        
+        if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+            _connectstring=resultString;
+        }
+        
+        
+        
+        
+        
+        else {
+            
+            
+            
+            
+            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+            NSLog(@"%@",subString);
+            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+            NSLog(@"%@",substring2);
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
+            NSLog(@"%@",substring3);
+            _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",_connectstring);
+            _ssntxtfld.text=_connectstring;
+            
+        }
+    }
+
     Validation *val=[[Validation alloc]init];
     int value1=[val isBlank:_ssntxtfld.text];
     int value2=[val isBlank:_passwordtxtfld.text];
@@ -511,6 +584,8 @@ else
        }
 
 - (IBAction)cancelbtn:(id)sender {
+    _ssntxtfld.text=@"";
+    _passwordtxtfld.text=@"";
 }
 
 #pragma mark -Iphone Actions

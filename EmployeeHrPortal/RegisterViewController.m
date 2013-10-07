@@ -29,6 +29,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    _Ssntxtfld.text=@"";
+    _passwdtxtfld.text=@"";
+    _confirmpasswrd.text=@"";
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     self.navigationController.navigationBar.hidden=YES;
     
@@ -40,6 +44,12 @@
     //[NSUserDefaults standardUserDefaults]
 }
 
+- (IBAction)cancelbtn:(id)sender {
+    _Ssntxtfld.text=@"";
+    _passwdtxtfld.text=@"";
+    _confirmpasswrd.text=@"";
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -48,6 +58,67 @@
 }
 
 - (IBAction)continuebtn:(id)sender {
+           
+        
+    
+    ssnstring=_Ssntxtfld.text;
+    
+    
+    //checking a particular charector
+    // NSString *connectstring;
+    NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+    NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+    
+    
+    
+    NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+    NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+    NSLog (@"Result: %@", resultString);
+    
+    if ([resultString length]==9) {
+        
+        
+        
+        
+        
+        
+        if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+            _connectstring=resultString;
+        }
+        
+        
+        
+        
+        
+        else {
+            
+            
+            
+            
+            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+            NSLog(@"%@",subString);
+            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+            NSLog(@"%@",substring2);
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
+            NSLog(@"%@",substring3);
+            _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",_connectstring);
+            _Ssntxtfld.text=_connectstring;
+            
+        }
+        
+    }
+    
+    
+    
+  
+
+
+
+
+
+
+
     Validation *val=[[Validation alloc]init];
     int value1=[val isBlank:_Ssntxtfld.text];
     int value2=[val isBlank:_passwdtxtfld.text];
@@ -74,8 +145,13 @@
         }
 
     }
+    
+       
 
    else if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
+       
+       
+       
         [self GetApplicantId2];
 
         
@@ -98,7 +174,7 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         
-        
+         ssnstring=_Ssntxtfld.text;
         if (textField==_passwdtxtfld) {
             if([_Ssntxtfld.text isEqualToString:@""])
             {
@@ -107,7 +183,18 @@
                 [alert show];
                 
             }
-            else
+            if ([ssnstring length]<9||[ssnstring length]>9) {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+                
+                
+            }
+            else if ([ssnstring length]==9)
+
+                
+        
             {
                 
 
@@ -178,6 +265,7 @@
     }
     
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+          ssnstring=_Ssntxtfld_iphone.text;
         if (textField==_passwdtxtfld_iphone) {
             
             if([_Ssntxtfld_iphone.text isEqualToString:@""])
@@ -187,7 +275,17 @@
                 [alert show];
                 
             }
-            else
+            if ([ssnstring length]<9||[ssnstring length]>9) {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+                
+                
+            }
+            else if ([ssnstring length]==9)
+
+            
             {
 
         
