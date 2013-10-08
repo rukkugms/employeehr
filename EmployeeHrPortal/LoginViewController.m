@@ -71,7 +71,7 @@
         }
                     
                     
-    if ([ssnstring length]<9||[ssnstring length]>9) {
+    if ([ssnstring length]<9) {
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
         
         [alert show];
@@ -79,7 +79,7 @@
         
         
                     }
-                    else if ([ssnstring length]==9)
+                    else 
                     {
         ssnstring=_ssntxtfld.text;
                     
@@ -95,7 +95,7 @@
         NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
         NSLog (@"Result: %@", resultString);
         
-                    if ([resultString length]==9) {
+                    if ([resultString length]==11) {
                         
                         
                         
@@ -106,11 +106,11 @@
             _connectstring=resultString;
         }
         
+                    }
         
         
         
-        
-        else {
+        else  if ([resultString length]==9){
             
             
             
@@ -127,11 +127,11 @@
             
         }
 
-                    }
                     
                     
                     
-                    else  {
+                    
+                    else   if ([resultString length]==10){
                         
                         
                         
@@ -157,7 +157,7 @@
                 
             }
             
-            if ([ssnstring length]<9||[ssnstring length]>9) {
+            if ([ssnstring length]<9) {
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
                 [alert show];
@@ -165,62 +165,72 @@
                 
                 
             }
-            else if ([ssnstring length]==9)
-
-         
-            {
-
-        ssnstring=_SSNtxtfld_iphone.text;
-        //checking a particular charector
-        // NSString *connectstring;
-        NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
-        NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
-        
-        
-        
-        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
-        NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
-        NSLog (@"Result: %@", resultString);
-        
-          if ([resultString length]==9) {
-        
-        if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
-            _connectstring=resultString;
-        }
-        
-        
-        
-        
-        
-        else {
+          
+                else
+                {
+                    ssnstring=_ssntxtfld.text;
+                    
+                    
+                    //checking a particular charector
+                    // NSString *connectstring;
+                    NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+                    NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+                    
+                    
+                    
+                    NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+                    NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+                    NSLog (@"Result: %@", resultString);
+                    
+                    if ([resultString length]==11) {
+                        
+                        
+                        
+                        
+                        
+                        
+                        if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                            _connectstring=resultString;
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    else  if ([resultString length]==9){
+                        
+                        
+                        
+                        
+                        NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+                        NSLog(@"%@",subString);
+                        NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+                        NSLog(@"%@",substring2);
+                        NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
+                        NSLog(@"%@",substring3);
+                        _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+                        NSLog(@"%@",_connectstring);
+                        _ssntxtfld.text=_connectstring;
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                    else   if ([resultString length]==10){
+                        
+                        
+                        
+                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                        
+                        [alert show];
+                        
+                    }
+                
+                
             
-            
-            
-            
-            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
-            NSLog(@"%@",subString);
-            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
-            NSLog(@"%@",substring2);
-            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
-            NSLog(@"%@",substring3);
-            _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
-            NSLog(@"%@",_connectstring);
-            _SSNtxtfld_iphone.text=_connectstring;
-            
-        }
-              
-          }
-          else{
-              
-              
-              
-              UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
-              
-              [alert show];
-              
-          }
-
-            }
+                     }
         }
         
     }
@@ -515,51 +525,90 @@
 - (IBAction)loginbtn:(id)sender {
     
     ssnstring=_ssntxtfld.text;
-    
-    
-    //checking a particular charector
-    // NSString *connectstring;
-    NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
-    NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
-    
-    
-    
-    NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
-    NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
-    NSLog (@"Result: %@", resultString);
-    
-    if ([resultString length]==9) {
+
         
-        
-        
-        
-        
-        
-        if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
-            _connectstring=resultString;
-        }
-        
-        
-        
-        
-        
-        else {
+        if([_ssntxtfld.text isEqualToString:@""])
+        {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
-            
-            
-            
-            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
-            NSLog(@"%@",subString);
-            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
-            NSLog(@"%@",substring2);
-            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
-            NSLog(@"%@",substring3);
-            _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
-            NSLog(@"%@",_connectstring);
-            _ssntxtfld.text=_connectstring;
+            [alert show];
             
         }
-    }
+    NSLog (@"ssnstring length %d", [ssnstring length]);
+
+    
+        if ([ssnstring length]<9) {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+            
+            
+        }
+        else         {
+            ssnstring=_ssntxtfld.text;
+            
+            
+            //checking a particular charector
+            // NSString *connectstring;
+            NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+            NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+            
+            
+            
+            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+            NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+            NSLog (@"Result: %@", resultString);
+            
+            if ([resultString length]==11) {
+                
+                
+                
+                
+                
+                
+                if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                    _connectstring=resultString;
+                }
+                
+                
+            }
+            
+                
+                  if ([resultString length]==9) {
+                    
+                    
+                    
+                    
+                    NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+                    NSLog(@"%@",subString);
+                    NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+                    NSLog(@"%@",substring2);
+                    NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
+                    NSLog(@"%@",substring3);
+                    _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+                    NSLog(@"%@",_connectstring);
+                    _ssntxtfld.text=_connectstring;
+                    
+                }
+                
+            
+            
+            
+            
+            else   if ([resultString length]==10)  {
+                
+                
+                
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+            }
+        }
+        
+    
+
 
     Validation *val=[[Validation alloc]init];
     int value1=[val isBlank:_ssntxtfld.text];
@@ -592,6 +641,90 @@ else
 
 
 - (IBAction)loginbtn_iphone:(id)sender {
+    
+    ssnstring=_SSNtxtfld_iphone.text;
+    
+    
+    if([_ssntxtfld.text isEqualToString:@""])
+    {
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+        
+        [alert show];
+        
+    }
+    NSLog (@"ssnstring length %d", [ssnstring length]);
+    
+    
+    if ([ssnstring length]<9) {
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+        
+        [alert show];
+        
+        
+        
+    }
+    else         {
+        ssnstring=_SSNtxtfld_iphone.text;
+        
+        
+        //checking a particular charector
+        // NSString *connectstring;
+        NSString*new=[ssnstring substringWithRange:NSMakeRange(3, 1)];
+        NSString*new1=[ssnstring substringWithRange:NSMakeRange(6, 1)];
+        
+        
+        
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        NSString *resultString = [[ssnstring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        NSLog (@"Result: %@", resultString);
+        
+        if ([resultString length]==11) {
+            
+            
+            
+            
+            
+            
+            if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                _connectstring=resultString;
+            }
+            
+            
+        }
+        
+        
+        if ([resultString length]==9) {
+            
+            
+            
+            
+            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+            NSLog(@"%@",subString);
+            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,2)];
+            NSLog(@"%@",substring2);
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(5,4)];
+            NSLog(@"%@",substring3);
+            _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",_connectstring);
+            _ssntxtfld.text=_connectstring;
+            
+        }
+        
+        
+        
+        
+        
+        else   if ([resultString length]==10)  {
+            
+            
+            
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+        }
+    }
+
     Validation *val=[[Validation alloc]init];
     int value1=[val isBlank:_SSNtxtfld_iphone.text];
     int value2=[val isBlank:_passwordtxtfld_iphone.text];
@@ -628,6 +761,11 @@ else
     {
         NSUInteger newLength = [_passwordtxtfld_iphone.text length] + [string length] - range.length;
         return (newLength > 25) ? NO : YES;
+    }
+    if (textField==_ssntxtfld) {
+        NSUInteger newLength = [_ssntxtfld.text length] + [string length] - range.length;
+        return (newLength > 11) ? NO : YES;
+ 
     }
 
 }

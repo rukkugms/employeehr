@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    x=1;
     detailbtnclicked_iphone=0;
   [self getstates];
     _suffixarray=[[NSMutableArray alloc]initWithObjects:@"None",@"JR.",@"SR.",@"II",@"III" ,nil];
@@ -37,6 +38,7 @@
     [_scroll_iphone setContentSize:CGSizeMake(500,1500)];
     _ssntxtfld.enabled=NO;
     _ssntextfield_iphone.enabled=NO;
+    
     _imgvw.userInteractionEnabled = YES;
     UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self action:@selector(handlePinch:)];
@@ -66,16 +68,22 @@
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationController.navigationBarHidden=NO;
     
+    if (x==1) {
+        [self GetApplicantDetails];
+        x=2;
 
+    }
     
-    [self GetApplicantDetails];
-}
+    }
 -(void)logoutAction{
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
     [alert show];
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     ////NSLog(@"buttonIndex%d",buttonIndex);
+    if ([alertView.message isEqualToString:@"Really Logout?"]) {
+        
+    
     
     if (buttonIndex==0) {
         
@@ -83,7 +91,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
     }
     
-    
+    }
 }
 
 
@@ -583,7 +591,7 @@
     {
         [self FetchImage];
         
- 
+        upint=2;
     }
     
         
@@ -869,6 +877,15 @@
         }
         recordResults = TRUE;
     }
+    if([elementName isEqualToString:@"FetchImageResult"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+
     if([elementName isEqualToString:@"url"])
     {
         if(!_soapResults)
@@ -877,7 +894,7 @@
         }
         recordResults = TRUE;
     }
-    
+   
 
   
 }
@@ -1737,18 +1754,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImage *image = [info
                           objectForKey:UIImagePickerControllerOriginalImage];
         NSLog(@"dict%@",info);
+    _imgvw.image=nil;
         
         
-        
-//        UIGraphicsBeginImageContext(CGSizeMake(480,320));
-//        
-//        CGContextRef            context = UIGraphicsGetCurrentContext();
-//        
-//        [image drawInRect: CGRectMake(0, 0, 480, 320)];
-//        
-//        UIImage        *smallImage = UIGraphicsGetImageFromCurrentImageContext();
-//        
-//        UIGraphicsEndImageContext();
         
         _imgvw.image =image;
         [self dismissModalViewControllerAnimated:YES];
@@ -1787,14 +1795,15 @@ finishedSavingWithError:(NSError *)error
 {
     
     
-    // [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
     
 }
 
 
 - (IBAction)uploadimage:(id)sender {
-    UIImage *image =_imgvw.image;
-    NSData *data = UIImagePNGRepresentation(image);
+    UIImage *imagename =_imgvw.image;
+    NSData *data = UIImagePNGRepresentation(imagename);
+    
    // NSData *data = UIImageJPEGRepresentation(image, 1.0);
 
     

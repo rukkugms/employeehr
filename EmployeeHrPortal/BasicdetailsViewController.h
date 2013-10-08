@@ -21,6 +21,7 @@
     NSInteger detailbtnclicked_iphone;
     NSString *pickerstring;
     
+    int x;
 }
 @property(readwrite)NSInteger Applicantid;
 @property(nonatomic, weak) CKCalendarView *calendar;
