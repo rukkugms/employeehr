@@ -529,6 +529,7 @@
         
         if([_ssntxtfld.text isEqualToString:@""])
         {
+            _connectstring=_ssntxtfld.text;
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
             [alert show];
@@ -538,6 +539,7 @@
 
     
         if ([ssnstring length]<9) {
+             _connectstring=_ssntxtfld.text;
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
             [alert show];
@@ -598,7 +600,7 @@
             
             else   if ([resultString length]==10)  {
                 
-                
+                 _connectstring=_ssntxtfld.text;
                 
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
@@ -645,8 +647,8 @@ else
     ssnstring=_SSNtxtfld_iphone.text;
     
     
-    if([_ssntxtfld.text isEqualToString:@""])
-    {
+    if([ssnstring isEqualToString:@""])
+    {_connectstring=_SSNtxtfld_iphone.text;
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
         
         [alert show];
@@ -656,6 +658,7 @@ else
     
     
     if ([ssnstring length]<9) {
+        _connectstring=_SSNtxtfld_iphone.text;
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
         
         [alert show];
@@ -717,7 +720,7 @@ else
         else   if ([resultString length]==10)  {
             
             
-            
+            _connectstring=_SSNtxtfld_iphone.text;
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
             [alert show];
