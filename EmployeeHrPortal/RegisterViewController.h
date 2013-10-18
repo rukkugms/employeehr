@@ -13,6 +13,8 @@
 #import "EmployeeViewController.h"
 #import "CourseDrugViewController.h"
 #import "UploadImageViewController.h"
+#import "DocumentsViewController.h"
+#import "ShowDocViewController.h"
 #import "Validation.h"
 @interface RegisterViewController : UIViewController<UITextFieldDelegate>
 {
