@@ -48,6 +48,10 @@
 		D4D0E8C817DED91700C16158 /* AddEducationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D0E8C617DED91700C16158 /* AddEducationViewController.m */; };
 		D4D0E8C917DED91700C16158 /* AddEducationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D0E8C717DED91700C16158 /* AddEducationViewController.xib */; };
 		D4D0E8CB17DEEF3F00C16158 /* Employeecell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D0E8CA17DEEF3F00C16158 /* Employeecell_iphone.xib */; };
+		D4D69AAC1810E74D00AC5674 /* DocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D69AAA1810E74D00AC5674 /* DocumentsViewController.m */; };
+		D4D69AAD1810E74D00AC5674 /* DocumentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D69AAB1810E74D00AC5674 /* DocumentsViewController.xib */; };
+		D4D69AB11810E7A000AC5674 /* ShowDocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D69AAF1810E7A000AC5674 /* ShowDocViewController.m */; };
+		D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D69AB01810E7A000AC5674 /* ShowDocViewController.xib */; };
 		D4DBE22817DD9EBF008010D9 /* AddNewMedicalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBE22617DD9EBF008010D9 /* AddNewMedicalViewController.m */; };
 		D4DBE22917DD9EBF008010D9 /* AddNewMedicalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4DBE22717DD9EBF008010D9 /* AddNewMedicalViewController.xib */; };
 		D4DBE22B17DDA8C4008010D9 /* CourseDrugCell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4DBE22A17DDA8C4008010D9 /* CourseDrugCell_iphone.xib */; };
@@ -161,6 +165,12 @@
 		D4D0E8C617DED91700C16158 /* AddEducationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEducationViewController.m; sourceTree = "<group>"; };
 		D4D0E8C717DED91700C16158 /* AddEducationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEducationViewController.xib; sourceTree = "<group>"; };
 		D4D0E8CA17DEEF3F00C16158 /* Employeecell_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Employeecell_iphone.xib; sourceTree = "<group>"; };
+		D4D69AA91810E74D00AC5674 /* DocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentsViewController.h; path = ../DocumentsViewController.h; sourceTree = "<group>"; };
+		D4D69AAA1810E74D00AC5674 /* DocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentsViewController.m; path = ../DocumentsViewController.m; sourceTree = "<group>"; };
+		D4D69AAB1810E74D00AC5674 /* DocumentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocumentsViewController.xib; path = ../DocumentsViewController.xib; sourceTree = "<group>"; };
+		D4D69AAE1810E7A000AC5674 /* ShowDocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowDocViewController.h; path = ../ShowDocViewController.h; sourceTree = "<group>"; };
+		D4D69AAF1810E7A000AC5674 /* ShowDocViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowDocViewController.m; path = ../ShowDocViewController.m; sourceTree = "<group>"; };
+		D4D69AB01810E7A000AC5674 /* ShowDocViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowDocViewController.xib; path = ../ShowDocViewController.xib; sourceTree = "<group>"; };
 		D4DBE22517DD9EBF008010D9 /* AddNewMedicalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewMedicalViewController.h; sourceTree = "<group>"; };
 		D4DBE22617DD9EBF008010D9 /* AddNewMedicalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewMedicalViewController.m; sourceTree = "<group>"; };
 		D4DBE22717DD9EBF008010D9 /* AddNewMedicalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewMedicalViewController.xib; sourceTree = "<group>"; };
@@ -370,9 +380,15 @@
 				64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */,
 				D4E100E017D886B8006336F8 /* CourseDrugCellView.xib */,
 				D4DBE22A17DDA8C4008010D9 /* CourseDrugCell_iphone.xib */,
+				D4D69AA91810E74D00AC5674 /* DocumentsViewController.h */,
+				D4D69AAA1810E74D00AC5674 /* DocumentsViewController.m */,
+				D4D69AAB1810E74D00AC5674 /* DocumentsViewController.xib */,
 				649069D6180FFD2A00944C83 /* UploadDocViewController.h */,
 				649069D7180FFD2A00944C83 /* UploadDocViewController.m */,
 				649069D8180FFD2A00944C83 /* UploadDocViewController.xib */,
+				D4D69AAE1810E7A000AC5674 /* ShowDocViewController.h */,
+				D4D69AAF1810E7A000AC5674 /* ShowDocViewController.m */,
+				D4D69AB01810E7A000AC5674 /* ShowDocViewController.xib */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
 			path = EmployeeHrPortal;
@@ -572,6 +588,8 @@
 				6497998718026FA2002EC54A /* medicell.xib in Resources */,
 				649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */,
 				649069E4180FFFDE00944C83 /* Untitled.png in Resources */,
+				D4D69AAD1810E74D00AC5674 /* DocumentsViewController.xib in Resources */,
+				D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +632,8 @@
 				64964F7417EAB6A000857E1E /* Validation.m in Sources */,
 				649069D9180FFD2A00944C83 /* UploadDocViewController.m in Sources */,
 				649069E2180FFF6C00944C83 /* PDFImageConverter.m in Sources */,
+				D4D69AAC1810E74D00AC5674 /* DocumentsViewController.m in Sources */,
+				D4D69AB11810E7A000AC5674 /* ShowDocViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
