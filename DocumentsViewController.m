@@ -48,11 +48,17 @@
     self.navigationController.navigationBarHidden=NO;
 
     
-    [self SelectDocuments];
+   // [self SelectDocuments];
    
     
     
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self SelectDocuments];
+}
+
 
 
 
