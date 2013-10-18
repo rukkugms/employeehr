@@ -28,8 +28,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _ssntxtfld.text=@"";
-    _passwordtxtfld.text=@"";
+    //_ssntxtfld.text=@"";
+    //_passwordtxtfld.text=@"";
   
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     self.navigationController.navigationBar.hidden=YES;
