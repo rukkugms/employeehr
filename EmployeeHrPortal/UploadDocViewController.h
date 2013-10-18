@@ -40,5 +40,6 @@
 @property(strong,nonatomic)IBOutlet UITextField *docnameText_iphone;
 -(IBAction)textfieldreturn_iphone:(id)sender;
 @property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
+- (IBAction)closebtn:(id)sender;
 
 @end

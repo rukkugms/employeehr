@@ -468,4 +468,7 @@ else
 }
 
 
+- (IBAction)closebtn:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+  }
 @end
