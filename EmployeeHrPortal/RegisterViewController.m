@@ -733,7 +733,10 @@
                   RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
                     viewcontroller7.applicantId=Applicantid;
                   UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
-                  NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,edunav,mednav,empnav,coursenav,racenav,nil];
+                  DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
+                 
+                  UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+                  NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,edunav,mednav,empnav,coursenav,racenav,docnav,nil];
                   self.tabbarcntrl.viewControllers = controllers;
                   
                   
@@ -769,8 +772,10 @@
                 RaceViewController*viewcontroller8=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
                   viewcontroller8.applicantId=Applicantid;
                 UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+                ShowDocViewController *viewcontroller9=[[ShowDocViewController alloc]initWithNibName:@"ShowDocViewController" bundle:nil];
+                UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller9];
                
-                NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,edunav,mednav,empnav,coursenav,racenav,nil];
+                NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,edunav,mednav,empnav,coursenav,racenav,docnav,nil];
                 self.tabbarcntrl.viewControllers = controllers;
                 
                 
