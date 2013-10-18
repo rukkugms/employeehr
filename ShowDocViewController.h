@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ShowDocViewController : UIViewController
+@property(readwrite)NSInteger applicantid;
 
 @end

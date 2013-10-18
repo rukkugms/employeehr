@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DocumentsViewController : UIViewController
-
+@property(readwrite)NSInteger applicantid;
 @end

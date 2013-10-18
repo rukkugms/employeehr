@@ -15,6 +15,9 @@
 #import "UploadImageViewController.h"
 #import "UploadDocViewController.h"
 #import "Validation.h"
+#import "DocumentsViewController.h"
+#import "ShowDocViewController.h"
+
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 {
     BOOL recordResults;
