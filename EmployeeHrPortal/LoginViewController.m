@@ -513,7 +513,7 @@
              viewcontroller8.applicantId=Applicantid;
             ShowDocViewController *viewcontroller9=[[ShowDocViewController alloc]initWithNibName:@"ShowDocViewController" bundle:nil];
             viewcontroller9.applicantid=Applicantid;
-             UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+             UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller9];
              NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,navedu,mednav,empnav,coursenav,racenav,docnav,nil];
              self.tabbarcntrl.viewControllers = controllers;
              

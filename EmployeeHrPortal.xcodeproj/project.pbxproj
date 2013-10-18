@@ -32,6 +32,9 @@
 		64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */; };
 		64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */; };
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
+		649323B11810F52400E46BDC /* webViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649323AF1810F52400E46BDC /* webViewController.m */; };
+		649323B21810F52400E46BDC /* webViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649323B01810F52400E46BDC /* webViewController.xib */; };
+		649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649323B31810FA2B00E46BDC /* UploadDocViewController_iphone.xib */; };
 		6494D29217FD72EA00D462B2 /* logout1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6494D29117FD72EA00D462B2 /* logout1.png */; };
 		64964F7417EAB6A000857E1E /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 64964F7317EAB6A000857E1E /* Validation.m */; };
 		6497998718026FA2002EC54A /* medicell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6497998618026FA2002EC54A /* medicell.xib */; };
@@ -143,6 +146,10 @@
 		64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtndwn.png; sourceTree = "<group>"; };
 		64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclsurebtn@2x.png"; sourceTree = "<group>"; };
 		64921A5117D9AC0400AB642E /* disclsurebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtn.png; sourceTree = "<group>"; };
+		649323AE1810F52300E46BDC /* webViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webViewController.h; sourceTree = "<group>"; };
+		649323AF1810F52400E46BDC /* webViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webViewController.m; sourceTree = "<group>"; };
+		649323B01810F52400E46BDC /* webViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = webViewController.xib; sourceTree = "<group>"; };
+		649323B31810FA2B00E46BDC /* UploadDocViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadDocViewController_iphone.xib; sourceTree = "<group>"; };
 		6494D29117FD72EA00D462B2 /* logout1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout1.png; sourceTree = "<group>"; };
 		64964F7217EAB6A000857E1E /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
 		64964F7317EAB6A000857E1E /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
@@ -389,6 +396,10 @@
 				649069D6180FFD2A00944C83 /* UploadDocViewController.h */,
 				649069D7180FFD2A00944C83 /* UploadDocViewController.m */,
 				649069D8180FFD2A00944C83 /* UploadDocViewController.xib */,
+				649323B31810FA2B00E46BDC /* UploadDocViewController_iphone.xib */,
+				649323AE1810F52300E46BDC /* webViewController.h */,
+				649323AF1810F52400E46BDC /* webViewController.m */,
+				649323B01810F52400E46BDC /* webViewController.xib */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
 			path = EmployeeHrPortal;
@@ -590,6 +601,8 @@
 				649069E4180FFFDE00944C83 /* Untitled.png in Resources */,
 				D4D69AAD1810E74D00AC5674 /* DocumentsViewController.xib in Resources */,
 				D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */,
+				649323B21810F52400E46BDC /* webViewController.xib in Resources */,
+				649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +647,7 @@
 				649069E2180FFF6C00944C83 /* PDFImageConverter.m in Sources */,
 				D4D69AAC1810E74D00AC5674 /* DocumentsViewController.m in Sources */,
 				D4D69AB11810E7A000AC5674 /* ShowDocViewController.m in Sources */,
+				649323B11810F52400E46BDC /* webViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

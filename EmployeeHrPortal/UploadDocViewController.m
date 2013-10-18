@@ -27,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
+    _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
+    [_scroll_iphone setContentSize:CGSizeMake(500,640)];
     // Do any additional setup after loading the view from its nib.
     
 //    UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
@@ -86,6 +87,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         
         _imageview.image =image;
+        
+        _imageview_iphone.image =image;
+
         [self dismissModalViewControllerAnimated:YES];
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
@@ -171,6 +175,9 @@ finishedSavingWithError:(NSError *)error
 
 -(void)UploadDocs{
     
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+
     recordResults = FALSE;
     NSString *soapMessage;
     
@@ -226,6 +233,67 @@ finishedSavingWithError:(NSError *)error
     else
     {
         ////NSLog(@"theConnection is NULL");
+    }
+    }
+else
+    {
+        recordResults = FALSE;
+        NSString *soapMessage;
+        
+        
+        NSString *imagename=[NSString stringWithFormat:@"%@_%@.pdf",_docnameText_iphone.text,_ssnstring];
+        
+        
+        // NSString *cmpnyname=@"arvin";
+        
+        soapMessage = [NSString stringWithFormat:
+                       
+                       @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                       "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                       
+                       
+                       "<soap:Body>\n"
+                       
+                       "<UploadDocs xmlns=\"http://arvin.kontract360.com/\">\n"
+                       
+                       "<f>%@</f>\n"
+                       "<fileName>%@</fileName>\n"
+                       "<docName>%@</docName>\n"
+                       "<appid>%d</appid>\n"
+                       "</UploadDocs>\n"
+                       "</soap:Body>\n"
+                       "</soap:Envelope>\n",_encodedstring,imagename,_docnameText_iphone.text,_applicantid];
+        NSLog(@"soapmsg%@",soapMessage);
+        
+        
+        // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
+        NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+        
+        
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+        
+        [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        
+        [theRequest addValue: @"http://arvin.kontract360.com/UploadDocs" forHTTPHeaderField:@"Soapaction"];
+        
+        [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+        [theRequest setHTTPMethod:@"POST"];
+        [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
+        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+        
+        if( theConnection )
+        {
+            _webData = [NSMutableData data];
+        }
+        else
+        {
+            ////NSLog(@"theConnection is NULL");
+        }
+
     }
     
 }
@@ -366,7 +434,38 @@ finishedSavingWithError:(NSError *)error
         
     }
    }
+-(IBAction)previewbtn_iphone:(id)sender
+{
+    [self handlePinch];
+ 
+}
+-(IBAction)uploadbtn_iphone:(id)sender
+{
+    UIImage *imagename =_imageview_iphone.image;
+        
+    
+    
+    CGSize pageSize = CGSizeMake(700, 1004);
+    CGRect imageBoundsRect =CGRectMake(200, 200, 700, 700);
+    
+    
+    NSData *pdfData = [PDFImageConverter convertImageToPDF:imagename
+                                            withResolution:50 maxBoundsRect: imageBoundsRect pageSize: pageSize];
+    
+    
+    NSString*filename=[NSString stringWithFormat:@"%@_%@.pdf",_docnameText_iphone.text,_ssnstring];
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:filename];
+    NSLog(@"path%@",path);
+    [pdfData writeToFile:path atomically:NO];
+    
+    NSLog(@"data%@",pdfData);
+    NSData*data= [NSData dataWithContentsOfFile:path];
+    
+    
+    _encodedstring = [data base64EncodedString];
+    [self UploadDocs];
 
+}
 
 
 @end
