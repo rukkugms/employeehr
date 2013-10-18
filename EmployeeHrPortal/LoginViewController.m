@@ -467,7 +467,10 @@
         viewcontroller6.Applicantid=Applicantid;
         RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
              UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];        viewcontroller7.applicantId=Applicantid;
-        NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,coursenav,racenav,nil];
+             UploadDocViewController *viewcontroller8=[[UploadDocViewController alloc]initWithNibName:@"UploadDocViewController" bundle:nil];
+             viewcontroller8.applicantid=Applicantid;
+             UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+        NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,coursenav,racenav,docnav,nil];
         self.tabbarcntrl.viewControllers = controllers;
         
         
@@ -506,6 +509,9 @@
              RaceViewController*viewcontroller8=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
              UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
              viewcontroller8.applicantId=Applicantid;
+//             UploadDocViewController *viewcontroller9=[[UploadDocViewController alloc]initWithNibName:@"documentViewController_iphone" bundle:nil];
+//             //viewcontroller9.applicantId=Applicantid;
+//             UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
              NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,navedu,mednav,empnav,coursenav,racenav,nil];
              self.tabbarcntrl.viewControllers = controllers;
              

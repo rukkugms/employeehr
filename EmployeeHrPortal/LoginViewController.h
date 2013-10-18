@@ -13,6 +13,7 @@
 #import "EmployeeViewController.h"
 #import "CourseDrugViewController.h"
 #import "UploadImageViewController.h"
+#import "UploadDocViewController.h"
 #import "Validation.h"
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 {

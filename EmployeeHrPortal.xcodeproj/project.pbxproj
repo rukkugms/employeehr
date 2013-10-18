@@ -18,6 +18,10 @@
 		64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE217D895DA00503D23 /* left_arrow@2x.png */; };
 		64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */; };
 		64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */; };
+		649069D9180FFD2A00944C83 /* UploadDocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649069D7180FFD2A00944C83 /* UploadDocViewController.m */; };
+		649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649069D8180FFD2A00944C83 /* UploadDocViewController.xib */; };
+		649069E2180FFF6C00944C83 /* PDFImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 649069E1180FFF6C00944C83 /* PDFImageConverter.m */; };
+		649069E4180FFFDE00944C83 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = 649069E3180FFFDE00944C83 /* Untitled.png */; };
 		64921A4317D99BAC00AB642E /* BasicdetailsViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4217D99BAC00AB642E /* BasicdetailsViewController_iphone.xib */; };
 		64921A4517D99BD200AB642E /* EducationViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4417D99BD200AB642E /* EducationViewController_iphone.xib */; };
 		64921A4717D99BF500AB642E /* NewMedicalViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4617D99BF500AB642E /* NewMedicalViewController_iphone.xib */; };
@@ -119,6 +123,12 @@
 		64085EE217D895DA00503D23 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.png; sourceTree = "<group>"; };
 		64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.unchecked.png; sourceTree = "<group>"; };
+		649069D6180FFD2A00944C83 /* UploadDocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadDocViewController.h; sourceTree = "<group>"; };
+		649069D7180FFD2A00944C83 /* UploadDocViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadDocViewController.m; sourceTree = "<group>"; };
+		649069D8180FFD2A00944C83 /* UploadDocViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadDocViewController.xib; sourceTree = "<group>"; };
+		649069E0180FFF6C00944C83 /* PDFImageConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFImageConverter.h; sourceTree = "<group>"; };
+		649069E1180FFF6C00944C83 /* PDFImageConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFImageConverter.m; sourceTree = "<group>"; };
+		649069E3180FFFDE00944C83 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		64921A4217D99BAC00AB642E /* BasicdetailsViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicdetailsViewController_iphone.xib; sourceTree = "<group>"; };
 		64921A4417D99BD200AB642E /* EducationViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationViewController_iphone.xib; sourceTree = "<group>"; };
 		64921A4617D99BF500AB642E /* NewMedicalViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewMedicalViewController_iphone.xib; sourceTree = "<group>"; };
@@ -360,6 +370,9 @@
 				64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */,
 				D4E100E017D886B8006336F8 /* CourseDrugCellView.xib */,
 				D4DBE22A17DDA8C4008010D9 /* CourseDrugCell_iphone.xib */,
+				649069D6180FFD2A00944C83 /* UploadDocViewController.h */,
+				649069D7180FFD2A00944C83 /* UploadDocViewController.m */,
+				649069D8180FFD2A00944C83 /* UploadDocViewController.xib */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
 			path = EmployeeHrPortal;
@@ -382,6 +395,7 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				649069E3180FFFDE00944C83 /* Untitled.png */,
 				D4E1009F17D85E30006336F8 /* cb_mono_on.png */,
 				D4E1009D17D85E29006336F8 /* cb_mono_off.png */,
 				D4E1008F17D854BC006336F8 /* bg.png */,
@@ -413,6 +427,8 @@
 		D4E1009717D85A0C006336F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				649069E0180FFF6C00944C83 /* PDFImageConverter.h */,
+				649069E1180FFF6C00944C83 /* PDFImageConverter.m */,
 				D4E1009817D85A27006336F8 /* jobsite.h */,
 				D4E1009917D85A27006336F8 /* jobsite.m */,
 				D4E100D117D868D2006336F8 /* CKCalendarView.h */,
@@ -554,6 +570,8 @@
 				D4C7CD3D17E9BEE000484F94 /* UploadImageViewController.xib in Resources */,
 				6494D29217FD72EA00D462B2 /* logout1.png in Resources */,
 				6497998718026FA2002EC54A /* medicell.xib in Resources */,
+				649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */,
+				649069E4180FFFDE00944C83 /* Untitled.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +612,8 @@
 				D4C7CD3417E9B40000484F94 /* NSData+Base64.m in Sources */,
 				D4C7CD3C17E9BEE000484F94 /* UploadImageViewController.m in Sources */,
 				64964F7417EAB6A000857E1E /* Validation.m in Sources */,
+				649069D9180FFD2A00944C83 /* UploadDocViewController.m in Sources */,
+				649069E2180FFF6C00944C83 /* PDFImageConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
