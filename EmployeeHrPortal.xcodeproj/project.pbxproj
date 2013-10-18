@@ -383,12 +383,12 @@
 				D4D69AA91810E74D00AC5674 /* DocumentsViewController.h */,
 				D4D69AAA1810E74D00AC5674 /* DocumentsViewController.m */,
 				D4D69AAB1810E74D00AC5674 /* DocumentsViewController.xib */,
-				649069D6180FFD2A00944C83 /* UploadDocViewController.h */,
-				649069D7180FFD2A00944C83 /* UploadDocViewController.m */,
-				649069D8180FFD2A00944C83 /* UploadDocViewController.xib */,
 				D4D69AAE1810E7A000AC5674 /* ShowDocViewController.h */,
 				D4D69AAF1810E7A000AC5674 /* ShowDocViewController.m */,
 				D4D69AB01810E7A000AC5674 /* ShowDocViewController.xib */,
+				649069D6180FFD2A00944C83 /* UploadDocViewController.h */,
+				649069D7180FFD2A00944C83 /* UploadDocViewController.m */,
+				649069D8180FFD2A00944C83 /* UploadDocViewController.xib */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
 			path = EmployeeHrPortal;
