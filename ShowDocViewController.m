@@ -36,7 +36,7 @@
     
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
-    self.navigationController.navigationBarHidden=NO;
+  
 
     // Do any additional setup after loading the view from its nib.
 }

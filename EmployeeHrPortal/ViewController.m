@@ -31,13 +31,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-   
+   [self.navigationController.navigationBar setHidden:NO];
     UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     
     
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
-    self.navigationItem.hidesBackButton=YES;
+  
     
     
     
