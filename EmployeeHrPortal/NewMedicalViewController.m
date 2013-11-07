@@ -633,18 +633,19 @@ else{
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:12];
         cell.textLabel.font = [UIFont systemFontOfSize:12.0];
         if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
-// if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
+ if (tableView==_medicaltable) {
         
        [[NSBundle mainBundle]loadNibNamed:@"newmedicalcell" owner:self options:nil];
             cell=_medicalcell;
  }
-        else
+        }
+        else if (tableView==_medicaltable_iphone) 
         {
             [[NSBundle mainBundle]loadNibNamed:@"medicell" owner:self options:nil];
             cell=_medcell_iphone;
         }
-    }
     
+        }
     if (tableView==_popOverTableView) {
         cell.textLabel.text=[_medicalnamearray objectAtIndex:indexPath.row];
     }
