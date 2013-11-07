@@ -219,6 +219,7 @@
     _institutenametxtfld.text=@"";
     _citytxtfld.text=@"";
     _statetxtfld.text=@"";
+    _edupicker.hidden=YES;
     
     
 }
@@ -270,9 +271,9 @@ numberOfRowsInComponent:(NSInteger)component
         
         [_name resignFirstResponder];
         
-       _datepicker.hidden=NO;
-        
-        [_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
+//       _datepicker.hidden=NO;
+//        
+//        [_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
     }
     //_picker.hidden=YES;
     return YES;
@@ -283,10 +284,10 @@ numberOfRowsInComponent:(NSInteger)component
         
          
          [_name resignFirstResponder];
-        _datepicker.hidden=NO;
+        _datepicker.hidden=YES;
         
         
-        [_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
+        //[_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
     }
     if(textField==_institutenametxtfld)
     {
@@ -351,7 +352,11 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (IBAction)cerdatebtn:(id)sender {
  
-    _datepicker.hidden=YES;
+    _datepicker.hidden=NO;
+    
+    [_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
+
 
 }
+
 @end

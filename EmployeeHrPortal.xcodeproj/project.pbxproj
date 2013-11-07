@@ -32,6 +32,7 @@
 		64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */; };
 		64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */; };
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
+		64932186182B5DB5006B6904 /* calender.png in Resources */ = {isa = PBXBuildFile; fileRef = 64932185182B5DB5006B6904 /* calender.png */; };
 		649323B11810F52400E46BDC /* webViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649323AF1810F52400E46BDC /* webViewController.m */; };
 		649323B21810F52400E46BDC /* webViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649323B01810F52400E46BDC /* webViewController.xib */; };
 		649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649323B31810FA2B00E46BDC /* UploadDocViewController_iphone.xib */; };
@@ -146,6 +147,7 @@
 		64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtndwn.png; sourceTree = "<group>"; };
 		64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclsurebtn@2x.png"; sourceTree = "<group>"; };
 		64921A5117D9AC0400AB642E /* disclsurebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclsurebtn.png; sourceTree = "<group>"; };
+		64932185182B5DB5006B6904 /* calender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calender.png; sourceTree = "<group>"; };
 		649323AE1810F52300E46BDC /* webViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webViewController.h; sourceTree = "<group>"; };
 		649323AF1810F52400E46BDC /* webViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webViewController.m; sourceTree = "<group>"; };
 		649323B01810F52400E46BDC /* webViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = webViewController.xib; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				64932185182B5DB5006B6904 /* calender.png */,
 				649069E3180FFFDE00944C83 /* Untitled.png */,
 				D4E1009F17D85E30006336F8 /* cb_mono_on.png */,
 				D4E1009D17D85E29006336F8 /* cb_mono_off.png */,
@@ -603,6 +606,7 @@
 				D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */,
 				649323B21810F52400E46BDC /* webViewController.xib in Resources */,
 				649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */,
+				64932186182B5DB5006B6904 /* calender.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
