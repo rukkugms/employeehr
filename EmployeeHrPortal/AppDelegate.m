@@ -17,11 +17,13 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+        
+        
+        self.konrtctVCtrl = [[KontractViewController alloc] initWithNibName:@"Kontractviewcontroller_iphone" bundle:nil];
     } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        self.konrtctVCtrl = [[KontractViewController alloc] initWithNibName:@"KontractViewController" bundle:nil];
     }
-    self.navgtioncontroller=[[UINavigationController alloc]initWithRootViewController:_viewController];
+    self.navgtioncontroller=[[UINavigationController alloc]initWithRootViewController:_konrtctVCtrl];
     self.window.rootViewController = self.navgtioncontroller;
     [self.window makeKeyAndVisible];
     return YES;

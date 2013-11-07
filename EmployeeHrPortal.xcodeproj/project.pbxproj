@@ -41,6 +41,9 @@
 		6497998718026FA2002EC54A /* medicell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6497998618026FA2002EC54A /* medicell.xib */; };
 		649ED93017E06F770064C5DB /* racemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = 649ED92F17E06F770064C5DB /* racemdl.m */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
+		D482A574182B697D007280CA /* KontractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D482A572182B697D007280CA /* KontractViewController.m */; };
+		D482A575182B697D007280CA /* KontractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A573182B697D007280CA /* KontractViewController.xib */; };
+		D482A577182B6B89007280CA /* Kontractviewcontroller_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A576182B6B89007280CA /* Kontractviewcontroller_iphone.xib */; };
 		D4C7CD3117E9B3F000484F94 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3017E9B3F000484F94 /* Base64.m */; };
 		D4C7CD3417E9B40000484F94 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3317E9B40000484F94 /* NSData+Base64.m */; };
 		D4C7CD3617E9B5AA00484F94 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */; };
@@ -159,6 +162,10 @@
 		649ED92E17E06F770064C5DB /* racemdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = racemdl.h; sourceTree = "<group>"; };
 		649ED92F17E06F770064C5DB /* racemdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = racemdl.m; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
+		D482A571182B697D007280CA /* KontractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KontractViewController.h; sourceTree = "<group>"; };
+		D482A572182B697D007280CA /* KontractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KontractViewController.m; sourceTree = "<group>"; };
+		D482A573182B697D007280CA /* KontractViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KontractViewController.xib; sourceTree = "<group>"; };
+		D482A576182B6B89007280CA /* Kontractviewcontroller_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Kontractviewcontroller_iphone.xib; sourceTree = "<group>"; };
 		D4C7CD2F17E9B3F000484F94 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		D4C7CD3017E9B3F000484F94 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		D4C7CD3217E9B40000484F94 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -327,6 +334,10 @@
 			children = (
 				D4E1006217D84F8B006336F8 /* AppDelegate.h */,
 				D4E1006317D84F8B006336F8 /* AppDelegate.m */,
+				D482A571182B697D007280CA /* KontractViewController.h */,
+				D482A572182B697D007280CA /* KontractViewController.m */,
+				D482A573182B697D007280CA /* KontractViewController.xib */,
+				D482A576182B6B89007280CA /* Kontractviewcontroller_iphone.xib */,
 				D4E1006B17D84F8B006336F8 /* ViewController.h */,
 				D4E1006C17D84F8B006336F8 /* ViewController.m */,
 				D4E1006E17D84F8B006336F8 /* ViewController_iPhone.xib */,
@@ -652,6 +663,7 @@
 				D4D69AAC1810E74D00AC5674 /* DocumentsViewController.m in Sources */,
 				D4D69AB11810E7A000AC5674 /* ShowDocViewController.m in Sources */,
 				649323B11810F52400E46BDC /* webViewController.m in Sources */,
+				D482A574182B697D007280CA /* KontractViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
