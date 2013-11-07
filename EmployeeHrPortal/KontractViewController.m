@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title=NSLocalizedString(@"Kontract360", @"Kontract360");
     }
     return self;
 }
@@ -27,6 +28,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
+    [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processLogout:) name:@"logout" object:nil];
+}
+-(void)processLogout:(NSNotification *)aNotification{
+    [self.navigationController popToViewController:_vCtroller animated:YES];
+    //[NSUserDefaults standardUserDefaults]
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,6 +41,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma Mark-Webservice
 -(void)CheckLogin{
     recordResults=FALSE;
@@ -297,5 +305,7 @@
     
     
 }
-
+-(IBAction)returnkey:(id)sender{
+    [sender resignFirstResponder];
+}
 @end

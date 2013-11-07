@@ -23,6 +23,7 @@
     NSInteger webtype;
     NSString *ssnstring;
 }
+
 @property(strong,nonatomic)JobsiteViewController*firstVCtrl;
 @property (strong, nonatomic) NSString *connectstring;
 @property (strong, nonatomic) IBOutlet UITextField *Ssntxtfld;
