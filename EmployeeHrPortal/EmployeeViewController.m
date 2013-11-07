@@ -141,8 +141,8 @@
     
     calendar.selectedDate = [self.dateFormatter dateFromString:dateString];
     
-    calendar.minimumDate = [self.dateFormatter dateFromString:@"09/07/2009"];
-    calendar.maximumDate =[self.dateFormatter dateFromString:@"1/07/2014"];
+    calendar.minimumDate = [self.dateFormatter dateFromString:@"01/01/1950"];
+    calendar.maximumDate =[self.dateFormatter dateFromString:@"01/01/2050"];
     calendar.shouldFillCalendar = YES;
     calendar.adaptHeightToNumberOfWeeksInMonth = NO;
     

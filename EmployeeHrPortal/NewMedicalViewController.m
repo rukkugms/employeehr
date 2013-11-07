@@ -649,8 +649,7 @@ else{
         cell.textLabel.text=[_medicalnamearray objectAtIndex:indexPath.row];
     }
     if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
-
-//    if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
+    if (tableView==_medicaltable||tableView==_medicaltable_iphone) {
         Medicalmodel*medmdl1=(Medicalmodel *)[_applicantmedicalcntnarray objectAtIndex:indexPath.row];
         _medicalnamelbl=(UILabel*)[cell viewWithTag:1];
         _medicalnamelbl.text=[_medicalnamedict objectForKey:medmdl1.medicalid];
@@ -658,6 +657,7 @@ else{
         _meddescptnlbl=(UILabel*)[cell viewWithTag:2];
         _meddescptnlbl.text=medmdl1.meddescptn;
          NSLog(@"%@",medmdl1.meddescptn);
+    }
         
     }
     else
