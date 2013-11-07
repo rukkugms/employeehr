@@ -617,7 +617,8 @@
 				D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */,
 				649323B21810F52400E46BDC /* webViewController.xib in Resources */,
 				649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */,
-				64932186182B5DB5006B6904 /* calender.png in Resources */,
+				D482A575182B697D007280CA /* KontractViewController.xib in Resources */,
+				D482A577182B6B89007280CA /* Kontractviewcontroller_iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
