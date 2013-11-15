@@ -1077,7 +1077,7 @@
         NSString *year=_yearBtn.titleLabel.text;
         NSString *day=@"01";
         NSString *dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
-        
+        NSLog(@"%@",dateString);
         
         
         NSDate*pickerdate=_datepicker_iphone.date;
@@ -1765,7 +1765,7 @@ numberOfRowsInComponent:(NSInteger)component
         
          return [_craftsArray objectAtIndex:row];
     }
-
+    
 }
 
 

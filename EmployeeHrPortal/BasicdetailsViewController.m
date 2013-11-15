@@ -1735,9 +1735,8 @@ numberOfRowsInComponent:(NSInteger)component
                                   nil];
         imagePicker.allowsEditing = NO;
         // imagePicker.cameraCaptureMode=YES;
-        [self presentModalViewController:imagePicker
-                                animated:YES];
-        _newMedia = YES;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+               _newMedia = YES;
     }
 }
 -(void)imagePickerController:(UIImagePickerController *)picker
@@ -1759,7 +1758,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         
         _imgvw.image =image;
-        [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
@@ -1787,7 +1786,7 @@ finishedSavingWithError:(NSError *)error
     
     else{
         
-        [self dismissModalViewControllerAnimated:YES];
+         [self dismissViewControllerAnimated:YES completion:nil];
         
     }
 }
@@ -1795,7 +1794,7 @@ finishedSavingWithError:(NSError *)error
 {
     
     
-    [self dismissModalViewControllerAnimated:YES];
+      [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

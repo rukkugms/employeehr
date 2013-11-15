@@ -85,20 +85,20 @@
 @property(strong,nonatomic)IBOutlet UISegmentedControl *ncerSegment;
 
 
-- (IBAction)employeebtn:(id)sender;
+//- (IBAction)employeebtn:(id)sender;
 
 - (IBAction)continuebtn:(id)sender;
-- (IBAction)edubtn:(id)sender;
+//- (IBAction)edubtn:(id)sender;
 - (IBAction)medicalbtn:(id)sender;
-- (IBAction)basicbtn:(id)sender;
+//- (IBAction)basicbtn:(id)sender;
 - (IBAction)clickbtn:(id)sender;
 - (IBAction)SelectMonth:(id)sender;
 - (IBAction)SelectYear:(id)sender;
 - (IBAction)skillbtn:(id)sender;
 - (IBAction)craftbtn:(id)sender;
 
-- (IBAction)race:(id)sender;
-- (IBAction)drugbtn:(id)sender;
+//- (IBAction)race:(id)sender;
+//- (IBAction)drugbtn:(id)sender;
 -(IBAction)CancelAction:(id)sender;
 
 
