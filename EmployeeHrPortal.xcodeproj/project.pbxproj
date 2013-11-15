@@ -32,7 +32,6 @@
 		64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A4F17D9AC0400AB642E /* disclsurebtndwn.png */; };
 		64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5017D9AC0400AB642E /* disclsurebtn@2x.png */; };
 		64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 64921A5117D9AC0400AB642E /* disclsurebtn.png */; };
-		64932186182B5DB5006B6904 /* calender.png in Resources */ = {isa = PBXBuildFile; fileRef = 64932185182B5DB5006B6904 /* calender.png */; };
 		649323B11810F52400E46BDC /* webViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649323AF1810F52400E46BDC /* webViewController.m */; };
 		649323B21810F52400E46BDC /* webViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649323B01810F52400E46BDC /* webViewController.xib */; };
 		649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649323B31810FA2B00E46BDC /* UploadDocViewController_iphone.xib */; };
@@ -526,6 +525,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = GMSIndia1;
+				TargetAttributes = {
+					D4E1004F17D84F8B006336F8 = {
+						DevelopmentTeam = 8TB89SJ777;
+					};
+				};
 			};
 			buildConfigurationList = D4E1004B17D84F8B006336F8 /* Build configuration list for PBXProject "EmployeeHrPortal" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -765,12 +769,14 @@
 		D4E1007717D84F8B006336F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Arvin Varghese";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EmployeeHrPortal/EmployeeHrPortal-Prefix.pch";
 				INFOPLIST_FILE = "EmployeeHrPortal/EmployeeHrPortal-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3D95713F-B80D-4551-9945-3AC0B12F9E71";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -778,12 +784,14 @@
 		D4E1007817D84F8B006336F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Arvin Varghese";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EmployeeHrPortal/EmployeeHrPortal-Prefix.pch";
 				INFOPLIST_FILE = "EmployeeHrPortal/EmployeeHrPortal-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3D95713F-B80D-4551-9945-3AC0B12F9E71";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
