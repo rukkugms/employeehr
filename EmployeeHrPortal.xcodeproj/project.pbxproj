@@ -40,6 +40,7 @@
 		6497998718026FA2002EC54A /* medicell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6497998618026FA2002EC54A /* medicell.xib */; };
 		649ED93017E06F770064C5DB /* racemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = 649ED92F17E06F770064C5DB /* racemdl.m */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
+		D418D984183B76ED001C7B0E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D418D983183B76ED001C7B0E /* logo.png */; };
 		D482A574182B697D007280CA /* KontractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D482A572182B697D007280CA /* KontractViewController.m */; };
 		D482A575182B697D007280CA /* KontractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A573182B697D007280CA /* KontractViewController.xib */; };
 		D482A577182B6B89007280CA /* Kontractviewcontroller_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A576182B6B89007280CA /* Kontractviewcontroller_iphone.xib */; };
@@ -161,6 +162,7 @@
 		649ED92E17E06F770064C5DB /* racemdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = racemdl.h; sourceTree = "<group>"; };
 		649ED92F17E06F770064C5DB /* racemdl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = racemdl.m; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
+		D418D983183B76ED001C7B0E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D482A571182B697D007280CA /* KontractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KontractViewController.h; sourceTree = "<group>"; };
 		D482A572182B697D007280CA /* KontractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KontractViewController.m; sourceTree = "<group>"; };
 		D482A573182B697D007280CA /* KontractViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KontractViewController.xib; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D418D983183B76ED001C7B0E /* logo.png */,
 				64932185182B5DB5006B6904 /* calender.png */,
 				649069E3180FFFDE00944C83 /* Untitled.png */,
 				D4E1009F17D85E30006336F8 /* cb_mono_on.png */,
@@ -614,6 +617,7 @@
 				64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */,
 				D4C7CD3D17E9BEE000484F94 /* UploadImageViewController.xib in Resources */,
 				6494D29217FD72EA00D462B2 /* logout1.png in Resources */,
+				D418D984183B76ED001C7B0E /* logo.png in Resources */,
 				6497998718026FA2002EC54A /* medicell.xib in Resources */,
 				649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */,
 				649069E4180FFFDE00944C83 /* Untitled.png in Resources */,
