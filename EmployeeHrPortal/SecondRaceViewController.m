@@ -128,8 +128,8 @@
                    "</soap:Envelope>\n",_applicantId,_race1.isConvicted,_race1.convictexplanation,_race1.twiccardno,_race1.agelimit,_race1.legalrights,_race1.WorkOverTime,_race1.WorkedEarlier,_race1.WorkedPeriod,_race1.WorkedOutofTown,_race1.reffered,_race1.reffereagency,_IsProtectedVeteranValue,_IsDisablevalue,_IsVietnamEravalue,_IsActiveReservistvalue,_IsDisabledVeteranvalue,_IsSeperatedVeteranvalue];
     NSLog(@"soapmsg%@",soapMessage);
         
-    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.146/link/service.asmx"];
-    NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://202.88.227.196/service.asmx"];
+     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
