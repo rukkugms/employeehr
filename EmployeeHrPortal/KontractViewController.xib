@@ -64,7 +64,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" id="20">
-                    <rect key="frame" x="330" y="95" width="237" height="155"/>
+                    <rect key="frame" x="355" y="103" width="186" height="117"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
