@@ -297,12 +297,10 @@
 		D4E1004717D84F8B006336F8 = {
 			isa = PBXGroup;
 			children = (
-				D4C7CD3717E9B5C500484F94 /* AssetsLibrary.framework */,
-				D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */,
-				D4C7CD3217E9B40000484F94 /* NSData+Base64.h */,
-				D4C7CD3317E9B40000484F94 /* NSData+Base64.m */,
 				D4C7CD2F17E9B3F000484F94 /* Base64.h */,
 				D4C7CD3017E9B3F000484F94 /* Base64.m */,
+				D4C7CD3217E9B40000484F94 /* NSData+Base64.h */,
+				D4C7CD3317E9B40000484F94 /* NSData+Base64.m */,
 				D4E100CD17D8686F006336F8 /* QuartzCore.framework */,
 				D4E1009717D85A0C006336F8 /* Models */,
 				D4E1008817D851E5006336F8 /* Images */,
@@ -323,6 +321,8 @@
 		D4E1005217D84F8B006336F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4C7CD3717E9B5C500484F94 /* AssetsLibrary.framework */,
+				D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */,
 				D4E1005317D84F8B006336F8 /* UIKit.framework */,
 				D4E1005517D84F8B006336F8 /* Foundation.framework */,
 				D4E1005717D84F8B006336F8 /* CoreGraphics.framework */,
