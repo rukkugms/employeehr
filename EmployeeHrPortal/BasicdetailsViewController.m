@@ -257,6 +257,7 @@
             case 1:
                 
                 [_sufixbtnlbl setTitle:[_suffixarray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+            
                 
                 
                 break;
@@ -638,7 +639,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"appAddress"])
+    if([elementName isEqualToString:@"Address"])
     {
         if(!_soapResults)
         {
@@ -655,7 +656,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"appAddress"])
+    if([elementName isEqualToString:@"Address"])
     {
         if(!_soapResults)
         {
@@ -673,7 +674,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"StateName"])
+    if([elementName isEqualToString:@"State"])
     {
         if(!_soapResults)
         {
@@ -691,7 +692,7 @@
     }
     
     
-    if([elementName isEqualToString:@"StateName"])
+    if([elementName isEqualToString:@"State"])
     {
         if(!_soapResults)
         {
@@ -724,7 +725,7 @@
     
        
     
-    if([elementName isEqualToString:@"CountryName"])
+    if([elementName isEqualToString:@"country_name"])
     {
         if(!_soapResults)
         {
@@ -734,7 +735,7 @@
     }
     
     
-    if([elementName isEqualToString:@"Gender"])
+    if([elementName isEqualToString:@"applicant_Gender"])
     {
         if(!_soapResults)
         {
@@ -743,25 +744,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"Email"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-    
-    
-    if([elementName isEqualToString:@"CellphoneNo"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-    if([elementName isEqualToString:@"PhoneNo"])
+    if([elementName isEqualToString:@"applicant_Email"])
     {
         if(!_soapResults)
         {
@@ -771,7 +754,15 @@
     }
     
     
-    if([elementName isEqualToString:@"AlternateNo"])
+    if([elementName isEqualToString:@"CellPhone"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"phone"])
     {
         if(!_soapResults)
         {
@@ -780,7 +771,17 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"EmergencyContactName"])
+    
+    if([elementName isEqualToString:@"applicant_AlternateNo"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"EmergencyContact"])
     {
         if(!_soapResults)
         {
@@ -790,7 +791,7 @@
     }
     
     
-    if([elementName isEqualToString:@"DrivingLicenseNo"])
+    if([elementName isEqualToString:@"DrivingLicense"])
     {
         if(!_soapResults)
         {
@@ -801,7 +802,7 @@
 
 
     
-    if([elementName isEqualToString:@"LicenseIssuingState"])
+    if([elementName isEqualToString:@"applicant_LicenseState"])
     {
         if(!_soapResults)
         {
@@ -810,7 +811,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"NameInLicense"])
+    if([elementName isEqualToString:@"NameinLicense"])
     {
         if(!_soapResults)
         {
@@ -913,6 +914,11 @@
 }
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
+    if([elementName isEqualToString:@"applicant_Id"])
+    {recordResults = FALSE;
+        _soapResults=nil;
+
+    }
     if([elementName isEqualToString:@"NameSuffix"])
     {
         recordResults = FALSE;
@@ -934,7 +940,7 @@
         _lastnametxt_iphone.text=_soapResults;
         _soapResults=nil;    }
     
-    if([elementName isEqualToString:@"appAddress"])
+    if([elementName isEqualToString:@"Address"])
     {
         recordResults = FALSE;
         _Addresstxtfld.text=_soapResults;
@@ -948,7 +954,7 @@
         _citytxt_iphone.text=_soapResults;
         _soapResults=nil;    }
     
-    if([elementName isEqualToString:@"StateName"])
+    if([elementName isEqualToString:@"State"])
     {
         recordResults = FALSE;
        
@@ -1000,7 +1006,7 @@
     
     
     
-    if([elementName isEqualToString:@"CountryName"])
+    if([elementName isEqualToString:@"country_name"])
     {
         recordResults = FALSE;
           [_countrybtnlbl setTitle:_soapResults forState:UIControlStateNormal];
@@ -1009,7 +1015,7 @@
     }
     
     
-    if([elementName isEqualToString:@"Gender"])
+    if([elementName isEqualToString:@"applicant_Gender"])
     {
         recordResults = FALSE;
         if ([_soapResults isEqualToString:@"true"]) {
@@ -1029,7 +1035,7 @@
         _soapResults=nil;
     }
     
-    if([elementName isEqualToString:@"Email"])
+    if([elementName isEqualToString:@"applicant_Email"])
     {
         recordResults = FALSE;
         _emailtxtfld.text=_soapResults;
@@ -1038,14 +1044,14 @@
     }
     
     
-    if([elementName isEqualToString:@"CellphoneNo"])
+    if([elementName isEqualToString:@"CellPhone"])
     {
         recordResults = FALSE;
         _mobiletxtfld.text=_soapResults;
         _mobilenotext_iphone.text=_soapResults;
         _soapResults=nil;
     }
-    if([elementName isEqualToString:@"PhoneNo"])
+    if([elementName isEqualToString:@"phone"])
     {
         recordResults = FALSE;
         _homenumbertxtfld.text=_soapResults;
@@ -1054,7 +1060,7 @@
     }
     
     
-    if([elementName isEqualToString:@"AlternateNo"])
+    if([elementName isEqualToString:@"applicant_AlternateNo"])
     {
         recordResults = FALSE;
         _alternativenumtxtfld.text=_soapResults;
@@ -1062,7 +1068,7 @@
         _soapResults=nil;
     }
     
-    if([elementName isEqualToString:@"EmergencyContactName"])
+    if([elementName isEqualToString:@"EmergencyContact"])
     {
         recordResults = FALSE;
         _emergencytxtfld.text=_soapResults;
@@ -1079,7 +1085,7 @@
     
 
     
-    if([elementName isEqualToString:@"DrivingLicenseNo"])
+    if([elementName isEqualToString:@"DrivingLicense"])
     {
         recordResults = FALSE;
         _driverlicencetxtfld.text=_soapResults;
@@ -1089,7 +1095,7 @@
     
     
     
-    if([elementName isEqualToString:@"LicenseIssuingState"])
+    if([elementName isEqualToString:@"applicant_LicenseState"])
     {
         recordResults = FALSE;
         _stateissuetxtfld.text=_soapResults;
@@ -1097,7 +1103,7 @@
         _soapResults=nil;
     }
     
-    if([elementName isEqualToString:@"NameInLicense"])
+    if([elementName isEqualToString:@"NameinLicense"])
     {
         recordResults = FALSE;
         _nameinlicencetxtfld.text=_soapResults;

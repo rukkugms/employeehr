@@ -245,7 +245,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"IsConvicted"])
+    if([elementName isEqualToString:@"applicant_Isconvicted"])
     {
               if(!_soapResults)
         {
@@ -253,7 +253,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"ConvictExplanation"])
+    if([elementName isEqualToString:@"applicant_explanationofConvict"])
     {
         if(!_soapResults)
         {
@@ -261,7 +261,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"TWIC_CardNo"])
+    if([elementName isEqualToString:@"applicant_TWIC"])
     {
         if(!_soapResults)
         {
@@ -269,41 +269,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"AgeLimit"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-
-    if([elementName isEqualToString:@"LegalRights"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-    
-    if([elementName isEqualToString:@"WorkOverTime"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-    if([elementName isEqualToString:@"WorkedEarlier"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-    if([elementName isEqualToString:@"WorkedPeriod"])
+    if([elementName isEqualToString:@"applicant_AgeLimit"])
     {
         if(!_soapResults)
         {
@@ -312,7 +278,32 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = TRUE;
     }
 
-    if([elementName isEqualToString:@"WorkedOutofTown"])
+    if([elementName isEqualToString:@"applicant_LegalRights"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+    if([elementName isEqualToString:@"applicant_OverTime"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"applicant_WorkedEarlier"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"applicant_WorkedPeriod"])
     {
         if(!_soapResults)
         {
@@ -321,7 +312,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = TRUE;
     }
 
-    if([elementName isEqualToString:@"Reffered"])
+    if([elementName isEqualToString:@"applicant_workOutofTown"])
     {
         if(!_soapResults)
         {
@@ -329,20 +320,18 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         }
         recordResults = TRUE;
     }
-    
-    
-    if([elementName isEqualToString:@"RefferedAgency"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-    
 
+    if([elementName isEqualToString:@"applicant_referred"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
     
-    if([elementName isEqualToString:@"IsProtectedVeteran"])
+    
+    if([elementName isEqualToString:@"applicant_referredAgency"])
     {
         if(!_soapResults)
         {
@@ -352,7 +341,18 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     }
     
 
-    if([elementName isEqualToString:@"IsDisable"])
+    
+    if([elementName isEqualToString:@"applicant_IsProtectedVeteran"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    
+
+    if([elementName isEqualToString:@"applicant_IsDisable"])
     {
         if(!_soapResults)
         {
@@ -362,7 +362,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     }
     
     
-    if([elementName isEqualToString:@"IsVietnamEra"])
+    if([elementName isEqualToString:@"applicant_IsVietnamera"])
     {
         if(!_soapResults)
         {
@@ -373,7 +373,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     
 
 
-    if([elementName isEqualToString:@"IsActiveReservist"])
+    if([elementName isEqualToString:@"applicant_IsActivereservist"])
     {
         if(!_soapResults)
         {
@@ -383,7 +383,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     }
     
 
-    if([elementName isEqualToString:@"IsDisbledVeteran"])
+    if([elementName isEqualToString:@"applicant_IsdisableVeteran"])
     {
         if(!_soapResults)
         {
@@ -392,7 +392,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"IsSeperatedVeteran"])
+    if([elementName isEqualToString:@"applicant_IsSeperatedVeteran"])
     {
         if(!_soapResults)
         {
@@ -420,7 +420,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 }
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if([elementName isEqualToString:@"IsConvicted"])
+    if([elementName isEqualToString:@"applicant_Isconvicted"])
     {
         _ethmdl=[[Ethicity alloc]init];
         recordResults = FALSE;
@@ -442,7 +442,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"ConvictExplanation"])
+    if([elementName isEqualToString:@"applicant_explanationofConvict"])
     {
                recordResults = FALSE;
         if([_soapResults isEqualToString:@"(null)"])
@@ -461,7 +461,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     }
 
     
-    if([elementName isEqualToString:@"TWIC_CardNo"])
+    if([elementName isEqualToString:@"applicant_TWIC"])
     {
         recordResults = FALSE;
         if([_soapResults isEqualToString:@"(null)"])
@@ -478,8 +478,15 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         }
         _soapResults = nil;
     }
+    if([elementName isEqualToString:@"applicant_EmergencyContactNo"])
+    {
+        recordResults = FALSE;
+        _soapResults = nil;
+    }
     
-    if([elementName isEqualToString:@"AgeLimit"])
+
+    
+    if([elementName isEqualToString:@"applicant_AgeLimit"])
     {
         
         recordResults = FALSE;
@@ -498,7 +505,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"LegalRights"])
+    if([elementName isEqualToString:@"applicant_LegalRights"])
     {
         
         recordResults = FALSE;
@@ -517,7 +524,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"LegalRights"])
+    if([elementName isEqualToString:@"applicant_LegalRights"])
     {
         
         recordResults = FALSE;
@@ -537,7 +544,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"WorkOverTime"])
+    if([elementName isEqualToString:@"applicant_OverTime"])
     {
         
         recordResults = FALSE;
@@ -556,7 +563,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"WorkedEarlier"])
+    if([elementName isEqualToString:@"applicant_WorkedEarlier"])
     {
         
         recordResults = FALSE;
@@ -574,7 +581,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"WorkedPeriod"])
+    if([elementName isEqualToString:@"applicant_WorkedPeriod"])
     {
         
         recordResults = FALSE;
@@ -596,7 +603,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     }
 
     
-    if([elementName isEqualToString:@"WorkedOutofTown"])
+    if([elementName isEqualToString:@"applicant_workOutofTown"])
     {
         
         recordResults = FALSE;
@@ -615,7 +622,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         _soapResults = nil;
     }
 
-    if([elementName isEqualToString:@"Reffered"])
+    if([elementName isEqualToString:@"applicant_referred"])
     {
         
         recordResults = FALSE;
@@ -633,7 +640,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         }
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"RefferedAgency"])
+    if([elementName isEqualToString:@"applicant_referredAgency"])
     {
         
         recordResults = FALSE;
@@ -655,7 +662,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 
 
     
-    if([elementName isEqualToString:@"IsProtectedVeteran"])
+    if([elementName isEqualToString:@"applicant_IsProtectedVeteran"])
     {
         
         recordResults = FALSE;
@@ -674,7 +681,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"IsDisable"])
+    if([elementName isEqualToString:@"applicant_IsDisable"])
     {
         
         recordResults = FALSE;
@@ -695,7 +702,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     
 
     
-    if([elementName isEqualToString:@"IsVietnamEra"])
+    if([elementName isEqualToString:@"applicant_IsVietnamera"])
     {
         
         recordResults = FALSE;
@@ -714,7 +721,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"IsActiveReservist"])
+    if([elementName isEqualToString:@"applicant_IsActivereservist"])
     {
         
         recordResults = FALSE;
@@ -732,7 +739,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"IsDisbledVeteran"])
+    if([elementName isEqualToString:@"applicant_IsdisableVeteran"])
     {
         
         recordResults = FALSE;
@@ -751,7 +758,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         _soapResults = nil;
     }
 
-    if([elementName isEqualToString:@"IsSeperatedVeteran"])
+    if([elementName isEqualToString:@"applicant_IsSeperatedVeteran"])
     {
         
         recordResults = FALSE;

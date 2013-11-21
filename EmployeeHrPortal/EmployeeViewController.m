@@ -602,7 +602,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"ApplicantId"])
+    if([elementName isEqualToString:@"applicant_Id"])
     {
         if(!_soapResults)
         {
@@ -610,7 +610,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"PreviousId"])
+    if([elementName isEqualToString:@"previous_Id"])
     {
         if(!_soapResults)
         {
@@ -618,7 +618,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"PreviousCompany"])
+    if([elementName isEqualToString:@"previous_Company"])
     {
         if(!_soapResults)
         {
@@ -626,7 +626,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"DateofEmployment"])
+    if([elementName isEqualToString:@"dateof_Employment"])
     {
         if(!_soapResults)
         {
@@ -634,7 +634,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"PreviousRateofPay"])
+    if([elementName isEqualToString:@"previous_rateofPay"])
     {
         if(!_soapResults)
         {
@@ -644,7 +644,7 @@
     }
 
 
-    if([elementName isEqualToString:@"PreviousPosition"])
+    if([elementName isEqualToString:@"previous_Position"])
     {
         if(!_soapResults)
         {
@@ -653,7 +653,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"LeavingReason"])
+    if([elementName isEqualToString:@"leaving_reason"])
     {
         if(!_soapResults)
         {
@@ -683,28 +683,28 @@
 }
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if([elementName isEqualToString:@"ApplicantId"])
+    if([elementName isEqualToString:@"applicant_Id"])
     {
         _previous=[[previousemp alloc]init];
         recordResults = FALSE;
         _previous.applicantid=_soapResults;
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"PreviousId"])
+    if([elementName isEqualToString:@"previous_Id"])
     {
             recordResults = FALSE;
         _previous.previousid=[_soapResults integerValue];
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"PreviousCompany"])
+    if([elementName isEqualToString:@"previous_Company"])
     {
         recordResults = FALSE;
         _previous.previouscompany=_soapResults;
         _soapResults = nil;
     }
 
-    if([elementName isEqualToString:@"DateofEmployment"])
+    if([elementName isEqualToString:@"dateof_Employment"])
     {
         recordResults = FALSE;
         NSArray *dateArray=[[NSArray alloc]init];
@@ -718,20 +718,20 @@
         _previous.dateofemployee=myFormattedDate;
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"PreviousRateofPay"])
+    if([elementName isEqualToString:@"previous_rateofPay"])
     {
         recordResults = FALSE;
         _previous.previousrateofpay=_soapResults;
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"PreviousPosition"])
+    if([elementName isEqualToString:@"previous_Position"])
     {
         recordResults = FALSE;
         _previous.previousposition=_soapResults;
         _soapResults = nil;
     }
 
-    if([elementName isEqualToString:@"LeavingReason"])
+    if([elementName isEqualToString:@"leaving_reason"])
     {
         recordResults = FALSE;
         _previous.reasonforleaving=_soapResults;
