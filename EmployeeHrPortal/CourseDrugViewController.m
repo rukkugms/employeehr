@@ -41,7 +41,7 @@
     _remonthDictionary=[[NSMutableDictionary alloc]initWithObjects:_monthArray forKeys:_monthdictArray];
     _yearArray=[[NSMutableArray alloc]initWithObjects:@"2013",@"2014",@"2015",@"2016",@"2017",@"2018",@"2019",@"2020",@"2021",@"2022",@"2023", nil];
 
-    [self InsertApplicantRequirements];
+  
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     
@@ -69,6 +69,12 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+      [self InsertApplicantRequirements];
+    
+}
 
 -(void)viewWillDisappear:(BOOL)animated{
     
@@ -606,7 +612,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"Requirement_Id"])
+    if([elementName isEqualToString:@"EntryId"])
     {
         if(!_soapResults)
         {
@@ -668,7 +674,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"course_status"])
+    if([elementName isEqualToString:@"Default"])
     {
         if(!_soapResults)
         {
@@ -699,7 +705,7 @@
 {
           
     
-    if([elementName isEqualToString:@"Requirement_Id"])
+    if([elementName isEqualToString:@"EntryId"])
     {
         _coursemdl=[[Coursemdl alloc]init];
         recordResults = FALSE;
@@ -769,7 +775,7 @@
       
     _soapResults=nil;
     }
-    if([elementName isEqualToString:@"course_status"])
+    if([elementName isEqualToString:@"Default"])
     {
         recordResults = FALSE;
         
