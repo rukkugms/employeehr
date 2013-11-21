@@ -846,11 +846,22 @@ else{
         
         
     {
-        _medmdl=[[Medicalmodel alloc]init];
+        
         recordResults = FALSE;
         
         _soapResults = nil;
     }
+    if([elementName isEqualToString:@"EntryId"])
+        
+        
+    {
+        _medmdl=[[Medicalmodel alloc]init];
+        
+        recordResults = FALSE;
+       
+        _soapResults = nil;
+    }
+
 
     if([elementName isEqualToString:@"medicalCondition_Id"])
         
@@ -880,6 +891,7 @@ else{
         recordResults = FALSE;
         _medmdl.meddescptn=_soapResults;
         [_applicantmedicalcntnarray addObject:_medmdl];
+        NSLog(@"_medmdl.medicalid%@",_medmdl.medicalid);
         _soapResults = nil;
     }
     if([elementName isEqualToString:@"applicant_ClimbingAbility"])
