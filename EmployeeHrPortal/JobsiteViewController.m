@@ -1314,7 +1314,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"JobSiteId"])
+    if([elementName isEqualToString:@"jobSite_Id"])
     {
         if(!_soapResults)
         {
@@ -1359,7 +1359,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"ApplicantSkill"])
+    if([elementName isEqualToString:@"applicant_Skill"])
     {
         if(!_soapResults)
         {
@@ -1367,7 +1367,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"ApplicantCraft"])
+    if([elementName isEqualToString:@"applicant_OtherCrafts"])
     {
         if(!_soapResults)
         {
@@ -1375,7 +1375,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"craftname"])
+    if([elementName isEqualToString:@"Craftname"])
     {
         if(!_soapResults)
         {
@@ -1477,8 +1477,7 @@
     
     
     
-    
-    if([elementName isEqualToString:@"JobSiteId"])
+    if([elementName isEqualToString:@"jobSite_Id"])
         
     {
         _nw=@"SelectApplicant";
@@ -1574,7 +1573,7 @@
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"ApplicantSkill"])
+    if([elementName isEqualToString:@"applicant_Skill"])
     {
         recordResults = FALSE;
         _jobsite.ApplicantSkill=_soapResults;
@@ -1590,7 +1589,7 @@
         
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"ApplicantCraft"])
+    if([elementName isEqualToString:@"applicant_OtherCrafts"])
     {
         recordResults = FALSE;
         _creftid=_soapResults;
@@ -1609,7 +1608,7 @@
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"craftname"])
+    if([elementName isEqualToString:@"Craftname"])
     {
         recordResults = FALSE;
         _jobsite.ApplicantCraft=_soapResults;
