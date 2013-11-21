@@ -337,9 +337,11 @@
 }
 
 - (IBAction)skillbtn:(id)sender {
+  
     Poptype=3;
     [self SelectEmployeeSkills];
     [self skillsPopover];
+   
     
 }
 
@@ -624,7 +626,7 @@
     }
     if (tableView==_popOverTableView) {
         
-        
+        skillindex=indexPath.row;
         
         switch (Poptype) {
             case 1:
@@ -938,14 +940,15 @@
     {
         ncer=0;
     }
-    NSString *skill=[_skilldict objectForKey: _skillbtnlbl.titleLabel.text];
+        NSString *skill=[_skilldict objectForKey:[_skillsArray objectAtIndex:skillindex]];
+        NSLog(@"skill%@",[_skillsArray objectAtIndex:skillindex]);
     NSString *craft;
     if ([_craftdict count]==0) {
         craft =_creftid;
     }
     
     else{
-        craft= [_craftdict objectForKey: _craftbtnlbl.titleLabel.text];
+        craft= [_craftdict objectForKey: [_craftsArray objectAtIndex:skillindex]];
         
     }
     
