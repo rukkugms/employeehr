@@ -21,6 +21,7 @@
     NSInteger basicPlus;
     NSInteger ncer;
     NSInteger webtype;
+    NSInteger skillindex;
     
 }
 @property(readwrite)  NSInteger Applicantid;
