@@ -532,7 +532,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"CertificateId"])
+    if([elementName isEqualToString:@"certificate_id"])
     {
         if(!_soapResults)
         {
@@ -541,7 +541,7 @@
         recordResults = TRUE;
     }
 
-    if([elementName isEqualToString:@"ApplicantId"])
+    if([elementName isEqualToString:@"applicant_Id"])
     {
         if(!_soapResults)
         {
@@ -550,7 +550,7 @@
         recordResults = TRUE;
     }
 
-    if([elementName isEqualToString:@"CertificateName"])
+    if([elementName isEqualToString:@"certificate_Name"])
     {
         if(!_soapResults)
         {
@@ -558,7 +558,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"CertificateDate"])
+    if([elementName isEqualToString:@"certificate_date"])
     {
         if(!_soapResults)
         {
@@ -578,7 +578,7 @@
         recordResults = TRUE;
     }
 
-    if([elementName isEqualToString:@"EducationId"])
+    if([elementName isEqualToString:@"education_id"])
     {
         if(!_soapResults)
         {
@@ -586,16 +586,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"EducationName"])
-    {
-        if(!_soapResults)
-        {
-            _soapResults = [[NSMutableString alloc] init];
-        }
-        recordResults = TRUE;
-    }
-
-    if([elementName isEqualToString:@"YearsCompleted"])
+    if([elementName isEqualToString:@"education_Name"])
     {
         if(!_soapResults)
         {
@@ -604,7 +595,7 @@
         recordResults = TRUE;
     }
 
-    if([elementName isEqualToString:@"InstituteName"])
+    if([elementName isEqualToString:@"years_Completed"])
     {
         if(!_soapResults)
         {
@@ -612,7 +603,8 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"InstituteCity"])
+
+    if([elementName isEqualToString:@"institute_Name"])
     {
         if(!_soapResults)
         {
@@ -620,7 +612,15 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"InstituteState"])
+    if([elementName isEqualToString:@"institute_City"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"institute_State"])
     {
         if(!_soapResults)
         {
@@ -650,7 +650,7 @@
     
     
     
-    if([elementName isEqualToString:@"CertificateId"])
+    if([elementName isEqualToString:@"certificate_id"])
     {
         _cerifcteml=[[certificateModel alloc]init];
         recordResults = FALSE;
@@ -658,20 +658,20 @@
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"ApplicantId"])
+    if([elementName isEqualToString:@"applicant_Id"])
     { recordResults = FALSE;
         _Applicantid=[_soapResults integerValue];
          _soapResults = nil;
 
     }
     
-    if([elementName isEqualToString:@"CertificateName"])
+    if([elementName isEqualToString:@"certificate_Name"])
     {
         recordResults = FALSE;
         _cerifcteml.certificatename=_soapResults;
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"CertificateDate"])
+    if([elementName isEqualToString:@"certificate_date"])
     {
         recordResults = FALSE;
         NSArray *dateArray=[[NSArray alloc]init];
@@ -687,21 +687,21 @@
       
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"EducationId"])
+    if([elementName isEqualToString:@"education_id"])
     {
         _Edumodel=[[Educationdetails alloc]init];
        recordResults = FALSE;
         _Edumodel.eduid=[_soapResults integerValue];
      _soapResults = nil;
     }
-    if([elementName isEqualToString:@"EducationName"])
+    if([elementName isEqualToString:@"education_Name"])
     {
         recordResults = FALSE;
         _Edumodel.educationname=_soapResults;
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"YearsCompleted"])
+    if([elementName isEqualToString:@"years_Completed"])
     {
         recordResults = FALSE;
         _Edumodel.yearscompleted=[_soapResults integerValue];
@@ -709,21 +709,21 @@
 
     }
     
-    if([elementName isEqualToString:@"InstituteName"])
+    if([elementName isEqualToString:@"institute_Name"])
     {
         recordResults = FALSE;
         _Edumodel.InstituteName=_soapResults;
         _soapResults = nil;
 
     }
-    if([elementName isEqualToString:@"InstituteCity"])
+    if([elementName isEqualToString:@"institute_City"])
     {
         recordResults = FALSE;
         _Edumodel.city=_soapResults;
         
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"InstituteState"])
+    if([elementName isEqualToString:@"institute_State"])
     {
         recordResults = FALSE;
         _Edumodel.state=_soapResults;

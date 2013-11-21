@@ -717,7 +717,7 @@ else{
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"medicalCondition_Id"])
+    if([elementName isEqualToString:@"MedId"])
     {
         if(!_soapResults)
         {
@@ -743,7 +743,7 @@ else{
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"MedConditionId"])
+    if([elementName isEqualToString:@"medicalCondition_Id"])
     {
         if(!_soapResults)
         {
@@ -751,7 +751,7 @@ else{
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"MedicalStatus"])
+    if([elementName isEqualToString:@"status"])
     {
         if(!_soapResults)
         {
@@ -759,7 +759,7 @@ else{
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"Description"])
+    if([elementName isEqualToString:@"description"])
     {
         if(!_soapResults)
         {
@@ -775,7 +775,7 @@ else{
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"ClimbingAbility"])
+    if([elementName isEqualToString:@"applicant_ClimbingAbility"])
     {
         if(!_soapResults)
         {
@@ -784,7 +784,7 @@ else{
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"CurrentMedication"])
+    if([elementName isEqualToString:@"applicant_CurrentMedication"])
     {
         if(!_soapResults)
         {
@@ -827,13 +827,14 @@ else{
     if([elementName isEqualToString:@"medicalCondition_Name"])
     {
         recordResults = FALSE;
+        NSLog(@"dict%@",_unitstrg);
         [_medicalnamedict setObject:_soapResults forKey:_unitstrg];
         [_medicaliddict setObject:_unitstrg forKey:_soapResults];
         _medicalnamearray=[_medicalnamedict allValues];
        _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"medicalCondition_Id"])
+    if([elementName isEqualToString:@"MedId"])
     {
        
         recordResults = FALSE;
@@ -841,7 +842,7 @@ else{
         _soapResults = nil;
         
     }
-    if([elementName isEqualToString:@"ApplicantId"])
+    if([elementName isEqualToString:@"applicant_Id"])
         
         
     {
@@ -851,7 +852,7 @@ else{
         _soapResults = nil;
     }
 
-    if([elementName isEqualToString:@"MedConditionId"])
+    if([elementName isEqualToString:@"medicalCondition_Id"])
         
         
     {
@@ -860,7 +861,7 @@ else{
         _medmdl.medicalid=_soapResults;
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"MedicalStatus"])
+    if([elementName isEqualToString:@"status"])
     {
         recordResults = FALSE;
         if ([_soapResults isEqualToString:@"true"]) {
@@ -874,14 +875,14 @@ else{
         }
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"Description"])
+    if([elementName isEqualToString:@"description"])
     {
         recordResults = FALSE;
         _medmdl.meddescptn=_soapResults;
         [_applicantmedicalcntnarray addObject:_medmdl];
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"ClimbingAbility"])
+    if([elementName isEqualToString:@"applicant_ClimbingAbility"])
     {
          recordResults = FALSE;
         if ([_soapResults isEqualToString:@"true"]) {
@@ -900,7 +901,7 @@ else{
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"CurrentMedication"])
+    if([elementName isEqualToString:@"applicant_CurrentMedication"])
     {
         recordResults = FALSE;
         _medicationtxtfld.text=_soapResults;
