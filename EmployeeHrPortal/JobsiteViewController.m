@@ -1168,7 +1168,7 @@
 {
     NSLog(@"DONE. Received Bytes: %d", [_webData length]);
 	NSString *theXML = [[NSString alloc] initWithBytes: [_webData mutableBytes] length:[_webData length] encoding:NSUTF8StringEncoding];
-	NSLog(@"xml===== %@",theXML);
+	//NSLog(@"xml===== %@",theXML);
 	
 	
 	if( _xmlParser )
