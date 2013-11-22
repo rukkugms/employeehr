@@ -86,7 +86,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    [self UpdateApplicantRequirements];
+    [self DeleteApplicantRequirements];
     
     
 }
@@ -667,10 +667,10 @@
 	[_xmlParser setDelegate:(id)self];
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
-//    if (webidfr==2) {
-//        [self UpdateApplicantRequirements];
-//       // webidfr=0;
-//    }
+    if (webidfr==2) {
+        [self UpdateApplicantRequirements];
+       // webidfr=0;
+    }
 
     if (webidfr==1) {
         [self InsertApplicantRequirements];
@@ -922,8 +922,8 @@
 
 - (IBAction)continuebtn:(id)sender {
     
-  //  [self DeleteApplicantRequirements];
-    [self UpdateApplicantRequirements];
+   [self DeleteApplicantRequirements];
+    //[self UpdateApplicantRequirements];
     
 //    if (!self.raceVCtrl) {
 //        _raceVCtrl=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
