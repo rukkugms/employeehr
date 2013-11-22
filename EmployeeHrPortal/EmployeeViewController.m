@@ -236,6 +236,8 @@
         _previous=(previousemp *)[_previousemployeeArray objectAtIndex:indexPath.row];
         _companynamelabel=(UILabel*)[cell viewWithTag:1];
         _companynamelabel.text=_previous.previouscompany;
+           NSLog(@"%@",_previous.previouscompany);
+           NSLog(@"%d",_previous.previousid);
         _datelabel=(UILabel*)[cell viewWithTag:2];
     _datelabel.text=_previous.dateofemployee;
         _rateofpaylabel=(UILabel*)[cell viewWithTag:3];
@@ -266,8 +268,11 @@
     
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     identifr=indexPath.row;
+    NSLog(@"ide%d",identifr);
     if (editingStyle==UITableViewCellEditingStyleDelete) {
+        
         [self DeleteApplicantPreviousEmployer];
               
         [_previousemployeeArray removeObjectAtIndex:indexPath.row];
@@ -497,8 +502,12 @@
 }
 -(void)DeleteApplicantPreviousEmployer
 {
-    _previous=(previousemp *)[_previousemployeeArray objectAtIndex:identifr];
-    NSInteger previosid=_previous.previousid;
+    previousemp *pre1;
+    pre1=(previousemp *)[_previousemployeeArray objectAtIndex:identifr];
+    
+    NSInteger previosid=pre1.previousid;
+   
+    NSLog(@"id%d",previosid);
     recordResults = FALSE;
     NSString *soapMessage;
     
@@ -683,17 +692,19 @@
 }
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if([elementName isEqualToString:@"applicant_Id"])
+    if([elementName isEqualToString:@"previous_Id"])
     {
         _previous=[[previousemp alloc]init];
         recordResults = FALSE;
-        _previous.applicantid=_soapResults;
+        _previous.previousid=[_soapResults integerValue];
         _soapResults = nil;
     }
-    if([elementName isEqualToString:@"previous_Id"])
+
+    if([elementName isEqualToString:@"applicant_Id"])
     {
-            recordResults = FALSE;
-        _previous.previousid=[_soapResults integerValue];
+        
+        recordResults = FALSE;
+        _previous.applicantid=_soapResults;
         _soapResults = nil;
     }
     
@@ -736,6 +747,8 @@
         recordResults = FALSE;
         _previous.reasonforleaving=_soapResults;
         [_previousemployeeArray addObject:_previous];
+        NSLog(@"%d",_previous.previousid);
+        NSLog(@"%@",_previous.previouscompany);
         _soapResults = nil;
     }
 
