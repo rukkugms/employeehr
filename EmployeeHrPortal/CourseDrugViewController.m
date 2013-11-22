@@ -1012,19 +1012,40 @@ numberOfRowsInComponent:(NSInteger)component
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    UITableViewCell *cell = (UITableViewCell *)[[monthbtn_iphone superview] superview];
-    UITableView *table = (UITableView *)[cell superview];
-    NSIndexPath *textFieldIndexPath = [table indexPathForCell:cell];
-    NSLog(@"textFieldIndexPath%d",textFieldIndexPath.row);
+//    UITableViewCell *cell = (UITableViewCell *)[[monthbtn_iphone superview] superview];
+//    UITableView *table = (UITableView *)[cell superview];
+//    NSIndexPath *textFieldIndexPath = [table indexPathForCell:cell];
+//    NSLog(@"textFieldIndexPath%d",textFieldIndexPath.row);
+//    
+//    
+//    UITableViewCell *cell1 = (UITableViewCell *)[[yearbtn_iphone superview] superview];
+//    UITableView *table1 = (UITableView *)[cell1 superview];
+//    NSIndexPath *textFieldIndexPath1 = [table1 indexPathForCell:cell];
+//    NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
+// Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
     
-    
-    UITableViewCell *cell1 = (UITableViewCell *)[[yearbtn_iphone superview] superview];
-    UITableView *table1 = (UITableView *)[cell1 superview];
-    NSIndexPath *textFieldIndexPath1 = [table1 indexPathForCell:cell];
-    NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
- Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
-   if(pickerView==_monthpicker_iphone)  
+        
+        CGPoint center= monthbtn_iphone.center;
+        CGPoint rootViewPoint = [monthbtn_iphone.superview convertPoint:center toView:self.reqtable_iphone];
+        NSIndexPath *textFieldIndexPath = [self.reqtable_iphone indexPathForRowAtPoint:rootViewPoint];
+        NSLog(@"textFieldIndexPath%d",textFieldIndexPath.row);
+        
+    Coursemdl *coursemdl2;
+        coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
+   
+        
+        
+        CGPoint center1= yearbtn_iphone.center;
+        CGPoint rootViewPoint1 = [yearbtn_iphone.superview convertPoint:center1 toView:self.reqtable_iphone];
+        NSIndexPath *textFieldIndexPath1 = [self.reqtable_iphone indexPathForRowAtPoint:rootViewPoint1];
+        NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
+        Coursemdl *coursemdl3;
+        coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
+        
+   
+   if(pickerView==_monthpicker_iphone)
     {
+        monthbtn_iphone.enabled=YES;
         [ monthbtn_iphone setTitle:[_monthArray objectAtIndex:row] forState:UIControlStateNormal];
         coursemdl3.month=monthbtn_iphone.titleLabel.text;
         _monthpicker_iphone.hidden=YES;
@@ -1032,6 +1053,7 @@ numberOfRowsInComponent:(NSInteger)component
     }
     else if(pickerView==_yearpicker_iphone)
     {
+        yearbtn_iphone.enabled=YES;
         [ yearbtn_iphone setTitle:[_yearArray objectAtIndex:row] forState:UIControlStateNormal];
          coursemdl3.year=yearbtn_iphone.titleLabel.text;
         _yearpicker_iphone.hidden=YES;
