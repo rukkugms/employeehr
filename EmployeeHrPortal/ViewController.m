@@ -21,7 +21,7 @@
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     self.title=NSLocalizedString(@"Employee Portal", @"Employee Portal");
     self.navigationItem.hidesBackButton=YES;
-     [self.navigationController.navigationBar setHidden:YES];
+    // [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning

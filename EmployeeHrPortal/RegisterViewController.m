@@ -34,9 +34,9 @@
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-    self.navigationController.navigationBar.hidden=YES;
+  //  self.navigationController.navigationBar.hidden=YES;
     
-    self.navigationItem.hidesBackButton=YES;
+    //self.navigationItem.hidesBackButton=YES;
     [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processLogout:) name:@"logout" object:nil];
 }
 -(void)processLogout:(NSNotification *)aNotification{
