@@ -29,39 +29,24 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="9">
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9">
                         <rect key="frame" x="332" y="12" width="46" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.49205043580000002" blue="0.65567203439999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <state key="normal">
-                            <attributedString key="attributedTitle">
-                                <fragment content="MMM">
-                                    <attributes>
-                                        <font key="NSFont" size="12" name="HelveticaNeue-Bold"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                        </state>
+                        <state key="normal" title="MMM"/>
                         <connections>
                             <action selector="selectMonth:" destination="-1" eventType="touchUpInside" id="11"/>
                         </connections>
                     </button>
-                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="10">
+                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="10">
                         <rect key="frame" x="405" y="11" width="46" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.49205043580000002" blue="0.65567203439999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <state key="normal">
-                            <attributedString key="attributedTitle">
-                                <fragment content="YYY">
-                                    <attributes>
-                                        <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="12" name="HelveticaNeue-Bold"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                        <state key="normal" title="YYY">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
                             <action selector="selectyear:" destination="-1" eventType="touchUpInside" id="12"/>
