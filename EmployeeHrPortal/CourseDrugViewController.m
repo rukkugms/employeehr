@@ -545,9 +545,11 @@
                            "<ExpiryDate>%@</ExpiryDate>\n"
                            "<CourseStatus>%d</CourseStatus>\n"
                            "<VerificationStatus>%d</VerificationStatus>\n"
+                           "<CraftId>%d</CraftId>\n"
+                           "<RequirementName>%@</RequirementName>\n"
                            "</UpdateApplicantRequirements>\n"
                            "</soap:Body>\n"
-                           "</soap:Envelope>\n",_Applicantid,[_jobsiteid integerValue],reqid,expirydate,coursemdliphone.course_status,verifctnstatus];
+                           "</soap:Envelope>\n",_Applicantid,[_jobsiteid integerValue],reqid,expirydate,coursemdliphone.course_status,verifctnstatus,_coursemdl.craft,_coursemdl.itemname];
             NSLog(@"soapmsg%@",soapMessage);
             
             
@@ -582,6 +584,58 @@
 
     }
 }
+
+-(void)DeleteApplicantRequirements{
+    webidfr=2;
+    recordResults = FALSE;
+    NSString *soapMessage;
+    
+    soapMessage = [NSString stringWithFormat:
+                   
+                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                   
+                   
+                   "<soap:Body>\n"
+                   
+                   "<DeleteApplicantRequirements xmlns=\"http://arvin.kontract360.com/\">\n"
+                                   "<AppId>%d</AppId>\n"
+                   "</DeleteApplicantRequirements>\n"
+                   "</soap:Body>\n"
+                   "</soap:Envelope>\n",_Applicantid];
+    NSLog(@"soapmsg%@",soapMessage);
+    
+    
+    NSURL *url = [NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
+    // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [theRequest addValue: @"http://arvin.kontract360.com/DeleteApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
+    
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        _webData = [NSMutableData data];
+    }
+    else
+    {
+        ////NSLog(@"theConnection is NULL");
+    }
+    
+
+}
+
 #pragma mark - Connection
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -613,12 +667,18 @@
 	[_xmlParser setDelegate:(id)self];
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
-    
+//    if (webidfr==2) {
+//        [self UpdateApplicantRequirements];
+//       // webidfr=0;
+//    }
+
     if (webidfr==1) {
         [self InsertApplicantRequirements];
         webidfr=0;
     }
-    [_detailstable reloadData];
+
+  
+      [_detailstable reloadData];
     [_reqtable_iphone reloadData];
     
     
@@ -861,6 +921,8 @@
 #pragma mark - Action
 
 - (IBAction)continuebtn:(id)sender {
+    
+  //  [self DeleteApplicantRequirements];
     [self UpdateApplicantRequirements];
     
 //    if (!self.raceVCtrl) {
