@@ -212,7 +212,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"medicalCondition_Id"])
+    if([elementName isEqualToString:@"MedId"])
     {
         if(!_soapResults)
         {
@@ -257,7 +257,7 @@
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"medicalCondition_Id"])
+    if([elementName isEqualToString:@"MedId"])
     {
         
         recordResults = FALSE;
