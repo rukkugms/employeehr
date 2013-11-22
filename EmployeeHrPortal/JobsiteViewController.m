@@ -1677,10 +1677,12 @@
     if (textField==_skilltextflield_iphone) {
         [self SelectEmployeeSkills];
         _datapicker1.hidden=NO;
+          _datapicker2.hidden=YES;
     }
     if (textField==_crafttxtflield_iphone) {
         [self SelectEmployeeCraft];
         _datapicker2.hidden=NO;
+        _datapicker1.hidden=YES;
     }
 
     //_picker.hidden=YES;
