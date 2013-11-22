@@ -22,6 +22,7 @@
     NSInteger path;
     NSString *pickerstring;
     NSInteger btnidfr;
+    NSInteger webidfr;
 }
 @property (strong, nonatomic) IBOutlet UITableView *detailstable;
 @property(readwrite)NSInteger Applicantid;
