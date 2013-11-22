@@ -670,6 +670,7 @@
 
 -(void)SelectJobs{
     //Poptype=3;
+    reldint=1;
     recordResults = FALSE;
     NSString *soapMessage;
    
@@ -1189,9 +1190,16 @@
 
         webtype=0;
     }
-    [_listtable reloadData];
+    if (reldint==1) {
+         [_listtable reloadData];
+    }
+    
+    else{
+   
     
     [_popOverTableView reloadData];
+    }
+    
     [_datapicker1 reloadAllComponents];
     [_datapicker2 reloadAllComponents];
     
