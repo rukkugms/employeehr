@@ -41,7 +41,7 @@
     _remonthDictionary=[[NSMutableDictionary alloc]initWithObjects:_monthArray forKeys:_monthdictArray];
     _yearArray=[[NSMutableArray alloc]initWithObjects:@"2013",@"2014",@"2015",@"2016",@"2017",@"2018",@"2019",@"2020",@"2021",@"2022",@"2023", nil];
 
-    [self InsertApplicantRequirements];
+  
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     
@@ -49,6 +49,13 @@
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationController.navigationBarHidden=NO;
+    for (UIView *subview in self.detailstable.subviews)
+    {
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewWrapperView"])
+        {
+            subview.frame = CGRectMake(0, 0,self.detailstable.bounds.size.width, self.detailstable.bounds.size.height);
+        }
+    }
 }
 -(void)logoutAction{
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
@@ -69,6 +76,12 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+      [self InsertApplicantRequirements];
+    
+}
 
 -(void)viewWillDisappear:(BOOL)animated{
     
@@ -276,22 +289,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Coursemdl*coursemdl2;
+    Coursemdl*coursemdl3;
+    if (Poptype==1) {
+        
     
-    //UIButton *button=[[UIButton alloc]init];
-    UITableViewCell *cell = (UITableViewCell *)[[button superview] superview];
-    UITableView *table = (UITableView *)[cell superview];
-    NSIndexPath *textFieldIndexPath = [table indexPathForCell:cell];
+      CGPoint center= button.center;
+    CGPoint rootViewPoint = [button.superview convertPoint:center toView:self.detailstable];
+    NSIndexPath *textFieldIndexPath = [self.detailstable indexPathForRowAtPoint:rootViewPoint];
     NSLog(@"textFieldIndexPath%d",textFieldIndexPath.row);
     
+
+    coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
+    }
+    if (Poptype==2) {
+        
     
-    Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
-    UITableViewCell *cell1 = (UITableViewCell *)[[yearbutton superview] superview];
-    UITableView *table1 = (UITableView *)[cell1 superview];
-    NSIndexPath *textFieldIndexPath1 = [table1 indexPathForCell:cell1];
+    CGPoint center1= yearbutton.center;
+    CGPoint rootViewPoint1 = [yearbutton.superview convertPoint:center1 toView:self.detailstable];
+    NSIndexPath *textFieldIndexPath1 = [self.detailstable indexPathForRowAtPoint:rootViewPoint1];
     NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
-    Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
+
+    coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
     
-    
+    }
        
     if (tableView==_popOverTableView) {
         
@@ -302,11 +323,17 @@
             case 1:
                 
                 path=indexPath.row;
-                [button setTitle:[_monthArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                 
-                coursemdl2.month=button.titleLabel.text;
+               // button.enabled=YES;
+            [button setTitle:[_monthArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+               
+            coursemdl2.month=[_monthArray objectAtIndex:indexPath.row];
+               //[button setTitle:coursemdl2.month forState:UIControlStateNormal];
                 
                 NSLog(@"_monthbtn.tag%@",coursemdl2.month);
+                 NSLog(@"_monthbtn.tag%d",coursemdl2.reqid);
+               // [_requirementArray addObject:coursemdl2];
+                Poptype=0;
                 
                 
                 
@@ -315,9 +342,9 @@
                 
                 [yearbutton setTitle:[_yearArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                 
-                coursemdl3.year=yearbutton.titleLabel.text;
-                
-                
+                coursemdl3.year=[_yearArray objectAtIndex:indexPath.row];
+               // [_requirementArray addObject:coursemdl3];
+                Poptype=0;
                 break;
             default:
                 break;
@@ -329,16 +356,16 @@
     {
         
         selectedcell=indexPath.row;
-        _selectedcellstring=@"selected";
-        [_detailstable reloadData];
+       // _selectedcellstring=@"selected";
+       // [_detailstable reloadData];
     }
     if(tableView==_reqtable_iphone)
     {
         
         selectedcell=indexPath.row;
         NSLog(@"%d",indexPath.row);
-        _selectedcellstring=@"selected";
-        [_reqtable_iphone reloadData];
+       // _selectedcellstring=@"selected";
+        //[_reqtable_iphone reloadData];
     }
 
 }
@@ -425,6 +452,7 @@
         
                NSInteger reqid=coursemdl1.reqid;
         NSString*mnth=[_monthDictionary objectForKey:coursemdl1.month];
+           NSLog(@"yar%@",coursemdl1.year);
          NSString*expirydate=[NSString stringWithFormat:@"%@-%@-%@",coursemdl1.year,mnth,day];
     
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -438,7 +466,6 @@
                    
                    
                    "<soap:Body>\n"
-                   
                    "<UpdateApplicantRequirements xmlns=\"http://arvin.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
                    "<JobId>%d</JobId>\n"
@@ -446,9 +473,11 @@
                    "<ExpiryDate>%@</ExpiryDate>\n"
                    "<CourseStatus>%d</CourseStatus>\n"
                    "<VerificationStatus>%d</VerificationStatus>\n"
+                   "<CraftId>%d</CraftId>\n"
+                   "<RequirementName>%@</RequirementName>\n"
                    "</UpdateApplicantRequirements>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,[fetchVariable integerValue],reqid,expirydate,coursemdl1.course_status,verifctnstatus];
+                   "</soap:Envelope>\n",_Applicantid,[fetchVariable integerValue],reqid,expirydate,coursemdl1.course_status,verifctnstatus,coursemdl1.craft,coursemdl1.itemname];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -606,7 +635,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"Requirement_Id"])
+    if([elementName isEqualToString:@"EntryId"])
     {
         if(!_soapResults)
         {
@@ -668,7 +697,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"course_status"])
+    if([elementName isEqualToString:@"Default"])
     {
         if(!_soapResults)
         {
@@ -677,8 +706,25 @@
         recordResults = TRUE;
     }
     
+    if([elementName isEqualToString:@"status"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
 
-    
+    }
+    if([elementName isEqualToString:@"craft"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+        
+    }
+
     
 }
 
@@ -699,7 +745,7 @@
 {
           
     
-    if([elementName isEqualToString:@"Requirement_Id"])
+    if([elementName isEqualToString:@"EntryId"])
     {
         _coursemdl=[[Coursemdl alloc]init];
         recordResults = FALSE;
@@ -749,47 +795,64 @@
     if([elementName isEqualToString:@"expir_date"])
     {
         recordResults = FALSE;
-        NSArray *dateArray=[[NSArray alloc]init];
-        dateArray=[_soapResults componentsSeparatedByString:@"T"];
-        NSString *date1 =[dateArray objectAtIndex:0];
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd"];
-        NSDate *dates = [dateFormat dateFromString:date1];
-        [dateFormat setDateFormat:@"MM-dd-yyy"];
-        NSString *myFormattedDate = [dateFormat stringFromDate:dates];
+        
+//        NSArray *dateArray=[[NSArray alloc]init];
+//        dateArray=[_soapResults componentsSeparatedByString:@"T"];
+//        NSString *date1 =[dateArray objectAtIndex:0];
+//        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+//        NSDate *dates = [dateFormat dateFromString:date1];
+//        [dateFormat setDateFormat:@"MM-dd-yyy"];
+//        NSString *myFormattedDate = [dateFormat stringFromDate:dates];
        // _drugmdl.drugdate=
 
         
-          _coursemdl.expdate=myFormattedDate;
-        NSArray*newarray=[myFormattedDate componentsSeparatedByString:@"-"];
+        
+        NSArray *dateArray=[[NSArray alloc]init];
+        dateArray=[_soapResults componentsSeparatedByString:@"/"];
+        
+        
+          _coursemdl.expdate=_soapResults;
+       // NSArray*newarray=[myFormattedDate componentsSeparatedByString:@"-"];
 //        _coursemdl.month=[newarray objectAtIndex:0];
 //        _coursemdl.year=[newarray objectAtIndex:2];
-        _coursemdl.month=[_remonthDictionary objectForKey:[newarray objectAtIndex:0]];
-      _coursemdl.year=[newarray objectAtIndex:2];
-      
+        _coursemdl.month=[_remonthDictionary objectForKey:[dateArray objectAtIndex:0]];
+        NSLog(@"mnth%@",_coursemdl.month);
+     
+      _coursemdl.year=[dateArray objectAtIndex:2];
+         NSLog(@"yar%@",_coursemdl.year);
     _soapResults=nil;
     }
-    if([elementName isEqualToString:@"course_status"])
+    
+    if([elementName isEqualToString:@"craft"])
+    {
+        recordResults = FALSE;
+        _coursemdl.craft=[_soapResults integerValue];
+        _soapResults=nil;
+    }
+
+    if([elementName isEqualToString:@"status"])
     {
         recordResults = FALSE;
         
-        if ([_soapResults isEqualToString:@"true"]) {
-            _coursemdl.course_status=1;
-            
-        }
-       
-        else if ([_soapResults isEqualToString:@"false"]){
-             _coursemdl.course_status=0;
-            
-        }
+//        if ([_soapResults isEqualToString:@"true"]) {
+//            _coursemdl.course_status=1;
+//            
+//        }
+//       
+//        else if ([_soapResults isEqualToString:@"false"]){
+//             _coursemdl.course_status=0;
+//            
+//        }
+        
+        _coursemdl.course_status=[_soapResults integerValue];
          [_requirementArray addObject:_coursemdl];
         NSLog(@"mdl%@",_requirementArray);
         _soapResults=nil;
     }
     
 
-    
-   }
+       }
 
 
 #pragma mark - Action
@@ -835,9 +898,8 @@
     
 button = (UIButton *)sender;
     
-    UITableViewCell *cell = (UITableViewCell *)[[button superview] superview];
-     
-        
+    UITableViewCell *cell = (UITableViewCell *)button.superview;
+    
     
     [self.popOverController1 presentPopoverFromRect:_monthbtn.frame
                                             inView:cell

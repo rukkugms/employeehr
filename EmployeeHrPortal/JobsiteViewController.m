@@ -1420,10 +1420,7 @@
         _unitstring=_soapResults;
         
         
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:_soapResults forKey:@"jobsiteid"];
-        [defaults synchronize];
-        _soapResults = nil;
+           _soapResults = nil;
         
     }
     if([elementName isEqualToString:@"SkillId"])
@@ -1484,6 +1481,13 @@
         _jobsite=[[jobsite alloc]init];
         recordResults = FALSE;
         _jobsite.jobsiteid=_soapResults;
+        
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:_soapResults forKey:@"jobsiteid"];
+        
+        [defaults synchronize];
+
         if([_soapResults integerValue]==0)
         {
             _checkbtnlbl_iphone.enabled=YES;

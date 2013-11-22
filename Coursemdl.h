@@ -19,6 +19,8 @@
 @property(strong,nonatomic)NSString*expdate;
 @property(strong,nonatomic)NSString*month;
 @property(strong,nonatomic)NSString*year;
+@property(readwrite)NSInteger craft;
+
 
 @property(readwrite)NSInteger course_status;
 

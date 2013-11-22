@@ -21,6 +21,7 @@
     UIButton *yearbtn_iphone;
     NSInteger path;
     NSString *pickerstring;
+    NSInteger btnidfr;
 }
 @property (strong, nonatomic) IBOutlet UITableView *detailstable;
 @property(readwrite)NSInteger Applicantid;
