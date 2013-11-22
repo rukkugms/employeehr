@@ -435,6 +435,7 @@
 
 -(void)UpdateApplicantRequirements
 {
+    webidfr=1;
     recordResults = FALSE;
     NSString *soapMessage;
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
@@ -613,7 +614,10 @@
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
     
-    
+    if (webidfr==1) {
+        [self InsertApplicantRequirements];
+        webidfr=0;
+    }
     [_detailstable reloadData];
     [_reqtable_iphone reloadData];
     
@@ -796,30 +800,29 @@
     {
         recordResults = FALSE;
         
-//        NSArray *dateArray=[[NSArray alloc]init];
-//        dateArray=[_soapResults componentsSeparatedByString:@"T"];
-//        NSString *date1 =[dateArray objectAtIndex:0];
-//        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//        [dateFormat setDateFormat:@"yyyy-MM-dd"];
-//        NSDate *dates = [dateFormat dateFromString:date1];
-//        [dateFormat setDateFormat:@"MM-dd-yyy"];
-//        NSString *myFormattedDate = [dateFormat stringFromDate:dates];
+        NSArray *dateArray=[[NSArray alloc]init];
+        dateArray=[_soapResults componentsSeparatedByString:@"T"];
+        NSString *date1 =[dateArray objectAtIndex:0];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dates = [dateFormat dateFromString:date1];
+        [dateFormat setDateFormat:@"MM-dd-yyy"];
+        NSString *myFormattedDate = [dateFormat stringFromDate:dates];
        // _drugmdl.drugdate=
 
         
         
-        NSArray *dateArray=[[NSArray alloc]init];
-        dateArray=[_soapResults componentsSeparatedByString:@"/"];
+     
         
         
           _coursemdl.expdate=_soapResults;
-       // NSArray*newarray=[myFormattedDate componentsSeparatedByString:@"-"];
+        NSArray*newarray=[myFormattedDate componentsSeparatedByString:@"-"];
 //        _coursemdl.month=[newarray objectAtIndex:0];
 //        _coursemdl.year=[newarray objectAtIndex:2];
-        _coursemdl.month=[_remonthDictionary objectForKey:[dateArray objectAtIndex:0]];
+        _coursemdl.month=[_remonthDictionary objectForKey:[newarray objectAtIndex:0]];
         NSLog(@"mnth%@",_coursemdl.month);
      
-      _coursemdl.year=[dateArray objectAtIndex:2];
+      _coursemdl.year=[newarray objectAtIndex:2];
          NSLog(@"yar%@",_coursemdl.year);
     _soapResults=nil;
     }
