@@ -168,7 +168,7 @@
           
                 else
                 {
-                    ssnstring=_ssntxtfld.text;
+                    ssnstring=_SSNtxtfld_iphone.text;
                     
                     
                     //checking a particular charector
@@ -210,7 +210,7 @@
                         NSLog(@"%@",substring3);
                         _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
                         NSLog(@"%@",_connectstring);
-                        _ssntxtfld.text=_connectstring;
+                        _SSNtxtfld_iphone.text=_connectstring;
                         
                     }
                     
