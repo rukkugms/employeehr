@@ -230,17 +230,12 @@
                                         <outlet property="delegate" destination="-1" id="66"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="56">
-                                    <rect key="frame" x="217" y="432" width="96" height="29"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="56">
+                                    <rect key="frame" x="217" y="432" width="96" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal">
-                                        <attributedString key="attributedTitle">
-                                            <fragment content="Select">
-                                                <attributes>
-                                                    <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                    <state key="normal" title="Select">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="refferselect:" destination="-1" eventType="touchUpInside" id="58"/>
