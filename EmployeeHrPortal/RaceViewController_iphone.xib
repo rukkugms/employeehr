@@ -188,8 +188,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <pickerView hidden="YES" contentMode="scaleToFill" id="35">
-                                    <rect key="frame" x="31" y="178" width="139" height="216"/>
+                                    <rect key="frame" x="31" y="178" width="168" height="216"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.0" green="0.49205043580000002" blue="0.65567203439999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="37"/>
                                         <outlet property="delegate" destination="-1" id="38"/>
@@ -229,12 +230,17 @@
                                         <outlet property="delegate" destination="-1" id="66"/>
                                     </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="56">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="56">
                                     <rect key="frame" x="217" y="432" width="96" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                     <state key="normal">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="Select">
+                                                <attributes>
+                                                    <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                     </state>
                                     <connections>
                                         <action selector="refferselect:" destination="-1" eventType="touchUpInside" id="58"/>
