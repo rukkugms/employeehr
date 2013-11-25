@@ -293,8 +293,8 @@
     if([elementName isEqualToString:@"Column1"])
     {
         recordResults = FALSE;
-        _Unitstring=_soapResults;
-        
+       
+          [_DocumentDictionary setObject:_soapResults forKey:_Unitstring];
         _soapResults=nil;
     }
 
@@ -302,7 +302,8 @@
     {
         
         recordResults = FALSE;
-        [_DocumentDictionary setObject:_Unitstring forKey:_soapResults];
+         _Unitstring=_soapResults;
+      
 
         
         _soapResults=nil;

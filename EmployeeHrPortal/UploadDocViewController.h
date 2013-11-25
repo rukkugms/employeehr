@@ -41,5 +41,6 @@
 //-(IBAction)textfieldreturn_iphone:(id)sender;
 @property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
 - (IBAction)closebtn:(id)sender;
+@property (nonatomic) UIImagePickerController *imagePickerController;
 
 @end

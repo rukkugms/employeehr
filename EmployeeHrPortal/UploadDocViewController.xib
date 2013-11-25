@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UploadDocViewController">
             <connections>
                 <outlet property="docnametxt" destination="7" id="18"/>
+                <outlet property="imageview" destination="14" id="Cgo-IL-2lF"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>

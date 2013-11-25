@@ -213,7 +213,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"FolderName"])
+    if([elementName isEqualToString:@"foldername"])
     {
         if(!_soapResults)
         {
@@ -250,7 +250,7 @@
         _soapResults=nil;
     }
     
-    if([elementName isEqualToString:@"FolderName"])
+    if([elementName isEqualToString:@"foldername"])
     {
         recordResults=FALSE;
         [_docsarray addObject:_soapResults];
