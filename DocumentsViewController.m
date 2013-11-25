@@ -235,7 +235,7 @@
     if(!self.uploadVCtrl){
         self.uploadVCtrl=[[UploadDocViewController alloc]initWithNibName:@"UploadDocViewController" bundle:nil];
     }
-        
+    _uploadVCtrl.applicantid=_applicantid;
     [self.navigationController presentViewController:_uploadVCtrl animated:YES completion:nil];
     
 }

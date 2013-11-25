@@ -49,28 +49,27 @@
 {
     //handle pinch...
     
-     [self showImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
-//    if ([UIImagePickerController isSourceTypeAvailable:
-//         UIImagePickerControllerSourceTypeCamera])
-//    {
-//        
-//        
-//        UIImagePickerController *imagePicker =
-//        [[UIImagePickerController alloc] init];
-//        imagePicker.delegate =(id) self;
-//        imagePicker.sourceType =
-//        UIImagePickerControllerSourceTypeCamera;
-//        imagePicker.showsCameraControls=YES;
-//        
-//        imagePicker.mediaTypes = [NSArray arrayWithObjects:
-//                                  (NSString *) kUTTypeImage,
-//                                  nil];
-//        imagePicker.allowsEditing = NO;
-//        // imagePicker.cameraCaptureMode=YES;
-//        [self presentModalViewController:imagePicker
-//                                animated:YES];
-//        _newMedia = YES;
-//    }
+    // [self showImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeCamera])
+    {
+        
+        
+        UIImagePickerController *imagePicker =
+        [[UIImagePickerController alloc] init];
+        imagePicker.delegate =(id) self;
+        imagePicker.sourceType =
+        UIImagePickerControllerSourceTypeCamera;
+        imagePicker.showsCameraControls=YES;
+        
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  nil];
+        imagePicker.allowsEditing = NO;
+        // imagePicker.cameraCaptureMode=YES;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        _newMedia = YES;
+    }
 }
 
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
@@ -130,7 +129,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         _imageview_iphone.image =image;
 
-        [self dismissModalViewControllerAnimated:YES];
+      
+        [self dismissViewControllerAnimated:YES completion:nil];
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
@@ -158,7 +158,7 @@ finishedSavingWithError:(NSError *)error
     
     else{
         
-        [self dismissModalViewControllerAnimated:YES];
+         [self dismissViewControllerAnimated:YES completion:nil];
         
     }
 }
@@ -214,6 +214,9 @@ finishedSavingWithError:(NSError *)error
 /*webservice*/
 
 -(void)UploadDocs{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _ssnstring = [defaults objectForKey:@"ssn"];
+
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
@@ -221,7 +224,8 @@ finishedSavingWithError:(NSError *)error
     recordResults = FALSE;
     NSString *soapMessage;
     
-    
+       
+
     NSString *imagename=[NSString stringWithFormat:@"%@_%@.pdf",_docnametxt.text,_ssnstring];
     
     
