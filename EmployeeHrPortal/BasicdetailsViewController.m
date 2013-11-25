@@ -1600,7 +1600,7 @@ numberOfRowsInComponent:(NSInteger)component
 {
     
 }
-#pragma mark - Uploadimage
+#pragma mark - Uploadimage webservice
 
 
 -(void)UploadImage{
