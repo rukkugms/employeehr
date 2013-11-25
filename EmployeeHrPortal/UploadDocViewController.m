@@ -44,6 +44,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _ssnstring = [defaults objectForKey:@"ssn"];
+    UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"ssn" message:_ssnstring delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert1 show];
+
+}
 
 - (void)handlePinch
 {
@@ -128,9 +136,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         _imageview.image =image;
         
         _imageview_iphone.image =image;
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"didfinshpickingmedia" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        _soapResults=nil;
+
 
       
-        [self dismissViewControllerAnimated:YES completion:nil];
+       // [self dismissViewControllerAnimated:YES completion:nil];
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
@@ -158,6 +171,9 @@ finishedSavingWithError:(NSError *)error
     
     else{
         
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"finished" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+
          [self dismissViewControllerAnimated:YES completion:nil];
         
     }
@@ -185,8 +201,9 @@ finishedSavingWithError:(NSError *)error
     
   
     
-   // NSLog(@"result%@",_encodedstring);
-    
+   
+  	
+
     
     
     CGSize pageSize = CGSizeMake(700, 1004);
@@ -200,13 +217,22 @@ finishedSavingWithError:(NSError *)error
     NSString*filename=[NSString stringWithFormat:@"%@_%@.pdf",_docnametxt.text,_ssnstring];
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:filename];
     NSLog(@"path%@",path);
+    UIAlertView*alert3=[[UIAlertView alloc]initWithTitle:@"path" message:path delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert3 show];
+
     [pdfData writeToFile:path atomically:NO];
 
     NSLog(@"data%@",pdfData);
+    UIAlertView*alert2=[[UIAlertView alloc]initWithTitle:@"data" message:[NSString stringWithFormat:@"%@",pdfData] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert2 show];
+
     NSData*data= [NSData dataWithContentsOfFile:path];
     
     
   _encodedstring = [data base64EncodedString];
+    UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"Encodedstring" message:_encodedstring delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert1 show];
+
     [self UploadDocs];
     
     
@@ -214,8 +240,7 @@ finishedSavingWithError:(NSError *)error
 /*webservice*/
 
 -(void)UploadDocs{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _ssnstring = [defaults objectForKey:@"ssn"];
+ 
 
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
@@ -228,7 +253,12 @@ finishedSavingWithError:(NSError *)error
 
     NSString *imagename=[NSString stringWithFormat:@"%@_%@.pdf",_docnametxt.text,_ssnstring];
     
-    
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"started webservice" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+
+        UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"imagename" message:imagename delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert1 show];
+
     // NSString *cmpnyname=@"arvin";
     
     soapMessage = [NSString stringWithFormat:
@@ -249,7 +279,10 @@ finishedSavingWithError:(NSError *)error
                    "</soap:Body>\n"
                    "</soap:Envelope>\n",_encodedstring,imagename,_docnametxt.text,_applicantid];
     NSLog(@"soapmsg%@",soapMessage);
-    
+    	UIAlertView*alert2=[[UIAlertView alloc]initWithTitle:@"Soapmessage" message:soapMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert2 show];
+        
+
     
     NSURL *url = [NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
      // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
@@ -414,7 +447,8 @@ else
     NSLog(@"DONE. Received Bytes: %d", [_webData length]);
 	NSString *theXML = [[NSString alloc] initWithBytes: [_webData mutableBytes] length:[_webData length] encoding:NSUTF8StringEncoding];
 	NSLog(@"xml===== %@",theXML);
-	
+	UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"xml" message:theXML delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert1 show];
 	
 	if( _xmlParser )
 	{
@@ -425,14 +459,17 @@ else
 	[_xmlParser setDelegate:(id)self];
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
-    
+    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"End" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+
     }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *) namespaceURI qualifiedName:(NSString *)qName
    attributes: (NSDictionary *)attributeDict{
        if([elementName isEqualToString:@"UploadDocsResult"])
     {
-        
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"UploadDocsResult" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
         if(!_soapResults)
         {
             _soapResults = [[NSMutableString alloc] init];
@@ -470,6 +507,7 @@ else
 {
     if([elementName isEqualToString:@"RESULT"])
     {
+        
         recordResults = FALSE;
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];

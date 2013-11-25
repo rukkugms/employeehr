@@ -284,6 +284,7 @@ finishedSavingWithError:(NSError *)error
 
 - (IBAction)upload:(id)sender {
     UIImage *image =_imageview.image;
+    NSLog(@"image%@",image);
     NSData *data = UIImagePNGRepresentation(image);
 //     NSData *data = UIImageJPEGRepresentation(image, 1.0);
     _encodedString = [data base64EncodedString];
