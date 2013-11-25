@@ -56,6 +56,14 @@
             subview.frame = CGRectMake(0, 0,self.detailstable.bounds.size.width, self.detailstable.bounds.size.height);
         }
     }
+    for (UIView *subview in self.reqtable_iphone.subviews)
+    {
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewWrapperView"])
+        {
+            subview.frame = CGRectMake(0, 0,self.reqtable_iphone.bounds.size.width, self.reqtable_iphone.bounds.size.height);
+        }
+    }
+
 }
 -(void)logoutAction{
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
@@ -528,7 +536,10 @@
             NSString*mnth=[_monthDictionary objectForKey:coursemdliphone.month];
             NSString*expirydate=[NSString stringWithFormat:@"%@-%@-%@",coursemdliphone.year,mnth,day];
             
-            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
+            NSLog(@"%@",fetchVariable);
+
             
             soapMessage = [NSString stringWithFormat:
                            
@@ -549,7 +560,7 @@
                            "<RequirementName>%@</RequirementName>\n"
                            "</UpdateApplicantRequirements>\n"
                            "</soap:Body>\n"
-                           "</soap:Envelope>\n",_Applicantid,[_jobsiteid integerValue],reqid,expirydate,coursemdliphone.course_status,verifctnstatus,_coursemdl.craft,_coursemdl.itemname];
+                           "</soap:Envelope>\n",_Applicantid,[fetchVariable integerValue],reqid,expirydate,coursemdliphone.course_status,verifctnstatus,_coursemdl.craft,_coursemdl.itemname];
             NSLog(@"soapmsg%@",soapMessage);
             
             
@@ -1109,7 +1120,7 @@ numberOfRowsInComponent:(NSInteger)component
     {
         monthbtn_iphone.enabled=YES;
         [ monthbtn_iphone setTitle:[_monthArray objectAtIndex:row] forState:UIControlStateNormal];
-        coursemdl3.month=monthbtn_iphone.titleLabel.text;
+        coursemdl2.month=[_monthArray objectAtIndex:row];
         _monthpicker_iphone.hidden=YES;
                 
     }
@@ -1117,7 +1128,7 @@ numberOfRowsInComponent:(NSInteger)component
     {
         yearbtn_iphone.enabled=YES;
         [ yearbtn_iphone setTitle:[_yearArray objectAtIndex:row] forState:UIControlStateNormal];
-         coursemdl3.year=yearbtn_iphone.titleLabel.text;
+         coursemdl3.year=[_yearArray objectAtIndex:row];
         _yearpicker_iphone.hidden=YES;
         
     }
@@ -1125,7 +1136,7 @@ numberOfRowsInComponent:(NSInteger)component
 }
 -(IBAction)update_iphone:(id)sender
 {
-    [self UpdateApplicantRequirements];
+    [self DeleteApplicantRequirements];
 }
 -(IBAction)cancel_iphone:(id)sender
 {
