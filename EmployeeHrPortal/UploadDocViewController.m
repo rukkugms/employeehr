@@ -53,11 +53,9 @@
 
 }
 
-- (void)handlePinch
+- (void)usecamaction
 {
     //handle pinch...
-    
-    // [self showImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeCamera])
     {
@@ -65,7 +63,7 @@
         
         UIImagePickerController *imagePicker =
         [[UIImagePickerController alloc] init];
-        imagePicker.delegate =(id) self;
+        imagePicker.delegate = self;
         imagePicker.sourceType =
         UIImagePickerControllerSourceTypeCamera;
         imagePicker.showsCameraControls=YES;
@@ -79,44 +77,6 @@
         _newMedia = YES;
     }
 }
-
-- (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
-{
-//    if (self.imageView.isAnimating)
-//    {
-//        [self.imageView stopAnimating];
-//    }
-//    
-//    if (self.capturedImages.count > 0)
-//    {
-//        [self.capturedImages removeAllObjects];
-//    }
-    
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = sourceType;
-    imagePickerController.delegate = self;
-    
-    if (sourceType == UIImagePickerControllerSourceTypeCamera)
-    {
-        /*
-         The user wants to use the camera interface. Set up our custom overlay view for the camera.
-         */
-        imagePickerController.showsCameraControls = YES;
-        
-        /*
-         Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
-         */
-//        [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
-//        self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
-//        imagePickerController.cameraOverlayView = self.overlayView;
-//        self.overlayView = nil;
-    }
-    
-    self.imagePickerController = imagePickerController;
-    [self presentViewController:self.imagePickerController animated:YES completion:nil];
-}
-
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -131,19 +91,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImage *image = [info
                           objectForKey:UIImagePickerControllerOriginalImage];
         NSLog(@"dict%@",info);
+        _imagepreview.image=nil;
         
         
-        _imageview.image =image;
         
-        _imageview_iphone.image =image;
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"didfinshpickingmedia" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        
-        _soapResults=nil;
-
-
-      
-       // [self dismissViewControllerAnimated:YES completion:nil];
+        _imagepreview.image =image;
+        [self dismissViewControllerAnimated:YES completion:nil];
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
@@ -171,10 +124,7 @@ finishedSavingWithError:(NSError *)error
     
     else{
         
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"finished" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-
-         [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     }
 }
@@ -182,18 +132,18 @@ finishedSavingWithError:(NSError *)error
 {
     
     
-    // [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 - (IBAction)prevewbtn:(id)sender {
-    [self handlePinch];
+    [self usecamaction];
     
    }
 
 - (IBAction)uploadbtn:(id)sender {
     
-    UIImage *imagename =_imageview.image;
+    UIImage *Photo =_imagepreview.image;
   //  NSData *data = UIImagePNGRepresentation(imagename);
     
     // NSData *data = UIImageJPEGRepresentation(image, 1.0);
@@ -201,7 +151,20 @@ finishedSavingWithError:(NSError *)error
     
   
     
-   
+    UIAlertView*photoalert=[[UIAlertView alloc]initWithTitle:nil message:@"photoalert" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(220, 10, 40, 40)];
+    
+    //        NSString *path = [[NSString alloc] initWithString:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:image]];
+    //        UIImage *bkgImg = [[UIImage alloc] initWithContentsOfFile:path];
+    [imageView setImage:Photo];
+    
+    
+    [photoalert addSubview:imageView];
+    
+    
+    [photoalert show];
+
   	
 
     
@@ -210,7 +173,7 @@ finishedSavingWithError:(NSError *)error
     CGRect imageBoundsRect =CGRectMake(200, 200, 700, 700);
     
     
-    NSData *pdfData = [PDFImageConverter convertImageToPDF:imagename
+    NSData *pdfData = [PDFImageConverter convertImageToPDF:Photo
                                             withResolution:50 maxBoundsRect: imageBoundsRect pageSize: pageSize];
     
     
@@ -233,7 +196,18 @@ finishedSavingWithError:(NSError *)error
     UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"Encodedstring" message:_encodedstring delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert1 show];
 
-    [self UploadDocs];
+
+    
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if ([alertView.title isEqualToString:@"Encodedstring"]) {
+        
+            [self UploadDocs];
+        
+    }
+    
     
     
 }
@@ -242,7 +216,6 @@ finishedSavingWithError:(NSError *)error
 -(void)UploadDocs{
  
 
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
 
@@ -250,12 +223,13 @@ finishedSavingWithError:(NSError *)error
     NSString *soapMessage;
     
        
+        
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"started  uploadwebservice" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
 
     NSString *imagename=[NSString stringWithFormat:@"%@_%@.pdf",_docnametxt.text,_ssnstring];
     
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"started webservice" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-
+     
         UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"imagename" message:imagename delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert1 show];
 
@@ -284,7 +258,7 @@ finishedSavingWithError:(NSError *)error
         
 
     
-   NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
      // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     
@@ -343,7 +317,7 @@ else
         NSLog(@"soapmsg%@",soapMessage);
         
         
-       NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+       NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
          // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
         
         
@@ -394,7 +368,7 @@ else
     NSLog(@"soapmsg%@",soapMessage);
     
     
-   NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
      // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     
@@ -518,7 +492,7 @@ else
    }
 -(IBAction)previewbtn_iphone:(id)sender
 {
-    [self handlePinch];
+    [self usecamaction];
  
 }
 -(IBAction)uploadbtn_iphone:(id)sender

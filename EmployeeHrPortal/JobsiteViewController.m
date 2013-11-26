@@ -689,7 +689,7 @@
     NSLog(@"soapmsg%@",soapMessage);
     
     
-   NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
       // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -743,7 +743,7 @@
                    "</soap:Envelope>\n",_skillbtnlbl.titleLabel.text];
     NSLog(@"soapmsg%@",soapMessage);
     
-     NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+     NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
    
    //  // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
@@ -787,7 +787,7 @@
                        "</soap:Envelope>\n",_skilltextflield_iphone.text];
         NSLog(@"soapmsg%@",soapMessage);
         
-         NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+         NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
        
        //  // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
         
@@ -837,7 +837,7 @@
                    "</soap:Envelope>\n"];
     NSLog(@"soapmsg%@",soapMessage);
     
-     NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+     NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
    
    //  // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
@@ -888,7 +888,7 @@
                    "</soap:Envelope>\n",_Applicantid];
     NSLog(@"soapmsg%@",soapMessage);
     
-     NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+     NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
    
    //  // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
@@ -1006,7 +1006,7 @@
                    "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,dateString,ncer,ncerdesc,skill,craft];
     NSLog(@"soapmsg%@",soapMessage);
     
-     NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+     NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
   
    //  // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
     
@@ -1115,7 +1115,7 @@
         NSLog(@"soapmsg%@",soapMessage);
         
         
-       NSURL*url=[NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+       NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
        //  // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
         
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];

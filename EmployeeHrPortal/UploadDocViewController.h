@@ -16,7 +16,8 @@
     BOOL  recordResults;
 }
 @property (readwrite)NSInteger applicantid;
-@property (strong, nonatomic) IBOutlet UIImageView *imageview;
+
+@property (strong, nonatomic) IBOutlet UIImageView *imagepreview;
 
 @property (strong, nonatomic)NSString*encodedstring;
 /*xmlparse*/
