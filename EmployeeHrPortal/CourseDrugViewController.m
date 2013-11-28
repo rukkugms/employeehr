@@ -131,7 +131,7 @@
                 break;
         }
     }
-    if(tableView==_detailstable||tableView==_reqtable_iphone)
+    if(tableView==_detailstable||tableView==_reqtable_iphone||tableView==_checktable)
     {
         return [_requirementArray count];
         
@@ -146,6 +146,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+           cell.accessoryType = UITableViewCellAccessoryNone;
         if(tableView==_detailstable)
         {
             
@@ -203,6 +204,23 @@
         }
         
         
+        
+    }
+    
+    if (tableView==_checktable) {
+        Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text=coursemdl2.itemname;
+        
+        
+        
+        if (coursemdl2.course_status==1) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+        }else if (coursemdl2.course_status==0){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+
         if ([_selectedcellstring isEqualToString:@"selected"]) {
             
             Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
@@ -231,8 +249,9 @@
             }
             
         }
-        
+
     }
+    
     if(tableView==_reqtable_iphone)
     {
         Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
@@ -367,6 +386,14 @@
        // _selectedcellstring=@"selected";
        // [_detailstable reloadData];
     }
+    if(tableView==_checktable)
+    {
+        
+        selectedcell=indexPath.row;
+        _selectedcellstring=@"selected";
+         [_checktable reloadData];
+    }
+
     if(tableView==_reqtable_iphone)
     {
         
@@ -934,6 +961,8 @@
 - (IBAction)continuebtn:(id)sender {
     
    [self DeleteApplicantRequirements];
+    [_checktable reloadData];
+    _checkview.hidden=NO;
     //[self UpdateApplicantRequirements];
     
 //    if (!self.raceVCtrl) {
@@ -1141,6 +1170,10 @@ numberOfRowsInComponent:(NSInteger)component
 -(IBAction)cancel_iphone:(id)sender
 {
     
+}
+
+- (IBAction)checksave:(id)sender {
+    _checkview.hidden=YES;
 }
 
 

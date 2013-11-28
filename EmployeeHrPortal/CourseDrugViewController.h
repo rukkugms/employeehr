@@ -24,6 +24,11 @@
     NSInteger btnidfr;
     NSInteger webidfr;
 }
+
+@property (strong, nonatomic) IBOutlet UIView *checkview;
+@property (strong, nonatomic) IBOutlet UITableView *checktable;
+
+
 @property (strong, nonatomic) IBOutlet UITableView *detailstable;
 @property(readwrite)NSInteger Applicantid;
 @property(strong,nonatomic)NSString*jobsiteid;
@@ -73,6 +78,7 @@
 -(IBAction)selectyear_iphone:(id)sender;
 -(IBAction)update_iphone:(id)sender;
 -(IBAction)cancel_iphone:(id)sender;
+- (IBAction)checksave:(id)sender;
 
 
 @end

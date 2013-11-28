@@ -48,8 +48,7 @@
     [super viewWillAppear:animated];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _ssnstring = [defaults objectForKey:@"ssn"];
-    UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"ssn" message:_ssnstring delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert1 show];
+  
 
 }
 
@@ -96,6 +95,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         
         _imagepreview.image =image;
+        _imageview_iphone.image=image;
         [self dismissViewControllerAnimated:YES completion:nil];
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
@@ -148,27 +148,6 @@ finishedSavingWithError:(NSError *)error
     
     // NSData *data = UIImageJPEGRepresentation(image, 1.0);
     
-    
-  
-    
-    UIAlertView*photoalert=[[UIAlertView alloc]initWithTitle:nil message:@"photoalert" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(220, 10, 40, 40)];
-    
-    //        NSString *path = [[NSString alloc] initWithString:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:image]];
-    //        UIImage *bkgImg = [[UIImage alloc] initWithContentsOfFile:path];
-    [imageView setImage:Photo];
-    
-    
-    [photoalert addSubview:imageView];
-    
-    
-    [photoalert show];
-
-  	
-
-    
-    
     CGSize pageSize = CGSizeMake(700, 1004);
     CGRect imageBoundsRect =CGRectMake(200, 200, 700, 700);
     
@@ -178,23 +157,23 @@ finishedSavingWithError:(NSError *)error
     
     
     NSString*filename=[NSString stringWithFormat:@"%@_%@.pdf",_docnametxt.text,_ssnstring];
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:filename];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	
+    
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
     NSLog(@"path%@",path);
-    UIAlertView*alert3=[[UIAlertView alloc]initWithTitle:@"path" message:path delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert3 show];
-
+   
     [pdfData writeToFile:path atomically:NO];
 
     NSLog(@"data%@",pdfData);
-    UIAlertView*alert2=[[UIAlertView alloc]initWithTitle:@"data" message:[NSString stringWithFormat:@"%@",pdfData] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert2 show];
 
     NSData*data= [NSData dataWithContentsOfFile:path];
     
     
   _encodedstring = [data base64EncodedString];
-    UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"Encodedstring" message:_encodedstring delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert1 show];
 
 
     
@@ -224,15 +203,11 @@ finishedSavingWithError:(NSError *)error
     
        
         
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"started  uploadwebservice" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-
+      
     NSString *imagename=[NSString stringWithFormat:@"%@_%@.pdf",_docnametxt.text,_ssnstring];
     
      
-        UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"imagename" message:imagename delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert1 show];
-
+        
     // NSString *cmpnyname=@"arvin";
     
     soapMessage = [NSString stringWithFormat:
@@ -252,10 +227,8 @@ finishedSavingWithError:(NSError *)error
                    "</UploadDocs>\n"
                    "</soap:Body>\n"
                    "</soap:Envelope>\n",_encodedstring,imagename,_docnametxt.text,_applicantid];
-    NSLog(@"soapmsg%@",soapMessage);
-    	UIAlertView*alert2=[[UIAlertView alloc]initWithTitle:@"Soapmessage" message:soapMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert2 show];
-        
+          NSLog(@"soapmsg%@",soapMessage);
+    	   
 
     
    NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
@@ -433,18 +406,13 @@ else
 	[_xmlParser setDelegate:(id)self];
 	[_xmlParser setShouldResolveExternalEntities: YES];
 	[_xmlParser parse];
-    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"End" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-
-    }
+        }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *) namespaceURI qualifiedName:(NSString *)qName
    attributes: (NSDictionary *)attributeDict{
        if([elementName isEqualToString:@"UploadDocsResult"])
     {
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"UploadDocsResult" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        if(!_soapResults)
+               if(!_soapResults)
         {
             _soapResults = [[NSMutableString alloc] init];
         }
