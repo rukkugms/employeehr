@@ -163,7 +163,12 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell=_reqcell_iphone;
         }
+        if (tableView==_checktable) {
+            [[NSBundle mainBundle]loadNibNamed:@"requirementcell" owner:self options:nil];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell=_checkcell;
 
+        }
         
         
     }
