@@ -24,7 +24,7 @@
     NSInteger btnidfr;
     NSInteger webidfr;
 }
-
+@property(strong,nonatomic) IBOutlet UITableViewCell *checkcell;
 @property (strong, nonatomic) IBOutlet UIView *checkview;
 @property (strong, nonatomic) IBOutlet UITableView *checktable;
 
