@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CourseDrugViewController">
             <connections>
+                <outlet property="checktable" destination="9pM-2y-eIo" id="kS0-9T-jEy"/>
+                <outlet property="checkview" destination="TjY-Bg-c4J" id="vEe-SV-PIa"/>
                 <outlet property="detailstable" destination="4" id="9"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
@@ -68,6 +70,40 @@
                         <action selector="continuebtn:" destination="-1" eventType="touchUpInside" id="17"/>
                     </connections>
                 </button>
+                <view hidden="YES" contentMode="scaleToFill" id="TjY-Bg-c4J">
+                    <rect key="frame" x="278" y="183" width="436" height="357"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9pM-2y-eIo">
+                            <rect key="frame" x="6" y="20" width="425" height="285"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="ZqN-P9-BsP"/>
+                                <outlet property="delegate" destination="-1" id="RX3-Tj-a2M"/>
+                            </connections>
+                        </tableView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select requirement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XNn-ro-oIg">
+                            <rect key="frame" x="62" y="0.0" width="164" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RNF-26-dhE">
+                            <rect key="frame" x="195" y="313" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                            <state key="normal" title="Save">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="checksave:" destination="-1" eventType="touchUpInside" id="V9S-Zn-EKv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1951047242" green="0.8248648864" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
