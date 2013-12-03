@@ -137,7 +137,7 @@
         
         
         
-        else   if ([resultString length]==10)  {
+        else   if ([resultString length]>=10)  {
             
             _connectstring=_Ssntxtfld.text;
 
@@ -288,7 +288,7 @@
                 
                 
                 
-                else   if ([resultString length]==10)  {
+                else   if ([resultString length]>=10)  {
                     
                     
                     
@@ -377,7 +377,7 @@
                 
                 
                 
-                else   if ([resultString length]==10)  {
+                else   if ([resultString length]>=10)  {
                     
                     
                     
@@ -679,6 +679,9 @@
         recordResults = TRUE;
 
     }
+    
+    
+    
 }
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
@@ -695,6 +698,9 @@
 }
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
+    
+    
+    
     if([elementName isEqualToString:@"applicant_Id"])
     {
         
@@ -806,16 +812,15 @@
         _soapResults = nil;
     }
 
-
-
 if([elementName isEqualToString:@"result"])
 {
+    recordResults = FALSE;
     
     [self GetApplicantId];
     
    
     
-
+ _soapResults = nil;
 }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

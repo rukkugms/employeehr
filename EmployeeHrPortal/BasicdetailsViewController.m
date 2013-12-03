@@ -960,6 +960,12 @@
        
            [_statebtnlbl setTitle:_soapResults forState:UIControlStateNormal];
         [_statebtn_iphone setTitle:_soapResults forState:UIControlStateNormal];
+        if([_soapResults isEqualToString:@""]){
+            
+            [_statebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+            [_statebtn_iphone setTitle:@"Select" forState:UIControlStateNormal];
+        }
+            
         _soapResults=nil;
     }
     if([elementName isEqualToString:@"Zip"])
@@ -1011,6 +1017,12 @@
         recordResults = FALSE;
           [_countrybtnlbl setTitle:_soapResults forState:UIControlStateNormal];
           [_countrytxt_iphone setTitle:_soapResults forState:UIControlStateNormal];
+        if([_soapResults isEqualToString:@""]){
+            
+            [_countrybtnlbl setTitle:@"USA" forState:UIControlStateNormal];
+            [_countrytxt_iphone setTitle:@"USA" forState:UIControlStateNormal];
+        }
+
         _soapResults=nil;
     }
     
