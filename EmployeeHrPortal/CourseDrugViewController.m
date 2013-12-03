@@ -642,7 +642,7 @@
                    "<soap:Body>\n"
                    
                    "<DeleteApplicantRequirements xmlns=\"http://arvin.kontract360.com/\">\n"
-                                   "<AppId>%d</AppId>\n"
+                    "<AppId>%d</AppId>\n"
                    "</DeleteApplicantRequirements>\n"
                    "</soap:Body>\n"
                    "</soap:Envelope>\n",_Applicantid];
