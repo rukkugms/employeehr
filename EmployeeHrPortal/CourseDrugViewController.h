@@ -74,11 +74,16 @@
 @property(strong,nonatomic)IBOutlet UIPickerView *monthpicker_iphone;
 @property(strong,nonatomic)IBOutlet UIPickerView *yearpicker_iphone;
 
+@property(strong,nonatomic) IBOutlet UITableViewCell *checkcell_iphone;
+@property (strong, nonatomic) IBOutlet UIView *checkview_iphone;
+@property (strong, nonatomic) IBOutlet UITableView *checktable_iphone;
+
 -(IBAction)selectmonth_iphone:(id)sender;
 -(IBAction)selectyear_iphone:(id)sender;
 -(IBAction)update_iphone:(id)sender;
 -(IBAction)cancel_iphone:(id)sender;
 - (IBAction)checksave:(id)sender;
+- (IBAction)checksave_iphone:(id)sender ;
 
 
 @end

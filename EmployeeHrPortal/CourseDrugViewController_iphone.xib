@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CourseDrugViewController">
             <connections>
+                <outlet property="checktable_iphone" destination="GtE-3d-Rnp" id="Zsh-LH-gF1"/>
+                <outlet property="checkview_iphone" destination="FeG-KK-0pL" id="2J3-tH-JyG"/>
                 <outlet property="monthpicker_iphone" destination="45" id="51"/>
                 <outlet property="reqtable_iphone" destination="16" id="26"/>
                 <outlet property="scroll_iphone" destination="4" id="59"/>
@@ -95,6 +97,40 @@
                                 <action selector="cancel_iphone:" destination="-1" eventType="touchUpInside" id="56"/>
                             </connections>
                         </button>
+                        <view hidden="YES" contentMode="scaleToFill" id="FeG-KK-0pL">
+                            <rect key="frame" x="20" y="101" width="280" height="283"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GtE-3d-Rnp">
+                                    <rect key="frame" x="5" y="20" width="269" height="228"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="MkD-CO-My8"/>
+                                        <outlet property="delegate" destination="-1" id="817-zj-h3T"/>
+                                    </connections>
+                                </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="985-bK-1co">
+                                    <rect key="frame" x="120" y="245" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Save">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="checksave_iphone:" destination="-1" eventType="touchUpInside" id="YXH-OW-1vb"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Requirement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vRd-Fg-EH3">
+                                    <rect key="frame" x="79" y="2" width="128" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.49205043580000002" blue="0.65567203439999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                     </subviews>
                 </scrollView>
             </subviews>

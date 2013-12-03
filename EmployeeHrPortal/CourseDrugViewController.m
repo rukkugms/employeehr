@@ -131,7 +131,7 @@
                 break;
         }
     }
-    if(tableView==_detailstable||tableView==_reqtable_iphone||tableView==_checktable)
+    if(tableView==_detailstable||tableView==_reqtable_iphone||tableView==_checktable||tableView==_checktable_iphone)
     {
         return [_requirementArray count];
         
@@ -169,6 +169,13 @@
             cell=_checkcell;
 
         }
+        if (tableView==_checktable_iphone) {
+            [[NSBundle mainBundle]loadNibNamed:@"requirementcell_iphone" owner:self options:nil];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell=_checkcell_iphone;
+            
+        }
+
         
         
     }
@@ -255,6 +262,51 @@
             
         }
 
+    }
+    if (tableView==_checktable_iphone)
+    {
+        Coursemdl*coursemdl4=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text=coursemdl4.itemname;
+        
+        
+        
+        if (coursemdl4.course_status==1) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+        }else if (coursemdl4.course_status==0){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        if ([_selectedcellstring isEqualToString:@"selected"]) {
+            
+            Coursemdl*coursemdl5=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+            
+            if(indexPath.row == selectedcell)
+            {
+                
+                if(cell.accessoryType==UITableViewCellAccessoryNone)
+                {
+                    
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    coursemdl5.course_status=1;
+                    //cell.selected = NO;
+                    
+                    
+                }
+                else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
+                {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    coursemdl5.course_status=0;
+                    //cell.selected=NO;
+                    
+                }
+                
+                
+            }
+            
+        }
+        
     }
     
     if(tableView==_reqtable_iphone)
@@ -398,6 +450,14 @@
         _selectedcellstring=@"selected";
          [_checktable reloadData];
     }
+    if(tableView==_checktable_iphone)
+    {
+        
+        selectedcell=indexPath.row;
+        _selectedcellstring=@"selected";
+        [_checktable_iphone reloadData];
+    }
+
 
     if(tableView==_reqtable_iphone)
     {
@@ -1171,6 +1231,9 @@ numberOfRowsInComponent:(NSInteger)component
 -(IBAction)update_iphone:(id)sender
 {
     [self DeleteApplicantRequirements];
+    [_checktable_iphone reloadData];
+    _checkview_iphone.hidden=NO;
+
 }
 -(IBAction)cancel_iphone:(id)sender
 {
@@ -1179,6 +1242,9 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (IBAction)checksave:(id)sender {
     _checkview.hidden=YES;
+}
+- (IBAction)checksave_iphone:(id)sender {
+    _checkview_iphone.hidden=YES;
 }
 
 

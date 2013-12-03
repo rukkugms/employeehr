@@ -18,6 +18,7 @@
 		64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE217D895DA00503D23 /* left_arrow@2x.png */; };
 		64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */; };
 		64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */; };
+		646AC8D6184D988500BF0A36 /* requirementcell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646AC8D5184D988500BF0A36 /* requirementcell_iphone.xib */; };
 		649069D9180FFD2A00944C83 /* UploadDocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649069D7180FFD2A00944C83 /* UploadDocViewController.m */; };
 		649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649069D8180FFD2A00944C83 /* UploadDocViewController.xib */; };
 		649069E2180FFF6C00944C83 /* PDFImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 649069E1180FFF6C00944C83 /* PDFImageConverter.m */; };
@@ -150,6 +151,7 @@
 		64085EE217D895DA00503D23 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.png; sourceTree = "<group>"; };
 		64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.unchecked.png; sourceTree = "<group>"; };
+		646AC8D5184D988500BF0A36 /* requirementcell_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requirementcell_iphone.xib; sourceTree = "<group>"; };
 		649069D6180FFD2A00944C83 /* UploadDocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadDocViewController.h; sourceTree = "<group>"; };
 		649069D7180FFD2A00944C83 /* UploadDocViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadDocViewController.m; sourceTree = "<group>"; };
 		649069D8180FFD2A00944C83 /* UploadDocViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadDocViewController.xib; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				D4E100DD17D886B7006336F8 /* CourseDrugViewController.h */,
 				D4E100DE17D886B7006336F8 /* CourseDrugViewController.m */,
 				D4E100DF17D886B7006336F8 /* CourseDrugViewController.xib */,
+				646AC8D5184D988500BF0A36 /* requirementcell_iphone.xib */,
 				64D5D7C018473F65000D9886 /* requirementcell.xib */,
 				64921A4C17D99C7100AB642E /* CourseDrugViewController_iphone.xib */,
 				D4E100E017D886B8006336F8 /* CourseDrugCellView.xib */,
@@ -634,6 +637,7 @@
 				D40F779D18436BEC007DCB92 /* kontractlogo29.png in Resources */,
 				D4E100AE17D860C6006336F8 /* CellEducationtable.xib in Resources */,
 				D4E100E217D886B9006336F8 /* NewMedicalViewController.xib in Resources */,
+				646AC8D6184D988500BF0A36 /* requirementcell_iphone.xib in Resources */,
 				D4E100E317D886B9006336F8 /* newmedicalcell.xib in Resources */,
 				D4E100E517D886B9006336F8 /* EmployeeViewController.xib in Resources */,
 				D4E100E617D886B9006336F8 /* customprevious.xib in Resources */,
