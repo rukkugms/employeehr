@@ -311,7 +311,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view hidden="YES" contentMode="scaleToFill" id="308">
-                            <rect key="frame" x="308" y="387" width="414" height="203"/>
+                            <rect key="frame" x="496" y="369" width="414" height="203"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="squareimage1.png" id="336">

@@ -765,7 +765,7 @@
 //    _drugVCtrl.applicantId=_Applicantid;
 //     _drugVCtrl.jobsiteid=_jobsiteid;
 //    _drugVCtrl.craftid=_craftid;
-//    [self.navigationController pushViewController:_drugVCtrl animated:YES];
+//    [self.navigationController pushViewController:_drugVCtrl animated:YES];Validation*val=[[Validation alloc]init];
 
     if (!self.coursedrugVCtrl) {
         _coursedrugVCtrl=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
@@ -777,12 +777,28 @@
 
     
     
+    
 }
 //iphone
 
 -(IBAction)save_iphone:(id)sender
 {
-    [self insertPreviousEmployer];
+    
+     Validation*val=[[Validation alloc]init];
+      int value1=[val isNumeric:_rateofpaytxt.text];
+    
+    if(value1==0)
+    {
+        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"please Enter Valid rate" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert1 show];
+        
+        
+    }
+    else{
+         [self insertPreviousEmployer];
+    }
+
+   
 }
 -(IBAction)cancel_iphone:(id)sender
 {
@@ -819,7 +835,9 @@
 -(IBAction)addemp_iphone:(id)sender
 {
     _addview_iphone.hidden=NO;
+    
 }
+#pragma mark-TExtfield Delegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
     
@@ -833,7 +851,9 @@
         
         [_datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
     }
-    //_picker.hidden=YES;
+    
+    
+     //_picker.hidden=YES;
     return YES;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -891,6 +911,8 @@
         NSUInteger newLength = [_reasonforleavingtxt.text length] + [string length] - range.length;
         return (newLength > 50) ? NO : YES;
     }
+    
+    
     
     
     //_picker.hidden=YES;

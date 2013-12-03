@@ -84,7 +84,7 @@
                             <rect key="frame" x="300" y="194" width="209" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="51"/>
                             </connections>

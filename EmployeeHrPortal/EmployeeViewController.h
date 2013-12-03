@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CKCalendarView.h"
 #import "previousemp.h"
+#import "Validation.h"
 
 #import "CourseDrugViewController.h"
 @interface EmployeeViewController : UIViewController<UITextFieldDelegate>
@@ -22,6 +23,7 @@
 @property(strong,nonatomic)NSString *jobsiteid;
 @property(strong,nonatomic)NSString *craftid;
 
+@property(strong,nonatomic)Validation*validate;
 @property(strong,nonatomic)IBOutlet UIScrollView *scroll;
 @property(strong,nonatomic)IBOutlet UITableView *prevousEmpTable;
 - (IBAction)SavePreviousemployee:(id)sender;

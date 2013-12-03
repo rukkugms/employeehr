@@ -405,6 +405,17 @@
         }
         recordResults = TRUE;
     }
+    if([elementName isEqualToString:@"result"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+
+    
+    
 }
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
@@ -528,6 +539,15 @@
         _soapResults = nil;
     }
     
+    
+    if([elementName isEqualToString:@"result"])
+    {
+         recordResults = FALSE;
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
 }
 #pragma mark -Ipad Action
 - (IBAction)loginbtn:(id)sender {
