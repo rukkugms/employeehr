@@ -76,7 +76,20 @@
 
 - (IBAction)SavePreviousemployee:(id)sender
 {
-    [self insertPreviousEmployer];
+    Validation*val=[[Validation alloc]init];
+    int value1=[val isNumeric:_rateofpaytxt.text];
+    
+    if(value1==0)
+    {
+        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"please Enter Valid rate" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert1 show];
+        
+        
+    }
+    else{
+        [self insertPreviousEmployer];
+    }
+
     
 }
 
@@ -785,7 +798,7 @@
 {
     
      Validation*val=[[Validation alloc]init];
-      int value1=[val isNumeric:_rateofpaytxt.text];
+      int value1=[val isNumeric:_rateofpaytxtfld_iphone.text];
     
     if(value1==0)
     {
