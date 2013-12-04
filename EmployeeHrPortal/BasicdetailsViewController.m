@@ -60,8 +60,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-
-    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+self.navigationController.navigationBar.translucent = YES;
+   UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
     
     
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
@@ -141,6 +142,7 @@
     //create a popover controller
     self.popOverController1 = [[UIPopoverController alloc]
                                initWithContentViewController:popoverContent];
+    
     [self.popOverController1 presentPopoverFromRect:_sufixbtnlbl.frame
                                              inView:self.scrollview
                            permittedArrowDirections:UIPopoverArrowDirectionUp
@@ -151,6 +153,12 @@
 
 - (IBAction)statebtn:(id)sender
 {    popovertype=2;
+    [self createPopover];
+    [self getstates];
+}
+-(IBAction)selectlicenceissuestate:(id)sender
+{
+     popovertype=2;
     [self createPopover];
     [self getstates];
 }
@@ -1398,6 +1406,7 @@ numberOfRowsInComponent:(NSInteger)component
         
         [_datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
     }
+    
 
     //_picker.hidden=YES;
     return YES;

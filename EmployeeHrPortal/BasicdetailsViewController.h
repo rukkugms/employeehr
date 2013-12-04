@@ -72,6 +72,7 @@
 - (IBAction)gendersegmentcntrl:(id)sender;
 - (IBAction)continuebtn:(id)sender;
 - (IBAction)cancelbtn:(id)sender;
+-(IBAction)selectlicenceissuestate:(id)sender;
 
 
 /*for iphone*/
@@ -101,7 +102,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *drivinglicenceno_iphone;
 @property (strong, nonatomic) IBOutlet UITextField *stateissuetxt_iphone;
 @property (strong, nonatomic) IBOutlet UITextField *nameonlicenct_iphone;
- 
+
 //array
 @property(strong,nonatomic)NSMutableArray *suffixarray_iphone;
 
