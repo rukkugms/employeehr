@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="navbar" destination="YB5-n4-vN6" id="83s-U9-joO"/>
                 <outlet property="passwordtxtfld" destination="14" id="22"/>
                 <outlet property="ssntxtfld" destination="13" id="21"/>
                 <outlet property="view" destination="2" id="3"/>
@@ -105,6 +106,21 @@
                         <action selector="cancelbtn:" destination="-1" eventType="touchUpInside" id="24"/>
                     </connections>
                 </button>
+                <navigationBar contentMode="scaleToFill" id="YB5-n4-vN6">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="barTintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                </navigationBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qiv-hy-qqp">
+                    <rect key="frame" x="919" y="16" width="40" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="logout1.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="logoutbtn:" destination="-1" eventType="touchUpInside" id="uHX-7L-PgZ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -113,6 +129,7 @@
     </objects>
     <resources>
         <image name="bg.png" width="1024" height="748"/>
+        <image name="logout1.png" width="32" height="32"/>
         <image name="squareimage1.png" width="300" height="400"/>
     </resources>
 </document>

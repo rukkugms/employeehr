@@ -32,11 +32,19 @@
     //_passwordtxtfld.text=@"";
   
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-   // self.navigationController.navigationBar.hidden=YES;
+   self.navigationController.navigationBar.hidden=YES;
     
    // self.navigationItem.hidesBackButton=YES;
    [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processLogout:) name:@"logout" object:nil];
+ 
+    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
     
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+    self.navigationItem.hidesBackButton=YES;
+
 
 }
 
@@ -458,37 +466,36 @@
           _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
     
     BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
-            // UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
+            UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
         viewController2.Applicantid=Applicantid;
     EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
-        //UINavigationController *navedu=[[UINavigationController alloc]initWithRootViewController:viewController3];
+        UINavigationController *navedu=[[UINavigationController alloc]initWithRootViewController:viewController3];
         viewController3.Applicantid=Applicantid;
         
         JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
-              //UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
+              UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
         viewController1.Applicantid=Applicantid;
          NewMedicalViewController *viewController4 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
-            // UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
+            UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
         viewController4.Applicantid=Applicantid;
         EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
-            // UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
+            UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
         viewcontroller5.Applicantid=Applicantid;
         CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
-             //UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
+             UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
         viewcontroller6.Applicantid=Applicantid;
         RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
-            // UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
+            UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
              
              viewcontroller7.applicantId=Applicantid;
              DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
             viewcontroller8.applicantid=Applicantid;
-            // UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
-        //NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,coursenav,racenav,docnav,nil];
-              NSArray *controllers = [NSArray arrayWithObjects: viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,viewcontroller8,nil];
+            UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+        NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,coursenav,racenav,docnav,nil];
+              //NSArray *controllers = [NSArray arrayWithObjects: viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,viewcontroller8,nil];
         self.tabbarcntrl.viewControllers = controllers;
         
-        
-        [self.navigationController pushViewController:_tabbarcntrl animated:YES];
+                  [self.navigationController pushViewController:_tabbarcntrl animated:YES];
         
          }
         
@@ -802,4 +809,8 @@ else
 
 }
 
+- (IBAction)logoutbtn:(id)sender {
+    
+ [self.navigationController popToRootViewControllerAnimated:YES];
+}
 @end
