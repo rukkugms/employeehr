@@ -38,7 +38,8 @@
     _refferArray=[[NSMutableArray alloc]initWithObjects:@"Contacted  on my own",@"Referred by employee",@"Company Website",@"State Employment agency",@"National Publication",@"Newspaper Advertisement",@"Private Employment agency",@"Another Company",@"Other", nil];
     _refferArray_iphone=[[NSMutableArray alloc]initWithObjects:@"Contacted  on my own",@"Referred by employee",@"Company Website",@"State Employment agency",@"National Publication",@"Newspaper Advertisement",@"Private Employment agency",@"Another Company",@"Other", nil];
 self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
+    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     
     
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];

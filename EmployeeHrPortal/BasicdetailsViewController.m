@@ -60,9 +60,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-self.navigationController.navigationBar.translucent = YES;
+   self.navigationController.navigationBar.translucent = NO;
    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
-    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     
     
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
@@ -153,12 +153,14 @@ self.navigationController.navigationBar.translucent = YES;
 
 - (IBAction)statebtn:(id)sender
 {    popovertype=2;
+    stateidentifier=1;
     [self createPopover];
     [self getstates];
 }
 -(IBAction)selectlicenceissuestate:(id)sender
 {
      popovertype=2;
+    stateidentifier=2;
     [self createPopover];
     [self getstates];
 }
@@ -211,8 +213,13 @@ self.navigationController.navigationBar.translucent = YES;
                 return [_suffixarray count];
                 break;
             case 2:
+                
                 return [_stateArray count];
                 break;
+//            case 3:
+//                return [_stateArray count];
+//                break;
+
             default:
                 break;
         }
@@ -246,6 +253,10 @@ self.navigationController.navigationBar.translucent = YES;
             case 2:
                 cell.textLabel.text=[_stateArray objectAtIndex:indexPath.row];
                 break;
+//            case 3:
+//                cell.textLabel.text=[_stateArray objectAtIndex:indexPath.row];
+//                break;
+
             default:
                 break;
         }
@@ -270,12 +281,20 @@ self.navigationController.navigationBar.translucent = YES;
                 
                 break;
             case 2:
-                
+                if(stateidentifier==1)
+                {
                 [_statebtnlbl setTitle:[_stateArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                }else if(stateidentifier==2)
+                {
+                    [_stateissuebtn setTitle:[_stateArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                }
                 
-                
-                
-                break;
+//            case 3:
+//                
+//                [_stateissuebtn setTitle:[_stateArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+//
+//                
+//                break;
             default:
                 break;
         }
@@ -400,7 +419,7 @@ self.navigationController.navigationBar.translucent = YES;
                    "<NameInLicense>%@</NameInLicense>\n"
                    "</UpdateApplicantData>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,_sufixbtnlbl.titleLabel.text,_firstnametxtfld.text,_lastnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,sqldate,_countrybtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_alternativenumtxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_driverlicencetxtfld.text,_stateissuetxtfld.text,_nameinlicencetxtfld.text];
+                   "</soap:Envelope>\n",_Applicantid,_sufixbtnlbl.titleLabel.text,_firstnametxtfld.text,_lastnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,sqldate,_countrybtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_alternativenumtxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -1118,7 +1137,8 @@ self.navigationController.navigationBar.translucent = YES;
     if([elementName isEqualToString:@"applicant_LicenseState"])
     {
         recordResults = FALSE;
-        _stateissuetxtfld.text=_soapResults;
+        [_stateissuebtn setTitle:_soapResults forState:UIControlStateNormal];
+
         _stateissuetxt_iphone.text=_soapResults;
         _soapResults=nil;
     }
@@ -1207,10 +1227,21 @@ self.navigationController.navigationBar.translucent = YES;
     //create a popover controller
     self.popOverController1 = [[UIPopoverController alloc]
                               initWithContentViewController:popoverContent];
-    [self.popOverController1 presentPopoverFromRect:_statebtnlbl.frame
+    if(stateidentifier==1)
+    {
+        [self.popOverController1 presentPopoverFromRect:_statebtnlbl.frame
+                                              inView:self.scrollview
+                            permittedArrowDirections:UIPopoverArrowDirectionUp
+                                            animated:YES];
+        
+    }
+    else if(stateidentifier==2)
+    {
+    [self.popOverController1 presentPopoverFromRect:_stateissuebtn.frame
                                             inView:self.scrollview
                           permittedArrowDirections:UIPopoverArrowDirectionUp
                                           animated:YES];
+    }
   
 }
 
@@ -1502,11 +1533,11 @@ numberOfRowsInComponent:(NSInteger)component
         NSUInteger newLength = [_alternativenumtxtfld.text length] + [string length] - range.length;
         return (newLength > 20) ? NO : YES;
     }
-    if(textField==_stateissuetxtfld)
-    {
-        NSUInteger newLength = [_stateissuetxtfld.text length] + [string length] - range.length;
-        return (newLength > 50) ? NO : YES;
-    }
+//    if(textField==_stateissuetxtfld)
+//    {
+//        NSUInteger newLength = [_stateissuetxtfld.text length] + [string length] - range.length;
+//        return (newLength > 50) ? NO : YES;
+//    }
     if(textField==_firstnametxt_iphone)
     {
         NSUInteger newLength = [_firstnametxt_iphone.text length] + [string length] - range.length;

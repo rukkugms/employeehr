@@ -20,7 +20,7 @@
     //iphone
     NSInteger detailbtnclicked_iphone;
     NSString *pickerstring;
-    
+    NSInteger stateidentifier;
     int x;
 }
 @property(readwrite)NSInteger Applicantid;
@@ -54,7 +54,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *emergencytxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *contactnumbtxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *driverlicencetxtfld;
-@property (strong, nonatomic) IBOutlet UITextField *stateissuetxtfld;
+@property (strong, nonatomic) IBOutlet UIButton *stateissuebtn;
 @property (strong, nonatomic) IBOutlet UITextField *nameinlicencetxtfld;
 @property(strong,nonatomic)IBOutlet UIDatePicker *datepicker_ipad;
 @property(strong,nonatomic)IBOutlet UITextField *datetextfld_ipad;

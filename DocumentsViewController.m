@@ -37,11 +37,8 @@
     _activityndictr=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
      UIBarButtonItem*barbutton=[[UIBarButtonItem alloc]initWithCustomView:_activityndictr];
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logout1"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
-    
-    
-    
-    
+    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(logoutAction)];
     
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,barbutton,nil];
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
