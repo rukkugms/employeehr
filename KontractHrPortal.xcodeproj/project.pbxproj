@@ -52,6 +52,8 @@
 		D40F779918436B80007DCB92 /* kontractlogo76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779818436B80007DCB92 /* kontractlogo76@2x.png */; };
 		D40F779B18436B84007DCB92 /* kontractlogo76.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779A18436B84007DCB92 /* kontractlogo76.png */; };
 		D40F779D18436BEC007DCB92 /* kontractlogo29.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779C18436BEC007DCB92 /* kontractlogo29.png */; };
+		D4144325184F310E001E3E32 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144323184F310E001E3E32 /* button.png */; };
+		D4144326184F310E001E3E32 /* textbox.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144324184F310E001E3E32 /* textbox.png */; };
 		D418D984183B76ED001C7B0E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D418D983183B76ED001C7B0E /* logo.png */; };
 		D482A574182B697D007280CA /* KontractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D482A572182B697D007280CA /* KontractViewController.m */; };
 		D482A575182B697D007280CA /* KontractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A573182B697D007280CA /* KontractViewController.xib */; };
@@ -191,6 +193,8 @@
 		D40F779818436B80007DCB92 /* kontractlogo76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontractlogo76@2x.png"; sourceTree = "<group>"; };
 		D40F779A18436B84007DCB92 /* kontractlogo76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontractlogo76.png; sourceTree = "<group>"; };
 		D40F779C18436BEC007DCB92 /* kontractlogo29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontractlogo29.png; sourceTree = "<group>"; };
+		D4144323184F310E001E3E32 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		D4144324184F310E001E3E32 /* textbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textbox.png; sourceTree = "<group>"; };
 		D418D983183B76ED001C7B0E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D482A571182B697D007280CA /* KontractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KontractViewController.h; sourceTree = "<group>"; };
 		D482A572182B697D007280CA /* KontractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KontractViewController.m; sourceTree = "<group>"; };
@@ -328,6 +332,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4144322184F310E001E3E32 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				D4144323184F310E001E3E32 /* button.png */,
+				D4144324184F310E001E3E32 /* textbox.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
 		D4E1004717D84F8B006336F8 = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +348,7 @@
 				D4C7CD2F17E9B3F000484F94 /* Base64.h */,
 				D4C7CD3217E9B40000484F94 /* NSData+Base64.h */,
 				D4C7CD3017E9B3F000484F94 /* Base64.m */,
+				D4144322184F310E001E3E32 /* icons */,
 				D4C7CD3317E9B40000484F94 /* NSData+Base64.m */,
 				D4F92DED1844538900B689CE /* kontract40.png */,
 				D4F92DE51844536B00B689CE /* kontract50.png */,
@@ -651,6 +665,7 @@
 				64085EE617D895DA00503D23 /* delete_iconcpy.png in Resources */,
 				64085EE717D895DA00503D23 /* closebutton.png in Resources */,
 				64085EE817D895DA00503D23 /* closebutton@2x.png in Resources */,
+				D4144325184F310E001E3E32 /* button.png in Resources */,
 				64085EE917D895DA00503D23 /* right_arrow.png in Resources */,
 				D40F779B18436B84007DCB92 /* kontractlogo76.png in Resources */,
 				D4F92DEE1844538900B689CE /* kontract40.png in Resources */,
@@ -670,6 +685,7 @@
 				64921A4D17D99C7100AB642E /* CourseDrugViewController_iphone.xib in Resources */,
 				64921A5217D9AC0400AB642E /* disclsurebtndwn@2x.png in Resources */,
 				64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */,
+				D4144326184F310E001E3E32 /* textbox.png in Resources */,
 				64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */,
 				64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */,
 				D4DBE22917DD9EBF008010D9 /* AddNewMedicalViewController.xib in Resources */,

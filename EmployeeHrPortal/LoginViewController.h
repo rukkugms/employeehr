@@ -25,6 +25,8 @@
     NSString *ssnstring;
 }
 /*Outlets */
+- (IBAction)logoutbtn:(id)sender;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navbar;
 @property(strong,nonatomic)Validation *val;
 @property (strong, nonatomic) NSString *connectstring;
 @property (strong, nonatomic) IBOutlet UITextField *ssntxtfld;
