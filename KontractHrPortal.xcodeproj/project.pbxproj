@@ -54,6 +54,7 @@
 		D40F779D18436BEC007DCB92 /* kontractlogo29.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779C18436BEC007DCB92 /* kontractlogo29.png */; };
 		D4144325184F310E001E3E32 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144323184F310E001E3E32 /* button.png */; };
 		D4144326184F310E001E3E32 /* textbox.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144324184F310E001E3E32 /* textbox.png */; };
+		D4144328184F4048001E3E32 /* ios7-camera-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144327184F4048001E3E32 /* ios7-camera-icon.png */; };
 		D418D984183B76ED001C7B0E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D418D983183B76ED001C7B0E /* logo.png */; };
 		D482A574182B697D007280CA /* KontractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D482A572182B697D007280CA /* KontractViewController.m */; };
 		D482A575182B697D007280CA /* KontractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A573182B697D007280CA /* KontractViewController.xib */; };
@@ -185,16 +186,17 @@
 		64D5D7C018473F65000D9886 /* requirementcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requirementcell.xib; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
 		D40F778418435E8C007DCB92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D40F778C18436919007DCB92 /* kontractlogo copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontractlogo copy.png"; sourceTree = "<group>"; };
-		D40F778E18436956007DCB92 /* kontractlogo 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontractlogo 2x.png"; sourceTree = "<group>"; };
-		D40F779018436A38007DCB92 /* kontractlogo120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontractlogo120.png; sourceTree = "<group>"; };
-		D40F779218436A7F007DCB92 /* kontractlogo72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontractlogo72.png; sourceTree = "<group>"; };
-		D40F779618436B20007DCB92 /* kontractlogo72 @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontractlogo72 @2x.png"; sourceTree = "<group>"; };
-		D40F779818436B80007DCB92 /* kontractlogo76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontractlogo76@2x.png"; sourceTree = "<group>"; };
-		D40F779A18436B84007DCB92 /* kontractlogo76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontractlogo76.png; sourceTree = "<group>"; };
-		D40F779C18436BEC007DCB92 /* kontractlogo29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontractlogo29.png; sourceTree = "<group>"; };
+		D40F778C18436919007DCB92 /* kontractlogo copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo copy.png"; path = "../kontractlogo copy.png"; sourceTree = "<group>"; };
+		D40F778E18436956007DCB92 /* kontractlogo 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo 2x.png"; path = "../kontractlogo 2x.png"; sourceTree = "<group>"; };
+		D40F779018436A38007DCB92 /* kontractlogo120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontractlogo120.png; path = ../kontractlogo120.png; sourceTree = "<group>"; };
+		D40F779218436A7F007DCB92 /* kontractlogo72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontractlogo72.png; path = ../kontractlogo72.png; sourceTree = "<group>"; };
+		D40F779618436B20007DCB92 /* kontractlogo72 @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo72 @2x.png"; path = "../kontractlogo72 @2x.png"; sourceTree = "<group>"; };
+		D40F779818436B80007DCB92 /* kontractlogo76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo76@2x.png"; path = "../kontractlogo76@2x.png"; sourceTree = "<group>"; };
+		D40F779A18436B84007DCB92 /* kontractlogo76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontractlogo76.png; path = ../kontractlogo76.png; sourceTree = "<group>"; };
+		D40F779C18436BEC007DCB92 /* kontractlogo29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontractlogo29.png; path = ../kontractlogo29.png; sourceTree = "<group>"; };
 		D4144323184F310E001E3E32 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		D4144324184F310E001E3E32 /* textbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textbox.png; sourceTree = "<group>"; };
+		D4144327184F4048001E3E32 /* ios7-camera-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ios7-camera-icon.png"; path = "../EmployeeHrPortal/ios7-camera-icon.png"; sourceTree = "<group>"; };
 		D418D983183B76ED001C7B0E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D482A571182B697D007280CA /* KontractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KontractViewController.h; sourceTree = "<group>"; };
 		D482A572182B697D007280CA /* KontractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KontractViewController.m; sourceTree = "<group>"; };
@@ -305,11 +307,11 @@
 		D4E100F317D88C22006336F8 /* Ethicity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ethicity.m; sourceTree = "<group>"; };
 		D4E100F817D88C31006336F8 /* Medicalmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicalmodel.h; sourceTree = "<group>"; };
 		D4E100F917D88C31006336F8 /* Medicalmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicalmodel.m; sourceTree = "<group>"; };
-		D4F92DE51844536B00B689CE /* kontract50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontract50.png; sourceTree = "<group>"; };
-		D4F92DE71844537300B689CE /* kontract58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontract58.png; sourceTree = "<group>"; };
-		D4F92DEB1844538300B689CE /* kontract50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontract50@2x.png"; sourceTree = "<group>"; };
-		D4F92DED1844538900B689CE /* kontract40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontract40.png; sourceTree = "<group>"; };
-		D4F92DF11844637400B689CE /* kontract80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontract80.png; sourceTree = "<group>"; };
+		D4F92DE51844536B00B689CE /* kontract50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontract50.png; path = ../kontract50.png; sourceTree = "<group>"; };
+		D4F92DE71844537300B689CE /* kontract58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontract58.png; path = ../kontract58.png; sourceTree = "<group>"; };
+		D4F92DEB1844538300B689CE /* kontract50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontract50@2x.png"; path = "../kontract50@2x.png"; sourceTree = "<group>"; };
+		D4F92DED1844538900B689CE /* kontract40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontract40.png; path = ../kontract40.png; sourceTree = "<group>"; };
+		D4F92DF11844637400B689CE /* kontract80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontract80.png; path = ../kontract80.png; sourceTree = "<group>"; };
 		D4F94EEC17E024C8005D0AFE /* SecondRaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondRaceViewController.h; sourceTree = "<group>"; };
 		D4F94EED17E024C8005D0AFE /* SecondRaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondRaceViewController.m; sourceTree = "<group>"; };
 		D4F94EEE17E024C8005D0AFE /* SecondRaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondRaceViewController.xib; sourceTree = "<group>"; };
@@ -335,8 +337,22 @@
 		D4144322184F310E001E3E32 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				D4F92DED1844538900B689CE /* kontract40.png */,
 				D4144323184F310E001E3E32 /* button.png */,
 				D4144324184F310E001E3E32 /* textbox.png */,
+				D4F92DE51844536B00B689CE /* kontract50.png */,
+				D4F92DEB1844538300B689CE /* kontract50@2x.png */,
+				D4F92DE71844537300B689CE /* kontract58.png */,
+				D4F92DF11844637400B689CE /* kontract80.png */,
+				D40F778E18436956007DCB92 /* kontractlogo 2x.png */,
+				D40F778C18436919007DCB92 /* kontractlogo copy.png */,
+				D40F779018436A38007DCB92 /* kontractlogo120.png */,
+				D40F779C18436BEC007DCB92 /* kontractlogo29.png */,
+				D40F779618436B20007DCB92 /* kontractlogo72 @2x.png */,
+				D40F779218436A7F007DCB92 /* kontractlogo72.png */,
+				D40F779A18436B84007DCB92 /* kontractlogo76.png */,
+				D40F779818436B80007DCB92 /* kontractlogo76@2x.png */,
+				D4144327184F4048001E3E32 /* ios7-camera-icon.png */,
 			);
 			path = icons;
 			sourceTree = "<group>";
@@ -350,19 +366,6 @@
 				D4C7CD3017E9B3F000484F94 /* Base64.m */,
 				D4144322184F310E001E3E32 /* icons */,
 				D4C7CD3317E9B40000484F94 /* NSData+Base64.m */,
-				D4F92DED1844538900B689CE /* kontract40.png */,
-				D4F92DE51844536B00B689CE /* kontract50.png */,
-				D4F92DEB1844538300B689CE /* kontract50@2x.png */,
-				D4F92DE71844537300B689CE /* kontract58.png */,
-				D4F92DF11844637400B689CE /* kontract80.png */,
-				D40F778E18436956007DCB92 /* kontractlogo 2x.png */,
-				D40F778C18436919007DCB92 /* kontractlogo copy.png */,
-				D40F779018436A38007DCB92 /* kontractlogo120.png */,
-				D40F779C18436BEC007DCB92 /* kontractlogo29.png */,
-				D40F779618436B20007DCB92 /* kontractlogo72 @2x.png */,
-				D40F779218436A7F007DCB92 /* kontractlogo72.png */,
-				D40F779A18436B84007DCB92 /* kontractlogo76.png */,
-				D40F779818436B80007DCB92 /* kontractlogo76@2x.png */,
 				D4E1005917D84F8B006336F8 /* EmployeeHrPortal */,
 				D4E1005217D84F8B006336F8 /* Frameworks */,
 				D4E1008817D851E5006336F8 /* Images */,
@@ -671,6 +674,7 @@
 				D4F92DEE1844538900B689CE /* kontract40.png in Resources */,
 				64085EEA17D895DA00503D23 /* right_arrow@2x.png in Resources */,
 				D4F92DE61844536B00B689CE /* kontract50.png in Resources */,
+				D4144328184F4048001E3E32 /* ios7-camera-icon.png in Resources */,
 				64085EEB17D895DA00503D23 /* left_arrow.png in Resources */,
 				64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */,
 				64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */,
