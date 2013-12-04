@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4">
-                    <rect key="frame" x="0.0" y="168" width="422" height="600"/>
+                    <rect key="frame" x="-13" y="120" width="435" height="648"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -38,6 +38,7 @@
                         </barButtonItem>
                     </items>
                     <color key="tintColor" white="1" alpha="0.42999999999999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="barTintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                 </toolbar>
                 <webView contentMode="scaleToFill" id="17">
                     <rect key="frame" x="422" y="100" width="602" height="668"/>
