@@ -29,6 +29,7 @@
     [super viewDidLoad];
     x=1;
     detailbtnclicked_iphone=0;
+    _datetextfld_ipad.inputView=[[UIView alloc]initWithFrame:CGRectZero];
   [self getstates];
     _suffixarray=[[NSMutableArray alloc]initWithObjects:@"None",@"JR.",@"SR.",@"II",@"III" ,nil];
     _suffixarray_iphone=[[NSMutableArray alloc]initWithObjects:@"None",@"JR.",@"SR.",@"II",@"III" ,nil];
