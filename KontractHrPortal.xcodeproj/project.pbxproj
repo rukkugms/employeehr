@@ -18,6 +18,7 @@
 		64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE217D895DA00503D23 /* left_arrow@2x.png */; };
 		64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */; };
 		64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */; };
+		641E3753184F3D1F00DB5890 /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 641E3752184F3D1F00DB5890 /* cam.png */; };
 		646AC8D6184D988500BF0A36 /* requirementcell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646AC8D5184D988500BF0A36 /* requirementcell_iphone.xib */; };
 		649069D9180FFD2A00944C83 /* UploadDocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649069D7180FFD2A00944C83 /* UploadDocViewController.m */; };
 		649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649069D8180FFD2A00944C83 /* UploadDocViewController.xib */; };
@@ -152,6 +153,7 @@
 		64085EE217D895DA00503D23 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.png; sourceTree = "<group>"; };
 		64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.unchecked.png; sourceTree = "<group>"; };
+		641E3752184F3D1F00DB5890 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		646AC8D5184D988500BF0A36 /* requirementcell_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requirementcell_iphone.xib; sourceTree = "<group>"; };
 		649069D6180FFD2A00944C83 /* UploadDocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadDocViewController.h; sourceTree = "<group>"; };
 		649069D7180FFD2A00944C83 /* UploadDocViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadDocViewController.m; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				641E3752184F3D1F00DB5890 /* cam.png */,
 				D418D983183B76ED001C7B0E /* logo.png */,
 				64932185182B5DB5006B6904 /* calender.png */,
 				649069E3180FFFDE00944C83 /* Untitled.png */,
@@ -705,6 +708,7 @@
 				D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */,
 				649323B21810F52400E46BDC /* webViewController.xib in Resources */,
 				649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */,
+				641E3753184F3D1F00DB5890 /* cam.png in Resources */,
 				D482A575182B697D007280CA /* KontractViewController.xib in Resources */,
 				D482A577182B6B89007280CA /* Kontractviewcontroller_iphone.xib in Resources */,
 			);
