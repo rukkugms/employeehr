@@ -175,21 +175,12 @@ finishedSavingWithError:(NSError *)error
     
   _encodedstring = [data base64EncodedString];
 
+    [self UploadDocs];
 
     
     
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if ([alertView.title isEqualToString:@"Encodedstring"]) {
-        
-            [self UploadDocs];
-        
-    }
-    
-    
-    
-}
 /*webservice*/
 
 -(void)UploadDocs{
@@ -394,9 +385,7 @@ else
     NSLog(@"DONE. Received Bytes: %d", [_webData length]);
 	NSString *theXML = [[NSString alloc] initWithBytes: [_webData mutableBytes] length:[_webData length] encoding:NSUTF8StringEncoding];
 	NSLog(@"xml===== %@",theXML);
-	UIAlertView*alert1=[[UIAlertView alloc]initWithTitle:@"xml" message:theXML delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert1 show];
-	
+		
 	if( _xmlParser )
 	{
 		
