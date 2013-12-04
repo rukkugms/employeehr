@@ -43,7 +43,6 @@
 		64D5D7C118473F65000D9886 /* requirementcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D5D7C018473F65000D9886 /* requirementcell.xib */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
 		D40F778518435E8C007DCB92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40F778418435E8C007DCB92 /* Images.xcassets */; };
-		D40F778B18436591007DCB92 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40F778A18436591007DCB92 /* Images-2.xcassets */; };
 		D40F778D18436919007DCB92 /* kontractlogo copy.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F778C18436919007DCB92 /* kontractlogo copy.png */; };
 		D40F778F18436956007DCB92 /* kontractlogo 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F778E18436956007DCB92 /* kontractlogo 2x.png */; };
 		D40F779118436A38007DCB92 /* kontractlogo120.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779018436A38007DCB92 /* kontractlogo120.png */; };
@@ -184,7 +183,6 @@
 		64D5D7C018473F65000D9886 /* requirementcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requirementcell.xib; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
 		D40F778418435E8C007DCB92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D40F778A18436591007DCB92 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		D40F778C18436919007DCB92 /* kontractlogo copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontractlogo copy.png"; sourceTree = "<group>"; };
 		D40F778E18436956007DCB92 /* kontractlogo 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kontractlogo 2x.png"; sourceTree = "<group>"; };
 		D40F779018436A38007DCB92 /* kontractlogo120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kontractlogo120.png; sourceTree = "<group>"; };
@@ -478,7 +476,6 @@
 				649323AF1810F52400E46BDC /* webViewController.m */,
 				649323B01810F52400E46BDC /* webViewController.xib */,
 				D40F778418435E8C007DCB92 /* Images.xcassets */,
-				D40F778A18436591007DCB92 /* Images-2.xcassets */,
 				D4E1005A17D84F8B006336F8 /* Supporting Files */,
 			);
 			path = EmployeeHrPortal;
@@ -675,7 +672,6 @@
 				64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */,
 				64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */,
 				64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */,
-				D40F778B18436591007DCB92 /* Images-2.xcassets in Resources */,
 				D4CF26D817D994EA00F7651A /* LoginViewController_iphone.xib in Resources */,
 				64921A4317D99BAC00AB642E /* BasicdetailsViewController_iphone.xib in Resources */,
 				64921A4517D99BD200AB642E /* EducationViewController_iphone.xib in Resources */,
