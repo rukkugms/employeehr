@@ -30,11 +30,18 @@
                     <rect key="frame" x="0.0" y="100" width="422" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <items>
-                        <barButtonItem title="Item" systemItem="add" id="16">
-                            <color key="tintColor" red="0.0" green="0.49205043580000002" blue="0.65567203439999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="Adddocbtn:" destination="-1" id="21"/>
-                            </connections>
+                        <barButtonItem style="plain" id="dY5-xG-IJx">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wLb-kg-pXY">
+                                <rect key="frame" x="16" y="8" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="button.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Adddocbtn:" destination="-1" eventType="touchUpInside" id="GuU-iA-HOs"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </items>
                     <color key="tintColor" white="1" alpha="0.42999999999999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -61,4 +68,7 @@
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>
     </objects>
+    <resources>
+        <image name="button.png" width="113" height="98"/>
+    </resources>
 </document>
