@@ -185,9 +185,17 @@
 }
 
 - (IBAction)continuebtn:(id)sender {
-    
-    [self UpdateApplicantData];
+    if(phonex==1)
+    {
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+        
+        [alert show];
 
+    }
+    else
+    {
+    [self UpdateApplicantData];
+    }
 }
 
 
@@ -1696,7 +1704,7 @@ numberOfRowsInComponent:(NSInteger)component
                }
                else
                {
-
+                   phonex=1;
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
         
         [alert show];
@@ -1721,7 +1729,7 @@ numberOfRowsInComponent:(NSInteger)component
         NSLog (@"Result: %@", resultString);
         if ([resultString length]==9){
             
-            
+             phonex=1;
             
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
@@ -1739,9 +1747,11 @@ numberOfRowsInComponent:(NSInteger)component
             
             if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
                 _connectmobile=mobilenostring;
+                phonex=2;
             }
             else
             {
+                 phonex=1;
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
                 [alert show];
@@ -1754,7 +1764,7 @@ numberOfRowsInComponent:(NSInteger)component
         if ([resultString length]==10){
             
             
-            
+             phonex=2;
             
             NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
             NSLog(@"%@",subString);
@@ -1778,7 +1788,7 @@ numberOfRowsInComponent:(NSInteger)component
         
         if ([resultString length]==11){
             
-            
+             phonex=1;
             
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
@@ -1800,7 +1810,7 @@ numberOfRowsInComponent:(NSInteger)component
             
         }
         else
-        {
+        { phonex=1;
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
             [alert show];
@@ -1828,7 +1838,7 @@ numberOfRowsInComponent:(NSInteger)component
         if ([resultString length]==9){
             
             
-            
+             phonex=1;
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
             [alert show];
@@ -1845,9 +1855,10 @@ numberOfRowsInComponent:(NSInteger)component
             
             if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
                 _connecthome=homenostring;
+                 phonex=2;
             }
             else
-            {
+            { phonex=1;
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
                 [alert show];
@@ -1860,7 +1871,7 @@ numberOfRowsInComponent:(NSInteger)component
         if ([resultString length]==10){
             
             
-            
+             phonex=2;
             
             NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
             NSLog(@"%@",subString);
@@ -1885,7 +1896,7 @@ numberOfRowsInComponent:(NSInteger)component
         if ([resultString length]==11){
             
             
-            
+             phonex=1;
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
             [alert show];
@@ -1905,6 +1916,7 @@ numberOfRowsInComponent:(NSInteger)component
             }
             else
             {
+                 phonex=1;
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
             
             [alert show];
@@ -1929,7 +1941,7 @@ numberOfRowsInComponent:(NSInteger)component
             NSLog (@"Result: %@", resultString);
             if ([resultString length]==9){
                 
-                
+                 phonex=1;
                 
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
@@ -1947,9 +1959,11 @@ numberOfRowsInComponent:(NSInteger)component
                 
                 if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
                     _connectcontact=contactnostring;
+                     phonex=2;
                 }
                 else
                 {
+                     phonex=1;
                     UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                     
                     [alert show];
@@ -1962,7 +1976,7 @@ numberOfRowsInComponent:(NSInteger)component
             if ([resultString length]==10){
                 
                 
-                
+                phonex=2;
                 
                 NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
                 NSLog(@"%@",subString);
@@ -1986,7 +2000,7 @@ numberOfRowsInComponent:(NSInteger)component
             
             if ([resultString length]==11){
                 
-                
+                 phonex=1;
                 
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
@@ -2009,6 +2023,7 @@ numberOfRowsInComponent:(NSInteger)component
             
             } else
             {
+                 phonex=1;
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
                 [alert show];
@@ -2035,7 +2050,7 @@ numberOfRowsInComponent:(NSInteger)component
             NSLog (@"Result: %@", resultString);
             if ([resultString length]==9){
                 
-                
+                 phonex=1;
                 
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
@@ -2053,9 +2068,11 @@ numberOfRowsInComponent:(NSInteger)component
                 
                 if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
                     _connectalternate=alternatenostring;
+                    phonex=2;
                 }
                 else
                 {
+                     phonex=1;
                     UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                     
                     [alert show];
@@ -2068,7 +2085,7 @@ numberOfRowsInComponent:(NSInteger)component
             if ([resultString length]==10){
                 
                 
-                
+                phonex=2;
                 
                 NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
                 NSLog(@"%@",subString);
@@ -2093,7 +2110,7 @@ numberOfRowsInComponent:(NSInteger)component
             if ([resultString length]==11){
                 
                 
-                
+                 phonex=1;
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
                 
                 [alert show];
