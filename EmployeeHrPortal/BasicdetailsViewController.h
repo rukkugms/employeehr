@@ -27,6 +27,7 @@
     NSString *homenostring;
     NSString *contactnostring;
     NSString *alternatenostring;
+    NSInteger phonex;
 
 }
 @property(readwrite)NSInteger Applicantid;
