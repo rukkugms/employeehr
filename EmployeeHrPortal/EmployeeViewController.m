@@ -81,6 +81,8 @@
 
 - (IBAction)SavePreviousemployee:(id)sender
 {
+    
+    
     Validation*val=[[Validation alloc]init];
     int value1=[val isNumeric:_rateofpaytxt.text];
     
@@ -93,6 +95,15 @@
     }
     else{
         [self insertPreviousEmployer];
+        _previouscompanytxt.text=@"";
+        [_datebtn setTitle:@"Select" forState:UIControlStateNormal];
+        _rateofpaytxt.text=@"";
+        _positionheldtxt.text=@"";
+        _reasonforleavingtxt.text=@"";
+
+        
+        
+        
     }
 
     

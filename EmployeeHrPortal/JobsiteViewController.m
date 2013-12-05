@@ -27,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    buttonclicked=0;
+    
+    
     //[self.navigationController.navigationBar setHidden:YES];
     // Do any additional setup after loading the view from its nib.
     [self SelectEmployeeSkills];
@@ -63,9 +64,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    buttonclicked=0;
-    
-
+   
+   
+   
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
@@ -1231,7 +1232,17 @@
         }
         recordResults = TRUE;
     }
-    
+    if([elementName isEqualToString:@"SSN"])
+    {
+      
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+
+   
     if([elementName isEqualToString:@"JobSiteName"])
     {
         if(!_soapResults)
@@ -1401,7 +1412,15 @@
         recordResults = TRUE;
     }
     
-    
+    if([elementName isEqualToString:@"LastName"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+
+    }
 }
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
@@ -1440,6 +1459,27 @@
            _soapResults = nil;
         
     }
+    if([elementName isEqualToString:@"LastName"])
+    {
+        recordResults = FALSE;
+       
+        
+        
+        _soapResults = nil;
+        
+    }
+
+   
+    if([elementName isEqualToString:@"SSN"])
+    {recordResults = FALSE;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:_soapResults forKey:@"ssn"];
+        [defaults synchronize];
+
+        _soapResults = nil;
+        
+            }
+
     if([elementName isEqualToString:@"SkillId"])
     {
         
@@ -1494,8 +1534,7 @@
     if([elementName isEqualToString:@"jobSite_Id"])
         
     {
-        _nw=@"SelectApplicant";
-        _jobsite=[[jobsite alloc]init];
+            _jobsite=[[jobsite alloc]init];
         recordResults = FALSE;
         _jobsite.jobsiteid=_soapResults;
         
@@ -1507,10 +1546,17 @@
 
         if([_soapResults integerValue]==0)
         {
+             _nw=@"";
             _checkbtnlbl_iphone.enabled=YES;
             _clickedbtnlbl.enabled=YES;
              [_clickedbtnlbl setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
             [_checkbtnlbl_iphone setImage:[UIImage imageNamed:@"cb_mono_on"] forState:UIControlStateNormal];
+            
+            buttonclicked=1;
+        }
+        else{
+            _nw=@"SelectApplicant";
+
             
         }
        

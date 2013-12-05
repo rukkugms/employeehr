@@ -943,6 +943,8 @@
 
 - (IBAction)savebtn:(id)sender {
     [self InsertApplicantCertificates];
+    _certifcatenametxt.text=@"";
+    [_certificatedatebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
 }
 
 - (IBAction)cancelbtn:(id)sender
@@ -953,6 +955,12 @@
 
 - (IBAction)edusavebtn:(id)sender {
     [self InsertApplicantEducation];
+    [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+    _yearscompleted.text=@"";
+    _insitutionname.text=@"";
+    _citytxtfld.text=@"";
+    _statetxtfld.text=@"";
+
 }
 
 - (IBAction)educancelbtn:(id)sender {

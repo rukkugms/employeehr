@@ -46,6 +46,10 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    
+    _docnametxt.text=@"";
+    _imagepreview.image=nil;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _ssnstring = [defaults objectForKey:@"ssn"];
   

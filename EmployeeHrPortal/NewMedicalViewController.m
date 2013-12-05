@@ -1001,4 +1001,9 @@ else{
     [_medicalconditinbtnlbl setTitle:@"Select" forState:UIControlStateNormal];
     _meddistxtfld.text=@"";
 }
+
+- (IBAction)medcancel:(id)sender {
+    _medicationtxtfld.text=@"";
+    _medicationsegment.selectedSegmentIndex=0;
+}
 @end

@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     [self.view addSubview:_webview];
-    _activity=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _activity=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     UIBarButtonItem*barbutton=[[UIBarButtonItem alloc]initWithCustomView:_activity];
     
     
