@@ -47,7 +47,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg.png" id="67">
-                                    <rect key="frame" x="0.0" y="0.0" width="1032" height="810"/>
+                                    <rect key="frame" x="-8" y="0.0" width="1032" height="810"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="State Issuing License:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="110">
@@ -214,6 +214,16 @@
                                         <outlet property="delegate" destination="-1" id="164"/>
                                     </connections>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qpH-9Y-mQm">
+                                    <rect key="frame" x="894" y="263" width="27" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="calendarimg.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="pickercalendar:" destination="-1" eventType="touchUpInside" id="1qH-8c-S43"/>
+                                    </connections>
+                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rectangle3.png" id="45">
                                     <rect key="frame" x="20" y="28" width="164" height="142"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -397,7 +407,7 @@ QWx0ZXJuYXRlIE51bWJlchAQEDo
                                     </connections>
                                 </button>
                                 <datePicker hidden="YES" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="176">
-                                    <rect key="frame" x="705" y="301" width="277" height="216"/>
+                                    <rect key="frame" x="727" y="331" width="277" height="216"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <date key="date" timeIntervalSinceReferenceDate="401703913.75047803">
                                         <!--2013-09-24 08:25:13 +0000-->
@@ -425,7 +435,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     </timeZone>
                                 </datePicker>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="178">
-                                    <rect key="frame" x="751" y="263" width="169" height="30"/>
+                                    <rect key="frame" x="751" y="263" width="135" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -465,6 +475,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </objects>
     <resources>
         <image name="bg.png" width="1024" height="748"/>
+        <image name="calendarimg.png" width="42" height="42"/>
         <image name="rectangle3.png" width="551" height="327"/>
         <image name="textbox.png" width="298" height="64"/>
     </resources>

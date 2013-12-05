@@ -63,12 +63,15 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
     
     
-    if (buttonIndex==0) {
+    if ([alertView.message isEqualToString:@"Really Logout?"]) {
         
+        
+        
+        if (buttonIndex==0) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
         
-    }
+        }}
     
     
 }

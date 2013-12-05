@@ -52,13 +52,17 @@
     
     
     
-    if (buttonIndex==0) {
+    if ([alertView.message isEqualToString:@"Really Logout?"]) {
+        
+        
+        
+        if (buttonIndex==0) {
         
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         
     }
-    
+    }
     
 }
 
