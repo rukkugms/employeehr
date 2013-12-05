@@ -22,6 +22,12 @@
     NSString *pickerstring;
     NSInteger stateidentifier;
     int x;
+    //phone no format
+    NSString *mobilenostring;
+    NSString *homenostring;
+    NSString *contactnostring;
+    NSString *alternatenostring;
+
 }
 @property(readwrite)NSInteger Applicantid;
 @property(nonatomic, weak) CKCalendarView *calendar;
@@ -75,6 +81,14 @@
 -(IBAction)selectlicenceissuestate:(id)sender;
 - (IBAction)pickercalendar:(id)sender;
 
+//phone no formatconnect
+@property(strong,nonatomic)NSString *connectmobile;
+@property(strong,nonatomic)NSString *connecthome;
+@property(strong,nonatomic)NSString *connectcontact;
+@property(strong,nonatomic)NSString *connectalternate;
+
+
+
 
 /*for iphone*/
 @property(strong,nonatomic)IBOutlet UIScrollView *scroll_iphone;
@@ -126,6 +140,8 @@
 
 @property(strong,nonatomic)IBOutlet UIImageView *imgvw;
 - (IBAction)uploadimage:(id)sender;
+
+
 
 
 @end

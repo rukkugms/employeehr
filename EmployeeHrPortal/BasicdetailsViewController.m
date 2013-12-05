@@ -187,10 +187,10 @@
 - (IBAction)continuebtn:(id)sender {
     
     [self UpdateApplicantData];
-    
-    
-    
+
 }
+
+
 -(void)picker1action{
     NSDate *date1  = _datepicker_iphone.date;
     
@@ -1548,12 +1548,12 @@ numberOfRowsInComponent:(NSInteger)component
     if(textField==_mobiletxtfld)
     {
         NSUInteger newLength = [_mobiletxtfld.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
     if(textField==_homenumbertxtfld)
     {
         NSUInteger newLength = [_homenumbertxtfld.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
 
     if(textField==_citytxtfld)
@@ -1585,7 +1585,7 @@ numberOfRowsInComponent:(NSInteger)component
     if(textField==_contactnumbtxtfld)
     {
         NSUInteger newLength = [_contactnumbtxtfld.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
     if(textField==_emailtxtfld)
     {
@@ -1596,7 +1596,7 @@ numberOfRowsInComponent:(NSInteger)component
     if(textField==_alternativenumtxtfld)
     {
         NSUInteger newLength = [_alternativenumtxtfld.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
 //    if(textField==_stateissuetxtfld)
 //    {
@@ -1622,12 +1622,12 @@ numberOfRowsInComponent:(NSInteger)component
     if(textField==_mobilenotext_iphone)
     {
         NSUInteger newLength = [_mobilenotext_iphone.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
     if(textField==_homenotxt_iphone)
     {
         NSUInteger newLength = [_homenotxt_iphone.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
     
     if(textField==_citytxt_iphone)
@@ -1659,7 +1659,7 @@ numberOfRowsInComponent:(NSInteger)component
     if(textField==_contactnotxt_iphone)
     {
         NSUInteger newLength = [_contactnotxt_iphone.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
     if(textField==_emailtxt_iphone)
     {
@@ -1670,7 +1670,7 @@ numberOfRowsInComponent:(NSInteger)component
     if(textField==_alternatenotxt_iphone)
     {
         NSUInteger newLength = [_alternatenotxt_iphone.text length] + [string length] - range.length;
-        return (newLength > 20) ? NO : YES;
+        return (newLength > 12) ? NO : YES;
     }
     if(textField==_stateissuetxt_iphone)
     {
@@ -1683,6 +1683,426 @@ numberOfRowsInComponent:(NSInteger)component
         
     //_picker.hidden=YES;
     return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if(textField==_mobiletxtfld)
+    {
+    mobilenostring=_mobiletxtfld.text;
+           if ([mobilenostring length]<10) {
+               if([mobilenostring isEqualToString:@""])
+               {
+                   
+               }
+               else
+               {
+
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+        
+        [alert show];
+        
+               }
+        
+    }
+    else
+    {
+        mobilenostring=_mobiletxtfld.text;
+        
+        
+        //checking a particular charector
+        // NSString *connectstring;
+        NSString*new=[mobilenostring substringWithRange:NSMakeRange(3, 1)];
+        NSString*new1=[mobilenostring substringWithRange:NSMakeRange(7, 1)];
+        
+        
+        
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        NSString *resultString = [[mobilenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        NSLog (@"Result: %@", resultString);
+        if ([resultString length]==9){
+            
+            
+            
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+        }
+        
+        
+        if ([mobilenostring length]==12) {
+            
+            
+            
+            
+            
+            
+            if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                _connectmobile=mobilenostring;
+            }
+            else
+            {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+            }
+            
+        }
+        
+        
+        
+        if ([resultString length]==10){
+            
+            
+            
+            
+            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+            NSLog(@"%@",subString);
+            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,3)];
+            NSLog(@"%@",substring2);
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(6,4)];
+            NSLog(@"%@",substring3);
+            _connectmobile=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",_connectmobile);
+            
+            
+            
+            
+            _mobiletxtfld.text=_connectmobile;
+            
+        }
+        
+        
+        
+        
+        
+        if ([resultString length]==11){
+            
+            
+            
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+        }
+        
+    }
+}
+    if(textField==_homenumbertxtfld)
+    {
+    
+    homenostring=_homenumbertxtfld.text;
+    
+    
+    if ([homenostring length]<10) {
+        if([homenostring isEqualToString:@""])
+        {
+            
+        }
+        else
+        {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+
+        }
+        
+        
+        
+    }
+    else
+    {
+        homenostring=_homenumbertxtfld.text;
+        
+        
+        //checking a particular charector
+        // NSString *connectstring;
+        NSString*new=[homenostring substringWithRange:NSMakeRange(3, 1)];
+        NSString*new1=[homenostring substringWithRange:NSMakeRange(7, 1)];
+        
+        
+        
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        NSString *resultString = [[homenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        NSLog (@"Result: %@", resultString);
+        if ([resultString length]==9){
+            
+            
+            
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+        }
+        
+        
+        if ([homenostring length]==12) {
+            
+            
+            
+            
+            
+            
+            if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                _connecthome=homenostring;
+            }
+            else
+            {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+            }
+            
+        }
+        
+        
+        
+        if ([resultString length]==10){
+            
+            
+            
+            
+            NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+            NSLog(@"%@",subString);
+            NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,3)];
+            NSLog(@"%@",substring2);
+            NSString *substring3=[resultString  substringWithRange:NSMakeRange(6,4)];
+            NSLog(@"%@",substring3);
+            _connecthome=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+            NSLog(@"%@",_connecthome);
+            
+            
+            
+            
+            _homenumbertxtfld.text=_connecthome;
+            
+        }
+        
+        
+        
+        
+        
+        if ([resultString length]==11){
+            
+            
+            
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+        }
+        
+    }
+    }
+
+    if(textField==_contactnumbtxtfld)
+    {
+        contactnostring=_contactnumbtxtfld.text;
+        if ([contactnostring length]<10) {
+            if([contactnostring isEqualToString:@""])
+            {
+                
+            }
+            else
+            {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            
+            [alert show];
+            
+            }
+            
+        }
+        else
+        {
+            contactnostring=_contactnumbtxtfld.text;
+            
+            
+            //checking a particular charector
+            // NSString *connectstring;
+            NSString*new=[contactnostring substringWithRange:NSMakeRange(3, 1)];
+            NSString*new1=[contactnostring substringWithRange:NSMakeRange(7, 1)];
+            
+            
+            
+            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+            NSString *resultString = [[contactnostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+            NSLog (@"Result: %@", resultString);
+            if ([resultString length]==9){
+                
+                
+                
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+            }
+            
+            
+            if ([contactnostring length]==12) {
+                
+                
+                
+                
+                
+                
+                if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                    _connectcontact=contactnostring;
+                }
+                else
+                {
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    
+                    [alert show];
+                }
+                
+            }
+            
+            
+            
+            if ([resultString length]==10){
+                
+                
+                
+                
+                NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+                NSLog(@"%@",subString);
+                NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,3)];
+                NSLog(@"%@",substring2);
+                NSString *substring3=[resultString  substringWithRange:NSMakeRange(6,4)];
+                NSLog(@"%@",substring3);
+                _connectcontact=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+                NSLog(@"%@",_connectcontact);
+                
+                
+                
+                
+                _contactnumbtxtfld.text=_connectcontact;
+                
+            }
+            
+            
+            
+            
+            
+            if ([resultString length]==11){
+                
+                
+                
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+            }
+            
+        }
+
+    }
+    if(textField==_alternativenumtxtfld)
+    {
+        
+        alternatenostring=_alternativenumtxtfld.text;
+        
+        
+        if ([alternatenostring length]<10) {
+            if ([alternatenostring isEqualToString:@""])
+            {
+            
+            } else
+            {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+
+            }
+            
+            
+            
+        }
+        else
+        {
+            alternatenostring=_alternativenumtxtfld.text;
+            
+            
+            //checking a particular charector
+            // NSString *connectstring;
+            NSString*new=[alternatenostring substringWithRange:NSMakeRange(3, 1)];
+            NSString*new1=[alternatenostring substringWithRange:NSMakeRange(7, 1)];
+            
+            
+            
+            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+            NSString *resultString = [[alternatenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+            NSLog (@"Result: %@", resultString);
+            if ([resultString length]==9){
+                
+                
+                
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+            }
+            
+            
+            if ([alternatenostring length]==12) {
+                
+                
+                
+                
+                
+                
+                if ([new  isEqualToString:@"-"]&&[new1  isEqualToString:@"-"]) {
+                    _connectalternate=alternatenostring;
+                }
+                else
+                {
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    
+                    [alert show];
+                }
+                
+            }
+            
+            
+            
+            if ([resultString length]==10){
+                
+                
+                
+                
+                NSString *subString = [resultString substringWithRange:NSMakeRange(0,3)];
+                NSLog(@"%@",subString);
+                NSString *substring2=[resultString  substringWithRange:NSMakeRange(3,3)];
+                NSLog(@"%@",substring2);
+                NSString *substring3=[resultString  substringWithRange:NSMakeRange(6,4)];
+                NSLog(@"%@",substring3);
+                _connectalternate=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
+                NSLog(@"%@",_connectalternate);
+                
+                
+                
+                
+                _alternativenumtxtfld.text=_connectalternate;
+                
+            }
+            
+            
+            
+            
+            
+            if ([resultString length]==11){
+                
+                
+                
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+            }
+            
+        }
+    }
+
 }
 #pragma mark - Uploadimage webservice
 
@@ -1888,6 +2308,18 @@ finishedSavingWithError:(NSError *)error
       [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+//camera in lanscapemode
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
 
 
 @end
