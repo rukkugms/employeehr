@@ -166,6 +166,14 @@
     [self getstates];
 }
 
+- (IBAction)pickercalendar:(id)sender {
+    [_datepicker_ipad resignFirstResponder];
+
+    _datepicker_ipad.hidden=NO;
+    
+   [_datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
+}
+
 - (IBAction)countrybtn:(id)sender {
 }
 
@@ -183,6 +191,40 @@
     
     
 }
+-(void)picker1action{
+    NSDate *date1  = _datepicker_iphone.date;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateStyle = NSDateFormatterMediumStyle;
+    //    dateFormat.dateFormat=@"MM/dd/yyyy";
+    dateFormat.dateFormat=@"MM-dd-yyyy";
+    _dobtext_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+    _datepicker_iphone.hidden=YES;
+    
+}
+-(void)picker2action{
+    NSDate *date1  = _datepicker_ipad.date;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateStyle = NSDateFormatterMediumStyle;
+    //    dateFormat.dateFormat=@"MM/dd/yyyy";
+    dateFormat.dateFormat=@"MM-dd-yyyy";
+    _datetextfld_ipad.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
+    _datepicker_ipad.hidden=YES;
+    
+}
+
+
+-(IBAction)update_iphone:(id)sender
+{
+    [self UpdateApplicantData];
+    
+}
+-(IBAction)cancel_iphone:(id)sender
+{
+    
+}
+
 
 - (IBAction)cancelbtn:(id)sender {
 //    [_sufixbtnlbl setTitle:@"" forState:UIControlStateNormal];
@@ -197,6 +239,41 @@
 //    _mobiletxtfld.text=@"";
 //    _homenumbertxtfld.text=@"";
 }
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+-(IBAction)selectsuffix_iphone:(id)sender
+{   pickerstring=@"suff";
+    _suffixpicker.hidden=NO;
+    [_suffixpicker reloadAllComponents];
+}
+-(IBAction)selectstate_iphone:(id)sender
+{
+    
+    pickerstring=@"state";
+    
+    _statepicker.hidden=NO;
+    [_statepicker reloadAllComponents];
+    ;
+}
+- (IBAction)uploadimage:(id)sender {
+    UIImage *imagename =_imgvw.image;
+    NSData *data = UIImagePNGRepresentation(imagename);
+    
+    // NSData *data = UIImageJPEGRepresentation(image, 1.0);
+    
+    
+    _encodedString = [data base64EncodedString];
+    
+    NSLog(@"result%@",_encodedString);
+    
+    [self UploadImage];
+    
+    
+    
+}
+
 
 #pragma mark - Tableview
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -1348,6 +1425,8 @@
     
 }
 
+
+#pragma mark - PickerAction
 - (NSInteger)numberOfComponentsInPickerView:
 (UIPickerView *)pickerView
 {
@@ -1399,24 +1478,9 @@ numberOfRowsInComponent:(NSInteger)component
    
 }
 
--(IBAction)textFieldReturn:(id)sender
-{
-    [sender resignFirstResponder];
-}
--(IBAction)selectsuffix_iphone:(id)sender
-{   pickerstring=@"suff";
-    _suffixpicker.hidden=NO;
-    [_suffixpicker reloadAllComponents];
-}
--(IBAction)selectstate_iphone:(id)sender
-{
-    
-    pickerstring=@"state";
-    
-    _statepicker.hidden=NO;
-    [_statepicker reloadAllComponents];
-;
-}
+
+
+#pragma mark-Textfield Delegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
     
@@ -1430,14 +1494,14 @@ numberOfRowsInComponent:(NSInteger)component
         
         [_datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
     }
-    if (textField==_datetextfld_ipad) {
-        
-        [_datetextfld_ipad resignFirstResponder];
-        
-        _datepicker_ipad.hidden=NO;
-        
-        [_datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
-    }
+//    if (textField==_datetextfld_ipad) {
+//        
+//        [_datetextfld_ipad resignFirstResponder];
+//        
+//        _datepicker_ipad.hidden=NO;
+//        
+//        [_datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
+//    }
     
 
     //_picker.hidden=YES;
@@ -1454,16 +1518,16 @@ numberOfRowsInComponent:(NSInteger)component
         
         [  _datepicker_iphone addTarget:self action:@selector(picker1action) forControlEvents:UIControlEventValueChanged];
     }
-    if (textField==_datetextfld_ipad) {
-        
-        
-        [_datepicker_ipad resignFirstResponder];
-        
-        _datepicker_ipad.hidden=NO;
-        
-        
-        [  _datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
-    }
+//    if (textField==_datetextfld_ipad) {
+//        
+//        
+//        [_datepicker_ipad resignFirstResponder];
+//        
+//        _datepicker_ipad.hidden=NO;
+//        
+//        
+//        [  _datepicker_ipad addTarget:self action:@selector(picker2action) forControlEvents:UIControlEventValueChanged];
+//    }
 
     if(textField==_firstnametxtfld)
     {
@@ -1620,39 +1684,6 @@ numberOfRowsInComponent:(NSInteger)component
     //_picker.hidden=YES;
     return YES;
 }
--(void)picker1action{
-    NSDate *date1  = _datepicker_iphone.date;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    dateFormat.dateStyle = NSDateFormatterMediumStyle;
-//    dateFormat.dateFormat=@"MM/dd/yyyy";
-    dateFormat.dateFormat=@"MM-dd-yyyy";
-    _dobtext_iphone.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
-    _datepicker_iphone.hidden=YES;
-    
-}
--(void)picker2action{
-    NSDate *date1  = _datepicker_ipad.date;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    dateFormat.dateStyle = NSDateFormatterMediumStyle;
-    //    dateFormat.dateFormat=@"MM/dd/yyyy";
-   dateFormat.dateFormat=@"MM-dd-yyyy";
-    _datetextfld_ipad.text = [NSString stringWithFormat:@"%@",[dateFormat stringFromDate:date1]];
-    _datepicker_ipad.hidden=YES;
-    
-}
-
-
--(IBAction)update_iphone:(id)sender
-{
-    [self UpdateApplicantData];
-
-}
--(IBAction)cancel_iphone:(id)sender
-{
-    
-}
 #pragma mark - Uploadimage webservice
 
 
@@ -1798,6 +1829,7 @@ numberOfRowsInComponent:(NSInteger)component
                _newMedia = YES;
     }
 }
+#pragma mark-ImagePicker
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -1858,20 +1890,4 @@ finishedSavingWithError:(NSError *)error
 }
 
 
-- (IBAction)uploadimage:(id)sender {
-    UIImage *imagename =_imgvw.image;
-    NSData *data = UIImagePNGRepresentation(imagename);
-    
-   // NSData *data = UIImageJPEGRepresentation(image, 1.0);
-
-    
-    _encodedString = [data base64EncodedString];
-    
-    NSLog(@"result%@",_encodedString);
-    
-    [self UploadImage];
-
-    
-    
-}
 @end

@@ -64,13 +64,17 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
      
     
-    
+    if ([alertView.message isEqualToString:@"Really Logout?"]) {
+        
+        
+        
+        
     if (buttonIndex==0) {
         
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
         
-    }
+    }}
     
     
 }

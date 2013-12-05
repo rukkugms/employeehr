@@ -18,7 +18,6 @@
 		64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE217D895DA00503D23 /* left_arrow@2x.png */; };
 		64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */; };
 		64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */; };
-		641E3753184F3D1F00DB5890 /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 641E3752184F3D1F00DB5890 /* cam.png */; };
 		646AC8D6184D988500BF0A36 /* requirementcell_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646AC8D5184D988500BF0A36 /* requirementcell_iphone.xib */; };
 		649069D9180FFD2A00944C83 /* UploadDocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649069D7180FFD2A00944C83 /* UploadDocViewController.m */; };
 		649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649069D8180FFD2A00944C83 /* UploadDocViewController.xib */; };
@@ -140,6 +139,7 @@
 		D4F92DF21844637400B689CE /* kontract80.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F92DF11844637400B689CE /* kontract80.png */; };
 		D4F94EEF17E024C8005D0AFE /* SecondRaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F94EED17E024C8005D0AFE /* SecondRaceViewController.m */; };
 		D4F94EF017E024C8005D0AFE /* SecondRaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4F94EEE17E024C8005D0AFE /* SecondRaceViewController.xib */; };
+		D4FF09AE1850405F008E568D /* calendarimg.png in Resources */ = {isa = PBXBuildFile; fileRef = D4FF09AD1850405F008E568D /* calendarimg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,7 +154,6 @@
 		64085EE217D895DA00503D23 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		64085EE317D895DA00503D23 /* appbar.checkmark.thick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.png; sourceTree = "<group>"; };
 		64085EE417D895DA00503D23 /* appbar.checkmark.thick.unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.checkmark.thick.unchecked.png; sourceTree = "<group>"; };
-		641E3752184F3D1F00DB5890 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		646AC8D5184D988500BF0A36 /* requirementcell_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requirementcell_iphone.xib; sourceTree = "<group>"; };
 		649069D6180FFD2A00944C83 /* UploadDocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadDocViewController.h; sourceTree = "<group>"; };
 		649069D7180FFD2A00944C83 /* UploadDocViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadDocViewController.m; sourceTree = "<group>"; };
@@ -315,6 +314,7 @@
 		D4F94EEC17E024C8005D0AFE /* SecondRaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondRaceViewController.h; sourceTree = "<group>"; };
 		D4F94EED17E024C8005D0AFE /* SecondRaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondRaceViewController.m; sourceTree = "<group>"; };
 		D4F94EEE17E024C8005D0AFE /* SecondRaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondRaceViewController.xib; sourceTree = "<group>"; };
+		D4FF09AD1850405F008E568D /* calendarimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendarimg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +337,7 @@
 		D4144322184F310E001E3E32 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				D4FF09AD1850405F008E568D /* calendarimg.png */,
 				D4F92DED1844538900B689CE /* kontract40.png */,
 				D4144323184F310E001E3E32 /* button.png */,
 				D4144324184F310E001E3E32 /* textbox.png */,
@@ -503,7 +504,6 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				641E3752184F3D1F00DB5890 /* cam.png */,
 				D418D983183B76ED001C7B0E /* logo.png */,
 				64932185182B5DB5006B6904 /* calender.png */,
 				649069E3180FFFDE00944C83 /* Untitled.png */,
@@ -673,6 +673,7 @@
 				D40F779B18436B84007DCB92 /* kontractlogo76.png in Resources */,
 				D4F92DEE1844538900B689CE /* kontract40.png in Resources */,
 				64085EEA17D895DA00503D23 /* right_arrow@2x.png in Resources */,
+				D4FF09AE1850405F008E568D /* calendarimg.png in Resources */,
 				D4F92DE61844536B00B689CE /* kontract50.png in Resources */,
 				D4144328184F4048001E3E32 /* ios7-camera-icon.png in Resources */,
 				64085EEB17D895DA00503D23 /* left_arrow.png in Resources */,
@@ -712,7 +713,6 @@
 				D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */,
 				649323B21810F52400E46BDC /* webViewController.xib in Resources */,
 				649323B41810FA2C00E46BDC /* UploadDocViewController_iphone.xib in Resources */,
-				641E3753184F3D1F00DB5890 /* cam.png in Resources */,
 				D482A575182B697D007280CA /* KontractViewController.xib in Resources */,
 				D482A577182B6B89007280CA /* Kontractviewcontroller_iphone.xib in Resources */,
 			);
