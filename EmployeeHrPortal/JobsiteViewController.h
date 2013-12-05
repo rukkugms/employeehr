@@ -23,6 +23,7 @@
     NSInteger webtype;
     NSInteger skillindex;
     NSInteger reldint;
+    NSIndexPath*path;
     
     
 }

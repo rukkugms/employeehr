@@ -436,7 +436,13 @@
         
               if (tableView==_listtable||tableView==_jobsitetable_iphone) {
             [[NSBundle mainBundle]loadNibNamed:@"JobsiteViewControlleripadcell" owner:self options:nil];
-            cell.accessoryType = UITableViewCellAccessoryNone;
+//                    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+//                             cell.accessoryType = UITableViewCellAccessoryNone;
+//                         } else {
+//                             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//                        }
+
+    cell.accessoryType = UITableViewCellAccessoryNone;
             cell=_listtablecell;
             
         }
@@ -533,6 +539,9 @@
                     buttonclicked=1;
                 }
             }
+            else{
+                 cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             
             
         }
@@ -622,6 +631,7 @@
         _selectedrow=@"Selected";
         _nw=@"";
         selectedcell=indexPath.row;
+        
         [_listtable reloadData];
         
     }
