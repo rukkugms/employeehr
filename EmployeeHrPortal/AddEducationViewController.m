@@ -211,6 +211,14 @@
 - (IBAction)savebtn:(id)sender {
     [self InsertApplicantEducation];
     
+    [_edunamelbl setTitle:@"Select" forState:UIControlStateNormal];
+    _yrstxtfld.text=@"";
+    _institutenametxtfld.text=@"";
+    _citytxtfld.text=@"";
+    _statetxtfld.text=@"";
+    _edupicker.hidden=YES;
+
+    
 }
 
 - (IBAction)cancelbtn:(id)sender {

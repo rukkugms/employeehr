@@ -48,9 +48,7 @@
     [super viewWillAppear:animated];
     
     
-    _docnametxt.text=@"";
-    _imagepreview.image=nil;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _ssnstring = [defaults objectForKey:@"ssn"];
   
 
@@ -189,7 +187,7 @@ finishedSavingWithError:(NSError *)error
 
 -(void)UploadDocs{
  
-
+    newx=1;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
 
@@ -256,6 +254,7 @@ finishedSavingWithError:(NSError *)error
     }
 else
     {
+          newx=1;
         recordResults = FALSE;
         NSString *soapMessage;
         
@@ -318,7 +317,7 @@ else
 }
 -(void)selectdocs
 {
-    
+      newx=2;
     recordResults = FALSE;
     NSString *soapMessage;
     
@@ -395,6 +394,16 @@ else
 		
 	}
 	
+    
+    if (newx==1) {
+        _docnametxt.text=@"";
+        _imagepreview.image=[UIImage imageNamed:@"logo.png"];
+        
+
+    }
+    else{
+        
+    }
 	_xmlParser = [[NSXMLParser alloc] initWithData: _webData];
 	[_xmlParser setDelegate:(id)self];
 	[_xmlParser setShouldResolveExternalEntities: YES];

@@ -133,6 +133,9 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
 
 - (IBAction)savebtn:(id)sender {
     [self insertMedicalcondition];
+    [_medicalconditinbtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+    _meddistxtfld.text=@"";
+
 }
 
 - (IBAction)medcntdnbtn:(id)sender {

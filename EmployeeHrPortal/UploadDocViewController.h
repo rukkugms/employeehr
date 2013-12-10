@@ -14,6 +14,7 @@
 
 @interface UploadDocViewController : UIViewController<UIImagePickerControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     BOOL  recordResults;
+    NSInteger newx;
 }
 @property (readwrite)NSInteger applicantid;
 
