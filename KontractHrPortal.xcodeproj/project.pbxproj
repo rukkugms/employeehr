@@ -868,7 +868,7 @@
 				GCC_PREFIX_HEADER = "EmployeeHrPortal/KontractHrPortal-Prefix.pch";
 				INFOPLIST_FILE = "EmployeeHrPortal/KontractHrPortal-Info.plist";
 				PRODUCT_NAME = KontractHrPortal;
-				PROVISIONING_PROFILE = "8FE740EB-9C0D-4EEE-AF52-D3018D76D44E";
+				PROVISIONING_PROFILE = "515F9100-5996-4D7E-8505-47C6719C384E";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -884,7 +884,7 @@
 				GCC_PREFIX_HEADER = "EmployeeHrPortal/KontractHrPortal-Prefix.pch";
 				INFOPLIST_FILE = "EmployeeHrPortal/KontractHrPortal-Info.plist";
 				PRODUCT_NAME = KontractHrPortal;
-				PROVISIONING_PROFILE = "8FE740EB-9C0D-4EEE-AF52-D3018D76D44E";
+				PROVISIONING_PROFILE = "515F9100-5996-4D7E-8505-47C6719C384E";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
