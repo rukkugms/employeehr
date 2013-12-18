@@ -24,7 +24,8 @@
     NSInteger skillindex;
     NSInteger reldint;
     NSIndexPath*path;
-    
+    NSInteger newcell;
+    NSString* selectedjobsite;
     
 }
 @property(readwrite)  NSInteger Applicantid;

@@ -517,11 +517,12 @@
         
         
         if ([_selectedrow isEqualToString:@"Selected"]) {
-            
+            //newcell=selectedcell;
             if(indexPath.row == selectedcell)
             {
                 if(cell.accessoryType==UITableViewCellAccessoryNone)
                 {
+                   
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                     //cell.selected = NO;
                     _clickedbtnlbl.enabled=NO;
@@ -635,14 +636,16 @@
         _selectedrow=@"Selected";
         _nw=@"";
         selectedcell=indexPath.row;
+        newcell=1;
         
-        [_listtable reloadData];
+       [_listtable reloadData];
         
     }
     
     if (tableView==_jobsitetable_iphone) {
         _selectedrow=@"Selected";
         _nw=@"";
+         newcell=1;
         selectedcell=indexPath.row;
         [_jobsitetable_iphone reloadData];
 
@@ -984,7 +987,15 @@
     NSString *jobsite;
     if(buttonclicked==0)
     {
+        if (newcell==1) {
+            
+        
         jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
+            newcell=0;
+        }
+        else{
+            jobsite=selectedjobsite;
+        }
         
     }
     else if(buttonclicked==1)
@@ -1007,15 +1018,7 @@
 //
         
         
-        if ([skill isEqualToString:@"(null)"]){
-            skill=@"0";
-        }
-            
-        if ([craft isEqualToString:@"(null)"]){
-            craft=@"0";
-        }
-        
-
+       
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -1103,7 +1106,15 @@
         NSString *jobsite;
         if(buttonclicked==0)
         {
-            jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
+            if (newcell==1) {
+                
+                
+                jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
+                newcell=0;
+            }
+            else{
+                jobsite=selectedjobsite;
+            }
             
         }
         else if(buttonclicked==1)
@@ -1124,13 +1135,6 @@
         NSString *date1 =[dateArray objectAtIndex:0];
         NSLog(@"skill%@",skill);
         
-        if ([skill isEqualToString:@"(null)"]){
-            skill=@"0";
-        }
-        
-        if ([craft isEqualToString:@"(null)"]){
-            craft=@"0";
-        }
         
 
         
@@ -1568,9 +1572,9 @@
     {
             _jobsite=[[jobsite alloc]init];
         recordResults = FALSE;
-        _jobsite.jobsiteid=_soapResults;
+       
         
-        
+        selectedjobsite=_soapResults;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:_soapResults forKey:@"jobsiteid"];
         
@@ -1588,6 +1592,7 @@
         }
         else{
             _nw=@"SelectApplicant";
+             _jobsite.jobsiteid=_soapResults;
 
             
         }
