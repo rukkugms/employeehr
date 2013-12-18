@@ -279,9 +279,8 @@ numberOfRowsInComponent:(NSInteger)component
         
         [_name resignFirstResponder];
         
-//       _datepicker.hidden=NO;
-//        
-//        [_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
+       //_datepicker.hidden=NO;
+            //  [_datepicker addTarget:self action:@selector(pickeraction) forControlEvents:UIControlEventValueChanged];
     }
     //_picker.hidden=YES;
     return YES;

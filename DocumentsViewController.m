@@ -209,8 +209,12 @@
     NSString *header=@"http://";
     _DoculistArray=[_DocumentDictionary allKeys];
     NSString *urlstring=[NSString stringWithFormat:@"%@%@",header,[_DocumentDictionary objectForKey:[_DoculistArray objectAtIndex:indexPath.row]]];
+   // NSString *urlstring=[NSString stringWithFormat:@"%@",@"http://www.apple.com"];
+    // NSString *urlstring=[NSString stringWithFormat:@"%@",@" http://arvin.kontract360.com/Folder/Root/HR/1004/huffy%20futz_444-44-4444.pdf"];
     
+   
     NSLog(@"reportname%@",urlstring);
+    
     NSURL *targetURL = [NSURL URLWithString:urlstring];
     NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
     [_webview loadRequest:request];
@@ -220,6 +224,7 @@
     
 }
 #pragma mark-Webview delegate
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     [_activityndictr stopAnimating];

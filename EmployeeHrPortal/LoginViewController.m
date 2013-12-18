@@ -52,6 +52,8 @@
     [super viewWillAppear:animated];
     _ssntxtfld.text=@"";
     _passwordtxtfld.text=@"";
+    _SSNtxtfld_iphone.text=@"";
+    _passwordtxtfld_iphone.text=@"";
 }
 - (void)didReceiveMemoryWarning
 {
@@ -61,6 +63,13 @@
 -(void)processLogout:(NSNotification *)aNotification{
     [self.navigationController popToRootViewControllerAnimated:YES];
     //[NSUserDefaults standardUserDefaults]
+}
+
+- (IBAction)cancelbtn_iphone:(id)sender {
+    
+    _SSNtxtfld_iphone.text=@"";
+    _passwordtxtfld_iphone.text=@"";
+
 }
 
 #pragma mark - Textfield Delegate
@@ -264,6 +273,10 @@
     NSLog(@"length%d",[_connectstring length]);
       recordResults = FALSE;
     NSString *soapMessage;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:_connectstring forKey:@"ssn"];
+    [defaults synchronize];
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
          
                 
@@ -495,7 +508,7 @@
              DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
             viewcontroller8.applicantid=Applicantid;
             UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
-        NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,coursenav,racenav,docnav,nil];
+        NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,racenav,docnav,nil];
               //NSArray *controllers = [NSArray arrayWithObjects: viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,viewcontroller8,nil];
         self.tabbarcntrl.viewControllers = controllers;
         
@@ -537,7 +550,7 @@
             ShowDocViewController *viewcontroller9=[[ShowDocViewController alloc]initWithNibName:@"ShowDocViewController" bundle:nil];
             viewcontroller9.applicantid=Applicantid;
              UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller9];
-             NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,navedu,mednav,empnav,coursenav,racenav,docnav,nil];
+             NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,navedu,mednav,empnav,racenav,docnav,nil];
              self.tabbarcntrl.viewControllers = controllers;
              
              

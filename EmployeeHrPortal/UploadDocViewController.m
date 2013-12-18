@@ -150,8 +150,10 @@ finishedSavingWithError:(NSError *)error
     
     // NSData *data = UIImageJPEGRepresentation(image, 1.0);
     
-    CGSize pageSize = CGSizeMake(700, 1004);
-    CGRect imageBoundsRect =CGRectMake(200, 200, 700, 700);
+    CGSize pageSize = CGSizeMake(602, 668);
+    CGRect imageBoundsRect =CGRectMake(10, 0, 602, 668);
+//    CGSize pageSize = CGSizeMake(700, 1004);
+//    CGRect imageBoundsRect =CGRectMake(200, 200, 700, 700);
     
     
     NSData *pdfData = [PDFImageConverter convertImageToPDF:Photo
@@ -471,8 +473,8 @@ else
         
     
     
-    CGSize pageSize = CGSizeMake(700, 1004);
-    CGRect imageBoundsRect =CGRectMake(200, 200, 700, 700);
+    CGSize pageSize = CGSizeMake(320,568);
+    CGRect imageBoundsRect =CGRectMake(100, 100, 320, 568);
     
     
     NSData *pdfData = [PDFImageConverter convertImageToPDF:imagename
@@ -497,4 +499,8 @@ else
 - (IBAction)closebtn:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
   }
+
+-(IBAction)returnkey:(id)sender{
+    [sender resignFirstResponder];
+}
 @end

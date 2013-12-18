@@ -937,7 +937,7 @@
     }
     if(textField==_positionheldtxt)
     {
-        NSUInteger newLength = [_reasonforleavingtxt.text length] + [string length] - range.length;
+        NSUInteger newLength = [_positionheldtxt.text length] + [string length] - range.length;
         return (newLength > 50) ? NO : YES;
     }
     

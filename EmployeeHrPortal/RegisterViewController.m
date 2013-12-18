@@ -34,14 +34,28 @@
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-  //  self.navigationController.navigationBar.hidden=YES;
+    self.navigationController.navigationBar.hidden=YES;
     
-    //self.navigationItem.hidesBackButton=YES;
+    // self.navigationItem.hidesBackButton=YES;
     [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processLogout:) name:@"logout" object:nil];
+    
+    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
+    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
+    
+    
+    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+    self.navigationItem.hidesBackButton=YES;
 }
 -(void)processLogout:(NSNotification *)aNotification{
     [self.navigationController popToRootViewControllerAnimated:YES];
     //[NSUserDefaults standardUserDefaults]
+}
+
+- (IBAction)cancelbtn_iphone:(id)sender {
+    _Ssntxtfld_iphone.text=@"";
+    _passwdtxtfld_iphone.text=@"";
+    _confirmpasswrd_iphone.text=@"";
 }
 
 - (IBAction)cancelbtn:(id)sender {
@@ -417,7 +431,10 @@
     NSString *soapMessage;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 
-    
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:_connectstring forKey:@"ssn"];
+        [defaults synchronize];
+
     soapMessage = [NSString stringWithFormat:
                    
                    @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -465,6 +482,9 @@
     }
  else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
  {
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+     [defaults setObject:_connectstring forKey:@"ssn"];
+     [defaults synchronize];
      soapMessage = [NSString stringWithFormat:
                     
                     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -742,6 +762,7 @@
                   DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
                  
                   UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+                  viewcontroller8.applicantid=Applicantid;
                   NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,edunav,mednav,empnav,coursenav,racenav,docnav,nil];
                   self.tabbarcntrl.viewControllers = controllers;
                   
@@ -781,7 +802,7 @@
                 ShowDocViewController *viewcontroller9=[[ShowDocViewController alloc]initWithNibName:@"ShowDocViewController" bundle:nil];
                 UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller9];
                
-                NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,edunav,mednav,empnav,coursenav,racenav,docnav,nil];
+                NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,edunav,mednav,empnav,racenav,docnav,nil];
                 self.tabbarcntrl.viewControllers = controllers;
                 
                 
@@ -863,7 +884,7 @@ if([elementName isEqualToString:@"result"])
         
     }
     else         {
-        ssnstring=_Ssntxtfld.text;
+        ssnstring=_Ssntxtfld_iphone.text;
         
         
         //checking a particular charector

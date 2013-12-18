@@ -42,9 +42,10 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSString *header=@"http://";
-    NSString *urlstring=[NSString stringWithFormat:@"%@%@",header,_docpdf];
     
+    NSString *header=@"http://";
+   // NSString *urlstring=[NSString stringWithFormat:@"%@%@",header,_docpdf];
+     NSString *urlstring=[NSString stringWithFormat:@"%@%@",header,_docpdf];
     NSLog(@"reportname%@",urlstring);
     NSURL *targetURL = [NSURL URLWithString:urlstring];
     NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];

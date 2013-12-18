@@ -29,4 +29,6 @@
 @property(strong,nonatomic)NSMutableDictionary *docspathdict;
 @property(strong,nonatomic)NSString *doc;
 -(IBAction)adddocument:(id)sender;
+-(IBAction)returnkey:(id)sender;
+
 @end

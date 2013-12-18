@@ -50,5 +50,6 @@
 -(IBAction)textfldshouldreturn:(id)sender;
 -(void)processLogout:(NSNotification *)aNotification;
 
+- (IBAction)cancelbtn_iphone:(id)sender;
 
 @end

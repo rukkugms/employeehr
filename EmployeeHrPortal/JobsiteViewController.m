@@ -601,6 +601,10 @@
                 
                 
             }
+                else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+
         }
 
             
@@ -1003,6 +1007,15 @@
 //
         
         
+        if ([skill isEqualToString:@"(null)"]){
+            skill=@"0";
+        }
+            
+        if ([craft isEqualToString:@"(null)"]){
+            craft=@"0";
+        }
+        
+
     
     soapMessage = [NSString stringWithFormat:
                    
@@ -1109,8 +1122,17 @@
         NSArray *dateArray=[[NSArray alloc]init];
         dateArray=[new componentsSeparatedByString:@" "];
         NSString *date1 =[dateArray objectAtIndex:0];
+        NSLog(@"skill%@",skill);
         
+        if ([skill isEqualToString:@"(null)"]){
+            skill=@"0";
+        }
         
+        if ([craft isEqualToString:@"(null)"]){
+            craft=@"0";
+        }
+        
+
         
         soapMessage = [NSString stringWithFormat:
                        

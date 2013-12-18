@@ -98,6 +98,9 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="cancelbtn_iphone:" destination="-1" eventType="touchUpInside" id="9jR-oC-Ard"/>
+                            </connections>
                         </button>
                     </subviews>
                 </scrollView>

@@ -335,7 +335,7 @@ QWx0ZXJuYXRlIE51bWJlchAQEDo
                                         <outlet property="delegate" destination="-1" id="169"/>
                                     </connections>
                                 </textField>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="68">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="whitecameraicon.png" id="68">
                                     <rect key="frame" x="37" y="42" width="131" height="108"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -478,5 +478,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="calendarimg.png" width="42" height="42"/>
         <image name="rectangle3.png" width="551" height="327"/>
         <image name="textbox.png" width="298" height="64"/>
+        <image name="whitecameraicon.png" width="168" height="168"/>
     </resources>
 </document>

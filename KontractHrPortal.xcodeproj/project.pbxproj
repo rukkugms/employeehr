@@ -54,10 +54,12 @@
 		D4144325184F310E001E3E32 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144323184F310E001E3E32 /* button.png */; };
 		D4144326184F310E001E3E32 /* textbox.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144324184F310E001E3E32 /* textbox.png */; };
 		D4144328184F4048001E3E32 /* ios7-camera-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144327184F4048001E3E32 /* ios7-camera-icon.png */; };
+		D41555B918606497007677E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E100CD17D8686F006336F8 /* QuartzCore.framework */; };
 		D418D984183B76ED001C7B0E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D418D983183B76ED001C7B0E /* logo.png */; };
 		D482A574182B697D007280CA /* KontractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D482A572182B697D007280CA /* KontractViewController.m */; };
 		D482A575182B697D007280CA /* KontractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A573182B697D007280CA /* KontractViewController.xib */; };
 		D482A577182B6B89007280CA /* Kontractviewcontroller_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D482A576182B6B89007280CA /* Kontractviewcontroller_iphone.xib */; };
+		D488EAFF1861A457004D86F5 /* whitecameraicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D488EAFE1861A457004D86F5 /* whitecameraicon.png */; };
 		D4C7CD3117E9B3F000484F94 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3017E9B3F000484F94 /* Base64.m */; };
 		D4C7CD3417E9B40000484F94 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7CD3317E9B40000484F94 /* NSData+Base64.m */; };
 		D4C7CD3617E9B5AA00484F94 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */; };
@@ -114,7 +116,6 @@
 		D4E100C517D861C5006336F8 /* Drugmdel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100BD17D861C5006336F8 /* Drugmdel.m */; };
 		D4E100C617D861C5006336F8 /* Detailcourse.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100BF17D861C5006336F8 /* Detailcourse.m */; };
 		D4E100C917D861CE006336F8 /* Coursemdl.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100C817D861CE006336F8 /* Coursemdl.m */; };
-		D4E100CE17D8686F006336F8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E100CD17D8686F006336F8 /* QuartzCore.framework */; };
 		D4E100D017D868C6006336F8 /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100CF17D868C6006336F8 /* CKCalendarView.m */; };
 		D4E100E117D886B8006336F8 /* NewMedicalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100D317D8868F006336F8 /* NewMedicalViewController.m */; };
 		D4E100E217D886B9006336F8 /* NewMedicalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E100D417D88690006336F8 /* NewMedicalViewController.xib */; };
@@ -201,6 +202,7 @@
 		D482A572182B697D007280CA /* KontractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KontractViewController.m; sourceTree = "<group>"; };
 		D482A573182B697D007280CA /* KontractViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KontractViewController.xib; sourceTree = "<group>"; };
 		D482A576182B6B89007280CA /* Kontractviewcontroller_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Kontractviewcontroller_iphone.xib; sourceTree = "<group>"; };
+		D488EAFE1861A457004D86F5 /* whitecameraicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitecameraicon.png; sourceTree = "<group>"; };
 		D4C7CD2F17E9B3F000484F94 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		D4C7CD3017E9B3F000484F94 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		D4C7CD3217E9B40000484F94 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -322,9 +324,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41555B918606497007677E8 /* QuartzCore.framework in Frameworks */,
 				D4C7CD3817E9B5C500484F94 /* AssetsLibrary.framework in Frameworks */,
 				D4C7CD3617E9B5AA00484F94 /* MobileCoreServices.framework in Frameworks */,
-				D4E100CE17D8686F006336F8 /* QuartzCore.framework in Frameworks */,
 				D4E1005417D84F8B006336F8 /* UIKit.framework in Frameworks */,
 				D4E1005617D84F8B006336F8 /* Foundation.framework in Frameworks */,
 				D4E1005817D84F8B006336F8 /* CoreGraphics.framework in Frameworks */,
@@ -366,10 +368,10 @@
 				D4C7CD3217E9B40000484F94 /* NSData+Base64.h */,
 				D4C7CD3017E9B3F000484F94 /* Base64.m */,
 				D4144322184F310E001E3E32 /* icons */,
+				D4E1008817D851E5006336F8 /* Images */,
 				D4C7CD3317E9B40000484F94 /* NSData+Base64.m */,
 				D4E1005917D84F8B006336F8 /* EmployeeHrPortal */,
 				D4E1005217D84F8B006336F8 /* Frameworks */,
-				D4E1008817D851E5006336F8 /* Images */,
 				D4E1009717D85A0C006336F8 /* Models */,
 				D4E1005117D84F8B006336F8 /* Products */,
 			);
@@ -504,6 +506,7 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D488EAFE1861A457004D86F5 /* whitecameraicon.png */,
 				D418D983183B76ED001C7B0E /* logo.png */,
 				64932185182B5DB5006B6904 /* calender.png */,
 				649069E3180FFFDE00944C83 /* Untitled.png */,
@@ -689,6 +692,7 @@
 				64921A4D17D99C7100AB642E /* CourseDrugViewController_iphone.xib in Resources */,
 				64921A5217D9AC0400AB642E /* disclsurebtndwn@2x.png in Resources */,
 				64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */,
+				D488EAFF1861A457004D86F5 /* whitecameraicon.png in Resources */,
 				D4144326184F310E001E3E32 /* textbox.png in Resources */,
 				64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */,
 				64921A5517D9AC0400AB642E /* disclsurebtn.png in Resources */,

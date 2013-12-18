@@ -47,6 +47,8 @@
 -(IBAction)continue_iphone:(id)sender;
 -(IBAction)textfldshouldreturn:(id)sender;
 -(void)processLogout:(NSNotification *)aNotification;
+- (IBAction)cancelbtn_iphone:(id)sender;
+
 - (IBAction)cancelbtn:(id)sender;
 
 @end

@@ -219,7 +219,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"foldername"])
+    if([elementName isEqualToString:@"FolderName"])
     {
         if(!_soapResults)
         {
@@ -250,17 +250,19 @@
     {
         recordResults=FALSE;
         NSLog(@"key%@",_soapResults);
-        docsstring=_soapResults;
+      
+         [_docspathdict setObject:_soapResults forKey:docsstring];
         
         
         _soapResults=nil;
     }
     
-    if([elementName isEqualToString:@"foldername"])
+    if([elementName isEqualToString:@"FolderName"])
     {
         recordResults=FALSE;
+          docsstring=_soapResults;
         [_docsarray addObject:_soapResults];
-        [_docspathdict setObject:docsstring forKey:_soapResults];
+       
         NSLog(@"soap%@",_soapResults);
         _soapResults=nil;
     }
@@ -276,6 +278,8 @@
     [self.navigationController pushViewController:_uplodctrl animated:YES];
 
 }
-
+-(IBAction)returnkey:(id)sender{
+    [sender resignFirstResponder];
+}
 
 @end
