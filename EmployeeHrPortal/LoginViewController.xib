@@ -92,6 +92,16 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BCE-Uw-oYL">
+                            <rect key="frame" x="460" y="3" width="27" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="512px-Home_Icon.svg.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="homebtn:" destination="-1" eventType="touchUpInside" id="TwP-hL-LM6"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -128,6 +138,7 @@
         </view>
     </objects>
     <resources>
+        <image name="512px-Home_Icon.svg.png" width="200" height="200"/>
         <image name="bg.png" width="1024" height="748"/>
         <image name="logout1.png" width="32" height="32"/>
         <image name="squareimage1.png" width="300" height="400"/>

@@ -50,5 +50,6 @@
 - (IBAction)cancelbtn_iphone:(id)sender;
 
 - (IBAction)cancelbtn:(id)sender;
+- (IBAction)homebtn:(id)sender;
 
 @end

@@ -106,6 +106,16 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hPE-ch-67Q">
+                            <rect key="frame" x="683" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="512px-Home_Icon.svg.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="homebtn:" destination="-1" eventType="touchUpInside" id="35J-s9-sRJ"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.49205043580000002" blue="0.65567203439999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -116,6 +126,7 @@
         </view>
     </objects>
     <resources>
+        <image name="512px-Home_Icon.svg.png" width="200" height="200"/>
         <image name="bg.png" width="1024" height="748"/>
         <image name="squareimage1.png" width="300" height="400"/>
     </resources>

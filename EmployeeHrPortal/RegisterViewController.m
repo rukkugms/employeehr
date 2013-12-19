@@ -33,19 +33,20 @@
     _Ssntxtfld.text=@"";
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
-    self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
-    self.navigationController.navigationBar.hidden=YES;
-    
-    // self.navigationItem.hidesBackButton=YES;
-    [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processLogout:) name:@"logout" object:nil];
-    
-    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
-    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
-    
-    
-    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
-    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationItem.hidesBackButton=YES;
+//    self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
+//    self.navigationController.navigationBar.hidden=YES;
+//    
+//    // self.navigationItem.hidesBackButton=YES;
+//    [ [NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processLogout:) name:@"logout" object:nil];
+//    
+//    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
+//    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
+//    
+//    
+//    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
+//    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
+//    self.navigationItem.hidesBackButton=YES;
 }
 -(void)processLogout:(NSNotification *)aNotification{
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -62,6 +63,10 @@
     _Ssntxtfld.text=@"";
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
+}
+
+- (IBAction)homebtn:(id)sender {
+        [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

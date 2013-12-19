@@ -51,5 +51,6 @@
 -(void)processLogout:(NSNotification *)aNotification;
 
 - (IBAction)cancelbtn_iphone:(id)sender;
+- (IBAction)homebtn:(id)sender;
 
 @end
