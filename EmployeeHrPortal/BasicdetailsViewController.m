@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self FetchuserdetailsfromDB];
     x=1;
     detailbtnclicked_iphone=0;
     _datetextfld_ipad.inputView=[[UIView alloc]initWithFrame:CGRectZero];
@@ -2862,6 +2863,12 @@ finishedSavingWithError:(NSError *)error
         
     }
 }
+//@"UPDATE EMPLOYEES set name = '%@', department = '%@', age = '%@' WHERE id = ?",
+//employee.name,
+//employee.department,
+//[NSString stringWithFormat:@"%d", employee.age]];
+//
+//const char *update_stmt = [updateSQL UTF8String];
 -(void)FetchuserdetailsfromDB{
     
     const char *dbpath=[_databasePath UTF8String];
