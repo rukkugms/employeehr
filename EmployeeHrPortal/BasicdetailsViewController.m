@@ -2799,5 +2799,90 @@ finishedSavingWithError:(NSError *)error
     [sender resignFirstResponder];
 }
 
+/*Sqlite database*/
+-(void)createdatabase
+{
+    NSFileManager *fileMngr=[NSFileManager defaultManager];
+    if([fileMngr fileExistsAtPath:_databasePath]==NO)
+    {
+        const char *dbpath=[_databasePath UTF8String];
+        if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+        {
+            char *errmsg;
+            const char *sql_stmt="CREATE TABLE IF NOT EXISTS BasicDetails (ID INTEGER PRIMARY KEY AUTOINCREMENT, Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT )";
+            if(sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errmsg)!=SQLITE_OK)
+            {
+                NSLog(@"Failed to create table");
+                NSLog( @"Error while inserting '%s'", sqlite3_errmsg(_newEmplyhrListDB));
+            }
+            sqlite3_close(_newEmplyhrListDB);
+             }
+            else
+            {
+                 NSLog( @"Failed to open/create database");
+            }
+            
+        
+    }
+    
+}
+-(void)savetoDB
+{
+    if(_gendersegmentcntrl.selectedSegmentIndex==0)
+    {
+        genderstg=1;
+    }
+    else if(_gendersegmentcntrl.selectedSegmentIndex==1)
+    {
+        genderstg=0;
+    }
+
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        NSString *insertSql=[NSString stringWithFormat:@"INSERT INTO BasicDetails (Suffix ,LastName ,FirstName ,HomeAddress ,City , State , Zip ,SSN ,Country ,DateOfBirth , Gender , EmailID , MobileNO , HomeNO , EmergencyContactName , ContactNO , AlternateNO , LicenceNo , StateIssueingLicence , NameInLicence ) VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",_sufixbtnlbl.titleLabel.text,_lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_dobbtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text];
+        const char *insert_stmt=[insertSql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, insert_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            
+            NSLog( @"UserDetail's added");
+        }
+        
+        else{
+            
+            NSLog( @"Failed to add userdetails");
+        }
+        
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+        
+    }
+}
+-(void)FetchuserdetailsfromDB{
+    
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt*statement;
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)) {
+        NSString*query=[NSString stringWithFormat:@"SELECT * FROM BasicDetails"];
+        const char *query_stmt=[query UTF8String];
+        
+        if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
+//            _sqliteArray=[[NSMutableArray alloc]init];
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+               // _userdetails=[[UserDetails alloc]init];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                //_userdetails.primarykey=pkey;
+            };
+            
+            
+        }
+    }
+}
+
+
 
 @end
