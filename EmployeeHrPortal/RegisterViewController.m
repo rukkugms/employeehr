@@ -820,6 +820,7 @@
                   UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];
                 UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
                   viewController2.Applicantid=Applicantid;
+                
                 UINavigationController *uploadnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
                 EducationViewController *viewController4 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
                   viewController4.Applicantid=Applicantid;
