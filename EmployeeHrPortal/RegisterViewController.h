@@ -43,7 +43,7 @@
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSString *Availablityresult;
 
-@property (strong, nonatomic)NSArray *sqliteArray;
+@property (strong, nonatomic)NSMutableArray *sqliteArray;
 
 
 /*Xmlparser*/

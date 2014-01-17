@@ -61,20 +61,20 @@
     _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
     NSLog(@"Internet connection availability : %@", _Availablityresult);
     if ([_Availablityresult isEqualToString:@"Yes"]) {
-       // [self FetchManapowerdatasfromDB];
+        [self FetchuserdetailsfromDB];
         
-//        if ([_Sqlitearry count]>0) {
-//            //[self SynManpowertoserver];
-//        }
-//        else{
-//            //[self Selectallmanpower];
-//        }
-//        
+        if ([_sqliteArray count]>0) {
+            //[self SynManpowertoserver];
+        }
+        else{
+            //[self Selectallmanpower];
+        }
+        
         
     }
     else if([_Availablityresult isEqualToString:@"No"]){
-       // [self Createdatabase];
-        //[self FetchManapowerdatasfromDB];
+      //  [self createandcheckdatabase];
+        //  [self FetchuserdetailsfromDB];
         
         
     }
@@ -866,21 +866,11 @@
             if (Applicantid!=0){
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Already Registered" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
-            
-          
-                
-                
-            
-        }
+                                  }
         }
         
 
-    
-       
-            
-             
-         
-        _soapResults = nil;
+_soapResults = nil;
     }
 
 if([elementName isEqualToString:@"result"])
@@ -888,10 +878,9 @@ if([elementName isEqualToString:@"result"])
     recordResults = FALSE;
     
     [self GetApplicantId];
+
+       _soapResults = nil;
     
-   
-    
- _soapResults = nil;
 }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -1149,12 +1138,28 @@ if([elementName isEqualToString:@"result"])
                 _userdetails=[[UserDetails alloc]init];
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                     NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-                _userdetails.primarykey=pkey;
-            };
-            
-            
+                _userdetails.primarykey=[pkey integerValue];
+                
+                const char *username=(const char *)sqlite3_column_text(statement, 1);
+                _userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                
+                const char*password=(const char *)sqlite3_column_text(statement, 2);
+                _userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                
+                
+                [_sqliteArray addObject:_userdetails];
+                
+                
+            }
         }
+        
+            sqlite3_finalize(statement);
+            
+        
+        
     }
+    sqlite3_close(_newEmplyhrListDB);
+    
 }
 
 
