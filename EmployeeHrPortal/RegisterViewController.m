@@ -1067,6 +1067,10 @@ if([elementName isEqualToString:@"result"])
 
 -(void)pushtonextpage{
     
+//    sqlStmnt=[NSString stringWithFormat:@"UPDATE toDoList SET Name= \"%@\",Description=\"%@\",DueDate=\"%@\",DueTime = \"%@\" WHERE ListID= %@",txtName.text, txtDescription.text,txtDueDate.text,txtDueTime.text,deOBJ1.listID];
+    
+
+    
     if ([_Availablityresult isEqualToString:@"Yes"]) {
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
