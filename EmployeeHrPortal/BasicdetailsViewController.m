@@ -76,7 +76,34 @@
 
     }
     
+    
     }
+-(void)checknetavailability
+{
+    NSString *urlstring=[NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
+    _Availablityresult=[[NSString alloc]init];
+    _Availablityresult=((urlstring !=NULL)? @"YES" :@"NO");
+    NSLog(@"Internet connection availability : %@", _Availablityresult);
+
+    if ([_Availablityresult isEqualToString:@"YES"]) {
+        // [self FetchManapowerdatasfromDB];
+        
+        //        if ([_Sqlitearry count]>0) {
+        //            //[self SynManpowertoserver];
+        //        }
+        //        else{
+        //            //[self Selectallmanpower];
+        //        }
+        //
+        
+    }
+    else if([_Availablityresult isEqualToString:@"NO"]){
+        // [self Createdatabase];
+        //[self FetchManapowerdatasfromDB];
+        
+        
+    }
+}
 -(void)logoutAction{
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
     [alert show];
