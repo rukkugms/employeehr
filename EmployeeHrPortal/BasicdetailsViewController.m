@@ -2915,7 +2915,7 @@ finishedSavingWithError:(NSError *)error
     
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt*statement;
-    if (sqlite3_open(dbpath, &_newEmplyhrListDB)) {
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
         NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
         const char *query_stmt=[query UTF8String];
         
