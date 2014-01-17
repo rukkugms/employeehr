@@ -17,6 +17,7 @@
 #import "ShowDocViewController.h"
 #import "Validation.h"
 #import "sqlite3.h"
+#import "UserDetails.h"
 @interface RegisterViewController : UIViewController<UITextFieldDelegate>
 {
         BOOL recordResults;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *confirmpasswrd;
 @property (strong, nonatomic)UITabBarController*tabbarcntrl;
 @property(strong,nonatomic)Validation *val;
+@property(strong,nonatomic)UserDetails *userdetails;
 
 /*For Sqlite Database*/
 
@@ -41,6 +43,7 @@
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSString *Availablityresult;
 
+@property (strong, nonatomic)NSArray *sqliteArray;
 
 
 /*Xmlparser*/

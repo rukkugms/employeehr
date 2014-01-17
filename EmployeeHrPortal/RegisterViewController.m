@@ -1132,7 +1132,22 @@ if([elementName isEqualToString:@"result"])
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)) {
         NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
         const char *query_stmt=[query UTF8String];
+        
+        if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
+            _sqliteArray=[[NSMutableArray alloc]init];
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                _userdetails=[[UserDetails alloc]init];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                    NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                _userdetails.primarykey=pkey;
+            };
+            
+            
+        }
     }
 }
+
+
+
 
 @end

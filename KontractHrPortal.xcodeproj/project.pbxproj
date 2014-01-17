@@ -135,6 +135,7 @@
 		D4E100F617D88C22006336F8 /* previousemp.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F117D88C22006336F8 /* previousemp.m */; };
 		D4E100F717D88C22006336F8 /* Ethicity.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F317D88C22006336F8 /* Ethicity.m */; };
 		D4E100FA17D88C31006336F8 /* Medicalmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F917D88C31006336F8 /* Medicalmodel.m */; };
+		D4F559E51888FDBF0055F769 /* UserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F559E41888FDBF0055F769 /* UserDetails.m */; };
 		D4F92DE61844536B00B689CE /* kontract50.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F92DE51844536B00B689CE /* kontract50.png */; };
 		D4F92DE81844537300B689CE /* kontract58.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F92DE71844537300B689CE /* kontract58.png */; };
 		D4F92DEC1844538300B689CE /* kontract50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F92DEB1844538300B689CE /* kontract50@2x.png */; };
@@ -312,6 +313,8 @@
 		D4E100F317D88C22006336F8 /* Ethicity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ethicity.m; sourceTree = "<group>"; };
 		D4E100F817D88C31006336F8 /* Medicalmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicalmodel.h; sourceTree = "<group>"; };
 		D4E100F917D88C31006336F8 /* Medicalmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicalmodel.m; sourceTree = "<group>"; };
+		D4F559E31888FDBF0055F769 /* UserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetails.h; sourceTree = "<group>"; };
+		D4F559E41888FDBF0055F769 /* UserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetails.m; sourceTree = "<group>"; };
 		D4F92DE51844536B00B689CE /* kontract50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontract50.png; path = ../kontract50.png; sourceTree = "<group>"; };
 		D4F92DE71844537300B689CE /* kontract58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontract58.png; path = ../kontract58.png; sourceTree = "<group>"; };
 		D4F92DEB1844538300B689CE /* kontract50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontract50@2x.png"; path = "../kontract50@2x.png"; sourceTree = "<group>"; };
@@ -550,6 +553,8 @@
 			children = (
 				649069E0180FFF6C00944C83 /* PDFImageConverter.h */,
 				649069E1180FFF6C00944C83 /* PDFImageConverter.m */,
+				D4F559E31888FDBF0055F769 /* UserDetails.h */,
+				D4F559E41888FDBF0055F769 /* UserDetails.m */,
 				D4E1009817D85A27006336F8 /* jobsite.h */,
 				D4E1009917D85A27006336F8 /* jobsite.m */,
 				D4E100D117D868D2006336F8 /* CKCalendarView.h */,
@@ -742,6 +747,7 @@
 				D4E1006D17D84F8B006336F8 /* ViewController.m in Sources */,
 				D4E1007C17D8511C006336F8 /* JobsiteViewController.m in Sources */,
 				D4E1008117D85161006336F8 /* RegisterViewController.m in Sources */,
+				D4F559E51888FDBF0055F769 /* UserDetails.m in Sources */,
 				D4E1008617D85173006336F8 /* LoginViewController.m in Sources */,
 				D4E1009A17D85A27006336F8 /* jobsite.m in Sources */,
 				D4E100A317D86060006336F8 /* BasicdetailsViewController.m in Sources */,
