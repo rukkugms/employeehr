@@ -61,6 +61,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
    self.navigationController.navigationBar.translucent = NO;
    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
@@ -224,6 +225,7 @@
     else
     {
         [self UPdateDB];
+        [self FetchuserdetailsfromDB];
     [self UpdateApplicantData];
     }
 }
@@ -2878,7 +2880,7 @@ finishedSavingWithError:(NSError *)error
     const char *dbpath=[_databasePath UTF8String];
     if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
     {
-        NSString *updateSql=[NSString stringWithFormat:@"UPDATE BasicDetails SET Suffix= \"%@\",LastName=\"%@\",FirstName=\"%@\",HomeAddress = \"%@\",City = \"%@\",State= \"%@\",Zip= \"%@\",SSN= \"%@\",Country= \"%@\",DateOfBirth= \"%@\",Gender= \"%d\",EmailID= \"%@\",MobileNO= \"%@\",HomeNO= \"%@\",EmergencyContactName= \"%@\",ContactNO= \"%@\",AlternateNO= \"%@\",LicenceNO= \"%@\",StateIssueingLicence= \"%@\",NameInLicence= \"%@\" WHERE SocialSecurityNO= %@",_sufixbtnlbl.titleLabel.text, _lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_dobbtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text,_sqlitessn];
+        NSString *updateSql=[NSString stringWithFormat:@"UPDATE UserList SET Suffix= \"%@\",LastName=\"%@\",FirstName=\"%@\",HomeAddress = \"%@\",City = \"%@\",State= \"%@\",Zip= \"%@\",SSN= \"%@\",Country= \"%@\",DateOfBirth= \"%@\",Gender= \"%d\",EmailID= \"%@\",MobileNO= \"%@\",HomeNO= \"%@\",EmergencyContactName= \"%@\",ContactNO= \"%@\",AlternateNO= \"%@\",LicenceNO= \"%@\",StateIssueingLicence= \"%@\",NameInLicence= \"%@\" WHERE SocialSecurityNO= %@",_sufixbtnlbl.titleLabel.text, _lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_dobbtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text,_sqlitessn];
         const char *update_stmt=[updateSql UTF8String];
         sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE)
@@ -2914,21 +2916,37 @@ finishedSavingWithError:(NSError *)error
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt*statement;
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)) {
-        NSString*query=[NSString stringWithFormat:@"SELECT * FROM BasicDetails"];
+        NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
         const char *query_stmt=[query UTF8String];
         
         if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
-//            _sqliteArray=[[NSMutableArray alloc]init];
+            //_sqliteArray=[[NSMutableArray alloc]init];
             while (sqlite3_step(statement)==SQLITE_ROW) {
-               // _userdetails=[[UserDetails alloc]init];
+                //_userdetails=[[UserDetails alloc]init];
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                 NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-                //_userdetails.primarykey=pkey;
-            };
-            
-            
+               // _userdetails.primarykey=[pkey integerValue];
+                
+                const char *username=(const char *)sqlite3_column_text(statement, 3);
+                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                
+                const char*password=(const char *)sqlite3_column_text(statement, 4);
+                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                
+                
+               // [_sqliteArray addObject:_userdetails];
+                
+                
+            }
         }
+        
+        sqlite3_finalize(statement);
+        
+        
+        
     }
+    sqlite3_close(_newEmplyhrListDB);
+    
 }
 
 
