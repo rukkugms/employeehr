@@ -1288,7 +1288,31 @@ if([elementName isEqualToString:@"result"])
     
 }
 
-
+//sqlite3_stmt *updateStmt;
+//const char *dbpath = [dabasePath UTF8String];
+//if(sqlite3_open(dbpath, &contactDB) == SQLITE_OK)
+//{
+//    const char *sql = "update contacts Set address = ?, phone = ?, image = ? Where name=?";
+//    if(sqlite3_prepare_v2(contactDB, sql, -1, &updateStmt, NULL)==SQLITE_OK){
+//        sqlite3_bind_text(updateStmt, 4, [name.text UTF8String], -1, SQLITE_TRANSIENT);
+//        sqlite3_bind_text(updateStmt, 1, [address.text UTF8String], -1, SQLITE_TRANSIENT);
+//        sqlite3_bind_text(updateStmt, 2, [phone.text UTF8String], -1, SQLITE_TRANSIENT);
+//        NSData *imagedata=UIImagePNGRepresentation(imageview.image);
+//        sqlite3_bind_blob(updateStmt, 3, [imagedata bytes], [imagedata length], NULL);
+//    }
+//}
+//char* errmsg;
+//sqlite3_exec(contactDB, "COMMIT", NULL, NULL, &errmsg);
+//
+//if(SQLITE_DONE != sqlite3_step(updateStmt)){
+//    NSLog(@"Error while updating. %s", sqlite3_errmsg(contactDB));
+//}
+//else{
+//    [self clearClick:nil];
+//}
+//sqlite3_finalize(updateStmt);
+//sqlite3_close(contactDB);
+//}
 
 
 @end
