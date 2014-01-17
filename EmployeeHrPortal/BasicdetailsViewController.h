@@ -29,7 +29,7 @@
     NSString *contactnostring;
     NSString *alternatenostring;
     NSInteger phonex;
-    NSString *sqlitessn;
+   
 
 }
 
@@ -39,6 +39,7 @@
 @property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSString *Availablityresult;
+@property(strong,nonatomic)NSString *sqlitessn;
 
 
 @property(readwrite)NSInteger Applicantid;
