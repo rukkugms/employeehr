@@ -48,6 +48,41 @@
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationItem.hidesBackButton=YES;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSTimer *timer;
+    timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
+}
+
+-(void)Checknetavailabilty{
+    /* for checking Connectivity*/
+    NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
+    _Availablityresult = [[NSString alloc] init];
+    _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
+    NSLog(@"Internet connection availability : %@", _Availablityresult);
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+       // [self FetchManapowerdatasfromDB];
+        
+//        if ([_Sqlitearry count]>0) {
+//            //[self SynManpowertoserver];
+//        }
+//        else{
+//            //[self Selectallmanpower];
+//        }
+//        
+        
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+       // [self Createdatabase];
+        //[self FetchManapowerdatasfromDB];
+        
+        
+    }
+    
+    
+    
+}
+
 -(void)processLogout:(NSNotification *)aNotification{
     [self.navigationController popToRootViewControllerAnimated:YES];
     //[NSUserDefaults standardUserDefaults]
@@ -1021,6 +1056,83 @@ if([elementName isEqualToString:@"result"])
         return (newLength > 20) ? NO : YES;
     }
 
+}
+#pragma mark -Sqlite Database
+-(void)createandcheckdatabase{
+    _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    _docsDir=[_dirPaths objectAtIndex:0];
+    /* Build the path to the database file*/
+    
+    _databasePath = [[NSString alloc] initWithString: [_docsDir stringByAppendingPathComponent: @"EmployeeHrList.db"]];
+    //NSLog(@"Path %@",_databasePath);
+    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
+    {
+        const char *dbpath = [_databasePath UTF8String];
+        if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
+        {
+            char *errMsg;
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SSN TEXT, Password TEXT)";
+            
+            
+            if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)
+                != SQLITE_OK)
+            {
+                
+                NSLog(@"Failed to create table");
+                NSLog( @"Error while inserting '%s'", sqlite3_errmsg(_newEmplyhrListDB));
+            }
+            sqlite3_close(_newEmplyhrListDB);
+            
+        }
+        
+        else {
+            NSLog( @"Failed to open/create database");
+            
+        }
+        
+    }
+
+    
+}
+
+-(void)savedatatoDB{
+    
+    sqlite3_stmt *statement;
+    const char* dbpath=[_databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SSN,Password) VALUES (\"%@\",\"%@\")",_Ssntxtfld.text,_confirmpasswrd];
+        const char *insertstmt=[INSERTSql UTF8String];
+        sqlite3_prepare_v2(_newEmplyhrListDB, insertstmt, -1, &statement, NULL);
+        if ((sqlite3_step(statement))==SQLITE_DONE ) {
+            
+            NSLog( @"UserDetail's added");
+
+        
+        }
+        
+        else{
+            
+               NSLog( @"Failed to add userdetails");
+        }
+    
+    
+    sqlite3_finalize(statement);
+    sqlite3_close(_newEmplyhrListDB);
+    }
+    
+}
+
+-(void)FetchuserdetailsfromDB{
+    
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt*statement;
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)) {
+        NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
+        const char *query_stmt=[query UTF8String];
+    }
 }
 
 @end
