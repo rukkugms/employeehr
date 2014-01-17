@@ -16,6 +16,7 @@
 #import "DocumentsViewController.h"
 #import "ShowDocViewController.h"
 #import "Validation.h"
+#import "sqlite3.h"
 @interface RegisterViewController : UIViewController<UITextFieldDelegate>
 {
         BOOL recordResults;
@@ -31,6 +32,16 @@
 @property (strong, nonatomic) IBOutlet UITextField *confirmpasswrd;
 @property (strong, nonatomic)UITabBarController*tabbarcntrl;
 @property(strong,nonatomic)Validation *val;
+
+/*For Sqlite Database*/
+
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+
+
 
 /*Xmlparser*/
 @property(strong,nonatomic)NSXMLParser *xmlParser;
