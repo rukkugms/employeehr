@@ -248,7 +248,7 @@
    else if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
        
        
-       
+       [self savedatatoDBforipad];
         [self GetApplicantId2];
 
         
