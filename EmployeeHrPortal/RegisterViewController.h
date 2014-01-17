@@ -34,7 +34,7 @@
 @property (strong, nonatomic)UITabBarController*tabbarcntrl;
 @property(strong,nonatomic)Validation *val;
 @property(strong,nonatomic)UserDetails *userdetails;
-
+@property(strong,nonatomic)NSString *SqlSSnstrng;
 /*For Sqlite Database*/
 
 @property(strong,nonatomic) NSString *docsDir;

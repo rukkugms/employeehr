@@ -52,6 +52,8 @@
     [super viewWillAppear:animated];
     NSTimer *timer;
     timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
+    [self createandcheckdatabase];
+    
 }
 
 -(void)Checknetavailabilty{
@@ -98,6 +100,7 @@
     _Ssntxtfld.text=@"";
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
+    [self FetchuserdetailsfromDB];
 }
 
 - (IBAction)homebtn:(id)sender {
@@ -261,6 +264,8 @@
       
     
  }
+
+
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
@@ -1016,6 +1021,8 @@ if([elementName isEqualToString:@"result"])
     
 
    else if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
+       
+       [self savedatatoDB];
         [self GetApplicantId2];
         
         
@@ -1055,6 +1062,110 @@ if([elementName isEqualToString:@"result"])
         return (newLength > 20) ? NO : YES;
     }
 
+}
+#pragma mark-navigation
+
+-(void)pushtonextpage{
+    
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        _tabbarcntrl=[[UITabBarController alloc]init];
+        _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
+        
+        BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
+        viewController2.Applicantid=Applicantid;
+        UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
+        viewController2.dirPaths=_dirPaths;
+        viewController2.docsDir=_docsDir;
+        viewController2.databasePath=_databasePath;
+
+        
+        EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
+        viewController3.Applicantid=Applicantid;
+        UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController3];
+        JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
+        viewController1.Applicantid=Applicantid;
+        UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
+        NewMedicalViewController *viewController4 = [[NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
+        viewController4.Applicantid=Applicantid;
+        UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
+        EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
+        viewcontroller5.Applicantid=Applicantid;
+        UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
+        CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
+        viewcontroller6.Applicantid=Applicantid;
+        UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
+        RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
+        viewcontroller7.applicantId=Applicantid;
+        UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
+        DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
+        
+        UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+        viewcontroller8.applicantid=Applicantid;
+        NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,edunav,mednav,empnav,coursenav,racenav,docnav,nil];
+        self.tabbarcntrl.viewControllers = controllers;
+        
+        
+        [self.navigationController pushViewController:_tabbarcntrl animated:YES];
+        
+        
+    }
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        _tabbarcntrl=[[UITabBarController alloc]init];
+        _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
+        BasicdetailsViewController *viewController3 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController_iphone" bundle:nil];
+        viewController3.Applicantid=Applicantid;
+        //viewController3.newEmplyhrListDB=_newEmplyhrListDB;
+        viewController3.dirPaths=_dirPaths;
+        viewController3.docsDir=_docsDir;
+        viewController3.databasePath=_databasePath;
+        
+        UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];
+        UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
+        viewController2.Applicantid=Applicantid;
+        
+        
+        UINavigationController *uploadnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
+        EducationViewController *viewController4 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
+        viewController4.Applicantid=Applicantid;
+        UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController4];
+        JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController_iphone" bundle:nil];
+        viewController1.Applicantid=Applicantid;
+        UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
+        NewMedicalViewController *viewController5 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController_iphone" bundle:nil];
+        viewController5.Applicantid=Applicantid;
+        UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController5];
+        EmployeeViewController*viewcontroller6=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController_iphone" bundle:nil];
+        viewcontroller6.Applicantid=Applicantid;
+        UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
+        CourseDrugViewController*viewcontroller7=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController_iphone" bundle:nil];
+        viewcontroller7.Applicantid=Applicantid;
+        UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
+        RaceViewController*viewcontroller8=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
+        viewcontroller8.applicantId=Applicantid;
+        UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
+        ShowDocViewController *viewcontroller9=[[ShowDocViewController alloc]initWithNibName:@"ShowDocViewController" bundle:nil];
+        UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller9];
+        
+        NSArray *controllers = [NSArray arrayWithObjects:jobnav,uploadnav,basicnav,edunav,mednav,empnav,racenav,docnav,nil];
+        self.tabbarcntrl.viewControllers = controllers;
+        
+        
+        [self.navigationController pushViewController:_tabbarcntrl animated:YES];
+        
+    }
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+     
+        
+        
+    }
+
+
+    
 }
 #pragma mark -Sqlite Database
 -(void)createandcheckdatabase{
@@ -1108,6 +1219,7 @@ if([elementName isEqualToString:@"result"])
         if ((sqlite3_step(statement))==SQLITE_DONE ) {
             
             NSLog( @"UserDetail's added");
+            [self pushtonextpage];
 
         
         }
