@@ -52,7 +52,7 @@
     [super viewWillAppear:animated];
     NSTimer *timer;
     timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
-    [self createandcheckdatabase];
+    [self createandcheckdatabaseforipad];
     
 }
 
@@ -63,7 +63,7 @@
     _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
     NSLog(@"Internet connection availability : %@", _Availablityresult);
     if ([_Availablityresult isEqualToString:@"Yes"]) {
-        [self FetchuserdetailsfromDB];
+        [self FetchuserdetailsfromDBforipad];
         
         if ([_sqliteArray count]>0) {
             //[self SynManpowertoserver];
@@ -100,7 +100,7 @@
     _Ssntxtfld.text=@"";
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
-    [self FetchuserdetailsfromDB];
+    [self FetchuserdetailsfromDBforipad];
 }
 
 - (IBAction)homebtn:(id)sender {
@@ -1022,7 +1022,7 @@ if([elementName isEqualToString:@"result"])
 
    else if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
        
-       [self savedatatoDB];
+       [self savedatatoDBforipad];
         [self GetApplicantId2];
         
         
@@ -1173,7 +1173,7 @@ if([elementName isEqualToString:@"result"])
     
 }
 #pragma mark -Sqlite Database
--(void)createandcheckdatabase{
+-(void)createandcheckdatabaseforipad{
     _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     _docsDir=[_dirPaths objectAtIndex:0];
     /* Build the path to the database file*/
@@ -1188,7 +1188,7 @@ if([elementName isEqualToString:@"result"])
         if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
         {
             char *errMsg;
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SSN TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT)";
             
             
             if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)
@@ -1212,14 +1212,14 @@ if([elementName isEqualToString:@"result"])
     
 }
 
--(void)savedatatoDB{
+-(void)savedatatoDBforipad{
     
     _SqlSSnstrng=_connectstring;
     sqlite3_stmt *statement;
     const char* dbpath=[_databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SSN,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd];
+        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SocialSecurityNO,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd];
         const char *insertstmt=[INSERTSql UTF8String];
         sqlite3_prepare_v2(_newEmplyhrListDB, insertstmt, -1, &statement, NULL);
         if ((sqlite3_step(statement))==SQLITE_DONE ) {
@@ -1242,7 +1242,7 @@ if([elementName isEqualToString:@"result"])
     
 }
 
--(void)FetchuserdetailsfromDB{
+-(void)FetchuserdetailsfromDBforipad{
     
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt*statement;
