@@ -52,6 +52,7 @@
 		D40F779918436B80007DCB92 /* kontractlogo76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779818436B80007DCB92 /* kontractlogo76@2x.png */; };
 		D40F779B18436B84007DCB92 /* kontractlogo76.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779A18436B84007DCB92 /* kontractlogo76.png */; };
 		D40F779D18436BEC007DCB92 /* kontractlogo29.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F779C18436BEC007DCB92 /* kontractlogo29.png */; };
+		D410BE0D1888E5D300107AC5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D410BE0C1888E5D300107AC5 /* libsqlite3.0.dylib */; };
 		D4144325184F310E001E3E32 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144323184F310E001E3E32 /* button.png */; };
 		D4144326184F310E001E3E32 /* textbox.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144324184F310E001E3E32 /* textbox.png */; };
 		D4144328184F4048001E3E32 /* ios7-camera-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4144327184F4048001E3E32 /* ios7-camera-icon.png */; };
@@ -196,6 +197,7 @@
 		D40F779818436B80007DCB92 /* kontractlogo76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo76@2x.png"; path = "../kontractlogo76@2x.png"; sourceTree = "<group>"; };
 		D40F779A18436B84007DCB92 /* kontractlogo76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontractlogo76.png; path = ../kontractlogo76.png; sourceTree = "<group>"; };
 		D40F779C18436BEC007DCB92 /* kontractlogo29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontractlogo29.png; path = ../kontractlogo29.png; sourceTree = "<group>"; };
+		D410BE0C1888E5D300107AC5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		D4144323184F310E001E3E32 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		D4144324184F310E001E3E32 /* textbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textbox.png; sourceTree = "<group>"; };
 		D4144327184F4048001E3E32 /* ios7-camera-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ios7-camera-icon.png"; path = "../EmployeeHrPortal/ios7-camera-icon.png"; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D410BE0D1888E5D300107AC5 /* libsqlite3.0.dylib in Frameworks */,
 				D41555B918606497007677E8 /* QuartzCore.framework in Frameworks */,
 				D4C7CD3817E9B5C500484F94 /* AssetsLibrary.framework in Frameworks */,
 				D4C7CD3617E9B5AA00484F94 /* MobileCoreServices.framework in Frameworks */,
@@ -391,6 +394,7 @@
 		D4E1005217D84F8B006336F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D410BE0C1888E5D300107AC5 /* libsqlite3.0.dylib */,
 				D4C7CD3717E9B5C500484F94 /* AssetsLibrary.framework */,
 				D4C7CD3517E9B5AA00484F94 /* MobileCoreServices.framework */,
 				D4E1005317D84F8B006336F8 /* UIKit.framework */,

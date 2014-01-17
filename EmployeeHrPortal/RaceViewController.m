@@ -1126,11 +1126,6 @@ numberOfRowsInComponent:(NSInteger)component
             return (newLength > 50) ? NO : YES;
         }
 
-        
-    
-
-    
-
-}
+        }
 
 @end
