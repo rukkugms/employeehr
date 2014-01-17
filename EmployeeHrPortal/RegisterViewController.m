@@ -780,6 +780,9 @@
                   BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
                   viewController2.Applicantid=Applicantid;
                   UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
+                  viewController2.dirPaths=_dirPaths;
+                  viewController2.docsDir=_docsDir;
+                  viewController2.databasePath=_databasePath;
                   
                   EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
                     viewController3.Applicantid=Applicantid;
