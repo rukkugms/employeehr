@@ -788,7 +788,7 @@
                   viewController2.dirPaths=_dirPaths;
                   viewController2.docsDir=_docsDir;
                   viewController2.databasePath=_databasePath;
-                  
+                   viewController2.sqlitessn=_SqlSSnstrng;
                   EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
                     viewController3.Applicantid=Applicantid;
                   UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController3];
@@ -829,7 +829,7 @@
                 viewController3.dirPaths=_dirPaths;
                 viewController3.docsDir=_docsDir;
                 viewController3.databasePath=_databasePath;
-                
+                 viewController3.sqlitessn=_SqlSSnstrng;
                   UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];
                 UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
                   viewController2.Applicantid=Applicantid;
@@ -1080,7 +1080,7 @@ if([elementName isEqualToString:@"result"])
         viewController2.dirPaths=_dirPaths;
         viewController2.docsDir=_docsDir;
         viewController2.databasePath=_databasePath;
-
+         viewController2.sqlitessn=_SqlSSnstrng;
         
         EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
         viewController3.Applicantid=Applicantid;
@@ -1122,6 +1122,7 @@ if([elementName isEqualToString:@"result"])
         viewController3.dirPaths=_dirPaths;
         viewController3.docsDir=_docsDir;
         viewController3.databasePath=_databasePath;
+        viewController3.sqlitessn=_SqlSSnstrng;
         
         UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];
         UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
@@ -1209,11 +1210,12 @@ if([elementName isEqualToString:@"result"])
 
 -(void)savedatatoDB{
     
+    _SqlSSnstrng=_connectstring;
     sqlite3_stmt *statement;
     const char* dbpath=[_databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SSN,Password) VALUES (\"%@\",\"%@\")",_Ssntxtfld.text,_confirmpasswrd];
+        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SSN,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd];
         const char *insertstmt=[INSERTSql UTF8String];
         sqlite3_prepare_v2(_newEmplyhrListDB, insertstmt, -1, &statement, NULL);
         if ((sqlite3_step(statement))==SQLITE_DONE ) {
