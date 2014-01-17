@@ -53,6 +53,7 @@
     NSTimer *timer;
     timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
     [self createandcheckdatabaseforipad];
+    [self FetchuserdetailsfromDBforipad];
     
 }
 
@@ -63,7 +64,7 @@
     _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
     NSLog(@"Internet connection availability : %@", _Availablityresult);
     if ([_Availablityresult isEqualToString:@"Yes"]) {
-        [self FetchuserdetailsfromDBforipad];
+        //[self FetchuserdetailsfromDBforipad];
         
         if ([_sqliteArray count]>0) {
             //[self SynManpowertoserver];
@@ -248,8 +249,9 @@
    else if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
        
        
-       
-        [self GetApplicantId2];
+       [self savedatatoDBforipad];
+       [self FetchuserdetailsfromDBforipad];
+        //[self GetApplicantId2];
 
         
     }
@@ -1219,7 +1221,7 @@ if([elementName isEqualToString:@"result"])
     const char* dbpath=[_databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SocialSecurityNO,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd];
+        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SocialSecurityNO,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd.text];
         const char *insertstmt=[INSERTSql UTF8String];
         sqlite3_prepare_v2(_newEmplyhrListDB, insertstmt, -1, &statement, NULL);
         if ((sqlite3_step(statement))==SQLITE_DONE ) {
@@ -1243,10 +1245,16 @@ if([elementName isEqualToString:@"result"])
 }
 
 -(void)FetchuserdetailsfromDBforipad{
+    NSLog(@"path%@",_databasePath);
+    _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    _docsDir=[_dirPaths objectAtIndex:0];
+    /* Build the path to the database file*/
     
+    _databasePath = [[NSString alloc] initWithString: [_docsDir stringByAppendingPathComponent: @"EmployeeHrList.db"]];
+
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt*statement;
-    if (sqlite3_open(dbpath, &_newEmplyhrListDB)) {
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)== SQLITE_OK) {
         NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
         const char *query_stmt=[query UTF8String];
         
@@ -1280,7 +1288,31 @@ if([elementName isEqualToString:@"result"])
     
 }
 
-
+//sqlite3_stmt *updateStmt;
+//const char *dbpath = [dabasePath UTF8String];
+//if(sqlite3_open(dbpath, &contactDB) == SQLITE_OK)
+//{
+//    const char *sql = "update contacts Set address = ?, phone = ?, image = ? Where name=?";
+//    if(sqlite3_prepare_v2(contactDB, sql, -1, &updateStmt, NULL)==SQLITE_OK){
+//        sqlite3_bind_text(updateStmt, 4, [name.text UTF8String], -1, SQLITE_TRANSIENT);
+//        sqlite3_bind_text(updateStmt, 1, [address.text UTF8String], -1, SQLITE_TRANSIENT);
+//        sqlite3_bind_text(updateStmt, 2, [phone.text UTF8String], -1, SQLITE_TRANSIENT);
+//        NSData *imagedata=UIImagePNGRepresentation(imageview.image);
+//        sqlite3_bind_blob(updateStmt, 3, [imagedata bytes], [imagedata length], NULL);
+//    }
+//}
+//char* errmsg;
+//sqlite3_exec(contactDB, "COMMIT", NULL, NULL, &errmsg);
+//
+//if(SQLITE_DONE != sqlite3_step(updateStmt)){
+//    NSLog(@"Error while updating. %s", sqlite3_errmsg(contactDB));
+//}
+//else{
+//    [self clearClick:nil];
+//}
+//sqlite3_finalize(updateStmt);
+//sqlite3_close(contactDB);
+//}
 
 
 @end

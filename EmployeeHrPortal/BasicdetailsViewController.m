@@ -2931,10 +2931,10 @@ finishedSavingWithError:(NSError *)error
                 NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
                // _userdetails.primarykey=[pkey integerValue];
                 
-                const char *username=(const char *)sqlite3_column_text(statement, 3);
+                const char *username=(const char *)sqlite3_column_text(statement, 5);
                 //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
                 
-                const char*password=(const char *)sqlite3_column_text(statement, 4);
+                const char*password=(const char *)sqlite3_column_text(statement, 7);
                 //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
                 
                 
