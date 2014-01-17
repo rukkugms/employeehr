@@ -29,6 +29,7 @@
     NSString *contactnostring;
     NSString *alternatenostring;
     NSInteger phonex;
+    NSString *sqlitessn;
 
 }
 

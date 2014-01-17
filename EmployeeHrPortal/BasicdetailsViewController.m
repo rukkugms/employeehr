@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self FetchuserdetailsfromDB];
     x=1;
     detailbtnclicked_iphone=0;
     _datetextfld_ipad.inputView=[[UIView alloc]initWithFrame:CGRectZero];
@@ -75,6 +76,7 @@
         x=2;
 
     }
+    
     
     
     }
@@ -2841,7 +2843,7 @@ finishedSavingWithError:(NSError *)error
     const char *dbpath=[_databasePath UTF8String];
     if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
     {
-        NSString *insertSql=[NSString stringWithFormat:@"INSERT INTO BasicDetails (Suffix ,LastName ,FirstName ,HomeAddress ,City , State , Zip ,SSN ,Country ,DateOfBirth , Gender , EmailID , MobileNO , HomeNO , EmergencyContactName , ContactNO , AlternateNO , LicenceNo , StateIssueingLicence , NameInLicence ) VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",_sufixbtnlbl.titleLabel.text,_lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_dobbtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text];
+        NSString *insertSql=[NSString stringWithFormat:@"INSERT INTO BasicDetails WHERE (Suffix ,LastName ,FirstName ,HomeAddress ,City , State , Zip ,SSN ,Country ,DateOfBirth , Gender , EmailID , MobileNO , HomeNO , EmergencyContactName , ContactNO , AlternateNO , LicenceNo , StateIssueingLicence , NameInLicence ) VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",_sufixbtnlbl.titleLabel.text,_lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_dobbtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text];
         const char *insert_stmt=[insertSql UTF8String];
         sqlite3_prepare(_newEmplyhrListDB, insert_stmt, -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE)
@@ -2861,6 +2863,12 @@ finishedSavingWithError:(NSError *)error
         
     }
 }
+//@"UPDATE EMPLOYEES set name = '%@', department = '%@', age = '%@' WHERE id = ?",
+//employee.name,
+//employee.department,
+//[NSString stringWithFormat:@"%d", employee.age]];
+//
+//const char *update_stmt = [updateSQL UTF8String];
 -(void)FetchuserdetailsfromDB{
     
     const char *dbpath=[_databasePath UTF8String];
