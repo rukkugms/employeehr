@@ -780,6 +780,9 @@
                   BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
                   viewController2.Applicantid=Applicantid;
                   UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
+                  viewController2.dirPaths=_dirPaths;
+                  viewController2.docsDir=_docsDir;
+                  viewController2.databasePath=_databasePath;
                   
                   EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
                     viewController3.Applicantid=Applicantid;
@@ -817,9 +820,16 @@
                 _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
                 BasicdetailsViewController *viewController3 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController_iphone" bundle:nil];
                   viewController3.Applicantid=Applicantid;
+                //viewController3.newEmplyhrListDB=_newEmplyhrListDB;
+                viewController3.dirPaths=_dirPaths;
+                viewController3.docsDir=_docsDir;
+                viewController3.databasePath=_databasePath;
+                
                   UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];
                 UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
                   viewController2.Applicantid=Applicantid;
+                
+                
                 UINavigationController *uploadnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
                 EducationViewController *viewController4 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
                   viewController4.Applicantid=Applicantid;
