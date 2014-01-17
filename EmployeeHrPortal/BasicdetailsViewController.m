@@ -2799,5 +2799,16 @@ finishedSavingWithError:(NSError *)error
     [sender resignFirstResponder];
 }
 
+/*Sqlite database*/
+-(void)createdatabase
+{
+    NSFileManager *fileMngr=[NSFileManager defaultManager];
+    if([fileMngr fileExistsAtPath:_databasePath]==NO)
+    {
+        const char *dbpath=[_databasePath UTF8String];
+    }
+    
+}
+
 
 @end
