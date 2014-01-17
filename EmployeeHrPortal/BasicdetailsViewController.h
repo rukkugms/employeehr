@@ -11,6 +11,7 @@
 #import "CKCalendarView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "sqlite3.h"
 @interface BasicdetailsViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate,UITextFieldDelegate>
 {
     BOOL recordResults;
@@ -30,6 +31,15 @@
     NSInteger phonex;
 
 }
+
+/*For Sqlite Database*/
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+
+
 @property(readwrite)NSInteger Applicantid;
 @property(nonatomic, weak) CKCalendarView *calendar;
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
