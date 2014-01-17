@@ -53,6 +53,7 @@
     NSTimer *timer;
     timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
     [self createandcheckdatabaseforipad];
+    [self FetchuserdetailsfromDBforipad];
     
 }
 
@@ -63,7 +64,7 @@
     _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
     NSLog(@"Internet connection availability : %@", _Availablityresult);
     if ([_Availablityresult isEqualToString:@"Yes"]) {
-        [self FetchuserdetailsfromDBforipad];
+        //[self FetchuserdetailsfromDBforipad];
         
         if ([_sqliteArray count]>0) {
             //[self SynManpowertoserver];
@@ -249,7 +250,8 @@
        
        
        [self savedatatoDBforipad];
-        [self GetApplicantId2];
+       [self FetchuserdetailsfromDBforipad];
+        //[self GetApplicantId2];
 
         
     }
@@ -1219,7 +1221,7 @@ if([elementName isEqualToString:@"result"])
     const char* dbpath=[_databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SocialSecurityNO,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd];
+        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserList(SocialSecurityNO,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd.text];
         const char *insertstmt=[INSERTSql UTF8String];
         sqlite3_prepare_v2(_newEmplyhrListDB, insertstmt, -1, &statement, NULL);
         if ((sqlite3_step(statement))==SQLITE_DONE ) {
@@ -1243,10 +1245,16 @@ if([elementName isEqualToString:@"result"])
 }
 
 -(void)FetchuserdetailsfromDBforipad{
+    NSLog(@"path%@",_databasePath);
+    _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    _docsDir=[_dirPaths objectAtIndex:0];
+    /* Build the path to the database file*/
     
+    _databasePath = [[NSString alloc] initWithString: [_docsDir stringByAppendingPathComponent: @"EmployeeHrList.db"]];
+
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt*statement;
-    if (sqlite3_open(dbpath, &_newEmplyhrListDB)) {
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)== SQLITE_OK) {
         NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
         const char *query_stmt=[query UTF8String];
         
