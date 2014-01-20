@@ -13,6 +13,7 @@
 #import "Educationdetails.h"
 #import "AddEducationViewController.h"
 #import "sqlite3.h"
+#import "UserDetails.h"
 ///#import "NewMedicalViewController.h"
 @interface EducationViewController : UIViewController<UITextFieldDelegate>
 {
@@ -28,6 +29,8 @@
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSString *Availablityresult;
 @property(strong,nonatomic)NSString *sqlitessn;
+@property(strong,nonatomic)NSMutableArray *sqliteArray;
+@property(strong,nonatomic)UserDetails*userdetails;
 
 @property(strong,nonatomic)NSString*eduview;
 @property(strong,nonatomic)NSString*cerview;

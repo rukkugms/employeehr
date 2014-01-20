@@ -1281,30 +1281,34 @@
         if(sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK)
         {
             while (sqlite3_step(statement)==SQLITE_ROW) {
-                //_userdetails=[[UserDetails alloc]init];
+                _userdetails=[[UserDetails alloc]init];
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                 NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-                // _userdetails.primarykey=[pkey integerValue];
+                 _userdetails.primarykey=[pkey integerValue];
                 
                 const char *educationid=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                NSString *eid=educationid==NULL ?nil:[[NSString alloc]initWithUTF8String:educationid];
+                _userdetails.educationid=[eid integerValue];
                 
                 const char*educationname=(const char *)sqlite3_column_text(statement, 7);
-                 //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                 _userdetails.educationname=educationname==NULL ?nil:[[NSString alloc]initWithUTF8String:educationname];
                 
                 const char *yearscompleted=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                NSString *years=yearscompleted==NULL ?nil:[[NSString alloc]initWithUTF8String:yearscompleted];
+                _userdetails.yearscompleted=[years integerValue];
+                
                 const char *institutionname=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                _userdetails.institutionname=institutionname==NULL ?nil:[[NSString alloc]initWithUTF8String:institutionname];
+                
                 const char *educationcity=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                _userdetails.Educationcity=educationcity==NULL ?nil:[[NSString alloc]initWithUTF8String:educationcity];
 
                 const char *educationstate=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                _userdetails.educationstate=educationstate==NULL ?nil:[[NSString alloc]initWithUTF8String:educationstate];
                
 
                 
-                // [_sqliteArray addObject:_userdetails];
+                 [_sqliteArray addObject:_userdetails];
 
             }
         }
@@ -1328,20 +1332,21 @@
                 //_userdetails=[[UserDetails alloc]init];
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                 NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-                // _userdetails.primarykey=[pkey integerValue];
+                 _userdetails.primarykey=[pkey integerValue];
                 
                 const char *certificateid=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                NSString *cerid=certificateid==NULL ?nil:[[NSString alloc]initWithUTF8String:certificateid];
+                _userdetails.certificateid=[cerid integerValue];
                 
                 const char*certificatename=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.certificatename=certificatename==NULL ?nil:[[NSString alloc]initWithUTF8String:certificatename];
                 
                 const char*certificatedate=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.certificatedate=certificatedate==NULL ?nil:[[NSString alloc]initWithUTF8String:certificatedate];
 
                 
                 
-                // [_sqliteArray addObject:_userdetails];
+                 [_sqliteArray addObject:_userdetails];
                 
             }
         }

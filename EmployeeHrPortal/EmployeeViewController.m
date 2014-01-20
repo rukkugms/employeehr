@@ -1030,7 +1030,7 @@
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt *statement;
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET PreviousID=\"%d\",CompanyName=\"%@\",EmployementDate=\"%@\",RateOFPay=\"%@\",PreviosPosition=\"%@\",ReasonForLeaving=\"%@\" WHERE ID=%@",previosid,_companynametxtfld_iphone.text,_empdatetextfld_iphone.text,_rateofpaytxtfld_iphone.text,_positionheldtxtfld_iphone.text,_reasonlvtxtfld_iphone.text,_sqlitessn];
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET PreviousID=\"%d\",CompanyName=\"%@\",EmployementDate=\"%@\",RateOFPay=\"%@\",PreviousPosition=\"%@\",ReasonForLeaving=\"%@\" WHERE ID=%@",previosid,_companynametxtfld_iphone.text,_empdatetextfld_iphone.text,_rateofpaytxtfld_iphone.text,_positionheldtxtfld_iphone.text,_reasonlvtxtfld_iphone.text,_sqlitessn];
         const char *update_stmt=[updatesql UTF8String];
         sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE)
@@ -1062,21 +1062,26 @@
                 //_userdetails=[[UserDetails alloc]init];
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                 NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-                // _userdetails.primarykey=[pkey integerValue];
+                 _userdetails.primarykey=[pkey integerValue];
+                
+                const char *previousid=(const char *)sqlite3_column_text(statement, 5);
+                NSString *preid=previousid==NULL ?nil:[[NSString alloc]initWithUTF8String:previousid];
+                _userdetails.previousid=[preid integerValue];
                 
                 const char *companyname=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                _userdetails.companyname=companyname==NULL ?nil:[[NSString alloc]initWithUTF8String:companyname];
                 
                 const char*empdate=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.passwordstring=empdate==NULL ?nil:[[NSString alloc]initWithUTF8String:empdate];
                  const char*rateofpay=(const char *)sqlite3_column_text(statement, 7);
-                 //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.rateofpay=rateofpay==NULL ?nil:[[NSString alloc]initWithUTF8String:rateofpay];
                 const char*postion=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
-                const char*reasonforleaving=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.previosposition=postion==NULL ?nil:[[NSString alloc]initWithUTF8String:postion];
                 
-                // [_sqliteArray addObject:_userdetails];
+                const char*reasonforleaving=(const char *)sqlite3_column_text(statement, 7);
+                _userdetails.reasonforleaving=reasonforleaving==NULL ?nil:[[NSString alloc]initWithUTF8String:reasonforleaving];
+                
+                 [_sqliteArray addObject:_userdetails];
                 
                 
             }
@@ -1104,21 +1109,26 @@
                 //_userdetails=[[UserDetails alloc]init];
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                 NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-                // _userdetails.primarykey=[pkey integerValue];
+                _userdetails.primarykey=[pkey integerValue];
+                
+                const char *previousid=(const char *)sqlite3_column_text(statement, 5);
+                NSString *preid=previousid==NULL ?nil:[[NSString alloc]initWithUTF8String:previousid];
+                _userdetails.previousid=[preid integerValue];
                 
                 const char *companyname=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                _userdetails.companyname=companyname==NULL ?nil:[[NSString alloc]initWithUTF8String:companyname];
                 
                 const char*empdate=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.passwordstring=empdate==NULL ?nil:[[NSString alloc]initWithUTF8String:empdate];
                 const char*rateofpay=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.rateofpay=rateofpay==NULL ?nil:[[NSString alloc]initWithUTF8String:rateofpay];
                 const char*postion=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
-                const char*reasonforleaving=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                _userdetails.previosposition=postion==NULL ?nil:[[NSString alloc]initWithUTF8String:postion];
                 
-                // [_sqliteArray addObject:_userdetails];
+                const char*reasonforleaving=(const char *)sqlite3_column_text(statement, 7);
+                _userdetails.reasonforleaving=reasonforleaving==NULL ?nil:[[NSString alloc]initWithUTF8String:reasonforleaving];
+                
+                [_sqliteArray addObject:_userdetails];
                 
                 
             }

@@ -31,5 +31,20 @@
 @property(strong,nonatomic)NSString *licenceno;
 @property(strong,nonatomic)NSString *stateissuinglicence;
 @property(strong,nonatomic)NSString *Nameinlicence;
+@property(readwrite)NSInteger educationid;
+@property(strong,nonatomic)NSString *educationname;
+@property(readwrite)NSInteger yearscompleted;
+@property(strong,nonatomic)NSString *institutionname;
+@property(strong,nonatomic)NSString *Educationcity;
+@property(strong,nonatomic)NSString *educationstate;
+@property(readwrite)NSInteger certificateid;
+@property(strong,nonatomic)NSString *certificatename;
+@property(strong,nonatomic)NSString *certificatedate;
+@property(readwrite)NSInteger previousid;
+@property(strong,nonatomic)NSString *companyname;
+@property(strong,nonatomic)NSString *emplymentdate;
+@property(strong,nonatomic)NSString *rateofpay;
+@property(strong,nonatomic)NSString *previosposition;
+@property(strong,nonatomic)NSString *reasonforleaving;;
 
 @end
