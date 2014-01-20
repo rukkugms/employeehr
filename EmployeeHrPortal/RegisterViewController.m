@@ -1105,6 +1105,8 @@ if([elementName isEqualToString:@"result"])
         viewController3.docsDir=_docsDir;
         viewController3.databasePath=_databasePath;
         viewController3.sqlitessn=_SqlSSnstrng;
+        viewController3.sqliteArray=_sqliteArray;
+
 
         
         UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController3];
@@ -1120,6 +1122,8 @@ if([elementName isEqualToString:@"result"])
         viewcontroller5.docsDir=_docsDir;
         viewcontroller5.databasePath=_databasePath;
         viewcontroller5.sqlitessn=_SqlSSnstrng;
+        viewController3.sqliteArray=_sqliteArray;
+
 
         UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
         CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
