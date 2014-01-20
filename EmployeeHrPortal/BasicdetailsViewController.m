@@ -2825,9 +2825,22 @@ finishedSavingWithError:(NSError *)error
     const char *dbpath=[_databasePath UTF8String];
     if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
     {
-        NSString *updateSql=[NSString stringWithFormat:@"UPDATE UserList SET Suffix= \"%@\",LastName=\"%@\",FirstName=\"%@\",HomeAddress = \"%@\",City = \"%@\",State= \"%@\",Zip= \"%@\",SSN= \"%@\",Country= \"%@\",DateOfBirth= \"%@\",Gender= \"%d\",EmailID= \"%@\",MobileNO= \"%@\",HomeNO= \"%@\",EmergencyContactName= \"%@\",ContactNO= \"%@\",AlternateNO= \"%@\",LicenceNO= \"%@\",StateIssueingLicence= \"%@\",NameInLicence= \"%@\" WHERE SocialSecurityNO= %@",_sufixbtnlbl.titleLabel.text, _lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_dobbtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text,_sqlitessn];
-        char *err;
-        sqlite3_exec(_newEmplyhrListDB, [updateSql UTF8String], NULL, NULL, &err);
+        NSString *updateSql=[NSString stringWithFormat:@"UPDATE UserList SET Suffix= \"%@\",LastName=\"%@\",FirstName=\"%@\",HomeAddress = \"%@\",City = \"%@\",State= \"%@\",Zip= \"%@\",SSN= \"%@\",Country= \"%@\",DateOfBirth= \"%@\",Gender= \"%d\",EmailID= \"%@\",MobileNO= \"%@\",HomeNO= \"%@\",EmergencyContactName= \"%@\",ContactNO= \"%@\",AlternateNO= \"%@\",LicenceNO= \"%@\",StateIssueingLicence= \"%@\",NameInLicence= \"%@\" WHERE ID= %@",_sufixbtnlbl.titleLabel.text, _lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_datetextfld_ipad.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text,_sqlitessn];
+        const char *update_stmt=[updateSql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            
+            NSLog( @"UserDetail's updated");
+        }
+        
+        else{
+            
+            NSLog( @"Failed to add update");
+        }
+        
+        
+        sqlite3_finalize(statement);
         sqlite3_close(_newEmplyhrListDB);
 //        const char *update_stmt=[updateSql UTF8String];
 //        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
