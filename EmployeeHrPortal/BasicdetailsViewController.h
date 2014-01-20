@@ -12,6 +12,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "sqlite3.h"
+#import "UserDetails.h"
 @interface BasicdetailsViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate,UITextFieldDelegate>
 {
     BOOL recordResults;
@@ -40,7 +41,8 @@
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSString *Availablityresult;
 @property(strong,nonatomic)NSString *sqlitessn;
-
+@property(strong,nonatomic)NSMutableArray *sqliteArray;
+@property(strong,nonatomic)UserDetails*userdetails;
 
 @property(readwrite)NSInteger Applicantid;
 @property(nonatomic, weak) CKCalendarView *calendar;

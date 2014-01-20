@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self FetchuserdetailsfromDB];
+    [self FetchuserdetailsfromDBforipad];
     x=1;
     detailbtnclicked_iphone=0;
     _datetextfld_ipad.inputView=[[UIView alloc]initWithFrame:CGRectZero];
@@ -224,9 +224,9 @@
     }
     else
     {
-        [self UPdateDB];
-        [self FetchuserdetailsfromDB];
-    [self UpdateApplicantData];
+        [self UPdateDBipad];
+        [self FetchuserdetailsfromDBforipad];
+    //[self UpdateApplicantData];
     }
 }
 
@@ -256,7 +256,8 @@
 
 
 -(IBAction)update_iphone:(id)sender
-{
+{     [self UPdateDBiphone];
+    [self FetchuserdetailsfromDBforiphone];
     [self UpdateApplicantData];
     
 }
@@ -2804,70 +2805,12 @@ finishedSavingWithError:(NSError *)error
     [sender resignFirstResponder];
 }
 
-///*Sqlite database*/
-//-(void)createdatabase
-//{
-//    NSFileManager *fileMngr=[NSFileManager defaultManager];
-//    if([fileMngr fileExistsAtPath:_databasePath]==NO)
-//    {
-//        const char *dbpath=[_databasePath UTF8String];
-//        if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
-//        {
-//            char *errmsg;
-//            const char *sql_stmt="CREATE TABLE IF NOT EXISTS BasicDetails (ID INTEGER PRIMARY KEY AUTOINCREMENT, Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT )";
-//            if(sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errmsg)!=SQLITE_OK)
-//            {
-//                NSLog(@"Failed to create table");
-//                NSLog( @"Error while inserting '%s'", sqlite3_errmsg(_newEmplyhrListDB));
-//            }
-//            sqlite3_close(_newEmplyhrListDB);
-//             }
-//            else
-//            {
-//                 NSLog( @"Failed to open/create database");
-//            }
-//            
-//        
-//    }
-//    
-//}
-//-(void)savetoDB
-//{
-//    if(_gendersegmentcntrl.selectedSegmentIndex==0)
-//    {
-//        genderstg=1;
-//    }
-//    else if(_gendersegmentcntrl.selectedSegmentIndex==1)
-//    {
-//        genderstg=0;
-//    }
-//
-//    sqlite3_stmt *statement;
-//    const char *dbpath=[_databasePath UTF8String];
-//    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
-//    {
-//        NSString *insertSql=[NSString stringWithFormat:@"INSERT INTO BasicDetails WHERE (Suffix ,LastName ,FirstName ,HomeAddress ,City , State , Zip ,SSN ,Country ,DateOfBirth , Gender , EmailID , MobileNO , HomeNO , EmergencyContactName , ContactNO , AlternateNO , LicenceNo , StateIssueingLicence , NameInLicence ) VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",_sufixbtnlbl.titleLabel.text,_lastnametxtfld.text,_firstnametxtfld.text,_Addresstxtfld.text,_citytxtfld.text,_statebtnlbl.titleLabel.text,_ziptextflield.text,_ssntxtfld.text,_countrybtnlbl.titleLabel.text,_dobbtnlbl.titleLabel.text,genderstg,_emailtxtfld.text,_mobiletxtfld.text,_homenumbertxtfld.text,_emergencytxtfld.text,_contactnumbtxtfld.text,_alternativenumtxtfld.text,_driverlicencetxtfld.text,_stateissuebtn.titleLabel.text,_nameinlicencetxtfld.text];
-//        const char *insert_stmt=[insertSql UTF8String];
-//        sqlite3_prepare(_newEmplyhrListDB, insert_stmt, -1, &statement, NULL);
-//        if(sqlite3_step(statement)==SQLITE_DONE)
-//        {
-//            
-//            NSLog( @"UserDetail's added");
-//        }
-//        
-//        else{
-//            
-//            NSLog( @"Failed to add userdetails");
-//        }
-//        
-//        
-//        sqlite3_finalize(statement);
-//        sqlite3_close(_newEmplyhrListDB);
-//        
-//    }
-//}
--(void)UPdateDB
+
+#pragma mark-Sqlite database for ipad
+-(void)UPdateDBipad
 {
+    NSLog(@"PRIMARYID%@",_sqlitessn);
+
     if(_gendersegmentcntrl.selectedSegmentIndex==0)
     {
         genderstg=1;
@@ -2876,6 +2819,8 @@ finishedSavingWithError:(NSError *)error
     {
         genderstg=0;
     }
+    
+    
     sqlite3_stmt *statement;
     const char *dbpath=[_databasePath UTF8String];
     if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
@@ -2907,15 +2852,7 @@ finishedSavingWithError:(NSError *)error
     }
     }
 
-
-
-//@"UPDATE EMPLOYEES set name = '%@', department = '%@', age = '%@' WHERE id = ?",
-//employee.name,
-//employee.department,
-//[NSString stringWithFormat:@"%d", employee.age]];
-//
-//const char *update_stmt = [updateSQL UTF8String];
--(void)FetchuserdetailsfromDB{
+-(void)FetchuserdetailsfromDBforipad{
     
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt*statement;
@@ -2924,21 +2861,202 @@ finishedSavingWithError:(NSError *)error
         const char *query_stmt=[query UTF8String];
         
         if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
-            //_sqliteArray=[[NSMutableArray alloc]init];
+            int i=0;
             while (sqlite3_step(statement)==SQLITE_ROW) {
-                //_userdetails=[[UserDetails alloc]init];
+                _userdetails=(UserDetails *)[_sqliteArray objectAtIndex:i];
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                 NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-               // _userdetails.primarykey=[pkey integerValue];
+            _userdetails.primarykey=[pkey integerValue];
                 
-                const char *username=(const char *)sqlite3_column_text(statement, 5);
-                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                const char *suffix=(const char *)sqlite3_column_text(statement, 3);
+                _userdetails.suffix=suffix==NULL ?nil:[[NSString alloc]initWithUTF8String:suffix];
                 
-                const char*password=(const char *)sqlite3_column_text(statement, 7);
-                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                const char*lastname=(const char *)sqlite3_column_text(statement, 4);
+                _userdetails.lastname=lastname==NULL ?nil:[[NSString alloc]initWithUTF8String:lastname];
+                
+                const char*firstname=(const char *)sqlite3_column_text(statement, 5);
+                _userdetails.firstname=firstname==NULL ?nil:[[NSString alloc]initWithUTF8String:firstname];
+
+                const char*homeaddress=(const char *)sqlite3_column_text(statement, 6);
+                _userdetails.homeaddress=homeaddress==NULL ?nil:[[NSString alloc]initWithUTF8String:homeaddress];
+                
+                const char*city=(const char *)sqlite3_column_text(statement, 7);
+                _userdetails.city=city==NULL ?nil:[[NSString alloc]initWithUTF8String:city];
+                
+                const char*state=(const char *)sqlite3_column_text(statement, 8);
+                _userdetails.state=state==NULL ?nil:[[NSString alloc]initWithUTF8String:state];
+
+                const char*zip=(const char *)sqlite3_column_text(statement, 9);
+                _userdetails.zip=zip==NULL ?nil:[[NSString alloc]initWithUTF8String:zip];
+                
+                const char*country =(const char *)sqlite3_column_text(statement, 11);
+                _userdetails.country=country==NULL ?nil:[[NSString alloc]initWithUTF8String:country];
+                
+                const char*dob =(const char *)sqlite3_column_text(statement, 12);
+                _userdetails.dob=dob==NULL ?nil:[[NSString alloc]initWithUTF8String:dob];
+
+                const char*gender =(const char *)sqlite3_column_text(statement, 13);
+                NSString*gen =gender==NULL ?nil:[[NSString alloc]initWithUTF8String:gender];
+                _userdetails.gender=[gen integerValue];
+                
+                const char*email =(const char *)sqlite3_column_text(statement, 14);
+                _userdetails.emailid=email==NULL ?nil:[[NSString alloc]initWithUTF8String:email];
+                
+                const char*mobileno =(const char *)sqlite3_column_text(statement, 15);
+                _userdetails.mobileno=mobileno==NULL ?nil:[[NSString alloc]initWithUTF8String:mobileno];
+                
+                const char*homeno =(const char *)sqlite3_column_text(statement, 16);
+                _userdetails.homeno=homeno==NULL ?nil:[[NSString alloc]initWithUTF8String:homeno];
+                
+                const char*EmergencyContactName =(const char *)sqlite3_column_text(statement, 17);
+                _userdetails.emergencycontactname=EmergencyContactName==NULL ?nil:[[NSString alloc]initWithUTF8String:EmergencyContactName];
+                
+                const char*ContactNO =(const char *)sqlite3_column_text(statement, 18);
+                _userdetails.contactno=ContactNO==NULL ?nil:[[NSString alloc]initWithUTF8String:ContactNO];
+                
+                const char*AlternateNO =(const char *)sqlite3_column_text(statement, 19);
+                _userdetails.alternateno=AlternateNO==NULL ?nil:[[NSString alloc]initWithUTF8String:AlternateNO];
+                
+                const char*LicenceNO =(const char *)sqlite3_column_text(statement, 20);
+                _userdetails.licenceno=LicenceNO==NULL ?nil:[[NSString alloc]initWithUTF8String:LicenceNO];
+                
+                const char*StateIssueingLicence =(const char *)sqlite3_column_text(statement, 21);
+                _userdetails.stateissuinglicence=StateIssueingLicence==NULL ?nil:[[NSString alloc]initWithUTF8String:StateIssueingLicence];
+                
+                const char*NameInLicence =(const char *)sqlite3_column_text(statement, 22);
+                _userdetails.Nameinlicence=NameInLicence==NULL ?nil:[[NSString alloc]initWithUTF8String:NameInLicence];
+
+
+                [_sqliteArray addObject:_userdetails];
+                
+                 
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        
+        
+        
+    }
+    sqlite3_close(_newEmplyhrListDB);
+    
+}
+#pragma mark-Sqlite database for iphone
+-(void)UPdateDBiphone
+{
+    NSLog(@"PRIMARYID%@",_sqlitessn);
+    if(_gendersegment_iphone.selectedSegmentIndex==0)
+    {
+        genderstg=1;
+    }
+    else if(_gendersegment_iphone.selectedSegmentIndex==1)
+    {
+        genderstg=0;
+    }
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        
+        NSString *updateSql=[NSString stringWithFormat:@"UPDATE UserIphoneList SET Suffix= \"%@\",LastName=\"%@\",FirstName=\"%@\",HomeAddress = \"%@\",City = \"%@\",State= \"%@\",Zip= \"%@\",SSN= \"%@\",Country= \"%@\",DateOfBirth= \"%@\",Gender= \"%d\",EmailID= \"%@\",MobileNO= \"%@\",HomeNO= \"%@\",EmergencyContactName= \"%@\",ContactNO= \"%@\",AlternateNO= \"%@\",LicenceNO= \"%@\",StateIssueingLicence= \"%@\",NameInLicence= \"%@\" WHERE ID= %@",_suffixbtn_iphone.titleLabel.text, _lastnametxt_iphone.text,_firstnametxt_iphone.text,_homeaddresstxt_iphone.text,_citytxt_iphone.text,_statebtn_iphone.titleLabel.text,_ziptxt_iphone.text,_ssntextfield_iphone.text,_countrytxt_iphone.titleLabel.text,_dobtext_iphone.text,genderstg,_emailtxt_iphone.text,_mobilenotext_iphone.text,_homenotxt_iphone.text,_emergencycontactnametxt_iphone.text,_contactnotxt_iphone.text,_alternatenotxt_iphone.text,_drivinglicenceno_iphone.text,_stateissuetxt_iphone.text,_nameonlicenct_iphone.text,_sqlitessn];
+        const char *update_stmt=[updateSql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            
+            NSLog( @"UserDetail's updated");
+        }
+        
+        else{
+            
+            NSLog( @"Failed to add update");
+        }
+        
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+        
+    }
+    
+    
+}
+
+-(void)FetchuserdetailsfromDBforiphone{
+    
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt*statement;
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserIphoneList"];
+        const char *query_stmt=[query UTF8String];
+        
+        if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
+            int i=0;
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                _userdetails=(UserDetails *)[_sqliteArray objectAtIndex:i];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                 _userdetails.primarykey=[pkey integerValue];
+                
+                const char *suffix=(const char *)sqlite3_column_text(statement, 3);
+                _userdetails.suffix=suffix==NULL ?nil:[[NSString alloc]initWithUTF8String:suffix];
+                
+                const char*lastname=(const char *)sqlite3_column_text(statement, 4);
+                _userdetails.lastname=lastname==NULL ?nil:[[NSString alloc]initWithUTF8String:lastname];
+                
+                const char*firstname=(const char *)sqlite3_column_text(statement, 5);
+                _userdetails.firstname=firstname==NULL ?nil:[[NSString alloc]initWithUTF8String:firstname];
+                
+                const char*homeaddress=(const char *)sqlite3_column_text(statement, 6);
+                _userdetails.homeaddress=homeaddress==NULL ?nil:[[NSString alloc]initWithUTF8String:homeaddress];
+                
+                const char*city=(const char *)sqlite3_column_text(statement, 7);
+                _userdetails.city=city==NULL ?nil:[[NSString alloc]initWithUTF8String:city];
+                
+                const char*state=(const char *)sqlite3_column_text(statement, 8);
+                _userdetails.state=state==NULL ?nil:[[NSString alloc]initWithUTF8String:state];
+                
+                const char*zip=(const char *)sqlite3_column_text(statement, 9);
+                _userdetails.zip=zip==NULL ?nil:[[NSString alloc]initWithUTF8String:zip];
+                
+                const char*country =(const char *)sqlite3_column_text(statement, 11);
+                _userdetails.country=country==NULL ?nil:[[NSString alloc]initWithUTF8String:country];
+                
+                const char*dob =(const char *)sqlite3_column_text(statement, 12);
+                _userdetails.dob=dob==NULL ?nil:[[NSString alloc]initWithUTF8String:dob];
+                
+                const char*gender =(const char *)sqlite3_column_text(statement, 13);
+                NSString*gen =gender==NULL ?nil:[[NSString alloc]initWithUTF8String:gender];
+                _userdetails.gender=[gen integerValue];
+                
+                const char*email =(const char *)sqlite3_column_text(statement, 14);
+                _userdetails.emailid=email==NULL ?nil:[[NSString alloc]initWithUTF8String:email];
+                
+                const char*mobileno =(const char *)sqlite3_column_text(statement, 15);
+                _userdetails.mobileno=mobileno==NULL ?nil:[[NSString alloc]initWithUTF8String:mobileno];
+                
+                const char*homeno =(const char *)sqlite3_column_text(statement, 16);
+                _userdetails.homeno=homeno==NULL ?nil:[[NSString alloc]initWithUTF8String:homeno];
+                
+                const char*EmergencyContactName =(const char *)sqlite3_column_text(statement, 17);
+                _userdetails.emergencycontactname=EmergencyContactName==NULL ?nil:[[NSString alloc]initWithUTF8String:EmergencyContactName];
+                
+                const char*ContactNO =(const char *)sqlite3_column_text(statement, 18);
+                _userdetails.contactno=ContactNO==NULL ?nil:[[NSString alloc]initWithUTF8String:ContactNO];
+                
+                const char*AlternateNO =(const char *)sqlite3_column_text(statement, 19);
+                _userdetails.alternateno=AlternateNO==NULL ?nil:[[NSString alloc]initWithUTF8String:AlternateNO];
+                
+                const char*LicenceNO =(const char *)sqlite3_column_text(statement, 20);
+                _userdetails.licenceno=LicenceNO==NULL ?nil:[[NSString alloc]initWithUTF8String:LicenceNO];
+                
+                const char*StateIssueingLicence =(const char *)sqlite3_column_text(statement, 21);
+                _userdetails.stateissuinglicence=StateIssueingLicence==NULL ?nil:[[NSString alloc]initWithUTF8String:StateIssueingLicence];
+                
+                const char*NameInLicence =(const char *)sqlite3_column_text(statement, 22);
+                _userdetails.Nameinlicence=NameInLicence==NULL ?nil:[[NSString alloc]initWithUTF8String:NameInLicence];
                 
                 
-               // [_sqliteArray addObject:_userdetails];
+                 [_sqliteArray addObject:_userdetails];
                 
                 
             }

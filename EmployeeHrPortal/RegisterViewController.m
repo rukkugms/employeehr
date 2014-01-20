@@ -50,10 +50,18 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSTimer *timer;
-    timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
-    [self createandcheckdatabaseforipad];
-    [self FetchuserdetailsfromDBforipad];
+   // NSTimer *timer;
+    //timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
+    [self Checknetavailabilty];
+    if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
+        [self createandcheckdatabaseforipad];
+        //[self FetchuserdetailsfromDBforipad];
+
+        
+    }
+    else{
+          [self createandcheckdatabaseforiphone];
+    }
     
 }
 
@@ -101,7 +109,7 @@
     _Ssntxtfld.text=@"";
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
-    [self FetchuserdetailsfromDBforipad];
+   // [self FetchuserdetailsfromDBforipad];
 }
 
 - (IBAction)homebtn:(id)sender {
@@ -251,7 +259,8 @@
        
        [self savedatatoDBforipad];
        [self FetchuserdetailsfromDBforipad];
-        //[self GetApplicantId2];
+       
+        [self GetApplicantId2];
 
         
     }
@@ -1024,7 +1033,8 @@ if([elementName isEqualToString:@"result"])
 
    else if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
        
-       [self savedatatoDBforipad];
+       [self savedatatoDBforiphone];
+       [self FetchuserdetailsfromDBforiphone];
         [self GetApplicantId2];
         
         
@@ -1073,7 +1083,7 @@ if([elementName isEqualToString:@"result"])
     
 
     
-    if ([_Availablityresult isEqualToString:@"Yes"]) {
+    if ([_Availablityresult isEqualToString:@"No"]) {
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
@@ -1087,6 +1097,7 @@ if([elementName isEqualToString:@"result"])
         viewController2.docsDir=_docsDir;
         viewController2.databasePath=_databasePath;
          viewController2.sqlitessn=_SqlSSnstrng;
+        viewController2.sqliteArray=_sqliteArray;
         
         EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
         viewController3.Applicantid=Applicantid;
@@ -1165,7 +1176,7 @@ if([elementName isEqualToString:@"result"])
         
     }
     }
-    else if([_Availablityresult isEqualToString:@"No"]){
+    else if([_Availablityresult isEqualToString:@"Yes"]){
      
         
         
@@ -1174,7 +1185,7 @@ if([elementName isEqualToString:@"result"])
 
     
 }
-#pragma mark -Sqlite Database
+#pragma mark -Sqlite Database for ipad
 -(void)createandcheckdatabaseforipad{
     _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     _docsDir=[_dirPaths objectAtIndex:0];
@@ -1216,7 +1227,7 @@ if([elementName isEqualToString:@"result"])
 
 -(void)savedatatoDBforipad{
     
-    _SqlSSnstrng=_connectstring;
+    //_SqlSSnstrng=_connectstring;
     sqlite3_stmt *statement;
     const char* dbpath=[_databasePath UTF8String];
     
@@ -1227,7 +1238,7 @@ if([elementName isEqualToString:@"result"])
         if ((sqlite3_step(statement))==SQLITE_DONE ) {
             
             NSLog( @"UserDetail's added");
-            [self pushtonextpage];
+          
 
         
         }
@@ -1265,6 +1276,7 @@ if([elementName isEqualToString:@"result"])
                 const char *key=(const char *)sqlite3_column_text(statement, 0);
                     NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
                 _userdetails.primarykey=[pkey integerValue];
+                _SqlSSnstrng=pkey;
                 
                 const char *username=(const char *)sqlite3_column_text(statement, 1);
                 _userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
@@ -1285,34 +1297,124 @@ if([elementName isEqualToString:@"result"])
         
     }
     sqlite3_close(_newEmplyhrListDB);
+      [self pushtonextpage];
     
 }
 
-//sqlite3_stmt *updateStmt;
-//const char *dbpath = [dabasePath UTF8String];
-//if(sqlite3_open(dbpath, &contactDB) == SQLITE_OK)
-//{
-//    const char *sql = "update contacts Set address = ?, phone = ?, image = ? Where name=?";
-//    if(sqlite3_prepare_v2(contactDB, sql, -1, &updateStmt, NULL)==SQLITE_OK){
-//        sqlite3_bind_text(updateStmt, 4, [name.text UTF8String], -1, SQLITE_TRANSIENT);
-//        sqlite3_bind_text(updateStmt, 1, [address.text UTF8String], -1, SQLITE_TRANSIENT);
-//        sqlite3_bind_text(updateStmt, 2, [phone.text UTF8String], -1, SQLITE_TRANSIENT);
-//        NSData *imagedata=UIImagePNGRepresentation(imageview.image);
-//        sqlite3_bind_blob(updateStmt, 3, [imagedata bytes], [imagedata length], NULL);
-//    }
-//}
-//char* errmsg;
-//sqlite3_exec(contactDB, "COMMIT", NULL, NULL, &errmsg);
-//
-//if(SQLITE_DONE != sqlite3_step(updateStmt)){
-//    NSLog(@"Error while updating. %s", sqlite3_errmsg(contactDB));
-//}
-//else{
-//    [self clearClick:nil];
-//}
-//sqlite3_finalize(updateStmt);
-//sqlite3_close(contactDB);
-//}
 
+#pragma mark -Sqlite Database for iphone
+-(void)createandcheckdatabaseforiphone{
+    _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    _docsDir=[_dirPaths objectAtIndex:0];
+    /* Build the path to the database file*/
+    
+    _databasePath = [[NSString alloc] initWithString: [_docsDir stringByAppendingPathComponent: @"EmployeeHrList.db"]];
+    //NSLog(@"Path %@",_databasePath);
+    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
+    {
+        const char *dbpath = [_databasePath UTF8String];
+        if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
+        {
+            char *errMsg;
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserIphoneList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT)";
+            
+            
+            if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)
+                != SQLITE_OK)
+            {
+                
+                NSLog(@"Failed to create table");
+                NSLog( @"Error while inserting '%s'", sqlite3_errmsg(_newEmplyhrListDB));
+            }
+            sqlite3_close(_newEmplyhrListDB);
+            
+        }
+        
+        else {
+            NSLog( @"Failed to open/create database");
+            
+        }
+        
+    }
+    
+    
+}
+
+-(void)savedatatoDBforiphone{
+    
+    //_SqlSSnstrng=_connectstring;
+    sqlite3_stmt *statement;
+    const char* dbpath=[_databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO UserIphoneList(SocialSecurityNO,Password) VALUES (\"%@\",\"%@\")",_connectstring,_confirmpasswrd_iphone.text];
+        const char *insertstmt=[INSERTSql UTF8String];
+        sqlite3_prepare_v2(_newEmplyhrListDB, insertstmt, -1, &statement, NULL);
+        if ((sqlite3_step(statement))==SQLITE_DONE ) {
+            
+            NSLog( @"UserDetail's added");
+           
+            
+            
+        }
+        
+        else{
+            
+            NSLog( @"Failed to add userdetails");
+        }
+        
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+    }
+    
+}
+
+-(void)FetchuserdetailsfromDBforiphone{
+    NSLog(@"path%@",_databasePath);
+    _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    _docsDir=[_dirPaths objectAtIndex:0];
+    /* Build the path to the database file*/
+    
+    _databasePath = [[NSString alloc] initWithString: [_docsDir stringByAppendingPathComponent: @"EmployeeHrList.db"]];
+    
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt*statement;
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)== SQLITE_OK) {
+        NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserIphoneList"];
+        const char *query_stmt=[query UTF8String];
+        
+        if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
+            _sqliteArray=[[NSMutableArray alloc]init];
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                _userdetails=[[UserDetails alloc]init];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                _userdetails.primarykey=[pkey integerValue];
+                _SqlSSnstrng=pkey;
+                
+                const char *username=(const char *)sqlite3_column_text(statement, 1);
+                _userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                
+                const char*password=(const char *)sqlite3_column_text(statement, 2);
+                _userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                
+                
+                [_sqliteArray addObject:_userdetails];
+                
+                
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        
+        
+        
+    }
+    sqlite3_close(_newEmplyhrListDB);
+     [self pushtonextpage];
+}
 
 @end
