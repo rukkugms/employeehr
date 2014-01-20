@@ -1101,6 +1101,12 @@ if([elementName isEqualToString:@"result"])
         
         EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
         viewController3.Applicantid=Applicantid;
+        viewController3.dirPaths=_dirPaths;
+        viewController3.docsDir=_docsDir;
+        viewController3.databasePath=_databasePath;
+        viewController3.sqlitessn=_SqlSSnstrng;
+
+        
         UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController3];
         JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
         viewController1.Applicantid=Applicantid;
@@ -1110,6 +1116,11 @@ if([elementName isEqualToString:@"result"])
         UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
         EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
         viewcontroller5.Applicantid=Applicantid;
+        viewcontroller5.dirPaths=_dirPaths;
+        viewcontroller5.docsDir=_docsDir;
+        viewcontroller5.databasePath=_databasePath;
+        viewcontroller5.sqlitessn=_SqlSSnstrng;
+
         UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
         CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
         viewcontroller6.Applicantid=Applicantid;
@@ -1201,7 +1212,7 @@ if([elementName isEqualToString:@"result"])
         if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
         {
             char *errMsg;
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT,EducationID TEXT,EducationName TEXT,YearsCompleted TEXT,InstitutionName TEXT,EducationCity TEXT,EducationState TEXT,CertificateID TEXT,CertificateName TEXT,CertificateDate TEXT,PreviousID TEXT,CompanyName TEXT,EmployementDate TEXT,RateOFPay TEXT,PreviousPosition TEXT,ReasonForLeaving TEXT)";
             
             
             if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)
