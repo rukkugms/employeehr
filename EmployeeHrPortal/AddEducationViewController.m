@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _cerdatetxtfld.inputView=[[UIView alloc]initWithFrame:CGRectZero];
     // Do any additional setup after loading the view from its nib.
      _edunamearray=[[NSMutableArray alloc]initWithObjects:@"High School",@"College",@"Other", nil];
@@ -210,6 +211,7 @@
 #pragma -Actions
 - (IBAction)savebtn:(id)sender {
     [self InsertApplicantEducation];
+    [self updateeducationDBiphone];
     
     [_edunamelbl setTitle:@"Select" forState:UIControlStateNormal];
     _yrstxtfld.text=@"";
@@ -365,5 +367,55 @@ numberOfRowsInComponent:(NSInteger)component
 
 
 }
+#pragma mark-SqliteDB for iphone
+-(void)updateeducationDBiphone
+{
+    NSInteger eduid=0;
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET EducationID=\"%d\",EducationName=\"%@\",YearsCompleted=\"%d\",InstitutionName=\"%@\",EducationCity=\"%@\",EducationState=\"%@\" WHERE ID=%@",eduid,_edunamelbl.titleLabel.text,[_yrstxtfld.text integerValue],_institutenametxtfld.text,_citytxtfld.text,_statetxtfld.text,_sqlitessn];
+        const char *updatestmt=[updatesql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, updatestmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            NSLog( @"UserDetail's updated");
+            
+        }
+        else
+        {
+            NSLog( @"Failed to add update");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+
+    }
+    
+}
+-(void)updateCertificateDBiphone
+{   NSInteger certificateid=0;
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET CertificateID=\"%d\",CertificateName=\"%@\",CertificateDate=\"%@\" WHERE ID=%@",certificateid,_name.text,_cerdatetxtfld.text,_sqlitessn];
+        const char *updatestmt=[updatesql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, updatestmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            NSLog( @"UserDetail's updated");
+            
+        }
+        else
+        {
+            NSLog( @"Failed to add update");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+
+    }
+    
+}
+
+
 
 @end

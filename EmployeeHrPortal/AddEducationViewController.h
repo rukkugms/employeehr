@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "sqlite3.h"
 
 @interface AddEducationViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>{
     BOOL recordResults;
    
 }
+/*sqlite*/
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+@property(strong,nonatomic)NSString *sqlitessn;
+
 @property(strong,nonatomic)NSString*eduview;
 @property(strong,nonatomic)NSString*cerview;
 @property (strong, nonatomic) IBOutlet UIButton *edunamelbl;

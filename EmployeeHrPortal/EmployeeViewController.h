@@ -11,6 +11,7 @@
 #import "CKCalendarView.h"
 #import "previousemp.h"
 #import "Validation.h"
+#import "sqlite3.h"
 
 #import "CourseDrugViewController.h"
 @interface EmployeeViewController : UIViewController<UITextFieldDelegate>
@@ -20,6 +21,15 @@
     NSInteger webtype;
     
 }
+/*sqlite*/
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+@property(strong,nonatomic)NSString *sqlitessn;
+
+
 @property(strong,nonatomic)NSString *jobsiteid;
 @property(strong,nonatomic)NSString *craftid;
 

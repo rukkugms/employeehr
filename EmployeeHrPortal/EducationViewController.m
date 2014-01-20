@@ -27,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self FetcheducationdetailsfromDBipad];
+    [self FetchCertificateDetailsFromDBipad];
     _scroll.frame=CGRectMake(0, 0,1024, 768);
     [ _scroll setContentSize:CGSizeMake(1024,850)];
     
@@ -943,6 +945,8 @@
 
 - (IBAction)savebtn:(id)sender {
     [self InsertApplicantCertificates];
+    [self updateCertificateDBipad];
+    [self FetchCertificateDetailsFromDBipad];
     _certifcatenametxt.text=@"";
     [_certificatedatebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
 }
@@ -955,6 +959,8 @@
 
 - (IBAction)edusavebtn:(id)sender {
     [self InsertApplicantEducation];
+    [self updateeducationDBipad];
+    [self FetcheducationdetailsfromDBipad];
     [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
     _yearscompleted.text=@"";
     _insitutionname.text=@"";
@@ -1211,8 +1217,140 @@
         NSUInteger newLength = [_certifcatenametxt.text length] + [string length] - range.length;
         return (newLength > 25) ? NO : YES;
     }
-
+    return YES;
 
 
 }
+#pragma mark-Sqlitedatabase
+
+-(void)updateeducationDBipad
+{   NSInteger eduid=0;
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET EducationID=\"%d\",EducationName=\"%@\",YearsCompleted=\"%d\",InstitutionName=\"%@\",EducationCity=\"%@\",EducationState=\"%@\" WHERE ID=%@",eduid,_edunamebtnlbl.titleLabel.text,[_yearscompleted.text integerValue],_insitutionname.text,_citytxtfld.text,_statetxtfld.text,_sqlitessn];
+        const char *update_stmt=[updatesql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            NSLog( @"UserDetail's updated");
+
+        }
+        else
+        {
+             NSLog( @"Failed to add update");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+
+    }
+    
+}
+-(void)updateCertificateDBipad
+{   NSInteger certificateid=0;
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET CertificateID=\"%d\",CertificateName=\"%@\",CertificateDate=\"%@\" WHERE ID=%@",certificateid,_certifcatenametxt.text,_certificatedatebtnlbl.titleLabel.text,_sqlitessn];
+        const char *update_stmt=[updatesql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            NSLog( @"UserDetail's updated");
+            
+        }
+        else
+        {
+            NSLog( @"Failed to add update");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+
+    }
+    
+}
+
+-(void)FetcheducationdetailsfromDBipad
+{
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt *statement;
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        NSString *query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
+        const char *query_stmt=[query UTF8String];
+        if(sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK)
+        {
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                //_userdetails=[[UserDetails alloc]init];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                // _userdetails.primarykey=[pkey integerValue];
+                
+                const char *educationid=(const char *)sqlite3_column_text(statement, 5);
+                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                
+                const char*educationname=(const char *)sqlite3_column_text(statement, 7);
+                 //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                
+                const char *yearscompleted=(const char *)sqlite3_column_text(statement, 5);
+                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                const char *institutionname=(const char *)sqlite3_column_text(statement, 5);
+                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                const char *educationcity=(const char *)sqlite3_column_text(statement, 5);
+                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+
+                const char *educationstate=(const char *)sqlite3_column_text(statement, 5);
+                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+               
+
+                
+                // [_sqliteArray addObject:_userdetails];
+
+            }
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(_newEmplyhrListDB);
+    
+}
+-(void)FetchCertificateDetailsFromDBipad
+{
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt *statement;
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        NSString *query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
+        const char *query_stmt=[query UTF8String];
+        if(sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK)
+        {
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                //_userdetails=[[UserDetails alloc]init];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                // _userdetails.primarykey=[pkey integerValue];
+                
+                const char *certificateid=(const char *)sqlite3_column_text(statement, 5);
+                //_userdetails.ssnstring=username==NULL ?nil:[[NSString alloc]initWithUTF8String:username];
+                
+                const char*certificatename=(const char *)sqlite3_column_text(statement, 7);
+                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+                
+                const char*certificatedate=(const char *)sqlite3_column_text(statement, 7);
+                //_userdetails.passwordstring=password==NULL ?nil:[[NSString alloc]initWithUTF8String:password];
+
+                
+                
+                // [_sqliteArray addObject:_userdetails];
+                
+            }
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(_newEmplyhrListDB);
+    
+}
+
+
 @end

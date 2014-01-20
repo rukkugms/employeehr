@@ -12,6 +12,7 @@
 #import "certificateModel.h"
 #import "Educationdetails.h"
 #import "AddEducationViewController.h"
+#import "sqlite3.h"
 ///#import "NewMedicalViewController.h"
 @interface EducationViewController : UIViewController<UITextFieldDelegate>
 {
@@ -19,6 +20,15 @@
     NSInteger webtype;
      NSInteger identifr;
 }
+
+/*For Sqlite Database*/
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+@property(strong,nonatomic)NSString *sqlitessn;
+
 @property(strong,nonatomic)NSString*eduview;
 @property(strong,nonatomic)NSString*cerview;
 
