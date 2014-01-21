@@ -1009,4 +1009,12 @@ else{
     _medicationtxtfld.text=@"";
     _medicationsegment.selectedSegmentIndex=0;
 }
+
+
+#pragma mark-Sqlite database for ipad
+ 
+
+
+
+
 @end

@@ -10,6 +10,8 @@
 #import "Ethicity.h"
 #import "SecondRaceViewController.h"
 #import "racemdl.h"
+#import "UserDetails.h"
+#import "sqlite3.h"
 @interface RaceViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
 {
     BOOL recordResults;
@@ -17,6 +19,19 @@
         
 
 }
+
+/*For Sqlite Database*/
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+@property(strong,nonatomic)NSString *sqlitessn;
+@property(strong,nonatomic)NSMutableArray *sqliteArray;
+@property(strong,nonatomic)UserDetails*userdetails;
+
+
+
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollview;
 @property(strong,nonatomic)racemdl *racemdl;
 @property(strong,nonatomic)Ethicity *ethmdl;

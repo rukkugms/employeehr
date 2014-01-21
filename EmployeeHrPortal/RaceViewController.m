@@ -891,8 +891,9 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
     }
 
 
-    
+    [self saveOthersDatatoDBipad];
     [self UpdateApplicantInformations];
+    
 }
 
 -(IBAction)selectreffer:(id)sender
@@ -1127,5 +1128,43 @@ numberOfRowsInComponent:(NSInteger)component
         }
 
         }
+
+
+#pragma mark-Sqlite DB for ipad
+
+-(void)saveOthersDatatoDBipad{
+    
+    
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        NSString *updateSql=[NSString stringWithFormat:@"UPDATE UserList SET isconvictvalue= \"%d\",convictExplanationText=\"%@\",twicnumberText=\"%@\",agelimitvalue = \"%d\",legalrightsvalue = \"%d\",workedovertimevalue= \"%d\",workedearliervalue= \"%d\",workedperiodText= \"%@\",workoutoftownvalue= \"%d\",refferbtn= \"%@\",refferedagencyText= \"%@\",IsProtectedVeteranValue= \"%d\",IsDisablevalue= \"%d\",IsVietnamEravalue= \"%d\",IsActiveReservistvalue= \"%d\",IsDisabledVeteranvalue= \"%d\",IsSeperatedVeteranvalue= \"%d\" WHERE ID= %@",_isconvictvalue,_convictExplanationText.text,_twicnumberText.text,_agelimitvalue,_legalrightsvalue,_workedovertimevalue,_workedearliervalue,_workedperiodText.text,_workoutoftownvalue,_refferbtn.titleLabel.text,_refferedagencyText.text,_IsProtectedVeteranValue,_IsDisablevalue,_IsVietnamEravalue,_IsActiveReservistvalue,_IsDisabledVeteranvalue,_IsSeperatedVeteranvalue,_sqlitessn];
+        
+        NSLog(@"updatesql%@",updateSql);
+        const char *update_stmt=[updateSql UTF8String];
+       sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        
+        
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            
+            NSLog( @"UserDetail's updated");
+        }
+        
+        else{
+            
+            NSLog( @"Failed to add update");
+        }
+        
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+    }
+
+}
+-(void)fetchothersDataDBipad{
+    
+}
 
 @end
