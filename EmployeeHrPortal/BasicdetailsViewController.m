@@ -2842,26 +2842,6 @@ finishedSavingWithError:(NSError *)error
         
         sqlite3_finalize(statement);
         sqlite3_close(_newEmplyhrListDB);
-//        const char *update_stmt=[updateSql UTF8String];
-//        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
-//        //sqlite3_bind_int(statement, 1, _sqlitessn);
-//        if(sqlite3_step(statement)==SQLITE_DONE)
-//        {
-//            
-//            NSLog( @"UserDetail's updated");
-//        }
-//        
-//        else{
-//            
-//            NSLog( @"Failed to add update");
-//        }
-//        
-//        
-//      //  sqlite3_finalize(statement);
-//        sqlite3_close(_newEmplyhrListDB);
-//        
-//    }
-//
     }
     }
 

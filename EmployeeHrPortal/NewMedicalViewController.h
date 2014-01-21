@@ -11,12 +11,28 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EmployeeViewController.h"
 #import "AddNewMedicalViewController.h"
+#import "UserDetails.h"
 
 @interface NewMedicalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     BOOL  recordResults;
     NSInteger identifier;
     NSInteger webtype;
 }
+
+/*For Sqlite Database*/
+
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+@property (strong, nonatomic) NSString *primarykey;
+@property (strong, nonatomic)NSMutableArray *sqliteArray;
+
+@property (strong, nonatomic)UserDetails *userdetails;
+
+
+
 
 
 //@property(strong,nonatomic)FirstViewController*firstVctrl;

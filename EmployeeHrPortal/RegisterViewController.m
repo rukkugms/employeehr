@@ -1035,7 +1035,7 @@ if([elementName isEqualToString:@"result"])
        
        [self savedatatoDBforiphone];
        [self FetchuserdetailsfromDBforiphone];
-        [self GetApplicantId2];
+       [self GetApplicantId2];
         
         
     }
@@ -1090,6 +1090,8 @@ if([elementName isEqualToString:@"result"])
         _tabbarcntrl=[[UITabBarController alloc]init];
         _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
         
+        
+        NSLog(@"pkey%@",_SqlSSnstrng);
         BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
         viewController2.Applicantid=Applicantid;
         UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
@@ -1115,6 +1117,12 @@ if([elementName isEqualToString:@"result"])
         UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
         NewMedicalViewController *viewController4 = [[NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
         viewController4.Applicantid=Applicantid;
+        viewController4.dirPaths=_dirPaths;
+        viewController4.docsDir=_docsDir;
+        viewController4.databasePath=_databasePath;
+        viewController4.primarykey=_SqlSSnstrng;
+        viewController4.sqliteArray=_sqliteArray;
+        
         UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
         EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
         viewcontroller5.Applicantid=Applicantid;
@@ -1122,7 +1130,7 @@ if([elementName isEqualToString:@"result"])
         viewcontroller5.docsDir=_docsDir;
         viewcontroller5.databasePath=_databasePath;
         viewcontroller5.sqlitessn=_SqlSSnstrng;
-        viewController3.sqliteArray=_sqliteArray;
+        viewcontroller5.sqliteArray=_sqliteArray;
 
 
         UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
@@ -1131,6 +1139,13 @@ if([elementName isEqualToString:@"result"])
         UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
         RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
         viewcontroller7.applicantId=Applicantid;
+       
+        viewcontroller7.dirPaths=_dirPaths;
+        viewcontroller7.docsDir=_docsDir;
+        viewcontroller7.databasePath=_databasePath;
+        viewcontroller7.sqlitessn=_SqlSSnstrng;
+        viewcontroller7.sqliteArray=_sqliteArray;
+        
         UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
         DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
         
@@ -1216,7 +1231,7 @@ if([elementName isEqualToString:@"result"])
         if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
         {
             char *errMsg;
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT,EducationID TEXT,EducationName TEXT,YearsCompleted TEXT,InstitutionName TEXT,EducationCity TEXT,EducationState TEXT,CertificateID TEXT,CertificateName TEXT,CertificateDate TEXT,PreviousID TEXT,CompanyName TEXT,EmployementDate TEXT,RateOFPay TEXT,PreviousPosition TEXT,ReasonForLeaving TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT,EducationID TEXT,EducationName TEXT,YearsCompleted TEXT,InstitutionName TEXT,EducationCity TEXT,EducationState TEXT,CertificateID TEXT,CertificateName TEXT,CertificateDate TEXT,PreviousID TEXT,CompanyName TEXT,EmployementDate TEXT,RateOFPay TEXT,PreviousPosition TEXT,ReasonForLeaving TEXT,isconvictvalue TEXT,convictExplanationText TEXT,twicnumberText TEXT,agelimitvalue  TEXT ,legalrightsvalue TEXT,workedovertimevalue  TEXT,workedearliervalue TEXT,workedperiodText TEXT,workoutoftownvalue TEXT,refferbtn TEXT,refferedagencyText TEXT,IsProtectedVeteranValue TEXT,IsDisablevalue TEXT,IsVietnamEravalue TEXT,IsActiveReservistvalue TEXT,IsDisabledVeteranvalue TEXT,IsSeperatedVeteranvalue TEXT)";
             
             
             if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)
