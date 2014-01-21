@@ -44,7 +44,7 @@
 @property (strong, nonatomic) NSString *Availablityresult;
 
 @property (strong, nonatomic)NSMutableArray *sqliteArray;
-
+@property(strong,nonatomic) NSString *applicantssn;
 
 /*Xmlparser*/
 @property(strong,nonatomic)NSXMLParser *xmlParser;

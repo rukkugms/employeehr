@@ -62,6 +62,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    _applicantssn=_ssntxtfld.text;
+    _applicantssn=_ssntextfield_iphone.text;
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
    self.navigationController.navigationBar.translucent = NO;
    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
@@ -308,6 +310,7 @@
     _encodedString = [data base64EncodedString];
     
     NSLog(@"result%@",_encodedString);
+    [self updateImagetoDB];
     
     [self UploadImage];
     
@@ -2933,6 +2936,33 @@ finishedSavingWithError:(NSError *)error
     }
     sqlite3_close(_newEmplyhrListDB);
     
+}
+
+-(void)updateImagetoDB{
+        NSString *imagename=[NSString stringWithFormat:@"Photo_%@.png",_ssntxtfld.text];
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        NSString *updateSql=[NSString stringWithFormat:@"UPDATE UserList SET FileName=\"%@\",EncodedString=\"%@\"  WHERE ID= %@",imagename,_encodedString,_sqlitessn];
+        const char *update_stmt=[updateSql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            
+            NSLog( @"UserDetail's updated");
+        }
+        
+        else{
+            
+            NSLog( @"Failed to add update");
+        }
+        
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+    }
+
 }
 #pragma mark-Sqlite database for iphone
 -(void)UPdateDBiphone
