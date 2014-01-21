@@ -28,6 +28,17 @@
     NSString* selectedjobsite;
     
 }
+/*for squlteDB*/
+
+@property(strong,nonatomic) NSString *docsDir;
+@property(strong,nonatomic) NSArray *dirPaths;
+@property(nonatomic,readwrite) sqlite3*newEmplyhrListDB;
+@property (strong, nonatomic) NSString *databasePath;
+@property (strong, nonatomic) NSString *Availablityresult;
+@property (strong, nonatomic)NSMutableArray *sqliteArray;
+@property(strong,nonatomic)NSString *sqlitessn;
+
+
 @property(readwrite)  NSInteger Applicantid;
 @property (strong, nonatomic)NSString*Drugjobsiteid;
 //@property(strong,nonatomic)ViewController*viewCntrl;

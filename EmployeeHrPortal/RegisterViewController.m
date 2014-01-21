@@ -1115,6 +1115,13 @@ if([elementName isEqualToString:@"result"])
         UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController3];
         JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
         viewController1.Applicantid=Applicantid;
+        viewController1.dirPaths=_dirPaths;
+        viewController1.docsDir=_docsDir;
+        viewController1.databasePath=_databasePath;
+        viewController1.sqlitessn=_SqlSSnstrng;
+        viewController1.sqliteArray=_sqliteArray;
+        
+
         UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
         NewMedicalViewController *viewController4 = [[NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
         viewController4.Applicantid=Applicantid;
@@ -1232,9 +1239,9 @@ if([elementName isEqualToString:@"result"])
     {
         const char *dbpath = [_databasePath UTF8String];
         if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
-        {
+        { 
             char *errMsg;
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT,EducationID TEXT,EducationName TEXT,YearsCompleted TEXT,InstitutionName TEXT,EducationCity TEXT,EducationState TEXT,CertificateID TEXT,CertificateName TEXT,CertificateDate TEXT,PreviousID TEXT,CompanyName TEXT,EmployementDate TEXT,RateOFPay TEXT,PreviousPosition TEXT,ReasonForLeaving TEXT,FileName TEXT,EncodedString TEXT,isconvictvalue TEXT,convictExplanationText TEXT,twicnumberText TEXT,agelimitvalue  TEXT ,legalrightsvalue TEXT,workedovertimevalue  TEXT,workedearliervalue TEXT,workedperiodText TEXT,workoutoftownvalue TEXT,refferbtn TEXT,refferedagencyText TEXT,IsProtectedVeteranValue TEXT,IsDisablevalue TEXT,IsVietnamEravalue TEXT,IsActiveReservistvalue TEXT,IsDisabledVeteranvalue TEXT,IsSeperatedVeteranvalue TEXT,Medication TEXT,ClimbingAbility TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT, Password TEXT,Suffix TEXT, LastName TEXT,FirstName TEXT,HomeAddress TEXT,City TEXT, State TEXT, Zip TEXT,SSN TEXT,Country TEXT,DateOfBirth TEXT, Gender TEXT, EmailID TEXT, MobileNO TEXT, HomeNO TEXT, EmergencyContactName TEXT, ContactNO TEXT, AlternateNO TEXT, LicenceNo TEXT, StateIssueingLicence TEXT, NameInLicence TEXT,EducationID TEXT,EducationName TEXT,YearsCompleted TEXT,InstitutionName TEXT,EducationCity TEXT,EducationState TEXT,CertificateID TEXT,CertificateName TEXT,CertificateDate TEXT,PreviousID TEXT,CompanyName TEXT,EmployementDate TEXT,RateOFPay TEXT,PreviousPosition TEXT,ReasonForLeaving TEXT,FileName TEXT,EncodedString TEXT,isconvictvalue TEXT,convictExplanationText TEXT,twicnumberText TEXT,agelimitvalue  TEXT ,legalrightsvalue TEXT,workedovertimevalue  TEXT,workedearliervalue TEXT,workedperiodText TEXT,workoutoftownvalue TEXT,refferbtn TEXT,refferedagencyText TEXT,IsProtectedVeteranValue TEXT,IsDisablevalue TEXT,IsVietnamEravalue TEXT,IsActiveReservistvalue TEXT,IsDisabledVeteranvalue TEXT,IsSeperatedVeteranvalue TEXT,Medication TEXT,ClimbingAbility TEXT,JobSiteID TEXT,NCER TEXT,NCERDes TEXT,BasicPlus TEXT,DateString TEXT)";
             
             
             if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)

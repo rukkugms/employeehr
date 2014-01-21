@@ -138,7 +138,7 @@
 - (IBAction)continuebtn:(id)sender {
     // [self SelectEmployeeCraft];
     
-    
+    [self savejobsitdetailstoDB];
     [self UpdateApplicantDetails];
     
     
@@ -1909,5 +1909,58 @@ numberOfRowsInComponent:(NSInteger)component
 //    _crafttxtflield_iphone.text=@"";
 //    
 //    _otherdesc.text=@"";
+}
+#pragma mark-sqlite DB
+-(void)savejobsitdetailstoDB{
+    
+    if(_basicPlussegment.selectedSegmentIndex==0)
+    {
+        basicPlus=1;
+    }
+    else if(_basicPlussegment.selectedSegmentIndex==1)
+    {
+        basicPlus=0;
+    }
+    if(_ncerSegment.selectedSegmentIndex==0)
+    {
+        ncer=1;
+    }
+    else if(_ncerSegment.selectedSegmentIndex==1)
+    {
+        ncer=0;
+    }
+
+    NSString *month=[_monthDictionary objectForKey:_monthBtn.titleLabel.text];
+    NSString *year=_yearBtn.titleLabel.text;
+    NSString *day=@"01";
+    NSString *dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+    NSString *jobsiteid=@"0";
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        
+        NSString *updateSql=[NSString stringWithFormat:@"UPDATE UserList SET JobSiteID=\"%@\",NCER= \"%d\",NCERDes=\"%@\",BasicPlus=\"%d\",DateString=\"%@\" WHERE ID= %@",jobsiteid,ncer,_otherdesc.text,basicPlus,dateString,_sqlitessn];
+                             
+        const char *update_stmt=[updateSql UTF8String];
+                             
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            
+            NSLog( @"UserDetail's updated");
+        }
+        
+        else{
+            
+            NSLog( @"Failed to add update");
+        }
+        
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+        
+    }
+
 }
 @end
