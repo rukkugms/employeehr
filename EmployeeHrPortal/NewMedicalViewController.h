@@ -12,6 +12,7 @@
 #import "EmployeeViewController.h"
 #import "AddNewMedicalViewController.h"
 #import "UserDetails.h"
+#import "sqlite3.h"
 
 @interface NewMedicalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     BOOL  recordResults;
@@ -28,7 +29,7 @@
 @property (strong, nonatomic) NSString *Availablityresult;
 @property (strong, nonatomic) NSString *primarykey;
 @property (strong, nonatomic)NSMutableArray *sqliteArray;
-
+@property(strong,nonatomic)NSString *sqlitessn;
 @property (strong, nonatomic)UserDetails *userdetails;
 
 

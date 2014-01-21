@@ -1013,6 +1013,133 @@ else{
 
 #pragma mark-Sqlite database for ipad
  
+-(void)updateCertificateDBipad
+{
+    NSInteger Cablity;
+    if (_climbingsegment.selectedSegmentIndex==1) {
+        Cablity=0;
+    }
+    else {
+        Cablity=1;
+    }
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET Medication=\"%@\",ClimbingAbility=\"%d\" WHERE ID=%@",_medicationtxtfld.text,Cablity,_sqlitessn];
+        const char *update_stmt=[updatesql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            NSLog( @"UserDetail's updated");
+            
+        }
+        else
+        {
+            NSLog( @"Failed to add update");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+        
+    }
+    
+}
+-(void)updateCertificateDBiphone
+{
+    NSInteger Cablity;
+    if (_climbingsegment_iphone.selectedSegmentIndex==1) {
+        Cablity=0;
+    }
+    else {
+        Cablity=1;
+    }
+    sqlite3_stmt *statement;
+    const char *dbpath=[_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET Medication=\"%@\",ClimbingAbility=\"%d\" WHERE ID=%@",_medicationtxtfld_iphone.text,Cablity,_sqlitessn];
+        const char *update_stmt=[updatesql UTF8String];
+        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
+        if(sqlite3_step(statement)==SQLITE_DONE)
+        {
+            NSLog( @"UserDetail's updated");
+            
+        }
+        else
+        {
+            NSLog( @"Failed to add update");
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_newEmplyhrListDB);
+        
+    }
+    
+}
+-(void)FetchMedicaldetailsforipad
+{
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt *statement;
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        NSString *query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
+        const char *query_stmt=[query UTF8String];
+        if(sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK)
+        {   int i=0;
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                _userdetails=(UserDetails *)[_sqliteArray objectAtIndex:i];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                _userdetails.primarykey=[pkey integerValue];
+                const char*medication=(const char *)sqlite3_column_text(statement, 30);
+                _userdetails.medication=medication==NULL ?nil:[[NSString alloc]initWithUTF8String:medication];
+                const char *climbingability=(const char *)sqlite3_column_text(statement, 29);
+                NSString *climbing=climbingability==NULL ?nil:[[NSString alloc]initWithUTF8String:climbingability];
+                _userdetails.climbingability=[climbing integerValue];
+                [_sqliteArray addObject:_userdetails];
+                i++;
+            }
+            
+            
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(_newEmplyhrListDB);
+    
+}
+-(void)FetchMedicaldetailsforiphone
+{
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt *statement;
+    if(sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK)
+    {
+        NSString *query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
+        const char *query_stmt=[query UTF8String];
+        if(sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK)
+        {   int i=0;
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                _userdetails=(UserDetails *)[_sqliteArray objectAtIndex:i];
+                const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                _userdetails.primarykey=[pkey integerValue];
+                const char*medication=(const char *)sqlite3_column_text(statement, 30);
+                _userdetails.medication=medication==NULL ?nil:[[NSString alloc]initWithUTF8String:medication];
+                const char *climbingability=(const char *)sqlite3_column_text(statement, 29);
+                NSString *climbing=climbingability==NULL ?nil:[[NSString alloc]initWithUTF8String:climbingability];
+                _userdetails.climbingability=[climbing integerValue];
+                [_sqliteArray addObject:_userdetails];
+                i++;
+            }
+            
+            
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(_newEmplyhrListDB);
+    
+}
+
+
+
 
 
 

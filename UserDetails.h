@@ -45,6 +45,10 @@
 @property(strong,nonatomic)NSString *emplymentdate;
 @property(strong,nonatomic)NSString *rateofpay;
 @property(strong,nonatomic)NSString *previosposition;
-@property(strong,nonatomic)NSString *reasonforleaving;;
+@property(strong,nonatomic)NSString *reasonforleaving;
+@property(strong,nonatomic)NSString *medication;
+@property(readwrite)NSInteger climbingability;
+@property(strong,nonatomic)NSString *filename;
+@property(strong,nonatomic)NSString *encodedstring;
 
 @end
