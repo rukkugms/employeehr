@@ -1077,8 +1077,7 @@
                 
                 const char*empdate=(const char *)sqlite3_column_text(statement, 34);
                 _userdetails.emplymentdate=empdate==NULL ?nil:[[NSString alloc]initWithUTF8String:empdate];
-                
-                const char*rateofpay=(const char *)sqlite3_column_text(statement, 35);
+                 const char*rateofpay=(const char *)sqlite3_column_text(statement, 35);
                 _userdetails.rateofpay=rateofpay==NULL ?nil:[[NSString alloc]initWithUTF8String:rateofpay];
                 
                 const char*postion=(const char *)sqlite3_column_text(statement, 36);
