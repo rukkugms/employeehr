@@ -153,6 +153,9 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
   //  [self DeleteApplicantMedicalCondition];
       [self UpdateApplicantValue];
+    [self updatemedicalDBipad];
+    [self FetchMedicaldetailsDBforipad];
+    
  
     
 }
@@ -946,6 +949,8 @@ else{
 
 - (IBAction)updatebtn:(id)sender {
     [self UpdateApplicantValue];
+    [self updatemedicalDBiphone];
+    [self FetchMedicaldetailsDBforiphone];
     
 }
 - (IBAction)Addbtn_iphone:(id)sender {
@@ -1013,7 +1018,7 @@ else{
 
 #pragma mark-Sqlite database for ipad
  
--(void)updateCertificateDBipad
+-(void)updatemedicalDBipad
 {
     NSInteger Cablity;
     if (_climbingsegment.selectedSegmentIndex==1) {
@@ -1025,7 +1030,7 @@ else{
     sqlite3_stmt *statement;
     const char *dbpath=[_databasePath UTF8String];
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET Medication=\"%@\",ClimbingAbility=\"%d\" WHERE ID=%@",_medicationtxtfld.text,Cablity,_sqlitessn];
+        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET Medication=\"%@\",ClimbingAbility=\"%d\" WHERE ID=%@",_medicationtxtfld.text,Cablity,_primarykey];
         const char *update_stmt=[updatesql UTF8String];
         sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
         if(sqlite3_step(statement)==SQLITE_DONE)
@@ -1043,7 +1048,7 @@ else{
     }
     
 }
--(void)updateCertificateDBiphone
+-(void)updatemedicalDBiphone
 {
     NSInteger Cablity;
     if (_climbingsegment_iphone.selectedSegmentIndex==1) {
@@ -1073,7 +1078,7 @@ else{
     }
     
 }
--(void)FetchMedicaldetailsforipad
+-(void)FetchMedicaldetailsDBforipad
 {
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt *statement;
@@ -1105,7 +1110,7 @@ else{
     sqlite3_close(_newEmplyhrListDB);
     
 }
--(void)FetchMedicaldetailsforiphone
+-(void)FetchMedicaldetailsDBforiphone
 {
     const char *dbpath=[_databasePath UTF8String];
     sqlite3_stmt *statement;
