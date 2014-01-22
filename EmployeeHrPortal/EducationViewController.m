@@ -944,9 +944,17 @@
 }
 
 - (IBAction)savebtn:(id)sender {
-    [self InsertApplicantCertificates];
-    [self updateCertificateDBipad];
-    [self FetchCertificateDetailsFromDBipad];
+    if([_Availablityresult isEqualToString:@"Yes"])
+    {
+       [self InsertApplicantCertificates]; 
+    }
+    
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        [self updateCertificateDBipad];
+        [self FetchCertificateDetailsFromDBipad];
+    }
+
     _certifcatenametxt.text=@"";
     [_certificatedatebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
 }
@@ -958,9 +966,19 @@
 }
 
 - (IBAction)edusavebtn:(id)sender {
-    [self InsertApplicantEducation];
-    [self updateeducationDBipad];
-    [self FetcheducationdetailsfromDBipad];
+    if([_Availablityresult isEqualToString:@"Yes"])
+    {
+        [self InsertApplicantEducation];
+    }
+    
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        [self updateeducationDBipad];
+        [self FetcheducationdetailsfromDBipad];
+    }
+
+   
+    
     [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
     _yearscompleted.text=@"";
     _insitutionname.text=@"";
