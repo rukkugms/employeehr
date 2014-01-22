@@ -12,5 +12,7 @@
 @property(readwrite)NSInteger certificateid;
 @property(strong,nonatomic)NSString*certificatename;
 @property(strong,nonatomic)NSString*date;
+@property(readwrite)NSInteger primarykey;
+
 
 @end

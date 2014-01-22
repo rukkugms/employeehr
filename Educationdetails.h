@@ -12,7 +12,7 @@
 @property(strong,nonatomic)NSString*educationname;
 @property(readwrite)NSInteger yearscompleted;
 @property(readwrite)NSInteger eduid;
-
+@property(readwrite)NSInteger primarykey;
 @property(strong,nonatomic)NSString*InstituteName;
 @property(strong,nonatomic)NSString*city;
 @property(strong,nonatomic)NSString*state;
