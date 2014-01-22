@@ -226,10 +226,19 @@
     }
     else
     {
-        [self UPdateDBipad];
-        [self FetchuserdetailsfromDBforipad];
-    //[self UpdateApplicantData];
-    }
+        if ([_Availablityresult isEqualToString:@"Yes"]) {
+            
+            [self UpdateApplicantData];
+            
+            
+        }
+        else if([_Availablityresult isEqualToString:@"No"]){
+            
+            [self UPdateDBipad];
+            [self FetchuserdetailsfromDBforipad];
+        }
+
+           }
 }
 
 

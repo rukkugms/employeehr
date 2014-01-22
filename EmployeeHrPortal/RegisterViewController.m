@@ -52,7 +52,7 @@
     [super viewWillAppear:animated];
    // NSTimer *timer;
     //timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
-    [self Checknetavailabilty];
+    //[self Checknetavailabilty];
     if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad) {
         [self createandcheckdatabaseforipad];
         //[self FetchuserdetailsfromDBforipad];
@@ -65,35 +65,35 @@
     
 }
 
--(void)Checknetavailabilty{
-    /* for checking Connectivity*/
-    NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
-    _Availablityresult = [[NSString alloc] init];
-    _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
-    NSLog(@"Internet connection availability : %@", _Availablityresult);
-    if ([_Availablityresult isEqualToString:@"Yes"]) {
-        //[self FetchuserdetailsfromDBforipad];
-        
-        if ([_sqliteArray count]>0) {
-            //[self SynManpowertoserver];
-        }
-        else{
-            //[self Selectallmanpower];
-        }
-        
-        
-    }
-    else if([_Availablityresult isEqualToString:@"No"]){
-      //  [self createandcheckdatabase];
-        //  [self FetchuserdetailsfromDB];
-        
-        
-    }
-    
-    
-    
-}
-
+//-(void)Checknetavailabilty{
+//    /* for checking Connectivity*/
+//    NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
+//    _Availablityresult = [[NSString alloc] init];
+//    _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
+//    NSLog(@"Internet connection availability : %@", _Availablityresult);
+//    if ([_Availablityresult isEqualToString:@"Yes"]) {
+//        //[self FetchuserdetailsfromDBforipad];
+//        
+//        if ([_sqliteArray count]>0) {
+//            //[self SynManpowertoserver];
+//        }
+//        else{
+//            //[self Selectallmanpower];
+//        }
+//        
+//        
+//    }
+//    else if([_Availablityresult isEqualToString:@"No"]){
+//      //  [self createandcheckdatabase];
+//        //  [self FetchuserdetailsfromDB];
+//        
+//        
+//    }
+//    
+//    
+//    
+//}
+//
 -(void)processLogout:(NSNotification *)aNotification{
     [self.navigationController popToRootViewControllerAnimated:YES];
     //[NSUserDefaults standardUserDefaults]
@@ -255,12 +255,23 @@
        
 
    else if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
+       if ([_Availablityresult isEqualToString:@"Yes"]) {
+         
+             [self GetApplicantId2];
+           
+           
+       }
+       else if([_Availablityresult isEqualToString:@"No"]){
+           
+           [self savedatatoDBforipad];
+           [self FetchuserdetailsfromDBforipad];
+       }
        
+
        
-       [self savedatatoDBforipad];
-       [self FetchuserdetailsfromDBforipad];
+      
        
-        [self GetApplicantId2];
+      
 
         
     }
@@ -1101,6 +1112,7 @@ if([elementName isEqualToString:@"result"])
          viewController2.sqlitessn=_SqlSSnstrng;
         viewController2.sqliteArray=_sqliteArray;
         viewController2.applicantssn=_applicantssn;
+        viewController2.Availablityresult=_Availablityresult;
         
         EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
         viewController3.Applicantid=Applicantid;
@@ -1109,6 +1121,7 @@ if([elementName isEqualToString:@"result"])
         viewController3.databasePath=_databasePath;
         viewController3.sqlitessn=_SqlSSnstrng;
         viewController3.sqliteArray=_sqliteArray;
+        viewController3.Availablityresult=_Availablityresult;
 
 
         
@@ -1120,6 +1133,7 @@ if([elementName isEqualToString:@"result"])
         viewController1.databasePath=_databasePath;
         viewController1.sqlitessn=_SqlSSnstrng;
         viewController1.sqliteArray=_sqliteArray;
+        viewController1.Availablityresult=_Availablityresult;
         
 
         UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
@@ -1130,6 +1144,7 @@ if([elementName isEqualToString:@"result"])
         viewController4.databasePath=_databasePath;
         viewController4.primarykey=_SqlSSnstrng;
         viewController4.sqliteArray=_sqliteArray;
+        viewController4.Availablityresult=_Availablityresult;
         
         UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
         EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
@@ -1139,6 +1154,7 @@ if([elementName isEqualToString:@"result"])
         viewcontroller5.databasePath=_databasePath;
         viewcontroller5.sqlitessn=_SqlSSnstrng;
         viewcontroller5.sqliteArray=_sqliteArray;
+        viewcontroller5.Availablityresult=_Availablityresult;
 
 
         UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
@@ -1153,6 +1169,7 @@ if([elementName isEqualToString:@"result"])
         viewcontroller7.databasePath=_databasePath;
         viewcontroller7.sqlitessn=_SqlSSnstrng;
         viewcontroller7.sqliteArray=_sqliteArray;
+        viewcontroller7.Availablityresult=_Availablityresult;
         
         UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
         DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
@@ -1179,6 +1196,7 @@ if([elementName isEqualToString:@"result"])
         viewController3.databasePath=_databasePath;
         viewController3.sqlitessn=_SqlSSnstrng;
         viewController3.applicantssn=_applicantssn;
+        viewController3.Availablityresult=_Availablityresult;
 
         
         UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];

@@ -119,6 +119,14 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.49205043580000002" blue="0.65567203439999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="jL2-TT-1cs">
+                    <rect key="frame" x="489" y="322" width="123" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Online"/>
+                        <segment title="Offline"/>
+                    </segments>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>

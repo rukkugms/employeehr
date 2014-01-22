@@ -39,10 +39,20 @@
 //    NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
 //    [self.navigationItem setRightBarButtonItems:buttons animated:YES];
   
-    
+    [self Checknetavailabilty];
     
     
 }
+-(void)Checknetavailabilty{
+    /* for checking Connectivity*/
+    NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
+    _Availablityresult = [[NSString alloc] init];
+    _Availablityresult = ( URLString != NULL ) ? @"Yes" : @"No";
+    NSLog(@"Internet connection availability : %@", _Availablityresult);
+    
+    
+}
+
 -(void)logoutAction{
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
     [alert show];
@@ -76,6 +86,7 @@
     if (!self.registerVCtrl) {
         _registerVCtrl=[[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
     }
+    _registerVCtrl.Availablityresult=_Availablityresult;
     [self.navigationController pushViewController:_registerVCtrl animated:YES];
 }
 

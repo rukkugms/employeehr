@@ -14,6 +14,7 @@
 @interface ViewController : UIViewController
 @property(strong,nonatomic)RegisterViewController*registerVCtrl;
 @property(strong,nonatomic)LoginViewController*loginVCtrl;
+@property (strong, nonatomic) NSString *Availablityresult;
 
 - (IBAction)registerbtn:(id)sender;
 
