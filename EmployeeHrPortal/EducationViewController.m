@@ -1240,6 +1240,39 @@
 
 }
 #pragma mark-Sqlitedatabase
+-(void)createandcheckdatabaseforipad{
+    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
+    {
+        const char *dbpath = [_databasePath UTF8String];
+        if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
+        {
+            char *errMsg;
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS UserList (ID INTEGER PRIMARY KEY AUTOINCREMENT, SocialSecurityNO TEXT,EducationID TEXT,EducationName TEXT,YearsCompleted TEXT,InstitutionName TEXT,EducationCity TEXT,EducationState TEXT,CertificateID TEXT,CertificateName TEXT,CertificateDate TEXT,PreviousID TEXT,CompanyName TEXT,EmployementDate TEXT,RateOFPay TEXT,PreviousPosition TEXT,ReasonForLeaving TEXT,FileName TEXT,EncodedString TEXT,isconvictvalue TEXT,convictExplanationText TEXT,twicnumberText TEXT,agelimitvalue  TEXT ,legalrightsvalue TEXT,workedovertimevalue  TEXT,workedearliervalue TEXT,workedperiodText TEXT,workoutoftownvalue TEXT,refferbtn TEXT,refferedagencyText TEXT,IsProtectedVeteranValue TEXT,IsDisablevalue TEXT,IsVietnamEravalue TEXT,IsActiveReservistvalue TEXT,IsDisabledVeteranvalue TEXT,IsSeperatedVeteranvalue TEXT,Medication TEXT,ClimbingAbility TEXT,JobSiteID TEXT,NCER TEXT,NCERDes TEXT,BasicPlus TEXT,DateString TEXT)";
+            
+            
+            if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)
+                != SQLITE_OK)
+            {
+                
+                NSLog(@"Failed to create table");
+                NSLog( @"Error while inserting '%s'", sqlite3_errmsg(_newEmplyhrListDB));
+            }
+            sqlite3_close(_newEmplyhrListDB);
+            
+        }
+        
+        else {
+            NSLog( @"Failed to open/create database");
+            
+        }
+        
+    }
+    
+    
+}
+
 
 -(void)updateeducationDBipad
 {
