@@ -31,6 +31,7 @@
 @property(strong,nonatomic)NSString *sqlitessn;
 @property(strong,nonatomic)NSMutableArray *sqliteArray;
 @property(strong,nonatomic)UserDetails*userdetails;
+@property(strong,nonatomic)NSString *applicantssn;
 
 
 @property(strong,nonatomic)NSString *jobsiteid;

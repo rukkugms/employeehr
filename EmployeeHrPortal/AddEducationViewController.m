@@ -210,8 +210,18 @@
 
 #pragma -Actions
 - (IBAction)savebtn:(id)sender {
-    [self InsertApplicantEducation];
-    [self updateeducationDBiphone];
+    if([_Availablityresult isEqualToString:@"Yes"])
+    {
+        [self InsertApplicantEducation];
+    }
+    
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+       [self updateeducationDBiphone];
+    }
+
+   
+    
     
     [_edunamelbl setTitle:@"Select" forState:UIControlStateNormal];
     _yrstxtfld.text=@"";
@@ -350,8 +360,18 @@ numberOfRowsInComponent:(NSInteger)component
 
 
 - (IBAction)savecer:(id)sender {
-    [self InsertApplicantCertificates];
-}
+    if([_Availablityresult isEqualToString:@"Yes"])
+    {
+        [self InsertApplicantCertificates];
+    }
+    
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        [self updateCertificateDBiphone];
+        
+    }
+
+   }
 
 - (IBAction)cancelcer:(id)sender {
     _cerdatetxtfld.text=@"";

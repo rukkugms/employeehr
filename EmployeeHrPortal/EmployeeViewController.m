@@ -94,9 +94,16 @@
         
     }
     else{
-        [self insertPreviousEmployer];
-        [self updatePreviousEmpDBipad];
-        [self FetchPreviousEmpDBipad];
+        if([_Availablityresult isEqualToString:@"Yes"])
+        {
+            [self insertPreviousEmployer];
+        }
+       else if([_Availablityresult isEqualToString:@"No"]){
+            [self updatePreviousEmpDBipad];
+            [self FetchPreviousEmpDBipad];
+        }
+        
+        
         _previouscompanytxt.text=@"";
         [_datebtn setTitle:@"Select" forState:UIControlStateNormal];
         _rateofpaytxt.text=@"";
@@ -826,9 +833,15 @@
         
     }
     else{
-         [self insertPreviousEmployer];
-        [self updatePreviousEmpDBiphone];
-        [self FetchPreviousEmpDBiphone];
+        if([_Availablityresult isEqualToString:@"Yes"])
+        {
+            
+            [self insertPreviousEmployer];        }
+        else if([_Availablityresult isEqualToString:@"No"]){
+            [self updatePreviousEmpDBipad];
+            [self FetchPreviousEmpDBipad];
+        }
+
     }
 
    

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSString *Availablityresult;
 @property(strong,nonatomic)NSString *sqlitessn;
+@property(strong,nonatomic)NSString *applicantssn;
 
 @property(strong,nonatomic)NSString*eduview;
 @property(strong,nonatomic)NSString*cerview;
