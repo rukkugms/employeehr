@@ -78,7 +78,22 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    [self UpdateApplicantValue];
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+        
+        [self UpdateApplicantValue];
+        
+        
+        
+        
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        
+        
+        
+    }
+    
+
     
     
 }
@@ -152,11 +167,26 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
     
   //  [self DeleteApplicantMedicalCondition];
-      [self UpdateApplicantValue];
-    [self updatemedicalDBipad];
-    [self FetchMedicaldetailsDBforipad];
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+        
+        [self UpdateApplicantValue];
+        
+        
+        
+        
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        
+        [self updatemedicalDBipad];
+        [self FetchMedicaldetailsDBforipad];
+        
+
+        
+    }
+
+   
     
- 
     
 }
 

@@ -87,7 +87,21 @@
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    [self UpdateApplicantDetails];
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+        
+        [self UpdateApplicantDetails];
+
+        
+        
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+       
+        
+        
+    }
+    
+
     
     
 }
@@ -138,8 +152,22 @@
 - (IBAction)continuebtn:(id)sender {
     // [self SelectEmployeeCraft];
     
-    [self savejobsitdetailstoDB];
-    [self UpdateApplicantDetails];
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+        
+        [self UpdateApplicantDetails];
+        
+        
+        
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        
+        [self savejobsitdetailstoDB];
+
+        
+    }
+
+ 
     
     
 }

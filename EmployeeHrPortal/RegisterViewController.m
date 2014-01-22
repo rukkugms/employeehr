@@ -1122,6 +1122,7 @@ if([elementName isEqualToString:@"result"])
         viewController3.sqlitessn=_SqlSSnstrng;
         viewController3.sqliteArray=_sqliteArray;
         viewController3.Availablityresult=_Availablityresult;
+        viewController3.applicantssn=_applicantssn;
 
 
         
@@ -1155,6 +1156,7 @@ if([elementName isEqualToString:@"result"])
         viewcontroller5.sqlitessn=_SqlSSnstrng;
         viewcontroller5.sqliteArray=_sqliteArray;
         viewcontroller5.Availablityresult=_Availablityresult;
+        viewcontroller5.applicantssn=_applicantssn;
 
 
         UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];

@@ -73,7 +73,23 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    [self UpdateApplicantInformations];
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+        
+        [self UpdateApplicantInformations];
+
+        
+        
+        
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        
+               
+        
+    }
+    
+    
+
     
     
 }
@@ -890,9 +906,23 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
         _IsSeperatedVeteranvalue=0;
     }
 
+    
+    if ([_Availablityresult isEqualToString:@"Yes"]) {
+        
+        [self UpdateApplicantInformations];
+        
+        
+    }
+    else if([_Availablityresult isEqualToString:@"No"]){
+        
+        [self saveOthersDatatoDBipad];
 
-    [self saveOthersDatatoDBipad];
-    [self UpdateApplicantInformations];
+        
+    }
+    
+
+
+    
     
 }
 
