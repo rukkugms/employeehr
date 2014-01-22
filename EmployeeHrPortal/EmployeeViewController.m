@@ -48,6 +48,7 @@
     NSArray *buttons=[[NSArray alloc]initWithObjects:logoutbutton,nil];
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationController.navigationBarHidden=NO;
+    [self createandcheckdatabaseipad];
  
 }
 -(void)logoutAction{
@@ -99,7 +100,7 @@
             [self insertPreviousEmployer];
         }
        else if([_Availablityresult isEqualToString:@"No"]){
-            [self updatePreviousEmpDBipad];
+            [self savePreviousEmpDBipad];
             [self FetchPreviousEmpDBipad];
         }
         
@@ -838,7 +839,7 @@
             
             [self insertPreviousEmployer];        }
         else if([_Availablityresult isEqualToString:@"No"]){
-            [self updatePreviousEmpDBipad];
+            [self savePreviousEmpDBipad];
             [self FetchPreviousEmpDBipad];
         }
 
@@ -993,9 +994,50 @@
     _positionheldtxt.text=@"";
     _reasonforleavingtxt.text=@"";
 }
-#pragma mark-SqliteDB
--(void)updatePreviousEmpDBipad
-{
+#pragma mark-SqliteDB  for ipad
+
+-(void)createandcheckdatabaseipad{
+    _dirPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    _docsDir=[_dirPaths objectAtIndex:0];
+    /* Build the path to the database file*/
+    
+    _databasePath = [[NSString alloc] initWithString: [_docsDir stringByAppendingPathComponent: @"EmployeeHrList.db"]];
+    //NSLog(@"Path %@",_databasePath);
+    
+//    NSFileManager *filemgr = [NSFileManager defaultManager];
+//    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
+//    {
+        const char *dbpath = [_databasePath UTF8String];
+        if (sqlite3_open(dbpath, &_newEmplyhrListDB) == SQLITE_OK)
+        {
+            char *errMsg;
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS PreviousemployeeList (ID INTEGER PRIMARY KEY AUTOINCREMENT, PreviousID TEXT,CompanyName TEXT,EmployementDate TEXT,RateOFPay TEXT,PreviousPosition TEXT,ReasonForLeaving TEXT,ApplicantSSN TEXT)";
+            
+            
+            if (sqlite3_exec(_newEmplyhrListDB, sql_stmt, NULL, NULL, &errMsg)
+                != SQLITE_OK)
+            {
+                
+                NSLog(@"Failed to create table");
+                NSLog( @"Error while inserting '%s'", sqlite3_errmsg(_newEmplyhrListDB));
+            }
+            sqlite3_close(_newEmplyhrListDB);
+            
+        }
+        
+        else {
+            NSLog( @"Failed to open/create database");
+            
+        }
+        
+    
+    
+    
+}
+
+-(void)savePreviousEmpDBipad{
+    
+    //_SqlSSnstrng=_connectstring;
     NSInteger previousid=0;
     NSLog(@"date%@",_datebtn.titleLabel.text);
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
@@ -1006,30 +1048,87 @@
     [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
     NSString* date2=[dateFormat1 stringFromDate:dateString];
     NSLog(@"s%@",date2);
-   sqlite3_stmt *statement;
-    const char *dbpath=[_databasePath UTF8String];
+
+    sqlite3_stmt *statement;
+    const char* dbpath=[_databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString *updatesql=[NSString stringWithFormat:@"UPDATE UserList SET PreviousID=\"%d\",CompanyName=\"%@\",EmployementDate=\"%@\",RateOFPay=\"%@\",PreviousPosition=\"%@\",ReasonForLeaving=\"%@\" WHERE ID=%@",previousid,_previouscompanytxt.text,date2,_rateofpaytxt.text,_positionheldtxt.text,_reasonforleavingtxt.text,_sqlitessn];
-        const char *update_stmt=[updatesql UTF8String];
-        sqlite3_prepare(_newEmplyhrListDB, update_stmt, -1, &statement, NULL);
-        if(sqlite3_step(statement)==SQLITE_DONE)
-        {
-            NSLog( @"UserDetail's updated");
+        NSString*INSERTSql=[NSString stringWithFormat:@"INSERT  INTO PreviousemployeeList(PreviousID,CompanyName,EmployementDate,RateOFPay,PreviousPosition,ReasonForLeaving,ApplicantSSN) VALUES (\"%d\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",previousid,_previouscompanytxt.text,date2,_rateofpaytxt.text,_positionheldtxt.text,_reasonforleavingtxt.text,_applicantssn];
+        const char *insertstmt=[INSERTSql UTF8String];
+        sqlite3_prepare_v2(_newEmplyhrListDB, insertstmt, -1, &statement, NULL);
+        if ((sqlite3_step(statement))==SQLITE_DONE ) {
+            
+            NSLog( @"UserDetail's added");
+            
+            
             
         }
-        else
-        {
-            NSLog( @"Failed to add update");
+        
+        else{
+            
+            NSLog( @"Failed to add userdetails");
         }
+        
+        
         sqlite3_finalize(statement);
         sqlite3_close(_newEmplyhrListDB);
-        
     }
-
-        
     
 }
+
+
+-(void)FetchPreviousEmpDBipad
+{
+    const char *dbpath=[_databasePath UTF8String];
+    sqlite3_stmt*statement;
+    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
+        NSString*query=[NSString stringWithFormat:@"SELECT * FROM  PreviousemployeeList WHERE ApplicantSSN='%@'",_applicantssn];
+               const char *query_stmt=[query UTF8String];
+        
+        if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
+            _previousemployeeArray=[[NSMutableArray alloc]init];
+        
+
+            while (sqlite3_step(statement)==SQLITE_ROW) {
+                   _previous=[[previousemp alloc]init];
+                           const char *key=(const char *)sqlite3_column_text(statement, 0);
+                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
+                // _userdetails.primarykey=[pkey integerValue];
+                
+                const char *previousid=(const char *)sqlite3_column_text(statement,1);
+                NSString *preid=previousid==NULL ?nil:[[NSString alloc]initWithUTF8String:previousid];
+                _previous.previousid=[preid integerValue];
+                
+                const char *companyname=(const char *)sqlite3_column_text(statement, 2);
+                _previous.previouscompany=companyname==NULL ?nil:[[NSString alloc]initWithUTF8String:companyname];
+                
+                const char*empdate=(const char *)sqlite3_column_text(statement, 3);
+                _previous.dateofemployee=empdate==NULL ?nil:[[NSString alloc]initWithUTF8String:empdate];
+                 const char*rateofpay=(const char *)sqlite3_column_text(statement, 4);
+                _previous.previousrateofpay=rateofpay==NULL ?nil:[[NSString alloc]initWithUTF8String:rateofpay];
+                
+                const char*postion=(const char *)sqlite3_column_text(statement, 5);
+                _previous.previousposition=postion==NULL ?nil:[[NSString alloc]initWithUTF8String:postion];
+                
+                const char*reasonforleaving=(const char *)sqlite3_column_text(statement, 6);
+                _previous.reasonforleaving=reasonforleaving==NULL ?nil:[[NSString alloc]initWithUTF8String:reasonforleaving];
+                
+                 [_previousemployeeArray addObject:_previous];
+                
+                
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        
+        
+        
+    }
+    sqlite3_close(_newEmplyhrListDB);
+    [_prevousEmpTable reloadData];
+    
+}
+#pragma mark-sqlite DB for iphone
 -(void)updatePreviousEmpDBiphone
 {
     NSInteger previosid=0;
@@ -1064,55 +1163,6 @@
     }
 }
 
--(void)FetchPreviousEmpDBipad
-{
-    const char *dbpath=[_databasePath UTF8String];
-    sqlite3_stmt*statement;
-    if (sqlite3_open(dbpath, &_newEmplyhrListDB)==SQLITE_OK) {
-        NSString*query=[NSString stringWithFormat:@"SELECT * FROM UserList"];
-        const char *query_stmt=[query UTF8String];
-        
-        if (sqlite3_prepare_v2(_newEmplyhrListDB, query_stmt, -1, &statement, NULL)==SQLITE_OK) {
-            //_sqliteArray=[[NSMutableArray alloc]init];
-            int i=0;
-            while (sqlite3_step(statement)==SQLITE_ROW) {
-              _userdetails=(UserDetails *)[_sqliteArray objectAtIndex:i];
-                const char *key=(const char *)sqlite3_column_text(statement, 0);
-                NSString *pkey= key == NULL ? nil : [[NSString alloc] initWithUTF8String:key];
-                 _userdetails.primarykey=[pkey integerValue];
-                
-                const char *previousid=(const char *)sqlite3_column_text(statement, 32);
-                NSString *preid=previousid==NULL ?nil:[[NSString alloc]initWithUTF8String:previousid];
-                _userdetails.previousid=[preid integerValue];
-                
-                const char *companyname=(const char *)sqlite3_column_text(statement, 33);
-                _userdetails.companyname=companyname==NULL ?nil:[[NSString alloc]initWithUTF8String:companyname];
-                
-                const char*empdate=(const char *)sqlite3_column_text(statement, 34);
-                _userdetails.emplymentdate=empdate==NULL ?nil:[[NSString alloc]initWithUTF8String:empdate];
-                 const char*rateofpay=(const char *)sqlite3_column_text(statement, 35);
-                _userdetails.rateofpay=rateofpay==NULL ?nil:[[NSString alloc]initWithUTF8String:rateofpay];
-                
-                const char*postion=(const char *)sqlite3_column_text(statement, 36);
-                _userdetails.previosposition=postion==NULL ?nil:[[NSString alloc]initWithUTF8String:postion];
-                
-                const char*reasonforleaving=(const char *)sqlite3_column_text(statement, 37);
-                _userdetails.reasonforleaving=reasonforleaving==NULL ?nil:[[NSString alloc]initWithUTF8String:reasonforleaving];
-                
-                 [_sqliteArray addObject:_userdetails];
-                
-                i++;
-            }
-        }
-        
-        sqlite3_finalize(statement);
-        
-        
-        
-    }
-    sqlite3_close(_newEmplyhrListDB);
-    
-}
 -(void)FetchPreviousEmpDBiphone
 {
     const char *dbpath=[_databasePath UTF8String];
