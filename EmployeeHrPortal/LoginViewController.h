@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navbar;
 @property(strong,nonatomic)Validation *val;
 @property (strong, nonatomic) NSString *connectstring;
+@property (strong, nonatomic) NSString *Availablityresult;
 @property (strong, nonatomic) IBOutlet UITextField *ssntxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *passwordtxtfld;
 @property (strong, nonatomic)UITabBarController*tabbarcntrl;

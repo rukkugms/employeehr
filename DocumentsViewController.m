@@ -99,7 +99,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<SelectDocs xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<SelectDocs xmlns=\"http://ios.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
                    "</SelectDocs>\n"
                    "</soap:Body>\n"
@@ -107,8 +107,8 @@
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -116,7 +116,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/SelectDocs" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/SelectDocs" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -210,7 +210,7 @@
     _DoculistArray=[_DocumentDictionary allKeys];
     NSString *urlstring=[NSString stringWithFormat:@"%@%@",header,[_DocumentDictionary objectForKey:[_DoculistArray objectAtIndex:indexPath.row]]];
    // NSString *urlstring=[NSString stringWithFormat:@"%@",@"http://www.apple.com"];
-    // NSString *urlstring=[NSString stringWithFormat:@"%@",@" http://arvin.kontract360.com/Folder/Root/HR/1004/huffy%20futz_444-44-4444.pdf"];
+    // NSString *urlstring=[NSString stringWithFormat:@"%@",@"  http://ios.kontract360.com/Folder/Root/HR/1004/huffy%20futz_444-44-4444.pdf"];
     
    
     NSLog(@"reportname%@",urlstring);

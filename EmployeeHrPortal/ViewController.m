@@ -103,6 +103,7 @@
     if (!self.loginVCtrl) {
         _loginVCtrl=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     }
+    _loginVCtrl.Availablityresult=_Availablityresult;
     [self.navigationController pushViewController:_loginVCtrl animated:YES];
     
     
@@ -127,6 +128,7 @@
     if (!self.loginVCtrl) {
         _loginVCtrl=[[LoginViewController alloc]initWithNibName:@"LoginViewController_iphone" bundle:nil];
     }
+       _loginVCtrl.Availablityresult=_Availablityresult;
     [self.navigationController pushViewController:_loginVCtrl animated:YES];
 
 }

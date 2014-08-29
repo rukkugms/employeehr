@@ -54,6 +54,7 @@
     _passwordtxtfld.text=@"";
     _SSNtxtfld_iphone.text=@"";
     _passwordtxtfld_iphone.text=@"";
+   
 }
 - (void)didReceiveMemoryWarning
 {
@@ -285,49 +286,50 @@
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
          
                 
-    soapMessage = [NSString stringWithFormat:
-                   
-                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-                   
-                   
-                   "<soap:Body>\n"
-                   
-                   "<GetApplicantId1 xmlns=\"http://arvin.kontract360.com/\">\n"
-                   "<ApplicantSSN>%@</ApplicantSSN>\n"
-                   "<Password>%@</Password>\n"
-                   "</GetApplicantId1>\n"
-                   "</soap:Body>\n"
-                   "</soap:Envelope>\n",_connectstring,_passwordtxtfld.text];
-    NSLog(@"soapmsg%@",soapMessage);
-    
-    
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-    
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
-    
-    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    [theRequest addValue: @"http://arvin.kontract360.com/GetApplicantId1" forHTTPHeaderField:@"Soapaction"];
-    
-    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    
-    if( theConnection )
-    {
-        _webData = [NSMutableData data];
-    }
-    else
-    {
-        ////NSLog(@"theConnection is NULL");
-    }
+         soapMessage = [NSString stringWithFormat:
+                        
+                        @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                        "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                        
+                        
+                        "<soap:Body>\n"
+                        
+                        "<GetApplicantId1 xmlns=\"http://ios.kontract360.com/\">\n"
+                        "<ApplicantSSN>%@</ApplicantSSN>\n"
+                         "<Password>%@</Password>\n"
+                        "</GetApplicantId1>\n"
+                        "</soap:Body>\n"
+                        "</soap:Envelope>\n",_connectstring,_passwordtxtfld.text];
+         NSLog(@"soapmsg%@",soapMessage);
+         
+         
+         NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+         // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+         
+         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+         
+         NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+         
+         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+         
+         [theRequest addValue: @"http://ios.kontract360.com/GetApplicantId1" forHTTPHeaderField:@"Soapaction"];
+         
+         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+         [theRequest setHTTPMethod:@"POST"];
+         [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+         
+         
+         NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+         
+         if( theConnection )
+         {
+             _webData = [NSMutableData data];
+         }
+         else
+         {
+             ////NSLog(@"theConnection is NULL");
+         }
+         
      }
     
      else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
@@ -341,7 +343,7 @@
                         
                         "<soap:Body>\n"
                         
-                        "<GetApplicantId1 xmlns=\"http://arvin.kontract360.com/\">\n"
+                        "<GetApplicantId1 xmlns=\"http://ios.kontract360.com/\">\n"
                         "<ApplicantSSN>%@</ApplicantSSN>\n"
                         "<Password>%@</Password>\n"
                         "</GetApplicantId1>\n"
@@ -350,8 +352,8 @@
          NSLog(@"soapmsg%@",soapMessage);
          
          
-       NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-          // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+        NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+          //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
          
          NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
          
@@ -359,7 +361,7 @@
          
          [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
          
-         [theRequest addValue: @"http://arvin.kontract360.com/GetApplicantId1" forHTTPHeaderField:@"Soapaction"];
+         [theRequest addValue:@"http://ios.kontract360.com/GetApplicantId1" forHTTPHeaderField:@"Soapaction"];
          
          [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
          [theRequest setHTTPMethod:@"POST"];
@@ -490,28 +492,40 @@
     BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
             UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
         viewController2.Applicantid=Applicantid;
+             viewController2.Availablityresult=_Availablityresult;
     EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
         UINavigationController *navedu=[[UINavigationController alloc]initWithRootViewController:viewController3];
         viewController3.Applicantid=Applicantid;
+              viewController3.Availablityresult=_Availablityresult;
+             
         
         JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
               UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
         viewController1.Applicantid=Applicantid;
+              viewController1.Availablityresult=_Availablityresult;
+             
          NewMedicalViewController *viewController4 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
             UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
         viewController4.Applicantid=Applicantid;
+              viewController4.Availablityresult=_Availablityresult;
+             
         EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
             UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
         viewcontroller5.Applicantid=Applicantid;
+              viewcontroller5.Availablityresult=_Availablityresult;
+             
         CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
              UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
         viewcontroller6.Applicantid=Applicantid;
+              //viewcontroller6.Availablityresult=_Availablityresult;
         RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
             UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
              
              viewcontroller7.applicantId=Applicantid;
+              viewcontroller7.Availablityresult=_Availablityresult;
              DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
             viewcontroller8.applicantid=Applicantid;
+           
             UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
         NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,navedu,mednav,empnav,racenav,docnav,nil];
               //NSArray *controllers = [NSArray arrayWithObjects: viewController1,viewController2,viewController3,viewController4,viewcontroller5,viewcontroller6,viewcontroller7,viewcontroller8,nil];

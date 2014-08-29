@@ -43,6 +43,9 @@
 		64D5D7C118473F65000D9886 /* requirementcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D5D7C018473F65000D9886 /* requirementcell.xib */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
 		D40546731862AC8600BC27C4 /* 512px-Home_Icon.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = D40546721862AC8500BC27C4 /* 512px-Home_Icon.svg.png */; };
+		D40D062419B0475B00CF44C1 /* appbar.addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062319B0475B00CF44C1 /* appbar.addblack.png */; };
+		D40D062619B0488900CF44C1 /* appbar.close.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062519B0488900CF44C1 /* appbar.close.png */; };
+		D40D062819B0490500CF44C1 /* appbar.delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062719B0490500CF44C1 /* appbar.delete.png */; };
 		D40F778518435E8C007DCB92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40F778418435E8C007DCB92 /* Images.xcassets */; };
 		D40F778D18436919007DCB92 /* kontractlogo copy.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F778C18436919007DCB92 /* kontractlogo copy.png */; };
 		D40F778F18436956007DCB92 /* kontractlogo 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F778E18436956007DCB92 /* kontractlogo 2x.png */; };
@@ -189,6 +192,9 @@
 		64D5D7C018473F65000D9886 /* requirementcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requirementcell.xib; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
 		D40546721862AC8500BC27C4 /* 512px-Home_Icon.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "512px-Home_Icon.svg.png"; sourceTree = "<group>"; };
+		D40D062319B0475B00CF44C1 /* appbar.addblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.addblack.png; sourceTree = "<group>"; };
+		D40D062519B0488900CF44C1 /* appbar.close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.close.png; sourceTree = "<group>"; };
+		D40D062719B0490500CF44C1 /* appbar.delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.delete.png; sourceTree = "<group>"; };
 		D40F778418435E8C007DCB92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D40F778C18436919007DCB92 /* kontractlogo copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo copy.png"; path = "../kontractlogo copy.png"; sourceTree = "<group>"; };
 		D40F778E18436956007DCB92 /* kontractlogo 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo 2x.png"; path = "../kontractlogo 2x.png"; sourceTree = "<group>"; };
@@ -516,6 +522,9 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D40D062719B0490500CF44C1 /* appbar.delete.png */,
+				D40D062519B0488900CF44C1 /* appbar.close.png */,
+				D40D062319B0475B00CF44C1 /* appbar.addblack.png */,
 				D488EAFE1861A457004D86F5 /* whitecameraicon.png */,
 				D418D983183B76ED001C7B0E /* logo.png */,
 				64932185182B5DB5006B6904 /* calender.png */,
@@ -666,6 +675,7 @@
 				D40F779718436B20007DCB92 /* kontractlogo72 @2x.png in Resources */,
 				D4E100A517D86072006336F8 /* BasicdetailsViewController.xib in Resources */,
 				D4E100AB17D860B7006336F8 /* EducationViewController.xib in Resources */,
+				D40D062819B0490500CF44C1 /* appbar.delete.png in Resources */,
 				D4E100AC17D860B7006336F8 /* EducationCertificatecell.xib in Resources */,
 				D40F779D18436BEC007DCB92 /* kontractlogo29.png in Resources */,
 				D4E100AE17D860C6006336F8 /* CellEducationtable.xib in Resources */,
@@ -693,6 +703,7 @@
 				D4F92DE61844536B00B689CE /* kontract50.png in Resources */,
 				D4144328184F4048001E3E32 /* ios7-camera-icon.png in Resources */,
 				64085EEB17D895DA00503D23 /* left_arrow.png in Resources */,
+				D40D062419B0475B00CF44C1 /* appbar.addblack.png in Resources */,
 				64085EEC17D895DA00503D23 /* left_arrow@2x.png in Resources */,
 				64085EED17D895DA00503D23 /* appbar.checkmark.thick.png in Resources */,
 				64085EEE17D895DA00503D23 /* appbar.checkmark.thick.unchecked.png in Resources */,
@@ -705,6 +716,7 @@
 				64921A4D17D99C7100AB642E /* CourseDrugViewController_iphone.xib in Resources */,
 				64921A5217D9AC0400AB642E /* disclsurebtndwn@2x.png in Resources */,
 				64921A5317D9AC0400AB642E /* disclsurebtndwn.png in Resources */,
+				D40D062619B0488900CF44C1 /* appbar.close.png in Resources */,
 				D488EAFF1861A457004D86F5 /* whitecameraicon.png in Resources */,
 				D4144326184F310E001E3E32 /* textbox.png in Resources */,
 				64921A5417D9AC0400AB642E /* disclsurebtn@2x.png in Resources */,

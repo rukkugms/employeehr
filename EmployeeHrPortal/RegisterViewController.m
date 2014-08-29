@@ -510,7 +510,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<GetApplicantId xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<GetApplicantId xmlns=\"http://ios.kontract360.com/\">\n"
                    "<ApplicantSSN>%@</ApplicantSSN>\n"
                    "<Password>%@</Password>\n"
                    "</GetApplicantId>\n"
@@ -519,8 +519,8 @@
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -528,7 +528,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/GetApplicantId" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: @"http://ios.kontract360.com/GetApplicantId" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -560,7 +560,7 @@
                     
                     "<soap:Body>\n"
                     
-                    "<GetApplicantId xmlns=\"http://arvin.kontract360.com/\">\n"
+                    "<GetApplicantId xmlns=\"http://ios.kontract360.com/\">\n"
                     "<ApplicantSSN>%@</ApplicantSSN>\n"
                     "<Password>%@</Password>\n"
                     "</GetApplicantId>\n"
@@ -569,8 +569,8 @@
      NSLog(@"soapmsg%@",soapMessage);
      
      
-   NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-      // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+      //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
      
      NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
      
@@ -578,7 +578,7 @@
      
      [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
      
-     [theRequest addValue: @"http://arvin.kontract360.com/GetApplicantId" forHTTPHeaderField:@"Soapaction"];
+     [theRequest addValue:@"http://ios.kontract360.com/GetApplicantId" forHTTPHeaderField:@"Soapaction"];
      
      [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
      [theRequest setHTTPMethod:@"POST"];
@@ -615,49 +615,49 @@
     NSString *soapMessage;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-    soapMessage = [NSString stringWithFormat:
-                   
-                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                   "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-                   
-                   
-                   "<soap:Body>\n"
-                   
-                   "<GetApplicantId2 xmlns=\"http://arvin.kontract360.com/\">\n"
-                   "<ApplicantSSN>%@</ApplicantSSN>\n"
-                   "<Password>%@</Password>\n"
-                   "</GetApplicantId2>\n"
-                   "</soap:Body>\n"
-                   "</soap:Envelope>\n",_connectstring,_confirmpasswrd.text];
-    NSLog(@"soapmsg%@",soapMessage);
-    
-    
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-    
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
-    
-    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    [theRequest addValue: @"http://arvin.kontract360.com/GetApplicantId2" forHTTPHeaderField:@"Soapaction"];
-    
-    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    
-    if( theConnection )
-    {
-        _webData = [NSMutableData data];
-    }
-    else
-    {
-        ////NSLog(@"theConnection is NULL");
-    }
+        soapMessage = [NSString stringWithFormat:
+                       
+                       @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                       "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                       
+                       
+                       "<soap:Body>\n"
+                       
+                       "<GetApplicantId2 xmlns=\"http://ios.kontract360.com/\">\n"
+                       "<Applicantssn>%@</Applicantssn>\n"
+                       
+                       "</GetApplicantId2>\n"
+                       "</soap:Body>\n"
+                       "</soap:Envelope>\n",_connectstring];
+        NSLog(@"soapmsg%@",soapMessage);
+        
+        
+        NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+        // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+        
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+        
+        [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        
+        [theRequest addValue: @"http://ios.kontract360.com/GetApplicantId2" forHTTPHeaderField:@"Soapaction"];
+        
+        [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+        [theRequest setHTTPMethod:@"POST"];
+        [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
+        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+        
+        if( theConnection )
+        {
+            _webData = [NSMutableData data];
+        }
+        else
+        {
+            ////NSLog(@"theConnection is NULL");
+        }
 }
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
@@ -669,17 +669,17 @@
                        
                        "<soap:Body>\n"
                        
-                       "<GetApplicantId2 xmlns=\"http://arvin.kontract360.com/\">\n"
-                       "<ApplicantSSN>%@</ApplicantSSN>\n"
-                       "<Password>%@</Password>\n"
+                       "<GetApplicantId2 xmlns=\"http://ios.kontract360.com/\">\n"
+                       "<Applicantssn>%@</Applicantssn>\n"
+                      
                        "</GetApplicantId2>\n"
                        "</soap:Body>\n"
-                       "</soap:Envelope>\n",_connectstring,_confirmpasswrd_iphone.text];
+                       "</soap:Envelope>\n",_connectstring];
         NSLog(@"soapmsg%@",soapMessage);
         
         
-      NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-         // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+       NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+         //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
         
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
         
@@ -687,7 +687,7 @@
         
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         
-        [theRequest addValue: @"http://arvin.kontract360.com/GetApplicantId2" forHTTPHeaderField:@"Soapaction"];
+        [theRequest addValue:@"http://ios.kontract360.com/GetApplicantId2" forHTTPHeaderField:@"Soapaction"];
         
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
         [theRequest setHTTPMethod:@"POST"];

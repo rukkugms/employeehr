@@ -58,20 +58,20 @@
                        
                        "<soap:Body>\n"
                        
-                       "<CheckLogin xmlns=\"http://arvin.kontract360.com/\">\n"
+                       "<CheckLogin xmlns=\"http://ios.kontract360.com/\">\n"
                        "<UserName>%@</UserName>\n"
                        "<Password>%@</Password>\n"
                        "</CheckLogin>\n"
                        "</soap:Body>\n"
                        "</soap:Envelope>\n",_usertxtfld.text,_passwrdtxtfld.text];
         NSLog(@"soapmsg%@",soapMessage);
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
         
-      // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+      //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
         NSMutableURLRequest*urlRequest=[NSMutableURLRequest requestWithURL:url];
         NSString *msgLength=[NSString stringWithFormat:@"%d",[soapMessage length]];
         [urlRequest addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        [urlRequest addValue:@"http://arvin.kontract360.com/CheckLogin" forHTTPHeaderField:@"Soapaction"];
+        [urlRequest addValue:@ "http://ios.kontract360.com/CheckLogin" forHTTPHeaderField:@"Soapaction"];
         [urlRequest addValue:msgLength forHTTPHeaderField:@"Content-Length"];
         [urlRequest setHTTPBody:[soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
         [urlRequest setHTTPMethod:@"POST"];
@@ -95,19 +95,19 @@
                        
                        "<soap:Body>\n"
                        
-                       "<CheckLogin xmlns=\"http://arvin.kontract360.com/\">\n"
+                       "<CheckLogin xmlns=\"http://ios.kontract360.com/\">\n"
                        "<UserName>%@</UserName>\n"
                        "<Password>%@</Password>\n"
                        "</CheckLogin>\n"
                        "</soap:Body>\n"
                        "</soap:Envelope>\n",_usernametext_iphone.text,_passwordtext_iphone.text];
         NSLog(@"soapmsg%@",soapMessage);
-        NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+         NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
         //NSURL*url=[NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
         NSMutableURLRequest*urlRequest=[NSMutableURLRequest requestWithURL:url];
         NSString *msgLength=[NSString stringWithFormat:@"%d",[soapMessage length]];
         [urlRequest addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        [urlRequest addValue:@"http://arvin.kontract360.com/CheckLogin" forHTTPHeaderField:@"Soapaction"];
+        [urlRequest addValue:@ "http://ios.kontract360.com/CheckLogin" forHTTPHeaderField:@"Soapaction"];
         [urlRequest addValue:msgLength forHTTPHeaderField:@"Content-Length"];
         [urlRequest setHTTPBody:[soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
         [urlRequest setHTTPMethod:@"POST"];

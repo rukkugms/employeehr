@@ -213,7 +213,7 @@ finishedSavingWithError:(NSError *)error
                    
                    "<soap:Body>\n"
                    
-                   "<UploadDocs xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<UploadDocs xmlns=\"http://ios.kontract360.com/\">\n"
                    
                    "<f>%@</f>\n"
                    "<fileName>%@</fileName>\n"
@@ -226,8 +226,8 @@ finishedSavingWithError:(NSError *)error
     	   
 
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -236,7 +236,7 @@ finishedSavingWithError:(NSError *)error
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/UploadDocs" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/UploadDocs" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -274,7 +274,7 @@ else
                        
                        "<soap:Body>\n"
                        
-                       "<UploadDocs xmlns=\"http://arvin.kontract360.com/\">\n"
+                       "<UploadDocs xmlns=\"http://ios.kontract360.com/\">\n"
                        
                        "<f>%@</f>\n"
                        "<fileName>%@</fileName>\n"
@@ -286,8 +286,8 @@ else
         NSLog(@"soapmsg%@",soapMessage);
         
         
-      NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-         // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+       NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+         //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
         
         
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -296,7 +296,7 @@ else
         
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         
-        [theRequest addValue: @"http://arvin.kontract360.com/UploadDocs" forHTTPHeaderField:@"Soapaction"];
+        [theRequest addValue:@"http://ios.kontract360.com/UploadDocs" forHTTPHeaderField:@"Soapaction"];
         
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
         [theRequest setHTTPMethod:@"POST"];
@@ -329,7 +329,7 @@ else
                    "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
                    
                    "<soap:Body>\n"
-                   "<SelectDocs xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<SelectDocs xmlns=\"http://ios.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
                    "</SelectDocs>\n"
                    "</soap:Body>\n"
@@ -337,8 +337,8 @@ else
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -347,7 +347,7 @@ else
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/SelectDocs" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/SelectDocs" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];

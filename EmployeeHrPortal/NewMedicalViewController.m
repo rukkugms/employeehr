@@ -235,7 +235,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
                    
                    "<soap:Body>\n"
                    
-                   "<SelectApplicantMedicalCondition xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<SelectApplicantMedicalCondition xmlns=\"http://ios.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
                    "</SelectApplicantMedicalCondition>\n"
                    "</soap:Body>\n"
@@ -243,8 +243,8 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -252,7 +252,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/SelectApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/SelectApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -291,7 +291,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
                        
                        "<soap:Body>\n"
                        
-                       "<InsertApplicantMedicalCondition xmlns=\"http://arvin.kontract360.com/\">\n"
+                       "<InsertApplicantMedicalCondition xmlns=\"http://ios.kontract360.com/\">\n"
                        "<ApplicantId>%d</ApplicantId>\n"
                        "<MedConditionId>%d</MedConditionId>\n"
                        "<EduName>%@</EduName>\n"
@@ -303,8 +303,8 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
         NSLog(@"soapmsg%@",soapMessage);
         
         
-      NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-         // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+       NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+         //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
         
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
         
@@ -312,7 +312,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
         
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         
-        [theRequest addValue: @"http://arvin.kontract360.com/InsertApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
+        [theRequest addValue:@"http://ios.kontract360.com/InsertApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
         
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
         [theRequest setHTTPMethod:@"POST"];
@@ -345,15 +345,15 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
                    
                    "<soap:Body>\n"
                    
-                   "<SelectMedicalCondition xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<SelectMedicalCondition xmlns=\"http://ios.kontract360.com/\">\n"
                    "</SelectMedicalCondition>\n"
                    "</soap:Body>\n"
                    "</soap:Envelope>\n"];
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -361,7 +361,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/SelectMedicalCondition" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/SelectMedicalCondition" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -392,7 +392,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
                    
                    "<soap:Body>\n"
                    
-                   "<GetApplicantValues xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<GetApplicantValues xmlns=\"http://ios.kontract360.com/\">\n"
                    "<AppId>%d</AppId>"
                    "</GetApplicantValues>\n"
                    "</soap:Body>\n"
@@ -400,8 +400,8 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -409,7 +409,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/GetApplicantValues" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/GetApplicantValues" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -443,7 +443,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
                    
                    "<soap:Body>\n"
                    
-                   "<DeleteApplicantMedicalCondition xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<DeleteApplicantMedicalCondition xmlns=\"http://ios.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
                     "<MedConditionId>%d</MedConditionId>"
                    "</DeleteApplicantMedicalCondition>\n"
@@ -452,8 +452,8 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -461,7 +461,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/DeleteApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/DeleteApplicantMedicalCondition" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -500,7 +500,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
                    "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
                    "<soap:Body>\n"
                    
-                   "<UpdateApplicantValues xmlns=\"http://arvin.kontract360.com/\">\n"
+                   "<UpdateApplicantValues xmlns=\"http://ios.kontract360.com/\">\n"
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<ClimbingAbility>%d</ClimbingAbility>\n"
                    "<CurrentMedication>%@</CurrentMedication>\n"
@@ -510,8 +510,8 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     NSLog(@"soapmsg%@",soapMessage);
     
     
-  NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-     // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -519,7 +519,7 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue: @"http://arvin.kontract360.com/UpdateApplicantValues" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/UpdateApplicantValues" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -554,7 +554,7 @@ else{
                                                                           "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
                                                                           "<soap:Body>\n"
                                                                           
-                                                                          "<UpdateApplicantValues xmlns=\"http://arvin.kontract360.com/\">\n"
+                                                                          "<UpdateApplicantValues xmlns=\"http://ios.kontract360.com/\">\n"
                                                                           "<ApplicantId>%d</ApplicantId>\n"
                                                                           "<ClimbingAbility>%d</ClimbingAbility>\n"
                                                                           "<CurrentMedication>%@</CurrentMedication>\n"
@@ -564,8 +564,8 @@ else{
                                                            NSLog(@"soapmsg%@",soapMessage);
                                                            
                                                            
-                                                         NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
-                                                            // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
+                                                          NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+                                                            //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
                                                            
                                                            NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
                                                            
@@ -573,7 +573,7 @@ else{
                                                            
                                                            [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
                                                            
-                                                           [theRequest addValue: @"http://arvin.kontract360.com/UpdateApplicantValues" forHTTPHeaderField:@"Soapaction"];
+                                                           [theRequest addValue:@"http://ios.kontract360.com/UpdateApplicantValues" forHTTPHeaderField:@"Soapaction"];
                                                            
                                                            [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
                                                            [theRequest setHTTPMethod:@"POST"];
