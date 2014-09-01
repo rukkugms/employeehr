@@ -83,9 +83,9 @@
 - (IBAction)registerbtn:(id)sender {
     
     
-    if (!self.registerVCtrl) {
+   
         _registerVCtrl=[[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
-    }
+    
     _registerVCtrl.Availablityresult=_Availablityresult;
     [self.navigationController pushViewController:_registerVCtrl animated:YES];
 }

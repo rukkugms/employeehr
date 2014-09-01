@@ -811,28 +811,37 @@
                   viewController2.docsDir=_docsDir;
                   viewController2.databasePath=_databasePath;
                    viewController2.sqlitessn=_SqlSSnstrng;
+                  viewController2.Availablityresult=_Availablityresult;
+
                   EducationViewController *viewController3 = [[EducationViewController alloc] initWithNibName:@"EducationViewController" bundle:nil];
                     viewController3.Applicantid=Applicantid;
+                   viewController3.Availablityresult=_Availablityresult;
                   UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController3];
                   JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController" bundle:nil];
                     viewController1.Applicantid=Applicantid;
+                   viewController1.Availablityresult=_Availablityresult;
                   UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
                   NewMedicalViewController *viewController4 = [[NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController" bundle:nil];
                     viewController4.Applicantid=Applicantid;
+                   viewController4.Availablityresult=_Availablityresult;
                   UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController4];
                   EmployeeViewController*viewcontroller5=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController" bundle:nil];
                     viewcontroller5.Applicantid=Applicantid;
+                   viewcontroller5.Availablityresult=_Availablityresult;
                   UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller5];
                   CourseDrugViewController*viewcontroller6=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController" bundle:nil];
                     viewcontroller6.Applicantid=Applicantid;
+                  //viewcontroller6.Availablityresult=_Availablityresult;
                   UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
                   RaceViewController*viewcontroller7=[[RaceViewController alloc]initWithNibName:@"RaceViewController" bundle:nil];
                     viewcontroller7.applicantId=Applicantid;
+                   viewcontroller7.Availablityresult=_Availablityresult;
                   UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
                   DocumentsViewController*viewcontroller8=[[DocumentsViewController alloc]initWithNibName:@"DocumentsViewController" bundle:nil];
                  
                   UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
                   viewcontroller8.applicantid=Applicantid;
+                   //viewcontroller8.Availablityresult=_Availablityresult;
                   NSArray *controllers = [NSArray arrayWithObjects:jobnav,basicnav,edunav,mednav,empnav,coursenav,racenav,docnav,nil];
                   self.tabbarcntrl.viewControllers = controllers;
                   
@@ -852,6 +861,8 @@
                 viewController3.docsDir=_docsDir;
                 viewController3.databasePath=_databasePath;
                  viewController3.sqlitessn=_SqlSSnstrng;
+                viewController3.Availablityresult=_Availablityresult;
+
                   UINavigationController *basicnav=[[UINavigationController alloc]initWithRootViewController:viewController3];
                 UploadImageViewController*viewController2=[[UploadImageViewController alloc]initWithNibName:@"UploadImageViewController" bundle:nil];
                   viewController2.Applicantid=Applicantid;
@@ -860,21 +871,27 @@
                 UINavigationController *uploadnav=[[UINavigationController alloc]initWithRootViewController:viewController2];
                 EducationViewController *viewController4 = [[EducationViewController alloc] initWithNibName:@"EducationViewController_iphone" bundle:nil];
                   viewController4.Applicantid=Applicantid;
+                 viewController4.Availablityresult=_Availablityresult;
                 UINavigationController *edunav=[[UINavigationController alloc]initWithRootViewController:viewController4];
                 JobsiteViewController *viewController1 = [[JobsiteViewController alloc] initWithNibName:@"JobsiteViewController_iphone" bundle:nil];
                   viewController1.Applicantid=Applicantid;
+                 viewController1.Availablityresult=_Availablityresult;
                 UINavigationController *jobnav=[[UINavigationController alloc]initWithRootViewController:viewController1];
                 NewMedicalViewController *viewController5 = [[ NewMedicalViewController alloc] initWithNibName:@"NewMedicalViewController_iphone" bundle:nil];
                   viewController5.Applicantid=Applicantid;
+                 viewController5.Availablityresult=_Availablityresult;
                 UINavigationController *mednav=[[UINavigationController alloc]initWithRootViewController:viewController5];
                 EmployeeViewController*viewcontroller6=[[EmployeeViewController alloc]initWithNibName:@"EmployeeViewController_iphone" bundle:nil];
                   viewcontroller6.Applicantid=Applicantid;
+                 viewcontroller6.Availablityresult=_Availablityresult;
                 UINavigationController *empnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller6];
                 CourseDrugViewController*viewcontroller7=[[CourseDrugViewController alloc]initWithNibName:@"CourseDrugViewController_iphone" bundle:nil];
                   viewcontroller7.Applicantid=Applicantid;
+                 //viewcontroller7.Availablityresult=_Availablityresult;
                 UINavigationController *coursenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller7];
                 RaceViewController*viewcontroller8=[[RaceViewController alloc]initWithNibName:@"RaceViewController_iphone" bundle:nil];
                   viewcontroller8.applicantId=Applicantid;
+                 viewcontroller8.Availablityresult=_Availablityresult;
                 UINavigationController *racenav=[[UINavigationController alloc]initWithRootViewController:viewcontroller8];
                 ShowDocViewController *viewcontroller9=[[ShowDocViewController alloc]initWithNibName:@"ShowDocViewController" bundle:nil];
                 UINavigationController *docnav=[[UINavigationController alloc]initWithRootViewController:viewcontroller9];
@@ -912,7 +929,7 @@ if([elementName isEqualToString:@"result"])
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.message isEqualToString:@"Already Registered"]) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
 
         
     }
