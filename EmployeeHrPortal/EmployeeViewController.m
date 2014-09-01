@@ -70,6 +70,12 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
         
     }
+    }
+        if ([alertView.message isEqualToString:@"please Enter Valid rate"]) {
+            
+            _rateofpaytxt.text=@"";
+            
+         
     
     }
 }
@@ -200,7 +206,7 @@
     self.popOverController1 = [[UIPopoverController alloc]
                                initWithContentViewController:popoverContent];
     [self.popOverController1 presentPopoverFromRect:_datebtn.frame
-                                             inView:self.view
+                                             inView:self.scroll
                            permittedArrowDirections:UIPopoverArrowDirectionUp
                                            animated:YES];
     
