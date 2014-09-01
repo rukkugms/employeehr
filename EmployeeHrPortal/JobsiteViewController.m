@@ -378,7 +378,7 @@
   
     Poptype=3;
     [self SelectEmployeeSkills];
-     [_craftbtnlbl setTitle:@"Select"forState:UIControlStateNormal];
+   
     [self skillsPopover];
    
     
@@ -701,7 +701,7 @@
             case 3:
                 
                 [_skillbtnlbl setTitle:[_skillsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-                
+                  [_craftbtnlbl setTitle:@"Select"forState:UIControlStateNormal];
                 //_craftbtnlbl.enabled=YES;
                 
                 break;

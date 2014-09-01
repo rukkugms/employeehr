@@ -207,10 +207,11 @@
                             <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="33">
-                            <rect key="frame" x="300" y="138" width="199" height="33"/>
+                            <rect key="frame" x="300" y="140" width="209" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                            <state key="normal" title="Select">
+                            <state key="normal" title="Select" backgroundImage="textbox.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -229,5 +230,6 @@
         <image name="appbar.delete.png" width="76" height="76"/>
         <image name="bg.png" width="1024" height="748"/>
         <image name="squareimage1.png" width="300" height="400"/>
+        <image name="textbox.png" width="298" height="64"/>
     </resources>
 </document>
