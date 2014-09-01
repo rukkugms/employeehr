@@ -71,7 +71,7 @@
         
     }
     }
-        if ([alertView.message isEqualToString:@"please Enter Valid rate"]) {
+        if ([alertView.message isEqualToString:@"Invalid rate"]) {
             
             _rateofpaytxt.text=@"";
             
@@ -89,13 +89,17 @@
 - (IBAction)SavePreviousemployee:(id)sender
 {
     
-    
+    if (_previouscompanytxt.text.length==0) {
+        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Company Name is Required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert1 show];
+    }
+    else{
     Validation*val=[[Validation alloc]init];
     int value1=[val isNumeric:_rateofpaytxt.text];
     
     if(value1==0)
     {
-        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"please Enter Valid rate" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid rate" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert1 show];
         
         
@@ -121,7 +125,7 @@
         
         
     }
-
+    }
     
 }
 
@@ -342,12 +346,18 @@
     NSLog(@"date%@",_datebtn.titleLabel.text);
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
    [dateFormat setDateFormat: @"MM-dd-yyyy"];
-    
+         
+         NSString* sqldate;
+         if ([_datebtn.titleLabel.text isEqualToString:@"Select"]) {
+             sqldate=@"1990-01-01";
+         }
+         else{
     NSDate *dateString = [dateFormat dateFromString:_datebtn.titleLabel.text];
     NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
     [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
-    NSString* sqldate=[dateFormat1 stringFromDate:dateString];
+     sqldate=[dateFormat1 stringFromDate:dateString];
     NSLog(@"s%@",sqldate);
+         }
     NSString *compnyname=_previouscompanytxt.text;
     //NSString *rateofpay=_rateofpaytxt.text;
     
@@ -834,7 +844,7 @@
     
     if(value1==0)
     {
-        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"please Enter Valid rate" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Invalid rate" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [alert1 show];
         
         

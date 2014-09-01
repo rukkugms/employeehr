@@ -26,6 +26,7 @@
     NSIndexPath*path;
     NSInteger newcell;
     NSString* selectedjobsite;
+    NSString*skillstring;
     
 }
 /*for squlteDB*/
