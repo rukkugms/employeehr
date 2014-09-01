@@ -874,7 +874,7 @@
 {
     [_edunamebtnlbl setTitle:[_edunamearray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     
-    
+    [self.popOverController dismissPopoverAnimated:YES];
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -1179,7 +1179,7 @@
     //create a popover controller
     self.popOverController = [[UIPopoverController alloc]
                                initWithContentViewController:popoverContent];
-    [self.popOverController presentPopoverFromRect:_edunamebtnlbl.frame
+    [self.popOverController presentPopoverFromRect:_certificatedatebtnlbl.frame
                                              inView:self.view2
                            permittedArrowDirections:UIPopoverArrowDirectionRight
                                            animated:YES];
@@ -1204,6 +1204,7 @@
     
     NSString *dateString = [dateFormat stringFromDate:date];
     [_certificatedatebtnlbl setTitle:dateString forState:UIControlStateNormal];
+    [self.popOverController dismissPopoverAnimated:YES];
     
 }
 -(IBAction)continueAction:(id)sender

@@ -80,6 +80,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *nameinlicencetxtfld;
 @property(strong,nonatomic)IBOutlet UIDatePicker *datepicker_ipad;
 @property(strong,nonatomic)IBOutlet UITextField *datetextfld_ipad;
+@property(strong,nonatomic)IBOutlet UIImageView *coverimage;
 
 
 /*Xmlparser*/

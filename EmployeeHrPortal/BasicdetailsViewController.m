@@ -40,6 +40,8 @@
     [_scroll_iphone setContentSize:CGSizeMake(500,1500)];
     _ssntxtfld.enabled=NO;
     _ssntextfield_iphone.enabled=NO;
+    _coverimage.layer.borderColor=[UIColor blackColor].CGColor;
+    _coverimage.layer.borderWidth=1;
     
     _imgvw.userInteractionEnabled = YES;
     UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
@@ -443,6 +445,7 @@
                 break;
         }
 }
+    [self.popOverController1 dismissPopoverAnimated:YES];
 
 
 }
@@ -1466,7 +1469,7 @@
     
     NSString *dateString = [dateFormat stringFromDate:date];
     [_dobbtnlbl setTitle:dateString forState:UIControlStateNormal];
-    
+    [self.popOverController1 dismissPopoverAnimated:YES];
 }
 
 
