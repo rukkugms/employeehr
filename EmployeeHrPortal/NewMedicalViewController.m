@@ -72,6 +72,10 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
         
         }}
+//    if ([alertView.message isEqualToString:@"Already Exists"])
+//    {
+//        
+//    }
     
     
 }
@@ -973,6 +977,13 @@ else{
 //        [self.navigationController pushViewController:_emplyeeVCtrl animated:YES];
         _soapResults = nil;
     }
+    if([elementName isEqualToString:@"result"])
+    {
+        recordResults = FALSE;
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        _soapResults = nil;
+    }
+
 
     
 }
