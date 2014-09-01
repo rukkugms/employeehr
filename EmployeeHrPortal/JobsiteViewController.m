@@ -273,7 +273,7 @@
     self.popOverController1 = [[UIPopoverController alloc]
                                initWithContentViewController:popoverContent];
     [self.popOverController1 presentPopoverFromRect:_monthBtn.frame
-                                             inView:self.view
+                                             inView:self.scrollview
                            permittedArrowDirections:UIPopoverArrowDirectionUp
                                            animated:YES];
     
@@ -306,7 +306,7 @@
     self.popOverController1 = [[UIPopoverController alloc]
                                initWithContentViewController:popoverContent];
     [self.popOverController1 presentPopoverFromRect:_yearBtn.frame
-                                             inView:self.view
+                                             inView:self.scrollview
                            permittedArrowDirections:UIPopoverArrowDirectionUp
                                            animated:YES];
     
@@ -378,6 +378,7 @@
   
     Poptype=3;
     [self SelectEmployeeSkills];
+     [_craftbtnlbl setTitle:@"Select"forState:UIControlStateNormal];
     [self skillsPopover];
    
     
@@ -701,7 +702,7 @@
                 
                 [_skillbtnlbl setTitle:[_skillsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                 
-                
+                //_craftbtnlbl.enabled=YES;
                 
                 break;
             case 4:
@@ -1132,23 +1133,25 @@
         NSString *ncerdesc=_Othrtraing_iphone.text;
         NSString *soapMessage;
         NSString *jobsite;
-        if(buttonclicked==0)
-        {
-            if (newcell==1) {
-                
-                
-                jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
-                newcell=0;
-            }
-            else{
-                jobsite=selectedjobsite;
-            }
-            
-        }
-        else if(buttonclicked==1)
-        {
-            jobsite=@"0";
-        }
+          jobsite=@"0";
+        
+//        if(buttonclicked==0)
+//        {
+//            if (newcell==1) {
+//                
+//                
+//                jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
+//                newcell=0;
+//            }
+//            else{
+//                jobsite=selectedjobsite;
+//            }
+//            
+//        }
+//        else if(buttonclicked==1)
+//        {
+//            jobsite=@"0";
+//        }
         NSString *month=[_monthDictionary objectForKey:_monthBtn.titleLabel.text];
         NSString *year=_yearBtn.titleLabel.text;
         NSString *day=@"01";
