@@ -64,6 +64,7 @@
     
     _applicantssn=_ssntxtfld.text;
     _applicantssn=_ssntextfield_iphone.text;
+    _sufixbtnlbl.titleLabel.text=@"Select";
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
    self.navigationController.navigationBar.translucent = NO;
    UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
@@ -228,6 +229,7 @@
 }
 
 - (IBAction)continuebtn:(id)sender {
+  
     if(phonex==1)
     {
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
