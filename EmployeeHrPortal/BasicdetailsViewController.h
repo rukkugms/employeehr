@@ -13,6 +13,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "sqlite3.h"
 #import "UserDetails.h"
+#import "Validation.h"
 @interface BasicdetailsViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate,UITextFieldDelegate>
 {
     BOOL recordResults;
@@ -33,7 +34,7 @@
    
 
 }
-
+@property(strong,nonatomic)Validation *val;
 /*For Sqlite Database*/
 @property(strong,nonatomic) NSString *docsDir;
 @property(strong,nonatomic) NSArray *dirPaths;

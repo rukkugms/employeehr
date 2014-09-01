@@ -846,6 +846,22 @@ else{
         }
         recordResults = TRUE;
     }
+    if([elementName isEqualToString:@"InsertApplicantMedicalConditionResponse"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+    if([elementName isEqualToString:@"result"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
     
     
 
@@ -981,6 +997,7 @@ else{
     {
         recordResults = FALSE;
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
         _soapResults = nil;
     }
 
@@ -1039,7 +1056,7 @@ else{
             NSUInteger newLength = [_medicationtxtfld_iphone.text length] + [string length] - range.length;
             return (newLength > 50) ? NO : YES;
         }
- 
+    return YES;
     
 }
 -(IBAction)returnkey:(id)sender{

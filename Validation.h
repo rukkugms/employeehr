@@ -11,4 +11,6 @@
 @interface Validation : NSObject
 -(BOOL)isBlank:(NSString *)string;
 -(BOOL)isNumeric:(NSString *)input;
+-(BOOL) validEmailAddress:(NSString*) emailStr;
+-(BOOL)isdataformat:(NSString *)input;
 @end

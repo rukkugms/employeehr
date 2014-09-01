@@ -129,6 +129,42 @@
     }
     
     }
+    if ([alertView.message isEqualToString:@"Invalid Alternative Number"]) {
+        _alternativenumtxtfld.text=@"";
+        _alternatenotxt_iphone.text=@"";
+        
+    }if ([alertView.message isEqualToString:@"Invalid Mobile Number"]) {
+        _mobilenotext_iphone.text=@"";
+        _mobiletxtfld.text=@"";
+        
+        
+    }
+    if ([alertView.message isEqualToString:@"Invalid Home Number"]) {
+        _homenotxt_iphone.text=@"";
+        _homenumbertxtfld.text=@"";
+        
+        
+    }
+    if ([alertView.message isEqualToString:@"Invalid Contact Number"]) {
+        _contactnotxt_iphone.text=@"";
+        _contactnumbtxtfld.text=@"";
+        
+        
+    }
+    if ([alertView.message isEqualToString:@"Invalid Zip"]) {
+        _ziptxt_iphone.text=@"";
+        _ziptextflield.text=@"";
+        
+        
+    }
+    if ([alertView.message isEqualToString:@"Invalid Email"]) {
+        _emailtxt_iphone.text=@"";
+        _emailtxtfld.text=@"";
+        
+        
+    }
+
+
 }
 
 
@@ -232,15 +268,15 @@
 
 - (IBAction)continuebtn:(id)sender {
   
-    if(phonex==1)
-    {
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
-        
-        [alert show];
-
-    }
-    else
-    {
+//    if(phonex==1)
+//    {
+//        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+//        
+//        [alert show];
+//
+//    }
+//    else
+//    {
         if ([_Availablityresult isEqualToString:@"Yes"]) {
             
             [self UpdateApplicantData];
@@ -253,7 +289,7 @@
             [self FetchuserdetailsfromDBforipad];
         }
 
-           }
+         //  }
 }
 
 
@@ -1751,10 +1787,28 @@ numberOfRowsInComponent:(NSInteger)component
     //_picker.hidden=YES;
     return YES;
 }
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
+        if(textField==_emailtxtfld){
+            
+            Validation *val=[[Validation alloc]init];
+            BOOL bEmailValid = [val validEmailAddress:_emailtxtfld.text];
+            if(bEmailValid)
+            {
+                // email valid, other validations in the form
+            }
+            else
+            {
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Email" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+            
+            
+        }
+
 
     if(textField==_mobiletxtfld)
     {
@@ -1767,13 +1821,25 @@ numberOfRowsInComponent:(NSInteger)component
                else
                {
                    phonex=1;
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
         
         [alert show];
         
                }
         
     }
+        else
+        {
+        Validation*val=[[Validation alloc]init];
+        int value1=[val isdataformat:_mobiletxtfld.text];
+        if(value1==0)
+        {
+            UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert1 show];
+            
+            
+        }
+
     else
     {
         mobilenostring=_mobiletxtfld.text;
@@ -1789,15 +1855,16 @@ numberOfRowsInComponent:(NSInteger)component
         NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
         NSString *resultString = [[mobilenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
         NSLog (@"Result: %@", resultString);
-        if ([resultString length]==9){
+        if ([resultString length]<=9){
             
              phonex=1;
             
-            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
             
         }
+        
         
         
         if ([mobilenostring length]==12) {
@@ -1814,7 +1881,7 @@ numberOfRowsInComponent:(NSInteger)component
             else
             {
                  phonex=1;
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
             }
@@ -1852,10 +1919,10 @@ numberOfRowsInComponent:(NSInteger)component
             
              phonex=1;
             
-            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
-            
+        }
         }
         
     }
@@ -1873,7 +1940,7 @@ numberOfRowsInComponent:(NSInteger)component
         }
         else
         { phonex=1;
-            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
 
@@ -1882,6 +1949,18 @@ numberOfRowsInComponent:(NSInteger)component
         
         
     }
+    else
+    {
+        Validation*val=[[Validation alloc]init];
+        int value1=[val isdataformat:_homenumbertxtfld.text];
+        if(value1==0)
+        {
+            UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert1 show];
+            
+            
+        }
+
     else
     {
         homenostring=_homenumbertxtfld.text;
@@ -1897,11 +1976,11 @@ numberOfRowsInComponent:(NSInteger)component
         NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
         NSString *resultString = [[homenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
         NSLog (@"Result: %@", resultString);
-        if ([resultString length]==9){
+        if ([resultString length]<=9){
             
             
              phonex=1;
-            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
             
@@ -1921,7 +2000,7 @@ numberOfRowsInComponent:(NSInteger)component
             }
             else
             { phonex=1;
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
             }
@@ -1959,12 +2038,12 @@ numberOfRowsInComponent:(NSInteger)component
             
             
              phonex=1;
-            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
             
         }
-        
+    }
     }
     }
 
@@ -1979,13 +2058,26 @@ numberOfRowsInComponent:(NSInteger)component
             else
             {
                  phonex=1;
-            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
             
             }
             
         }
+        else
+        {
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isdataformat:_contactnumbtxtfld.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+
+        
         else
         {
             contactnostring=_contactnumbtxtfld.text;
@@ -2001,11 +2093,11 @@ numberOfRowsInComponent:(NSInteger)component
             NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
             NSString *resultString = [[contactnostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
             NSLog (@"Result: %@", resultString);
-            if ([resultString length]==9){
+            if ([resultString length]<=9){
                 
                  phonex=1;
                 
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
                 
@@ -2026,7 +2118,7 @@ numberOfRowsInComponent:(NSInteger)component
                 else
                 {
                      phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                 }
@@ -2064,12 +2156,12 @@ numberOfRowsInComponent:(NSInteger)component
                 
                  phonex=1;
                 
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
                 
             }
-            
+        }
         }
 
     }
@@ -2083,10 +2175,11 @@ numberOfRowsInComponent:(NSInteger)component
             if ([alternatenostring isEqualToString:@""])
             {
             
-            } else
+            }
+            else
             {
                  phonex=1;
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
 
@@ -2095,6 +2188,18 @@ numberOfRowsInComponent:(NSInteger)component
             
             
         }
+        else
+        {
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isdataformat:_alternativenumtxtfld.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+
         else
         {
             alternatenostring=_alternativenumtxtfld.text;
@@ -2110,11 +2215,11 @@ numberOfRowsInComponent:(NSInteger)component
             NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
             NSString *resultString = [[alternatenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
             NSLog (@"Result: %@", resultString);
-            if ([resultString length]==9){
+            if ([resultString length]<=9){
                 
                  phonex=1;
                 
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
                 
@@ -2135,7 +2240,7 @@ numberOfRowsInComponent:(NSInteger)component
                 else
                 {
                      phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                 }
@@ -2173,7 +2278,7 @@ numberOfRowsInComponent:(NSInteger)component
                 
                 
                  phonex=1;
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
                 
@@ -2182,9 +2287,41 @@ numberOfRowsInComponent:(NSInteger)component
         }
     }
     }
+        if(textField==_ziptextflield)
+        {
+            
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isNumeric:_ziptextflield.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Zip" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+
+        }
+    }
     
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
+        if(textField==_emailtxt_iphone){
+            
+            Validation *val=[[Validation alloc]init];
+            BOOL bEmailValid = [val validEmailAddress:_emailtxt_iphone.text];
+            if(bEmailValid)
+            {
+                // email valid, other validations in the form
+            }
+            else
+            {
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Email" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+            
+            
+        }
+
         if(textField==_mobilenotext_iphone)
         {
             mobilenostring=_mobilenotext_iphone.text;
@@ -2196,13 +2333,25 @@ numberOfRowsInComponent:(NSInteger)component
                 else
                 {
                     phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
                 }
                 
             }
+            else
+            {
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isdataformat:_mobilenotext_iphone.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+
             else
             {
                 mobilenostring=_mobilenotext_iphone.text;
@@ -2218,11 +2367,11 @@ numberOfRowsInComponent:(NSInteger)component
                 NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
                 NSString *resultString = [[mobilenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
                 NSLog (@"Result: %@", resultString);
-                if ([resultString length]==9){
+                if ([resultString length]<=9){
                     
                     phonex=1;
                     
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
@@ -2243,7 +2392,7 @@ numberOfRowsInComponent:(NSInteger)component
                     else
                     {
                         phonex=1;
-                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                         
                         [alert show];
                     }
@@ -2281,12 +2430,12 @@ numberOfRowsInComponent:(NSInteger)component
                     
                     phonex=1;
                     
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Mobile Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
                 }
-                
+            }
             }
         }
         if(textField==_homenotxt_iphone)
@@ -2302,7 +2451,7 @@ numberOfRowsInComponent:(NSInteger)component
                 }
                 else
                 { phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
@@ -2311,6 +2460,18 @@ numberOfRowsInComponent:(NSInteger)component
                 
                 
             }
+            else
+            {
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isdataformat:_homenotxt_iphone.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+
             else
             {
                 homenostring=_homenotxt_iphone.text;
@@ -2326,11 +2487,11 @@ numberOfRowsInComponent:(NSInteger)component
                 NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
                 NSString *resultString = [[homenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
                 NSLog (@"Result: %@", resultString);
-                if ([resultString length]==9){
+                if ([resultString length]<=9){
                     
                     
                     phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
@@ -2350,7 +2511,7 @@ numberOfRowsInComponent:(NSInteger)component
                     }
                     else
                     { phonex=1;
-                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                         
                         [alert show];
                     }
@@ -2388,12 +2549,12 @@ numberOfRowsInComponent:(NSInteger)component
                     
                     
                     phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Home Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
                 }
-                
+            }
             }
         }
         
@@ -2408,13 +2569,25 @@ numberOfRowsInComponent:(NSInteger)component
                 else
                 {
                     phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
                 }
                 
             }
+            else
+            {
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isdataformat:_contactnotxt_iphone.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+
             else
             {
                 contactnostring=_contactnotxt_iphone.text;
@@ -2430,11 +2603,11 @@ numberOfRowsInComponent:(NSInteger)component
                 NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
                 NSString *resultString = [[contactnostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
                 NSLog (@"Result: %@", resultString);
-                if ([resultString length]==9){
+                if ([resultString length]<=9){
                     
                     phonex=1;
                     
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
@@ -2455,7 +2628,7 @@ numberOfRowsInComponent:(NSInteger)component
                     else
                     {
                         phonex=1;
-                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                         
                         [alert show];
                     }
@@ -2493,12 +2666,12 @@ numberOfRowsInComponent:(NSInteger)component
                     
                     phonex=1;
                     
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Contact Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
                 }
-                
+            }
             }
             
         }
@@ -2515,7 +2688,7 @@ numberOfRowsInComponent:(NSInteger)component
                 } else
                 {
                     phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
@@ -2524,6 +2697,18 @@ numberOfRowsInComponent:(NSInteger)component
                 
                 
             }
+            else
+            {
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isdataformat:_alternatenotxt_iphone.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+
             else
             {
                 alternatenostring=_alternatenotxt_iphone.text;
@@ -2539,11 +2724,11 @@ numberOfRowsInComponent:(NSInteger)component
                 NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
                 NSString *resultString = [[alternatenostring componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
                 NSLog (@"Result: %@", resultString);
-                if ([resultString length]==9){
+                if ([resultString length]<=9){
                     
                     phonex=1;
                     
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
@@ -2564,7 +2749,7 @@ numberOfRowsInComponent:(NSInteger)component
                     else
                     {
                         phonex=1;
-                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                         
                         [alert show];
                     }
@@ -2602,7 +2787,7 @@ numberOfRowsInComponent:(NSInteger)component
                     
                     
                     phonex=1;
-                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid PhoneNumber" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil , nil];
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Alternative Number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                     
                     [alert show];
                     
@@ -2612,7 +2797,22 @@ numberOfRowsInComponent:(NSInteger)component
         }
 
     }
-    
+        if(textField==_ziptxt_iphone)
+        {
+            
+            Validation*val=[[Validation alloc]init];
+            int value1=[val isNumeric:_ziptxt_iphone.text];
+            if(value1==0)
+            {
+                UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Zip" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert1 show];
+                
+                
+            }
+            
+        }
+
+    }
     
 }
 #pragma mark - Uploadimage webservice
