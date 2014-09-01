@@ -21,6 +21,7 @@
 @property(strong,nonatomic)NSString*year;
 @property(readwrite)NSInteger craft;
 
+@property(strong,nonatomic) NSString*jobsite;
 
 @property(readwrite)NSInteger course_status;
 

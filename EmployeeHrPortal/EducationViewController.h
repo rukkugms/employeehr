@@ -14,6 +14,8 @@
 #import "AddEducationViewController.h"
 #import "sqlite3.h"
 #import "UserDetails.h"
+#import "Validation.h"
+
 ///#import "NewMedicalViewController.h"
 @interface EducationViewController : UIViewController<UITextFieldDelegate>
 {

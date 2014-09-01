@@ -256,11 +256,17 @@
     NSInteger certificateid=0;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat: @"MM/dd/yyyy"];
-    
+    NSString* sqldate;
+    if ([_certificatedatebtnlbl.titleLabel.text isEqualToString:@"Select"]) {
+      
+        sqldate=@"1990-01-01";
+    }
+    else{
     NSDate *dateString = [dateFormat dateFromString:_certificatedatebtnlbl.titleLabel.text];
     NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
     [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
-    NSString* sqldate=[dateFormat1 stringFromDate:dateString];
+    sqldate=[dateFormat1 stringFromDate:dateString];
+    }
 
     soapMessage = [NSString stringWithFormat:
                    
@@ -946,6 +952,14 @@
 }
 
 - (IBAction)savebtn:(id)sender {
+    if (_certifcatenametxt.text.length==0) {
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Certificate Name is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    else{
+
     if([_Availablityresult isEqualToString:@"Yes"])
     {
        [self InsertApplicantCertificates]; 
@@ -960,7 +974,7 @@
     _certifcatenametxt.text=@"";
     [_certificatedatebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
 }
-
+}
 - (IBAction)cancelbtn:(id)sender
 {
     _certifcatenametxt.text=@"";
@@ -968,6 +982,26 @@
 }
 
 - (IBAction)edusavebtn:(id)sender {
+    
+    if ([_edunamebtnlbl.titleLabel.text isEqualToString:@"Select Education"]) {
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Education Name is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    else{
+    Validation*val=[[Validation alloc]init];
+    int value1=[val isNumeric:_yearscompleted.text];
+    if(value1==0){
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Year" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        _yearscompleted.text=@"";
+    }
+    else{
+    
+    
     if([_Availablityresult isEqualToString:@"Yes"])
     {
         [self InsertApplicantEducation];
@@ -986,6 +1020,7 @@
     _insitutionname.text=@"";
     _citytxtfld.text=@"";
     _statetxtfld.text=@"";
+    }}
 
 }
 

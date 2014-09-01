@@ -703,6 +703,7 @@
                 [_skillbtnlbl setTitle:[_skillsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                   [_craftbtnlbl setTitle:@"Select"forState:UIControlStateNormal];
                 //_craftbtnlbl.enabled=YES;
+                skillstring=[_skillsArray objectAtIndex:indexPath.row];
                 
                 break;
             case 4:
@@ -796,7 +797,7 @@
                    "<SubType>%@</SubType>\n"
                    "</SelectEmployeeCraft>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_skillbtnlbl.titleLabel.text];
+                   "</soap:Envelope>\n",skillstring];
     NSLog(@"soapmsg%@",soapMessage);
     
      NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
@@ -1016,7 +1017,13 @@
     NSString *soapMessage;
     NSString *jobsite;
         
-        jobsite=@"0";
+        
+        if (selectedjobsite.length==0) {
+            jobsite=@"0";
+        }
+        else{
+            
+        }
 //    if(buttonclicked==0)
 //    {
 //        if (newcell==1) {
@@ -1035,17 +1042,31 @@
 //        jobsite=@"0";
 //    }
         NSString *dateString;
-        if (_monthBtn.titleLabel.text.length==0) {
+        NSString *month;
+        NSString *year;
+        if ([_monthBtn.titleLabel.text isEqualToString:@"MM"]) {
             
-            NSLog(@"notclckd");
+          month=@"01";
+          
             
         }
         else{
-    NSString *month=[_monthDictionary objectForKey:_monthBtn.titleLabel.text];
-    NSString *year=_yearBtn.titleLabel.text;
-    NSString *day=@"01";
-    dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+    month=[_monthDictionary objectForKey:_monthBtn.titleLabel.text];
         }
+        
+        if ([_yearBtn.titleLabel.text isEqualToString:@"YYYY"]) {
+            
+            year=@"1990";
+            
+        }
+        else{
+            year=_yearBtn.titleLabel.text;
+
+        }
+
+      NSString *day=@"01";
+    dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+        
         
        
 //        NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
@@ -1612,9 +1633,12 @@
     if([elementName isEqualToString:@"jobSite_Id"])
         
     {
-            _jobsite=[[jobsite alloc]init];
+        _jobsite=[[jobsite alloc]init];
+        
         recordResults = FALSE;
-       
+        
+        _jobsite.jobsiteid=_soapResults;
+        
         
         selectedjobsite=_soapResults;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
