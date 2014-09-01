@@ -975,7 +975,8 @@
     
 }
 -(void)UpdateApplicantDetails
-{ webtype=1;
+{
+    webtype=1;
     recordResults = FALSE;
     if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad ) {
         
@@ -1014,27 +1015,37 @@
     NSString *ncerdesc=_otherdesc.text;
     NSString *soapMessage;
     NSString *jobsite;
-    if(buttonclicked==0)
-    {
-        if (newcell==1) {
-            
         
-        jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
-            newcell=0;
+        jobsite=@"0";
+//    if(buttonclicked==0)
+//    {
+//        if (newcell==1) {
+//            
+//        
+//        jobsite=[_jobiddict objectForKey:[_jobsiteArray objectAtIndex:selectedcell]];
+//            newcell=0;
+//        }
+//        else{
+//            jobsite=selectedjobsite;
+//        }
+//        
+//    }
+//    else if(buttonclicked==1)
+//    {
+//        jobsite=@"0";
+//    }
+        NSString *dateString;
+        if (_monthBtn.titleLabel.text.length==0) {
+            
+            NSLog(@"notclckd");
+            
         }
         else{
-            jobsite=selectedjobsite;
-        }
-        
-    }
-    else if(buttonclicked==1)
-    {
-        jobsite=@"0";
-    }
     NSString *month=[_monthDictionary objectForKey:_monthBtn.titleLabel.text];
     NSString *year=_yearBtn.titleLabel.text;
     NSString *day=@"01";
-    NSString *dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+    dateString=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+        }
         
        
 //        NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];

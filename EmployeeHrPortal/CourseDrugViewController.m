@@ -984,11 +984,11 @@
         
         
           _coursemdl.expdate=_soapResults;
-        NSArray*newarray=[myFormattedDate componentsSeparatedByString:@"-"];
+        NSArray*newarray=[_soapResults componentsSeparatedByString:@"/"];
 //        _coursemdl.month=[newarray objectAtIndex:0];
 //        _coursemdl.year=[newarray objectAtIndex:2];
         _coursemdl.month=[_remonthDictionary objectForKey:[newarray objectAtIndex:0]];
-        NSLog(@"mnth%@",_coursemdl.month);
+    NSLog(@"mnth%@",_coursemdl.month);
      
       _coursemdl.year=[newarray objectAtIndex:2];
          NSLog(@"yar%@",_coursemdl.year);
