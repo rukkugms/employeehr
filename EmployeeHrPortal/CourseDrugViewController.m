@@ -540,19 +540,22 @@
 
 -(void)UpdateApplicantRequirements
 {
-    webidfr=1;
+    
     recordResults = FALSE;
     NSString *soapMessage;
      if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
      {
          for(int i=0;i<[_requirementArray count];i++)
     {
-               NSInteger verifctnstatus=0;
+            NSInteger verifctnstatus=0;
             //NSInteger courseinteger=1;
         NSString*day=@"01";
        
        
        // NSLog(@"exdate%@",expirydate);
+        if (i==[_requirementArray count]-1) {
+            webidfr=1;
+        }
 
         Coursemdl*coursemdl1=(Coursemdl *)[_requirementArray objectAtIndex:i];
         
@@ -777,7 +780,7 @@
 	[_xmlParser parse];
     if (webidfr==2) {
         [self UpdateApplicantRequirements];
-       // webidfr=0;
+        webidfr=0;
     }
 
     if (webidfr==1) {
@@ -897,7 +900,22 @@
         
     }
 
+    if([elementName isEqualToString:@"UpdateApplicantRequirementsResponse"])
+    {
+        
+//        j++;
+//        if (j==[_requirementArray count]-1) {
+//            [self InsertApplicantRequirements];
+//        }
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+        
+    }
     
+
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -969,7 +987,7 @@
         recordResults = FALSE;
         
         NSArray *dateArray=[[NSArray alloc]init];
-        dateArray=[_soapResults componentsSeparatedByString:@"T"];
+        dateArray=[_soapResults componentsSeparatedByString:@" "];
         NSString *date1 =[dateArray objectAtIndex:0];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
@@ -984,7 +1002,7 @@
         
         
           _coursemdl.expdate=_soapResults;
-        NSArray*newarray=[_soapResults componentsSeparatedByString:@"/"];
+        NSArray*newarray=[myFormattedDate componentsSeparatedByString:@"-"];
 //        _coursemdl.month=[newarray objectAtIndex:0];
 //        _coursemdl.year=[newarray objectAtIndex:2];
         _coursemdl.month=[_remonthDictionary objectForKey:[newarray objectAtIndex:0]];
