@@ -987,7 +987,9 @@
         recordResults = FALSE;
         
         NSArray *dateArray=[[NSArray alloc]init];
-        dateArray=[_soapResults componentsSeparatedByString:@" "];
+        NSString*newstring=_soapResults;
+         newstring=[newstring stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+        dateArray=[newstring componentsSeparatedByString:@" "];
         NSString *date1 =[dateArray objectAtIndex:0];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
@@ -998,7 +1000,7 @@
 
         
         
-     
+       
         
         
           _coursemdl.expdate=_soapResults;
