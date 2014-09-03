@@ -213,13 +213,13 @@ finishedSavingWithError:(NSError *)error
                    
                    "<soap:Body>\n"
                    
-                   "<UploadDocs xmlns=\"http://ios.kontract360.com/\">\n"
+                   "<UploadDocsHR xmlns=\"http://ios.kontract360.com/\">\n"
                    
                    "<f>%@</f>\n"
                    "<fileName>%@</fileName>\n"
                    "<docName>%@</docName>\n"
                    "<appid>%d</appid>\n"
-                   "</UploadDocs>\n"
+                   "</UploadDocsHR>\n"
                    "</soap:Body>\n"
                    "</soap:Envelope>\n",_encodedstring,imagename,_docnametxt.text,_applicantid];
           NSLog(@"soapmsg%@",soapMessage);
@@ -236,7 +236,7 @@ finishedSavingWithError:(NSError *)error
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://ios.kontract360.com/UploadDocs" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/UploadDocsHR" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -381,7 +381,7 @@ else
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    UIAlertView *  Alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"ERROR with theConenction" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    UIAlertView *  Alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"ERROR with the Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     
     [Alert show];
 }

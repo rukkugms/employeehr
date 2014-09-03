@@ -53,6 +53,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+     [self.view addSubview:_webview];
     [self SelectDocuments];
 }
 
@@ -99,9 +100,9 @@
                    
                    "<soap:Body>\n"
                    
-                   "<SelectDocs xmlns=\"http://ios.kontract360.com/\">\n"
+                   "<SelectDocsHR xmlns=\"http://ios.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
-                   "</SelectDocs>\n"
+                   "</SelectDocsHR>\n"
                    "</soap:Body>\n"
                    "</soap:Envelope>\n",_applicantid];
     NSLog(@"soapmsg%@",soapMessage);
@@ -116,7 +117,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://ios.kontract360.com/SelectDocs" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/SelectDocsHR" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -147,7 +148,7 @@
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    UIAlertView *  Alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"ERROR with theConenction" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    UIAlertView *  Alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"ERROR with the Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     
     [Alert show];
 }
@@ -206,29 +207,43 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *header=@"http://";
-    _DoculistArray=[_DocumentDictionary allKeys];
-    NSString *urlstring=[NSString stringWithFormat:@"%@%@",header,[_DocumentDictionary objectForKey:[_DoculistArray objectAtIndex:indexPath.row]]];
-   // NSString *urlstring=[NSString stringWithFormat:@"%@",@"http://www.apple.com"];
-    // NSString *urlstring=[NSString stringWithFormat:@"%@",@"  http://ios.kontract360.com/Folder/Root/HR/1004/huffy%20futz_444-44-4444.pdf"];
-    
    
-    NSLog(@"reportname%@",urlstring);
+     NSString *header=@"http://";
+    _DoculistArray=[_DocumentDictionary allKeys];
+    NSString *encodedString=[NSString stringWithFormat:@"%@%@",header,[_DocumentDictionary objectForKey:[_DoculistArray objectAtIndex:indexPath.row]]];
+    NSString *urlstring=[encodedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
+    NSString*urls=[encodedString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    // NSString*urls=[NSString stringWithFormat:@"http://google.com"];
+      NSLog(@"url%@",encodedString);
     NSURL *targetURL = [NSURL URLWithString:urlstring];
     NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
     [_webview loadRequest:request];
-    [_activityndictr startAnimating];
     
+    
+    [self.view addSubview:_webview];
 
     
 }
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [_activityndictr startAnimating];
+    
+}
+
 #pragma mark-Webview delegate
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     [_activityndictr stopAnimating];
 }
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
+    
+    NSLog(@"ef%@",error);
+    
+}
+
 
 #pragma mark-Button Actions
 
@@ -249,7 +264,7 @@
 #pragma mark - XMLParser
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *) namespaceURI qualifiedName:(NSString *)qName
    attributes: (NSDictionary *)attributeDict{
-    if([elementName isEqualToString:@"SelectDocsResult"])
+    if([elementName isEqualToString:@"SelectDocsHRResult"])
     {
     // _DoculistArray=[[NSMutableArray alloc]init];
         _DocumentDictionary=[[NSMutableDictionary alloc]init];
