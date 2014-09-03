@@ -23,6 +23,7 @@
     NSString *pickerstring;
     NSInteger btnidfr;
     NSInteger webidfr;
+      int j;
 }
 @property(strong,nonatomic) IBOutlet UITableViewCell *checkcell;
 @property (strong, nonatomic) IBOutlet UIView *checkview;

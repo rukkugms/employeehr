@@ -31,6 +31,7 @@
     NSString *contactnostring;
     NSString *alternatenostring;
     NSInteger phonex;
+     NSString *photostring;
    
 
 }

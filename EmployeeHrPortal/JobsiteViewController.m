@@ -377,6 +377,8 @@
 - (IBAction)skillbtn:(id)sender {
   
     Poptype=3;
+    skillclckd=1;
+
     [self SelectEmployeeSkills];
    
     [self skillsPopover];
@@ -386,6 +388,7 @@
 
 - (IBAction)craftbtn:(id)sender {
     Poptype=4;
+    craftclckd=1;
     [self SelectEmployeeCraft];
     [self craftsPopover];
 }
@@ -682,7 +685,7 @@
     }
     if (tableView==_popOverTableView) {
         
-        skillindex=indexPath.row;
+      
         
         switch (Poptype) {
             case 1:
@@ -699,7 +702,7 @@
                 
                 break;
             case 3:
-                
+                  skillindex=indexPath.row;
                 [_skillbtnlbl setTitle:[_skillsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                   [_craftbtnlbl setTitle:@"Select"forState:UIControlStateNormal];
                 //_craftbtnlbl.enabled=YES;
@@ -707,7 +710,7 @@
                 
                 break;
             case 4:
-                
+                craftindex=indexPath.row;
                 [_craftbtnlbl setTitle:[_craftsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
                 // _creftid=   [_craftdict objectForKey:[_craftsArray objectAtIndex:indexPath.row]];
                 
@@ -999,15 +1002,33 @@
     {
         ncer=0;
     }
-        NSString *skill=[_skilldict objectForKey:[_skillsArray objectAtIndex:skillindex]];
-        NSLog(@"skill%@",[_skillsArray objectAtIndex:skillindex]);
-    NSString *craft;
-    if ([_craftdict count]==0) {
+        NSString *skill;
+      
+        if (skillclckd==0) {
+            skill =skillid;
+            if (skill.length==0) {
+                skill=@"0";
+            }
+        }
+        
+        else{
+       skill=[_skilldict objectForKey:[_skillsArray objectAtIndex:skillindex]];
+            
+        }
+
+        
+        
+     NSString *craft;
+     if (craftclckd==0) {
         craft =_creftid;
+        if (craft.length==0) {
+            craft=@"0";
+        }
     }
     
     else{
-        craft= [_craftdict objectForKey: [_craftsArray objectAtIndex:skillindex]];
+        craft= [_craftdict objectForKey: [_craftsArray objectAtIndex:craftindex]];
+        
         
     }
     
@@ -1017,13 +1038,13 @@
     NSString *soapMessage;
     NSString *jobsite;
         
-        
-        if (selectedjobsite.length==0) {
-            jobsite=@"0";
-        }
-        else{
-            
-        }
+          jobsite=@"0";
+//        if (selectedjobsite.length==0) {
+//            jobsite=@"0";
+//        }
+//        else{
+//            
+//        }
 //    if(buttonclicked==0)
 //    {
 //        if (newcell==1) {
@@ -1311,6 +1332,7 @@
     
     [_datapicker1 reloadAllComponents];
     [_datapicker2 reloadAllComponents];
+        [_popOverTableView reloadData];
     
 }
 
@@ -1747,12 +1769,8 @@
     {
         recordResults = FALSE;
         _jobsite.ApplicantSkill=_soapResults;
-        
-        
-        
-        
-        
-        
+        skillid=_soapResults;
+        NSLog(@"_so%@",_soapResults);
         
         [_skillbtnlbl setTitle:[_skillArraydict objectForKey:_soapResults] forState:UIControlStateNormal];
         _skilltextflield_iphone.text=[_skillArraydict objectForKey:_soapResults];
@@ -1763,7 +1781,7 @@
     {
         recordResults = FALSE;
         _creftid=_soapResults;
-        
+        NSLog(@"_so%@",_soapResults);
         NSUserDefaults *defaults1 = [NSUserDefaults standardUserDefaults];
         [defaults1 setObject:_soapResults forKey:@"CraftId"];
         [defaults1 synchronize];

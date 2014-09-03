@@ -64,6 +64,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    photostring=@"";
     _applicantssn=_ssntxtfld.text;
     _applicantssn=_ssntextfield_iphone.text;
     _sufixbtnlbl.titleLabel.text=@"Select";
@@ -77,11 +78,11 @@
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationController.navigationBarHidden=NO;
     
-    if (x==1) {
+    //if (x==1) {
         [self GetApplicantDetails];
-        x=2;
+        //x=2;
 
-    }
+  //  }
     
     
     
@@ -801,7 +802,6 @@
     [_popOverTableView reloadData];
     if(upint==3)
     {
-        [self FetchImage];
         
         upint=2;
     }
@@ -1011,6 +1011,14 @@
         recordResults = TRUE;
     }
 
+    if([elementName isEqualToString:@"applicant_photo"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
 
     
     if([elementName isEqualToString:@"applicant_LicenseState"])
@@ -1279,7 +1287,16 @@
         _soapResults=nil;
     }
     
-    
+    if([elementName isEqualToString:@"applicant_photo"])
+    {
+        recordResults = FALSE;
+        photostring=_soapResults;
+        [self FetchImage];
+
+     _soapResults=nil;
+        
+    }
+
     if([elementName isEqualToString:@"applicant_AlternateNo"])
     {
         recordResults = FALSE;
@@ -2896,12 +2913,13 @@ numberOfRowsInComponent:(NSInteger)component
                    
                    "<soap:Body>\n"
                    
-                   "<FetchImage xmlns=\"http://ios.kontract360.com/\">\n"
+                   "<FetchImageHR xmlns=\"http://ios.kontract360.com/\">\n"
                                      
                    "<appid>%d</appid>\n"
-                   "</FetchImage>\n"
+                   "<photo>%@</photo>\n"
+                   "</FetchImageHR>\n"
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid];
+                   "</soap:Envelope>\n",_Applicantid,photostring];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -2914,7 +2932,7 @@ numberOfRowsInComponent:(NSInteger)component
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://ios.kontract360.com/FetchImage" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/FetchImageHR" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
