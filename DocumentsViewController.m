@@ -206,9 +206,9 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
    
-     NSString *header=@"http://";
+    //_webview = [[UIWebView alloc] initWithFrame:CGRectMake(727, 434, 594, 668)];
+        NSString *header=@"http://";
     _DoculistArray=[_DocumentDictionary allKeys];
     NSString *encodedString=[NSString stringWithFormat:@"%@%@",header,[_DocumentDictionary objectForKey:[_DoculistArray objectAtIndex:indexPath.row]]];
     NSString *urlstring=[encodedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
