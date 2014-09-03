@@ -73,6 +73,107 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
+    if(_isconvictSegment.selectedSegmentIndex==0)
+    {
+        _isconvictvalue=1;
+    }
+    else if(_isconvictSegment.selectedSegmentIndex==1)
+    {
+        _isconvictvalue=0;
+    }
+    if(_agelimitsegment.selectedSegmentIndex==0)
+    {
+        _agelimitvalue=1;
+    }
+    else if(_agelimitsegment.selectedSegmentIndex==1)
+    {
+        _agelimitvalue=0;
+    }
+    if(_legalsrightssegment.selectedSegmentIndex==0)
+    {
+        _legalrightsvalue=1;
+    }
+    else if(_legalsrightssegment.selectedSegmentIndex==1)
+    {
+        _legalrightsvalue=0;
+    }
+    if(_workovertimesegment.selectedSegmentIndex==0)
+    {
+        _workedovertimevalue=1;
+    }
+    else if(_workovertimesegment.selectedSegmentIndex==1)
+    {
+        _workedovertimevalue=0;
+    }
+    if(_workedearliersegment.selectedSegmentIndex==0)
+    {
+        _workedearliervalue=1;
+    }
+    else if(_workedearliersegment.selectedSegmentIndex==1)
+    {
+        _workedearliervalue=0;
+    }
+    
+    if(_workoutoftownSegment.selectedSegmentIndex==0)
+    {
+        _workoutoftownvalue=1;
+    }
+    else if(_workoutoftownSegment.selectedSegmentIndex==1)
+    {
+        _workoutoftownvalue=0;
+    }
+    
+    if(_IsProtectedVeteransegment.selectedSegmentIndex==0)
+    {
+        _IsProtectedVeteranValue=1;
+    }
+    else if(_IsProtectedVeteransegment.selectedSegmentIndex==1)
+    {
+        _IsProtectedVeteranValue=0;
+    }
+    if(_isdisableSegment.selectedSegmentIndex==0)
+    {
+        _IsDisablevalue=1;
+    }
+    else if(_isdisableSegment.selectedSegmentIndex==1)
+    {
+        _IsDisablevalue=0;
+    }
+    if(_IsVietnamEraSegment.selectedSegmentIndex==0)
+    {
+        _IsVietnamEravalue=1;
+    }
+    else if(_IsVietnamEraSegment.selectedSegmentIndex==1)
+    {
+        _IsVietnamEravalue=0;
+    }
+    if(_IsActiveReservistSegment.selectedSegmentIndex==0)
+    {
+        _IsActiveReservistvalue=1;
+    }
+    else if(_IsActiveReservistSegment.selectedSegmentIndex==1)
+    {
+        _IsActiveReservistvalue=0;
+    }
+    if(_IsDisabledVeteranSegment.selectedSegmentIndex==0)
+    {
+        _IsDisabledVeteranvalue=1;
+    }
+    else if(_IsDisabledVeteranSegment.selectedSegmentIndex==1)
+    {
+        _IsDisabledVeteranvalue=0;
+    }
+    
+    if(_IsSeperatedVeteranSegment.selectedSegmentIndex==0)
+    {
+        _IsSeperatedVeteranvalue=1;
+    }
+    else if(_IsSeperatedVeteranSegment.selectedSegmentIndex==1)
+    {
+        _IsSeperatedVeteranvalue=0;
+    }
+    
+
     if ([_Availablityresult isEqualToString:@"Yes"]) {
         
         [self UpdateApplicantInformations];
