@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title=NSLocalizedString(@"Requirement Details", @"Requirement Details");
+        self.title=NSLocalizedString(@"Requirement Details",@"Requirement Details");
     }
     return self;
 }
@@ -914,7 +914,15 @@
         recordResults = TRUE;
         
     }
-    
+    if([elementName isEqualToString:@"result"])
+    {
+        if(!_soapResults)
+    {
+        _soapResults = [[NSMutableString alloc] init];
+    }
+        recordResults = TRUE;
+    }
+
 
 }
 
@@ -1041,8 +1049,14 @@
         NSLog(@"mdl%@",_requirementArray);
         _soapResults=nil;
     }
-    
-   
+    if([elementName isEqualToString:@"result"])
+    {
+        recordResults = FALSE;
+      
+        _soapResults=nil;
+    }
+
+  
 
        }
 
