@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title=NSLocalizedString(@"Requirement Details", @"Requirement Details");
+        self.title=NSLocalizedString(@"Requirement Details",@"Requirement Details");
     }
     return self;
 }
@@ -914,7 +914,15 @@
         recordResults = TRUE;
         
     }
-    
+    if([elementName isEqualToString:@"result"])
+    {
+        if(!_soapResults)
+    {
+        _soapResults = [[NSMutableString alloc] init];
+    }
+        recordResults = TRUE;
+    }
+
 
 }
 
@@ -987,7 +995,9 @@
         recordResults = FALSE;
         
         NSArray *dateArray=[[NSArray alloc]init];
-        dateArray=[_soapResults componentsSeparatedByString:@" "];
+        NSString*newstring=_soapResults;
+         newstring=[newstring stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+        dateArray=[newstring componentsSeparatedByString:@" "];
         NSString *date1 =[dateArray objectAtIndex:0];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
@@ -998,7 +1008,7 @@
 
         
         
-     
+       
         
         
           _coursemdl.expdate=_soapResults;
@@ -1039,8 +1049,14 @@
         NSLog(@"mdl%@",_requirementArray);
         _soapResults=nil;
     }
-    
-   
+    if([elementName isEqualToString:@"result"])
+    {
+        recordResults = FALSE;
+      
+        _soapResults=nil;
+    }
+
+  
 
        }
 

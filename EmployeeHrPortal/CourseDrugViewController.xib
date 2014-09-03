@@ -43,7 +43,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expiration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18">
-                            <rect key="frame" x="380" y="10" width="193" height="21"/>
+                            <rect key="frame" x="354" y="10" width="193" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

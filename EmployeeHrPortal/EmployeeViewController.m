@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-         self.title=NSLocalizedString(@"Previous Employer", @"Previous Employer");
+         self.title=NSLocalizedString(@"Previous Employer",@"Previous Employer");
     }
     return self;
 }
