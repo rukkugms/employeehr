@@ -398,7 +398,7 @@ QWx0ZXJuYXRlIE51bWJlchAQEDo
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="160">
-                                    <rect key="frame" x="47" y="224" width="110" height="27"/>
+                                    <rect key="frame" x="42" y="209" width="110" height="27"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                     <state key="normal" title="Upload">

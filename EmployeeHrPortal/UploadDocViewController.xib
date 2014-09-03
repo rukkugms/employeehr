@@ -76,7 +76,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <items>
-                        <navigationItem title="Equipments" id="g7M-YU-F4b">
+                        <navigationItem title="Upload Documents" id="g7M-YU-F4b">
                             <barButtonItem key="rightBarButtonItem" id="Fvs-sY-4QU">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yZZ-s0-V5H">
                                     <rect key="frame" x="965" y="-3" width="50" height="50"/>
