@@ -42,7 +42,13 @@
     _ssntextfield_iphone.enabled=NO;
     _coverimage.layer.borderColor=[UIColor blackColor].CGColor;
     _coverimage.layer.borderWidth=1;
+    _Addresstxtfld.layer.borderColor=[UIColor colorWithRed:184.0/255.0f green:184.0/255.0f blue:184.0/255.0f alpha:1.0f].CGColor;
     
+    _Addresstxtfld.layer.borderWidth=1;
+    _Addresstxtfld.layer.cornerRadius=6;
+    _datepicker_ipad.layer.borderColor=[UIColor colorWithRed:184.0/255.0f green:184.0/255.0f blue:184.0/255.0f alpha:1.0f].CGColor;
+    _datepicker_ipad.layer.borderWidth=1;
+    _datepicker_ipad.layer.cornerRadius=6;
     _imgvw.userInteractionEnabled = YES;
     UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self action:@selector(handlePinch:)];
