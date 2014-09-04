@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    int j=0;
     _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
     [_scroll_iphone setContentSize:CGSizeMake(500,640)];
     // Do any additional setup after loading the view from its nib.
@@ -65,6 +66,14 @@
             subview.frame = CGRectMake(0, 0,self.reqtable_iphone.bounds.size.width, self.reqtable_iphone.bounds.size.height);
         }
     }
+    
+    _passdict=[[NSMutableDictionary alloc]init];
+    [_passdict setObject:@"pass" forKey:@"1"];
+    [_passdict setObject:@"fail" forKey:@"0"];
+    _revpassdict=[[NSMutableDictionary alloc]init];
+    [_revpassdict setObject:@"1" forKey:@"pass"];
+     [_revpassdict setObject:@"0" forKey:@"fail"];
+    
 
 }
 -(void)logoutAction{
@@ -134,9 +143,13 @@
             case 2:
                 return [_yearArray count];
                 break;
+            case 3:
+                return [_passdict count];
+                break;
+
         }
     }
-    if(tableView==_detailstable||tableView==_reqtable_iphone||tableView==_checktable||tableView==_checktable_iphone)
+    if(tableView==_detailstable||tableView==_reqtable_iphone||tableView==_checktable_iphone)
     {
         return [_requirementArray count];
         
@@ -151,13 +164,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-           cell.accessoryType = UITableViewCellAccessoryNone;
+           //cell.accessoryType = UITableViewCellAccessoryNone;
         if(tableView==_detailstable)
         {
             
             
             [[NSBundle mainBundle]loadNibNamed:@"CourseDrugCellView" owner:self options:nil];
-            cell.accessoryType = UITableViewCellAccessoryNone;
+           // cell.accessoryType = UITableViewCellAccessoryNone;
             cell=_detailcell;
         }
         if(tableView==_reqtable_iphone)
@@ -168,12 +181,12 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell=_reqcell_iphone;
         }
-        if (tableView==_checktable) {
-            [[NSBundle mainBundle]loadNibNamed:@"requirementcell" owner:self options:nil];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell=_checkcell;
-
-        }
+//        if (tableView==_checktable) {
+//            [[NSBundle mainBundle]loadNibNamed:@"requirementcell" owner:self options:nil];
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            cell=_checkcell;
+//
+//        }
         if (tableView==_checktable_iphone) {
             [[NSBundle mainBundle]loadNibNamed:@"requirementcell_iphone" owner:self options:nil];
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -194,6 +207,10 @@
                 break;
             case 2:
                 cell.textLabel.text=[_yearArray objectAtIndex:indexPath.row];
+                break;
+            case 3:
+                
+                cell.textLabel.text=[[_passdict allValues] objectAtIndex:indexPath.row];
                 break;
         }
     }
@@ -219,25 +236,35 @@
         }else if (coursemdl1.course_status==0){
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
-        
-        
-        
-    }
-    
-    if (tableView==_checktable) {
-        Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
-        
-        cell.textLabel.text=coursemdl2.itemname;
-        
-        
-        
-        if (coursemdl2.course_status==1) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if ([coursemdl1.pass isEqualToString:@"1"]) {
             
-        }else if (coursemdl2.course_status==0){
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            [_selectpass setTitle:@"pass" forState:UIControlStateNormal];
+            
+        }
+        else{
+            
+            [_selectpass setTitle:@"fail" forState:UIControlStateNormal];
         }
 
+        if([coursemdl1.HaveExpiryDate isEqualToString:@"true"]){
+          
+            _monthbtn.enabled=YES;
+            _yearbtn.enabled=YES;
+        }
+        else{
+           _monthbtn.enabled=NO;
+            _yearbtn.enabled=NO;
+        }
+        
+        
+//        if (coursemdl2.course_status==1) {
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            
+//        }else if (coursemdl2.course_status==0){
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+        
+        
         if ([_selectedcellstring isEqualToString:@"selected"]) {
             
             Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
@@ -257,7 +284,7 @@
                 else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
                 {
                     cell.accessoryType = UITableViewCellAccessoryNone;
-                    coursemdl3.course_status=0;
+                   coursemdl3.course_status=0;
                     //cell.selected=NO;
                     
                 }
@@ -267,50 +294,96 @@
             
         }
 
+        
+    }
+    
+    if (tableView==_checktable) {
+//        Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+//        
+//        cell.textLabel.text=coursemdl2.itemname;
+//        
+//        
+//        
+//        if (coursemdl2.course_status==1) {
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            
+//        }else if (coursemdl2.course_status==0){
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+//       
+//        if ([_selectedcellstring isEqualToString:@"selected"]) {
+//            
+//            Coursemdl*coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+//            
+//            if(indexPath.row == selectedcell)
+//            {
+//                
+//                if(cell.accessoryType==UITableViewCellAccessoryNone)
+//                {
+//                    
+//                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//                    coursemdl3.course_status=1;
+//                    //cell.selected = NO;
+//                    
+//                    
+//                }
+//                else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
+//                {
+//                    cell.accessoryType = UITableViewCellAccessoryNone;
+//                    coursemdl3.course_status=0;
+//                    //cell.selected=NO;
+//                    
+//                }
+//                
+//                
+//            }
+//            
+//        }
+
     }
     if (tableView==_checktable_iphone)
     {
-        Coursemdl*coursemdl4=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
-        
-        cell.textLabel.text=coursemdl4.itemname;
-        
-        
-        
-        if (coursemdl4.course_status==1) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            
-        }else if (coursemdl4.course_status==0){
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        
-        if ([_selectedcellstring isEqualToString:@"selected"]) {
-            
-            Coursemdl*coursemdl5=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
-            
-            if(indexPath.row == selectedcell)
-            {
-                
-                if(cell.accessoryType==UITableViewCellAccessoryNone)
-                {
-                    
-                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                    coursemdl5.course_status=1;
-                    //cell.selected = NO;
-                    
-                    
-                }
-                else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
-                {
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    coursemdl5.course_status=0;
-                    //cell.selected=NO;
-                    
-                }
-                
-                
-            }
-            
-        }
+//        Coursemdl*coursemdl4=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+//        
+//        cell.textLabel.text=coursemdl4.itemname;
+//        
+//        
+//        
+//        if (coursemdl4.course_status==1) {
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            
+//        }else if (coursemdl4.course_status==0){
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+//        
+//        if ([_selectedcellstring isEqualToString:@"selected"]) {
+//            
+//            Coursemdl*coursemdl5=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+//            
+//            if(indexPath.row == selectedcell)
+//            {
+//                
+//                if(cell.accessoryType==UITableViewCellAccessoryNone)
+//                {
+//                    
+//                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//                    coursemdl5.course_status=1;
+//                    //cell.selected = NO;
+//                    
+//                    
+//                }
+//                else if(cell.accessoryType==UITableViewCellAccessoryCheckmark)
+//                {
+//                    cell.accessoryType = UITableViewCellAccessoryNone;
+//                    coursemdl5.course_status=0;
+//                    //cell.selected=NO;
+//                    
+//                }
+//                
+//                
+//            }
+//            
+//        }
         
     }
     
@@ -380,6 +453,7 @@
 {
     Coursemdl*coursemdl2;
     Coursemdl*coursemdl3;
+     Coursemdl*coursemdl4;
     if (Poptype==1) {
         
     
@@ -402,7 +476,18 @@
     coursemdl3=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
     
     }
-       
+    if (Poptype==3) {
+        
+        
+        CGPoint center1= segbutton.center;
+        CGPoint rootViewPoint1 = [segbutton.superview convertPoint:center1 toView:self.detailstable];
+        NSIndexPath *textFieldIndexPath1 = [self.detailstable indexPathForRowAtPoint:rootViewPoint1];
+        NSLog(@"textFieldIndexPath%d",textFieldIndexPath1.row);
+        
+        coursemdl4=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath1.row];
+        
+    }
+
     if (tableView==_popOverTableView) {
         
         //Coursemdl*coursemdl2=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
@@ -435,6 +520,19 @@
                // [_requirementArray addObject:coursemdl3];
                 Poptype=0;
                 break;
+                
+            case 3:
+                
+                [segbutton setTitle:[[_passdict allValues] objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                 NSLog(@"pass%@",[[_passdict allValues] objectAtIndex:indexPath.row]);
+                
+                coursemdl4.pass=[_revpassdict objectForKey:[[_passdict allValues] objectAtIndex:indexPath.row]];
+                  NSLog(@"pass%@",coursemdl4.pass);
+                // [_requirementArray addObject:coursemdl3];
+                Poptype=0;
+                break;
+
+                
             default:
                 break;
         }
@@ -445,15 +543,15 @@
     {
         
         selectedcell=indexPath.row;
-       // _selectedcellstring=@"selected";
-       // [_detailstable reloadData];
+        _selectedcellstring=@"selected";
+        [_detailstable reloadData];
     }
     if(tableView==_checktable)
     {
         
-        selectedcell=indexPath.row;
-        _selectedcellstring=@"selected";
-         [_checktable reloadData];
+       // selectedcell=indexPath.row;
+       // _selectedcellstring=@"selected";
+        // [_checktable reloadData];
     }
     if(tableView==_checktable_iphone)
     {
@@ -479,6 +577,7 @@
 #pragma mark - webservice
 
 -(void)InsertApplicantRequirements{
+         webidfr=1;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
     NSLog(@"%@",fetchVariable);
@@ -553,16 +652,13 @@
        
        
        // NSLog(@"exdate%@",expirydate);
-        if (i==[_requirementArray count]-1) {
-            webidfr=1;
-        }
-
+      
         Coursemdl*coursemdl1=(Coursemdl *)[_requirementArray objectAtIndex:i];
         
-               NSInteger reqid=coursemdl1.reqid;
+        NSInteger reqid=coursemdl1.reqid;
         NSString*mnth=[_monthDictionary objectForKey:coursemdl1.month];
-           NSLog(@"yar%@",coursemdl1.year);
-         NSString*expirydate=[NSString stringWithFormat:@"%@-%@-%@",coursemdl1.year,mnth,day];
+        NSLog(@"yar%@",coursemdl1.year);
+        NSString*expirydate=[NSString stringWithFormat:@"%@-%@-%@",coursemdl1.year,mnth,day];
     
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *fetchVariable = [defaults objectForKey:@"jobsiteid"];
@@ -584,9 +680,11 @@
                    "<VerificationStatus>%d</VerificationStatus>\n"
                    "<CraftId>%d</CraftId>\n"
                    "<RequirementName>%@</RequirementName>\n"
+                 "<pass>%d</pass>\n"
                    "</UpdateApplicantRequirements>\n"
+                 
                    "</soap:Body>\n"
-                   "</soap:Envelope>\n",_Applicantid,[fetchVariable integerValue],reqid,expirydate,coursemdl1.course_status,verifctnstatus,coursemdl1.craft,coursemdl1.itemname];
+                   "</soap:Envelope>\n",_Applicantid,[fetchVariable integerValue],reqid,expirydate,coursemdl1.course_status,verifctnstatus,coursemdl1.craft,coursemdl1.itemname,[coursemdl1.pass integerValue]];
     NSLog(@"soapmsg%@",soapMessage);
     
     
@@ -784,13 +882,16 @@
     }
 
     if (webidfr==1) {
-        [self InsertApplicantRequirements];
+        
+       // [self InsertApplicantRequirements];
+        [_detailstable reloadData];
+          _selectedcellstring=@"";
         webidfr=0;
     }
 
   
-      [_detailstable reloadData];
-    [_reqtable_iphone reloadData];
+    
+     [_reqtable_iphone reloadData];
     
     
     
@@ -846,7 +947,15 @@
         }
         recordResults = TRUE;
     }
-    
+    if([elementName isEqualToString:@"pass"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+
     if([elementName isEqualToString:@"ApplyToAllCraft"])
     {
         if(!_soapResults)
@@ -1045,14 +1154,35 @@
 //        }
         
         _coursemdl.course_status=[_soapResults integerValue];
-         [_requirementArray addObject:_coursemdl];
-        NSLog(@"mdl%@",_requirementArray);
+             NSLog(@"mdl%@",_requirementArray);
         _soapResults=nil;
     }
+    if([elementName isEqualToString:@"pass"])
+    {
+       recordResults = FALSE;
+        if ([_soapResults isEqualToString:@"false"]||[_soapResults isEqualToString:@"0"]) {
+             _coursemdl.pass=@"0";
+            
+        }
+        else{
+             _coursemdl.pass=@"1";
+        }
+     
+
+        [_requirementArray addObject:_coursemdl];
+
+          _soapResults=nil;
+    }
+
     if([elementName isEqualToString:@"result"])
     {
+        j++;
         recordResults = FALSE;
       
+        if (j==[_requirementArray count]) {
+            [self InsertApplicantRequirements];
+            j=0;
+        }
         _soapResults=nil;
     }
 
@@ -1065,9 +1195,10 @@
 
 - (IBAction)continuebtn:(id)sender {
     
-   [self DeleteApplicantRequirements];
-    [_checktable reloadData];
-    _checkview.hidden=NO;
+[self DeleteApplicantRequirements];
+ 
+    //[_checktable reloadData];
+    //_checkview.hidden=NO;
     //[self UpdateApplicantRequirements];
     
 //    if (!self.raceVCtrl) {
@@ -1281,11 +1412,78 @@ numberOfRowsInComponent:(NSInteger)component
 }
 
 - (IBAction)checksave:(id)sender {
+    
     _checkview.hidden=YES;
 }
 - (IBAction)checksave_iphone:(id)sender {
     _checkview_iphone.hidden=YES;
 }
 
+- (IBAction)segmntbtn:(id)sender {
+    
+    segbutton = (UIButton *)sender;
+    CGPoint center= segbutton.center;
+    //touchedpath=button.tag;
+    CGPoint rootViewPoint = [segbutton.superview convertPoint:center toView:self.checktable];
+    NSIndexPath *textFieldIndexPath = [self.checktable indexPathForRowAtPoint:rootViewPoint];
+    NSLog(@"textFieldIndexPath%d",textFieldIndexPath.row);
+     Coursemdl*coumdl=(Coursemdl *)[_requirementArray objectAtIndex:textFieldIndexPath.row];
 
+    
+    if ([coumdl.pass isEqualToString:@"true"]) {
+        _segmntbtnlbl.selectedSegmentIndex=1;
+        selectedseg=0;
+        coumdl.pass=@"0";
+        
+    }
+    else{
+         _segmntbtnlbl.selectedSegmentIndex=0;
+        selectedseg=1;
+        coumdl.pass=@"1";
+    }
+    
+  //  [_requirementArray replaceObjectAtIndex:textFieldIndexPath.row withObject:coumdl];
+    
+   
+}
+
+
+- (IBAction)passbuttn:(id)sender {
+    Poptype=3;
+    
+    UIViewController* popoverContent = [[UIViewController alloc]
+                                        init];
+    UIView* popoverView = [[UIView alloc]
+                           initWithFrame:CGRectMake(0, 0, 60, 70)];
+    //200,250
+    popoverView.backgroundColor = [UIColor lightTextColor];
+    _popOverTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 60, 70)];
+    _popOverTableView.delegate=(id)self;
+    _popOverTableView.dataSource=(id)self;
+    _popOverTableView.rowHeight= 32;
+    _popOverTableView.separatorColor=[UIColor cyanColor];
+    
+    [popoverView addSubview:_popOverTableView];
+    popoverContent.view = popoverView;
+    
+    //resize the popover view shown
+    //in the current view to the view's size
+    popoverContent.contentSizeForViewInPopover = CGSizeMake(60, 70);
+    
+    //create a popover controller
+    self.popOverController1 = [[UIPopoverController alloc]
+                               initWithContentViewController:popoverContent];
+    
+    
+    segbutton = (UIButton *)sender;
+    
+    UITableViewCell *cell = (UITableViewCell *)segbutton.superview;
+    
+    
+    [self.popOverController1 presentPopoverFromRect:_selectpass.frame
+                                             inView:cell
+                           permittedArrowDirections:UIPopoverArrowDirectionUp
+                                           animated:YES];
+
+}
 @end

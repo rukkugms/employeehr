@@ -22,6 +22,7 @@
 @property(readwrite)NSInteger craft;
 
 @property(strong,nonatomic) NSString*jobsite;
+@property(strong,nonatomic) NSString*pass;
 
 @property(readwrite)NSInteger course_status;
 
