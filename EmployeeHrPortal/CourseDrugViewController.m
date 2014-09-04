@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    int j=0;
+     j=0;
     _scroll_iphone.frame=CGRectMake(0, 0, 500,640);
     [_scroll_iphone setContentSize:CGSizeMake(500,640)];
     // Do any additional setup after loading the view from its nib.
@@ -108,7 +108,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    [self DeleteApplicantRequirements];
+  //  [self DeleteApplicantRequirements];
     
     
 }
