@@ -937,10 +937,23 @@
 - (IBAction)Addeduction:(id)sender {
     
     _view1.hidden=NO;
+    _edunamebtnlbl.titleLabel.text=@"Select Education";
+    _yearscompleted.text=@"";
+    _citytxtfld.text=@"";
+    _statetxtfld.text=@"";
+    _insitutionname.text=@"";
+    
     }
 
 - (IBAction)Addcertificate:(id)sender {
     _view2.hidden=NO;
+    _certifcatenametxt.text=@"";
+    _certificatedatebtnlbl.titleLabel.text=@"Select";
+//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+//    [dateFormat setDateFormat:@"MM/dd/YYYY"];
+//    NSDate *date=[NSDate date];
+//    NSString *dateString = [dateFormat stringFromDate:date];
+//    [_certificatedatebtnlbl setTitle:dateString forState:UIControlStateNormal];
 }
 
 - (IBAction)certificataeclsebtn:(id)sender {
@@ -952,9 +965,17 @@
 }
 
 - (IBAction)savebtn:(id)sender {
-    if (_certifcatenametxt.text.length==0) {
+    if (([_certifcatenametxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0))
+    {
         
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Certificate Name is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+   else if ([_certificatedatebtnlbl.titleLabel.text isEqualToString:@"Select"]||[_certificatedatebtnlbl.titleLabel.text isEqualToString:@""])
+    {
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Certificate Date is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         
     }
@@ -1015,7 +1036,7 @@
 
    
     
-    [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+    [_edunamebtnlbl setTitle:@"Select Education" forState:UIControlStateNormal];
     _yearscompleted.text=@"";
     _insitutionname.text=@"";
     _citytxtfld.text=@"";
@@ -1025,7 +1046,7 @@
 }
 
 - (IBAction)educancelbtn:(id)sender {
-    [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
+    [_edunamebtnlbl setTitle:@"Select Education" forState:UIControlStateNormal];
     _yearscompleted.text=@"";
     _insitutionname.text=@"";
     _citytxtfld.text=@"";

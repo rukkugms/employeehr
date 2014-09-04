@@ -63,7 +63,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *sufixbtnlbl;
 @property (strong, nonatomic) IBOutlet UITextField *lastnametxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *firstnametxtfld;
-@property (strong, nonatomic) IBOutlet UITextField *Addresstxtfld;
+@property (strong, nonatomic) IBOutlet UITextView *Addresstxtfld;
 @property (strong, nonatomic) IBOutlet UITextField *citytxtfld;
 @property (strong, nonatomic) IBOutlet UIButton *statebtnlbl;
 @property (strong, nonatomic) IBOutlet UITextField *ziptextflield;
