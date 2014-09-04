@@ -15,20 +15,23 @@
     NSInteger selectedcell;
      BOOL recordResults;
      NSInteger Poptype;
-    UIButton *button;
+    UIButton *button,*segbutton;
      UIButton *yearbutton;
     UIButton *monthbtn_iphone;
     UIButton *yearbtn_iphone;
     NSInteger path;
     NSString *pickerstring;
     NSInteger btnidfr;
-    NSInteger webidfr;
+    NSInteger webidfr,selectedseg;
       int j;
 }
+@property(strong,nonatomic)NSMutableDictionary*passdict;
+@property(strong,nonatomic)NSMutableDictionary*revpassdict;
 @property(strong,nonatomic) IBOutlet UITableViewCell *checkcell;
 @property (strong, nonatomic) IBOutlet UIView *checkview;
 @property (strong, nonatomic) IBOutlet UITableView *checktable;
 
+@property (strong, nonatomic) IBOutlet UIButton *selectpass;
 
 @property (strong, nonatomic) IBOutlet UITableView *detailstable;
 @property(readwrite)NSInteger Applicantid;
@@ -86,5 +89,9 @@
 - (IBAction)checksave:(id)sender;
 - (IBAction)checksave_iphone:(id)sender ;
 
+- (IBAction)segmntbtn:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmntbtnlbl;
+
+- (IBAction)passbuttn:(id)sender;
 @end
