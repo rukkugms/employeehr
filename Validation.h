@@ -13,4 +13,5 @@
 -(BOOL)isNumeric:(NSString *)input;
 -(BOOL) validEmailAddress:(NSString*) emailStr;
 -(BOOL)isdataformat:(NSString *)input;
+-(BOOL)isssnformat:(NSString *)input;
 @end
