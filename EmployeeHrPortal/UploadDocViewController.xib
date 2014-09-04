@@ -72,7 +72,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <navigationBar contentMode="scaleToFill" id="mhn-sN-3Nw">
-                    <rect key="frame" x="0.0" y="0.0" width="1031" height="44"/>
+                    <rect key="frame" x="-7" y="0.0" width="1031" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <items>

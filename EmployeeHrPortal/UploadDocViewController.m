@@ -178,8 +178,15 @@ finishedSavingWithError:(NSError *)error
     
     
   _encodedstring = [data base64EncodedString];
-
+    
+    if ([_docnametxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length==0) {
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Document Name is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else{
     [self UploadDocs];
+    }
 
     
     

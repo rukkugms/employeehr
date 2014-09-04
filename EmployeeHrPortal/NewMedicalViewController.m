@@ -151,9 +151,21 @@ self. medicaltable_iphone.contentSize = CGSizeMake(self.medicaltable_iphone.fram
 }
 
 - (IBAction)savebtn:(id)sender {
+    
+    if ([_medicalconditinbtnlbl.titleLabel.text isEqualToString:@"Select"]) {
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Medical Condition is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    else{
+        
+    
+    
     [self insertMedicalcondition];
     [_medicalconditinbtnlbl setTitle:@"Select" forState:UIControlStateNormal];
     _meddistxtfld.text=@"";
+    }
 
 }
 
@@ -725,6 +737,8 @@ else{
 {
     
     [_medicalconditinbtnlbl setTitle:[_medicalnamearray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    
+    [self.popOverController1 dismissPopoverAnimated:YES];
     
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
