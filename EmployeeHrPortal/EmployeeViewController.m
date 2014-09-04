@@ -231,6 +231,7 @@
     
     NSString *dateString = [dateFormat stringFromDate:date];
     [_datebtn setTitle:dateString forState:UIControlStateNormal];
+    [self.popOverController1 dismissPopoverAnimated:YES];
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -288,9 +289,10 @@
            NSLog(@"%@",_previous.previouscompany);
            NSLog(@"%d",_previous.previousid);
         _datelabel=(UILabel*)[cell viewWithTag:2];
-    _datelabel.text=_previous.dateofemployee;
+        _datelabel.text=_previous.dateofemployee;
         _rateofpaylabel=(UILabel*)[cell viewWithTag:3];
-        _rateofpaylabel.text=_previous.previousrateofpay;
+        _rateofpaylabel.text=[NSString stringWithFormat:@"$%@",_previous.previousrateofpay];
+          
         _positionlabel=(UILabel*)[cell viewWithTag:4];
         _positionlabel.text=_previous.previousposition;
         _reasonforleavinglabel=(UILabel*)[cell viewWithTag:5];
