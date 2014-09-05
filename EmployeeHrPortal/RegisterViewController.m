@@ -113,7 +113,11 @@
 }
 
 - (IBAction)homebtn:(id)sender {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
+    
+    
 }
 
 
@@ -124,7 +128,7 @@
 }
 
 - (IBAction)continuebtn:(id)sender {
-           
+    
     Validation *val2=[[Validation alloc]init];
     int value1=[val2 isBlank:_Ssntxtfld.text];
     int value2=[val2 isBlank:_passwdtxtfld.text];
@@ -143,6 +147,7 @@
             UIAlertView *alert2=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter your Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert2 show];
             
+        
         }
         else if(value3==0)
         {
@@ -159,6 +164,18 @@
 
         
     }
+    else if([_passwdtxtfld.text length]<5)
+    {
+       
+        
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter atleast 5 charectors" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+                
+                [alert show];
+                
+    }
+        
+
+    
     else
     {
         ssnstring=_Ssntxtfld.text;
@@ -218,6 +235,12 @@
                 
                 
             }
+        if ([resultString length]<9)
+        {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+
+        }
             
             
             if ([resultString length]==9) {
@@ -234,6 +257,34 @@
                 _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
                 NSLog(@"%@",_connectstring);
                 _Ssntxtfld.text=_connectstring;
+                if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
+                    if ([_Availablityresult isEqualToString:@"Yes"]) {
+                        
+                        [self GetApplicantId2];
+                        
+                        
+                    }
+                    else if([_Availablityresult isEqualToString:@"No"]){
+                        
+                        [self savedatatoDBforipad];
+                        [self FetchuserdetailsfromDBforipad];
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+                else{
+                    
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Password does not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                }
+
                 
             }
             
@@ -256,34 +307,7 @@
                 
         
                 
-    if ([_passwdtxtfld.text isEqualToString:_confirmpasswrd.text]) {
-                if ([_Availablityresult isEqualToString:@"Yes"]) {
-                    
-                    [self GetApplicantId2];
-                    
-                    
-                }
-                else if([_Availablityresult isEqualToString:@"No"]){
-                    
-                    [self savedatatoDBforipad];
-                    [self FetchuserdetailsfromDBforipad];
-                }
-                
-                
-                
-                
-                
-                
-                
-                
-            }
-            else{
-                
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Password does not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-                
-            }
-
+  
         
     
     
@@ -303,8 +327,9 @@
     
  }
 
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 
     if (textField==_Ssntxtfld)
@@ -324,9 +349,11 @@
         
         else if([_Ssntxtfld.text isEqualToString:@""])
         {
+            
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
+           
             
         }
         // NSLog (@"ssnstring length %d", [ssnstring length]);
@@ -368,7 +395,13 @@
                 
                 
             }
-            
+            if ([resultString length]<9)
+            {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                
+            }
+
             
             if ([resultString length]==9) {
                 
@@ -403,6 +436,21 @@
 
     }
     }
+//    if (textField==_passwdtxtfld)
+//        {
+//            
+//            if([_passwdtxtfld.text length]<5)
+//            {
+//                
+//                
+//                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Password strenth is too week" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+//                
+//                [alert show];
+//                
+//            }
+//
+//        }
+       
     }
     else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         ssnstring=_Ssntxtfld_iphone.text;
@@ -502,10 +550,24 @@
             }
             
         }
+//        if (textField==_passwdtxtfld_iphone)
+//        {
+//            
+//            if([_passwdtxtfld_iphone.text length]<5)
+//            {
+//                
+//                
+//                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Password strenth is too week" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+//                
+//                [alert show];
+//                
+//            }
+//        }
+        
+
     }
 
-    return YES;
-}
+   }
 
 
 
@@ -970,9 +1032,14 @@ if([elementName isEqualToString:@"result"])
         
         
     }
-    if ([alertView.message isEqualToString:@"Password does not match"]) {
+    if ([alertView.message isEqualToString:@"Please enter atleast 5 charectors"]) {
         _passwdtxtfld.text=@"";
          _confirmpasswrd.text=@"";
+        
+        
+    }
+    if ([alertView.message isEqualToString:@"Invalid SSN"]) {
+        _Ssntxtfld.text=@"";
         
         
     }
@@ -980,6 +1047,7 @@ if([elementName isEqualToString:@"result"])
 
     
       }
+
 
 -(IBAction)continue_iphone:(id)sender
 {
@@ -1017,6 +1085,16 @@ if([elementName isEqualToString:@"result"])
         
         
     }
+    else if([_passwdtxtfld_iphone.text length]<5)
+    {
+        
+        
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter atleast 5 charectors" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        
+        [alert show];
+        
+    }
+
 
     
 else
@@ -1076,6 +1154,13 @@ else
             
             
         }
+        if ([resultString length]<9)
+        {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            
+        }
+
         
         
         if ([resultString length]==9) {
@@ -1092,6 +1177,23 @@ else
             _connectstring=[NSString stringWithFormat:@"%@-%@-%@",subString,substring2,substring3];
             NSLog(@"%@",_connectstring);
             _Ssntxtfld_iphone.text=_connectstring;
+            
+            if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
+                
+                [self savedatatoDBforiphone];
+                [self FetchuserdetailsfromDBforiphone];
+                [self GetApplicantId2];
+                
+                
+            }
+            else{
+                
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Password does not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                
+            }
+            
+
             
         }
         
@@ -1113,22 +1215,6 @@ else
     
 
 
-    
-
-   if ([_passwdtxtfld_iphone.text isEqualToString:_confirmpasswrd_iphone.text]) {
-       
-       [self savedatatoDBforiphone];
-       [self FetchuserdetailsfromDBforiphone];
-       [self GetApplicantId2];
-        
-        
-    }
-    else{
-        
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Password does not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        
-    }
     
 }
 }

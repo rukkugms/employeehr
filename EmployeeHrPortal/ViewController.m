@@ -49,7 +49,10 @@
     [self Checknetavailabilty];
     
     
+    
 }
+
+
 -(void)Checknetavailabilty{
     /* for checking Connectivity*/
     NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];

@@ -141,6 +141,13 @@
                     }
                     
                 }
+                if ([resultString length]<9)
+                {
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                }
+
                 
                 
                 
@@ -240,7 +247,14 @@
                     }
                     
                 }
+                if ([resultString length]<9)
+                {
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                }
                 
+
                 
                 
                 if ([resultString length]==9){
@@ -717,6 +731,13 @@
                 
                 
             }
+            if ([resultString length]<9)
+            {
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                
+            }
+
             
                 
             else if ([resultString length]==9) {
@@ -848,6 +869,14 @@
             
             
         }
+        if ([resultString length]<9)
+        {
+            UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            
+        }
+        
+
         
         
        else if ([resultString length]==9) {

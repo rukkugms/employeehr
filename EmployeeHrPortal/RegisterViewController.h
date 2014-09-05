@@ -24,6 +24,7 @@
     NSInteger Applicantid;
     NSInteger webtype;
     NSString *ssnstring;
+    BOOL alertbool;
 }
 
 @property(strong,nonatomic)JobsiteViewController*firstVCtrl;
@@ -65,5 +66,7 @@
 
 - (IBAction)cancelbtn:(id)sender;
 - (IBAction)homebtn:(id)sender;
+
+@property(strong,nonatomic)NSString *passwordstring;
 
 @end
