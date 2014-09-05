@@ -22,10 +22,12 @@
     self.title=NSLocalizedString(@"Employee Portal", @"Employee Portal");
     self.navigationItem.hidesBackButton=YES;
     //[self.navigationController.navigationBar setHidden:YES];
-    [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    [self prefersStatusBarHidden];
-    [self setNeedsStatusBarAppearanceUpdate];
-   [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    
+//    [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+//    [self prefersStatusBarHidden];
+//    [self setNeedsStatusBarAppearanceUpdate];
+//   [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

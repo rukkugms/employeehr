@@ -284,6 +284,20 @@
 //    }
 //    else
 //    {
+    
+    if (([_lastnametxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_firstnametxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_citytxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_emailtxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_mobiletxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_Addresstxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)) {
+        
+        
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter Mandatory fields" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        [alert show];
+
+        
+        
+    }
+    else{
+    
+    
+    
         if ([_Availablityresult isEqualToString:@"Yes"]) {
             
             [self UpdateApplicantData];
@@ -296,7 +310,9 @@
             [self FetchuserdetailsfromDBforipad];
         }
 
-         //  }
+          }
+    
+    
 }
 
 
@@ -368,6 +384,13 @@
     ;
 }
 - (IBAction)uploadimage:(id)sender {
+    
+    
+    if (_imgvw.image==nil) {
+        
+        NSLog(@"image");
+    }
+    else{
     UIImage *imagename =_imgvw.image;
     NSData *data = UIImagePNGRepresentation(imagename);
     
@@ -380,7 +403,7 @@
     [self updateImagetoDB];
     
     [self UploadImage];
-    
+    }
     
     
 }
@@ -2989,6 +3012,8 @@ numberOfRowsInComponent:(NSInteger)component
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     // [self.popoverController dismissPopoverAnimated:true];
+    
+    _uploadlbl.hidden=YES;
     NSString *mediaType = [info
                            objectForKey:UIImagePickerControllerMediaType];
     

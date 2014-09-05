@@ -162,5 +162,6 @@
 
 
 -(IBAction)returnkey:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *uploadlbl;
 
 @end
