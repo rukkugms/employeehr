@@ -721,7 +721,8 @@
         }
         
     }
-    [self dismissViewControllerAnimated:YES completion:NULL];
+   // [self dismissViewControllerAnimated:YES completion:NULL];
+    [self.popOverController1 dismissPopoverAnimated:YES];
     
 }
 
@@ -1381,7 +1382,7 @@
         }
         recordResults = TRUE;
     }
-    if([elementName isEqualToString:@"SelectEmployeeSkillsResult"])
+    if([elementName isEqualToString:@"SelectEmployeeSkillsResponse"])
     {
         _skillsArray=[[NSMutableArray alloc]init];
         _skilldict=[[NSMutableDictionary alloc]init];
@@ -1410,7 +1411,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"SelectEmployeeCraftResult"])
+    if([elementName isEqualToString:@"SelectEmployeeCraftResponse"])
     {
         _craftsArray=[[NSMutableArray alloc]init];
         _craftdict=[[NSMutableDictionary alloc]init];
@@ -1454,7 +1455,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"SelectApplicantDetailsResult"])
+    if([elementName isEqualToString:@"SelectApplicantDetailsResponse"])
     {
         _jobsitemodelarray=[[NSMutableArray alloc]init];
         if(!_soapResults)

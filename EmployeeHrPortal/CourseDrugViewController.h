@@ -94,4 +94,5 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmntbtnlbl;
 
 - (IBAction)passbuttn:(id)sender;
+
 @end
