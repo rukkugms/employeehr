@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UploadDocViewController">
             <connections>
                 <outlet property="docnametxt" destination="7" id="18"/>
-                <outlet property="imagepreview" destination="jyf-PT-xw3" id="fQv-T2-9k1"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -67,10 +66,6 @@
                         <action selector="prevewbtn:" destination="-1" eventType="touchUpInside" id="17"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-available-image.png" id="jyf-PT-xw3">
-                    <rect key="frame" x="370" y="192" width="428" height="266"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <navigationBar contentMode="scaleToFill" id="mhn-sN-3Nw">
                     <rect key="frame" x="-7" y="0.0" width="1031" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -109,7 +104,6 @@
     <resources>
         <image name="appbar.close.png" width="76" height="76"/>
         <image name="ios7-camera-icon.png" width="128" height="128"/>
-        <image name="no-available-image.png" width="600" height="600"/>
         <image name="squareimage1.png" width="300" height="400"/>
     </resources>
 </document>

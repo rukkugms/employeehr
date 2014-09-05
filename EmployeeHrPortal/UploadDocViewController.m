@@ -145,6 +145,15 @@ finishedSavingWithError:(NSError *)error
 
 - (IBAction)uploadbtn:(id)sender {
     
+    if (_imagepreview.image==nil) {
+        
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Image not available to upload" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        
+        [alert show];
+
+    }
+    else{
+    
     UIImage *Photo =_imagepreview.image;
   //  NSData *data = UIImagePNGRepresentation(imagename);
     
@@ -188,7 +197,7 @@ finishedSavingWithError:(NSError *)error
     [self UploadDocs];
     }
 
-    
+    }
     
 }
 

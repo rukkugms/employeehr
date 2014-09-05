@@ -71,6 +71,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self userInfo:nil];
         
     }
+        
     }
     
 }
@@ -937,7 +938,7 @@
 - (IBAction)Addeduction:(id)sender {
     
     _view1.hidden=NO;
-    _edunamebtnlbl.titleLabel.text=@"Select Education";
+    _edunamebtnlbl.titleLabel.text=@"Select";
     _yearscompleted.text=@"";
     _citytxtfld.text=@"";
     _statetxtfld.text=@"";
@@ -1004,7 +1005,7 @@
 
 - (IBAction)edusavebtn:(id)sender {
     
-    if ([_edunamebtnlbl.titleLabel.text isEqualToString:@"Select Education"]) {
+    if ([_edunamebtnlbl.titleLabel.text isEqualToString:@"Select"]) {
         
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Education Name is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
@@ -1036,7 +1037,7 @@
 
    
     
-    [_edunamebtnlbl setTitle:@"Select Education" forState:UIControlStateNormal];
+    [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
     _yearscompleted.text=@"";
     _insitutionname.text=@"";
     _citytxtfld.text=@"";
@@ -1046,7 +1047,7 @@
 }
 
 - (IBAction)educancelbtn:(id)sender {
-    [_edunamebtnlbl setTitle:@"Select Education" forState:UIControlStateNormal];
+    [_edunamebtnlbl setTitle:@"Select" forState:UIControlStateNormal];
     _yearscompleted.text=@"";
     _insitutionname.text=@"";
     _citytxtfld.text=@"";
