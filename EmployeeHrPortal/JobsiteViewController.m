@@ -47,7 +47,7 @@
     _listtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     _selectedtable.layer.borderWidth = 4.0;
     _selectedtable.layer.borderColor = [UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
-    
+   // _skillbtnlbl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _jobsitetable_iphone.layer.borderWidth=4.0;
     _jobsitetable_iphone.layer.borderColor=[UIColor colorWithRed:0/255.0f green:191/255.0f blue:255.0/255.0f alpha:1.0f].CGColor;
     _monthArray=[[NSMutableArray alloc]initWithObjects:@"JAN",@"FEB",@"MAR",@"APR",@"MAY",@"JUN",@"JUL",@"AUG",@"SEP",@"OCT",@"NOV",@"DEC",nil];
@@ -66,7 +66,7 @@
     [super viewWillAppear:animated];
    
    
-   
+  
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     UIImage *buttonImage = [UIImage imageNamed:@"logout1"];
    UIBarButtonItem *logoutbutton=[[UIBarButtonItem alloc]initWithImage:[buttonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutAction)];
@@ -704,6 +704,7 @@
             case 3:
                   skillindex=indexPath.row;
                 [_skillbtnlbl setTitle:[_skillsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+                
                   [_craftbtnlbl setTitle:@"Select"forState:UIControlStateNormal];
                 //_craftbtnlbl.enabled=YES;
                 skillstring=[_skillsArray objectAtIndex:indexPath.row];
