@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+     _homestring=@"";
     _Ssntxtfld.text=@"";
     _passwdtxtfld.text=@"";
     _confirmpasswrd.text=@"";
@@ -49,6 +49,7 @@
     self.navigationItem.hidesBackButton=YES;
 }
 -(void)viewWillAppear:(BOOL)animated{
+     _homestring=@"";
     [super viewWillAppear:animated];
    // NSTimer *timer;
     //timer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(Checknetavailabilty) userInfo:nil repeats:YES];
@@ -100,6 +101,7 @@
 }
 
 - (IBAction)cancelbtn_iphone:(id)sender {
+     _homestring=@"";
     _Ssntxtfld_iphone.text=@"";
     _passwdtxtfld_iphone.text=@"";
     _confirmpasswrd_iphone.text=@"";
@@ -113,10 +115,13 @@
 }
 
 - (IBAction)homebtn:(id)sender {
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    _homestring=@"home";
+    alertbool=false;
+    [_Ssntxtfld resignFirstResponder];
+   
+        [self.navigationController popToRootViewControllerAnimated:YES];
 
-    
+   
     
 }
 
@@ -153,6 +158,7 @@
         {
             UIAlertView *alert2=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please Confirm your Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert2 show];
+            
             
         }
         else if(value4==0)
@@ -349,10 +355,18 @@
         
         else if([_Ssntxtfld.text isEqualToString:@""])
         {
+            if ([_homestring isEqualToString:@""]) {
+                
             
             UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
             
             [alert show];
+            }
+            else
+            {
+                
+            }
+           
            
             
         }

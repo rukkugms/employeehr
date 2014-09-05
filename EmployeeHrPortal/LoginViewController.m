@@ -45,7 +45,7 @@
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationItem.hidesBackButton=YES;
 
-
+_homestring=@"";
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -54,6 +54,7 @@
     _passwordtxtfld.text=@"";
     _SSNtxtfld_iphone.text=@"";
     _passwordtxtfld_iphone.text=@"";
+    _homestring=@"";
    
 }
 - (void)didReceiveMemoryWarning
@@ -67,13 +68,14 @@
 }
 
 - (IBAction)cancelbtn_iphone:(id)sender {
-    
+    _homestring=@"";
     _SSNtxtfld_iphone.text=@"";
     _passwordtxtfld_iphone.text=@"";
 
 }
 
 - (IBAction)homebtn:(id)sender {
+    _homestring=@"home";
     [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
@@ -98,9 +100,19 @@
 
           else  if([_ssntxtfld.text isEqualToString:@""])
             {
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
-                
-                [alert show];
+                if ([_homestring isEqualToString:@""]) {
+                    
+                    
+                    UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please Enter Your SSN" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+                    
+                    [alert show];
+                }
+                else
+                {
+                    
+                }
+
+               
                 
             }
             

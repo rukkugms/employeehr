@@ -68,5 +68,6 @@
 - (IBAction)homebtn:(id)sender;
 
 @property(strong,nonatomic)NSString *passwordstring;
+@property(strong,nonatomic)NSString *homestring;
 
 @end

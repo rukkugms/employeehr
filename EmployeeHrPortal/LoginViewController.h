@@ -53,5 +53,5 @@
 
 - (IBAction)cancelbtn_iphone:(id)sender;
 - (IBAction)homebtn:(id)sender;
-
+@property(strong,nonatomic)NSString *homestring;
 @end
