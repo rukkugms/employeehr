@@ -1037,7 +1037,10 @@ if([elementName isEqualToString:@"result"])
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.message isEqualToString:@"Already Registered"]) {
-                [self.navigationController popToRootViewControllerAnimated:YES];
+        _Ssntxtfld.text=@"";
+        _passwdtxtfld.text=@"";
+        _confirmpasswrd.text=@"";
+                //[self.navigationController popToRootViewControllerAnimated:YES];
 
         
     }
