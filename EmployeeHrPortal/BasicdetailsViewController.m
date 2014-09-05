@@ -388,7 +388,9 @@
     
     if (_imgvw.image==nil) {
         
-        NSLog(@"image");
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Image not available to upload" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        
+        [alert show];
     }
     else{
     UIImage *imagename =_imgvw.image;
