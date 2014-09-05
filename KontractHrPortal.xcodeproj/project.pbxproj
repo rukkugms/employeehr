@@ -46,7 +46,6 @@
 		D40D062419B0475B00CF44C1 /* appbar.addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062319B0475B00CF44C1 /* appbar.addblack.png */; };
 		D40D062619B0488900CF44C1 /* appbar.close.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062519B0488900CF44C1 /* appbar.close.png */; };
 		D40D062819B0490500CF44C1 /* appbar.delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062719B0490500CF44C1 /* appbar.delete.png */; };
-		D40E4E8519B98D9A009C4299 /* no-available-image.png in Resources */ = {isa = PBXBuildFile; fileRef = D40E4E8419B98D99009C4299 /* no-available-image.png */; };
 		D40F778518435E8C007DCB92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40F778418435E8C007DCB92 /* Images.xcassets */; };
 		D40F778D18436919007DCB92 /* kontractlogo copy.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F778C18436919007DCB92 /* kontractlogo copy.png */; };
 		D40F778F18436956007DCB92 /* kontractlogo 2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40F778E18436956007DCB92 /* kontractlogo 2x.png */; };
@@ -196,7 +195,6 @@
 		D40D062319B0475B00CF44C1 /* appbar.addblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.addblack.png; sourceTree = "<group>"; };
 		D40D062519B0488900CF44C1 /* appbar.close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.close.png; sourceTree = "<group>"; };
 		D40D062719B0490500CF44C1 /* appbar.delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.delete.png; sourceTree = "<group>"; };
-		D40E4E8419B98D99009C4299 /* no-available-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-available-image.png"; sourceTree = "<group>"; };
 		D40F778418435E8C007DCB92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D40F778C18436919007DCB92 /* kontractlogo copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo copy.png"; path = "../kontractlogo copy.png"; sourceTree = "<group>"; };
 		D40F778E18436956007DCB92 /* kontractlogo 2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kontractlogo 2x.png"; path = "../kontractlogo 2x.png"; sourceTree = "<group>"; };
@@ -524,7 +522,6 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D40E4E8419B98D99009C4299 /* no-available-image.png */,
 				D40D062719B0490500CF44C1 /* appbar.delete.png */,
 				D40D062519B0488900CF44C1 /* appbar.close.png */,
 				D40D062319B0475B00CF44C1 /* appbar.addblack.png */,
@@ -740,7 +737,6 @@
 				D418D984183B76ED001C7B0E /* logo.png in Resources */,
 				6497998718026FA2002EC54A /* medicell.xib in Resources */,
 				649069DA180FFD2A00944C83 /* UploadDocViewController.xib in Resources */,
-				D40E4E8519B98D9A009C4299 /* no-available-image.png in Resources */,
 				649069E4180FFFDE00944C83 /* Untitled.png in Resources */,
 				D4D69AAD1810E74D00AC5674 /* DocumentsViewController.xib in Resources */,
 				D4D69AB21810E7A000AC5674 /* ShowDocViewController.xib in Resources */,
