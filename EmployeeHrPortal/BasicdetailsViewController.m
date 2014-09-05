@@ -1848,7 +1848,7 @@ numberOfRowsInComponent:(NSInteger)component
             else
             {
             Validation *val=[[Validation alloc]init];
-            BOOL bEmailValid = [val validEmailAddress:_emailtxtfld.text];
+            BOOL bEmailValid = [val validEmailAddress:[_emailtxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
                if(bEmailValid)
              {
                 // email valid, other validations in the form
