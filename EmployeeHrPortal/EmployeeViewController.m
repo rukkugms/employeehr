@@ -89,10 +89,15 @@
 - (IBAction)SavePreviousemployee:(id)sender
 {
     
-    if (_previouscompanytxt.text.length==0) {
+    if ([_previouscompanytxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length==0) {
         UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Company Name is Required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert1 show];
     }
+   else if ([_rateofpaytxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length==0) {
+        UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Rate of pay is Required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert1 show];
+    }
+
     else{
     Validation*val=[[Validation alloc]init];
     int value1=[val isNumeric:_rateofpaytxt.text];
@@ -351,7 +356,13 @@
          
          NSString* sqldate;
          if ([_datebtn.titleLabel.text isEqualToString:@"Select"]) {
-             sqldate=@"1990-01-01";
+             NSDate *d=[NSDate date];
+             NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc]init];
+             [dateFormat1 setDateFormat:@"yyyy-MM-dd"];
+             sqldate=[dateFormat1 stringFromDate:d];
+             NSLog(@"s%@",sqldate);
+
+             
          }
          else{
     NSDate *dateString = [dateFormat dateFromString:_datebtn.titleLabel.text];

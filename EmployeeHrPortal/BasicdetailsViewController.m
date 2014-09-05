@@ -285,7 +285,7 @@
 //    else
 //    {
     
-    if (([_lastnametxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_firstnametxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_citytxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_emailtxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_mobiletxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_Addresstxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)) {
+    if (([_lastnametxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_firstnametxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_citytxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_emailtxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_mobiletxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_Addresstxtfld.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)||([_datetextfld_ipad.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0)) {
         
         
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter Mandatory fields" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
@@ -810,7 +810,7 @@
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    UIAlertView *  Alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"ERROR with theConenction" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    UIAlertView *  Alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"ERROR with the Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     
     [Alert show];
 }
@@ -1841,27 +1841,32 @@ numberOfRowsInComponent:(NSInteger)component
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         if(textField==_emailtxtfld){
-            
-            Validation *val=[[Validation alloc]init];
-            BOOL bEmailValid = [val validEmailAddress:_emailtxtfld.text];
-            if(bEmailValid)
-            {
-                // email valid, other validations in the form
+            NSString *estring=_emailtxtfld.text;
+            if (estring.length==0) {
+                
             }
             else
+            {
+            Validation *val=[[Validation alloc]init];
+            BOOL bEmailValid = [val validEmailAddress:_emailtxtfld.text];
+               if(bEmailValid)
+             {
+                // email valid, other validations in the form
+             }
+             else
             {
                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Email" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }
             
-            
+            }
         }
 
 
     if(textField==_mobiletxtfld)
     {
-    mobilenostring=_mobiletxtfld.text;
-           if ([mobilenostring length]<10) {
+        mobilenostring=_mobiletxtfld.text ;
+        if ([mobilenostring length]<10) {
                if([mobilenostring isEqualToString:@""])
                {
                    
@@ -1978,8 +1983,7 @@ numberOfRowsInComponent:(NSInteger)component
     if(textField==_homenumbertxtfld)
     {
     
-    homenostring=_homenumbertxtfld.text;
-    
+        homenostring=_homenumbertxtfld.text;
     
     if ([homenostring length]<10) {
         if([homenostring isEqualToString:@""])
@@ -2218,7 +2222,6 @@ numberOfRowsInComponent:(NSInteger)component
         
         alternatenostring=_alternativenumtxtfld.text;
         
-        
         if ([alternatenostring length]<10) {
             if ([alternatenostring isEqualToString:@""])
             {
@@ -2337,15 +2340,22 @@ numberOfRowsInComponent:(NSInteger)component
     }
         if(textField==_ziptextflield)
         {
-            
+            NSString *zstring=_ziptextflield.text ;
+            if (zstring.length==0)
+            {
+                
+            }
+            else
+            {
             Validation*val=[[Validation alloc]init];
-            int value1=[val isNumeric:_ziptextflield.text];
-            if(value1==0)
+                int value1=[val isNumeric:_ziptextflield.text] ;
+                if(value1==0)
             {
                 UIAlertView *alert1=[[UIAlertView alloc]initWithTitle:nil message:@"Invalid Zip" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert1 show];
                 
                 
+            }
             }
 
         }

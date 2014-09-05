@@ -1099,7 +1099,7 @@ self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16
 {
     
     [_refferbtn setTitle:[_refferArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-    
+    [self.popOverController1 dismissPopoverAnimated:YES];
 }
 
 
