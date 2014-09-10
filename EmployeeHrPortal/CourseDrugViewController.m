@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
         self.title=NSLocalizedString(@"Requirement Details",@"Requirement Details");
+        self.tabBarItem.image = [UIImage imageNamed:@"personal"];
     }
     return self;
 }
@@ -84,7 +85,12 @@
     ////NSLog(@"buttonIndex%d",buttonIndex);
     
     
-    
+    if ([alertView.message isEqualToString:msgstrg]) {
+        
+        
+         [self InsertApplicantRequirements];
+         }
+
     if ([alertView.message isEqualToString:@"Really Logout?"]) {
         
         
@@ -250,6 +256,7 @@
           
             _monthbtn.enabled=YES;
             _yearbtn.enabled=YES;
+            
         }
         else{
            _monthbtn.enabled=NO;
@@ -1178,11 +1185,16 @@
     {
         j++;
         recordResults = FALSE;
+       
       
         if (j==[_requirementArray count]) {
-            [self InsertApplicantRequirements];
-            j=0;
+           
+            msgstrg=_soapResults;
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:msgstrg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+             j=0;
         }
+      
         _soapResults=nil;
     }
 

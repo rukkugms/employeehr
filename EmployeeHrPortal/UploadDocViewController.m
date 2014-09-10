@@ -415,7 +415,7 @@ else
     
     if (newx==1) {
         _docnametxt.text=@"";
-        _imagepreview.image=[UIImage imageNamed:@"logo.png"];
+       // _imagepreview.image=[UIImage imageNamed:@"logo.png"];
         
 
     }

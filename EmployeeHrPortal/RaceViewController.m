@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
          self.title=NSLocalizedString(@"Other Details", @"Other Details");
+        self.tabBarItem.image = [UIImage imageNamed:@"personal"];
         
     }
     return self;

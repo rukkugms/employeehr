@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
          self.title=NSLocalizedString(@"Medical Details", @"Medical Details");
+        self.tabBarItem.image = [UIImage imageNamed:@"medical"];
     }
     return self;
 }

@@ -43,6 +43,8 @@
 		64D5D7C118473F65000D9886 /* requirementcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D5D7C018473F65000D9886 /* requirementcell.xib */; };
 		64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */; };
 		D40546731862AC8600BC27C4 /* 512px-Home_Icon.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = D40546721862AC8500BC27C4 /* 512px-Home_Icon.svg.png */; };
+		D405F68D19BEFC3000DCB700 /* personal.png in Resources */ = {isa = PBXBuildFile; fileRef = D405F68C19BEFC3000DCB700 /* personal.png */; };
+		D405F69F19BF1D0900DCB700 /* education.png in Resources */ = {isa = PBXBuildFile; fileRef = D405F69E19BF1D0900DCB700 /* education.png */; };
 		D40D062419B0475B00CF44C1 /* appbar.addblack.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062319B0475B00CF44C1 /* appbar.addblack.png */; };
 		D40D062619B0488900CF44C1 /* appbar.close.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062519B0488900CF44C1 /* appbar.close.png */; };
 		D40D062819B0490500CF44C1 /* appbar.delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D40D062719B0490500CF44C1 /* appbar.delete.png */; };
@@ -138,6 +140,9 @@
 		D4E100F617D88C22006336F8 /* previousemp.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F117D88C22006336F8 /* previousemp.m */; };
 		D4E100F717D88C22006336F8 /* Ethicity.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F317D88C22006336F8 /* Ethicity.m */; };
 		D4E100FA17D88C31006336F8 /* Medicalmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E100F917D88C31006336F8 /* Medicalmodel.m */; };
+		D4E4468E19BFFC1200E76D83 /* otherdocument.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E4468D19BFFC1200E76D83 /* otherdocument.png */; };
+		D4E4469019BFFC1A00E76D83 /* medical.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E4468F19BFFC1A00E76D83 /* medical.png */; };
+		D4E4469219BFFE9D00E76D83 /* workicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E4469119BFFE9D00E76D83 /* workicon.png */; };
 		D4F559E51888FDBF0055F769 /* UserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F559E41888FDBF0055F769 /* UserDetails.m */; };
 		D4F92DE61844536B00B689CE /* kontract50.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F92DE51844536B00B689CE /* kontract50.png */; };
 		D4F92DE81844537300B689CE /* kontract58.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F92DE71844537300B689CE /* kontract58.png */; };
@@ -192,6 +197,8 @@
 		64D5D7C018473F65000D9886 /* requirementcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requirementcell.xib; sourceTree = "<group>"; };
 		64F10B3217E9832D00AF0A19 /* RegisterViewController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController_iphone.xib; sourceTree = "<group>"; };
 		D40546721862AC8500BC27C4 /* 512px-Home_Icon.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "512px-Home_Icon.svg.png"; sourceTree = "<group>"; };
+		D405F68C19BEFC3000DCB700 /* personal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal.png; sourceTree = "<group>"; };
+		D405F69E19BF1D0900DCB700 /* education.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = education.png; sourceTree = "<group>"; };
 		D40D062319B0475B00CF44C1 /* appbar.addblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.addblack.png; sourceTree = "<group>"; };
 		D40D062519B0488900CF44C1 /* appbar.close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.close.png; sourceTree = "<group>"; };
 		D40D062719B0490500CF44C1 /* appbar.delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appbar.delete.png; sourceTree = "<group>"; };
@@ -319,6 +326,9 @@
 		D4E100F317D88C22006336F8 /* Ethicity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ethicity.m; sourceTree = "<group>"; };
 		D4E100F817D88C31006336F8 /* Medicalmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicalmodel.h; sourceTree = "<group>"; };
 		D4E100F917D88C31006336F8 /* Medicalmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicalmodel.m; sourceTree = "<group>"; };
+		D4E4468D19BFFC1200E76D83 /* otherdocument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = otherdocument.png; sourceTree = "<group>"; };
+		D4E4468F19BFFC1A00E76D83 /* medical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medical.png; sourceTree = "<group>"; };
+		D4E4469119BFFE9D00E76D83 /* workicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workicon.png; sourceTree = "<group>"; };
 		D4F559E31888FDBF0055F769 /* UserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetails.h; sourceTree = "<group>"; };
 		D4F559E41888FDBF0055F769 /* UserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetails.m; sourceTree = "<group>"; };
 		D4F92DE51844536B00B689CE /* kontract50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kontract50.png; path = ../kontract50.png; sourceTree = "<group>"; };
@@ -522,6 +532,11 @@
 		D4E1008817D851E5006336F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D4E4468D19BFFC1200E76D83 /* otherdocument.png */,
+				D4E4468F19BFFC1A00E76D83 /* medical.png */,
+				D405F69E19BF1D0900DCB700 /* education.png */,
+				D405F68C19BEFC3000DCB700 /* personal.png */,
+				D4E4469119BFFE9D00E76D83 /* workicon.png */,
 				D40D062719B0490500CF44C1 /* appbar.delete.png */,
 				D40D062519B0488900CF44C1 /* appbar.close.png */,
 				D40D062319B0475B00CF44C1 /* appbar.addblack.png */,
@@ -664,10 +679,13 @@
 				D4E1008C17D85200006336F8 /* char4.png in Resources */,
 				D40F779918436B80007DCB92 /* kontractlogo76@2x.png in Resources */,
 				D4E1008D17D85200006336F8 /* char1.png in Resources */,
+				D4E4468E19BFFC1200E76D83 /* otherdocument.png in Resources */,
 				D4E1008E17D85200006336F8 /* char2.png in Resources */,
 				D4E1009017D854BC006336F8 /* bg.png in Resources */,
 				D4E1009217D854CF006336F8 /* squareimage1.png in Resources */,
 				D4E1009417D854D5006336F8 /* squareimage1@2x.png in Resources */,
+				D405F69F19BF1D0900DCB700 /* education.png in Resources */,
+				D405F68D19BEFC3000DCB700 /* personal.png in Resources */,
 				D4E1009617D85574006336F8 /* JobsiteViewController_iphone.xib in Resources */,
 				D4E1009C17D85B08006336F8 /* JobsiteViewControlleripadcell.xib in Resources */,
 				D4E1009E17D85E29006336F8 /* cb_mono_off.png in Resources */,
@@ -727,6 +745,8 @@
 				D4D0E8C917DED91700C16158 /* AddEducationViewController.xib in Resources */,
 				D40F779118436A38007DCB92 /* kontractlogo120.png in Resources */,
 				D4D0E8CB17DEEF3F00C16158 /* Employeecell_iphone.xib in Resources */,
+				D4E4469219BFFE9D00E76D83 /* workicon.png in Resources */,
+				D4E4469019BFFC1A00E76D83 /* medical.png in Resources */,
 				D4F94EF017E024C8005D0AFE /* SecondRaceViewController.xib in Resources */,
 				64F10B3317E9832D00AF0A19 /* RegisterViewController_iphone.xib in Resources */,
 				D40F779318436A7F007DCB92 /* kontractlogo72.png in Resources */,

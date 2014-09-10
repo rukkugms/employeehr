@@ -20,6 +20,8 @@
     if (self) {
         // Custom initialization
          self.title=NSLocalizedString(@"Personal Details", @"Personal Details");
+        self.tabBarItem.image = [UIImage imageNamed:@"personal"];
+
     }
     return self;
 }
@@ -40,8 +42,8 @@
     [_scroll_iphone setContentSize:CGSizeMake(500,1500)];
     _ssntxtfld.enabled=NO;
     _ssntextfield_iphone.enabled=NO;
-    _coverimage.layer.borderColor=[UIColor blackColor].CGColor;
-    _coverimage.layer.borderWidth=1;
+    _imgvw.layer.borderColor=[UIColor blackColor].CGColor;
+    _imgvw.layer.borderWidth=1;
     _Addresstxtfld.layer.borderColor=[UIColor colorWithRed:184.0/255.0f green:184.0/255.0f blue:184.0/255.0f alpha:1.0f].CGColor;
     
     _Addresstxtfld.layer.borderWidth=1;
@@ -53,6 +55,7 @@
     UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self action:@selector(handlePinch:)];
     pgr.delegate = (id)self;
+    
     [_imgvw addGestureRecognizer:pgr];
     // Do any additional setup after loading the view from its nib.
   
@@ -384,7 +387,11 @@
     ;
 }
 - (IBAction)uploadimage:(id)sender {
+    NSLog(@"%@",_imgvw.image);
     
+   
+    
+
     
     if (_imgvw.image==nil) {
         
@@ -393,18 +400,21 @@
         [alert show];
     }
     else{
+        
     UIImage *imagename =_imgvw.image;
     NSData *data = UIImagePNGRepresentation(imagename);
     
     // NSData *data = UIImageJPEGRepresentation(image, 1.0);
     
-    
     _encodedString = [data base64EncodedString];
     
     NSLog(@"result%@",_encodedString);
+       
     [self updateImagetoDB];
     
     [self UploadImage];
+        
+         _fileuploadbtnlbl.enabled=NO;
     }
     
     
@@ -1409,8 +1419,10 @@
         
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
+             _fileuploadbtnlbl.enabled=YES;
         }
         if (upint==2) {
+             _uploadlbl.hidden=YES;
             NSData *data1=[_soapResults base64DecodedData];
             
             UIImage *image1=  [[UIImage alloc]initWithData:data1];
@@ -3017,6 +3029,7 @@ numberOfRowsInComponent:(NSInteger)component
         // imagePicker.cameraCaptureMode=YES;
         [self presentViewController:imagePicker animated:YES completion:nil];
                _newMedia = YES;
+        
     }
 }
 #pragma mark-ImagePicker
@@ -3035,12 +3048,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info
                           objectForKey:UIImagePickerControllerOriginalImage];
+        
+        _imgvw.image=nil;
+
         NSLog(@"dict%@",info);
-          //_imgvw.image=nil;
         
         
         
-        _imgvw.image =image;
+         _imgvw.image =image;
         
             [self dismissViewControllerAnimated:YES completion:nil];
         if (_newMedia)

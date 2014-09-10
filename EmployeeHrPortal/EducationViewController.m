@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
          self.title=NSLocalizedString(@"Education Details", @"Education Details");
+        self.tabBarItem.image = [UIImage imageNamed:@"education"];
     }
     return self;
 }
@@ -51,6 +52,7 @@
     self.navigationController.navigationBar.tintColor=[[UIColor alloc]initWithRed:16/255.0f green:78/255.0f blue:139/255.0f alpha:1];
     
     self.navigationController.navigationBarHidden=NO;
+    
 }
 -(void)logoutAction{
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"LOGOUT" message:@"Really Logout?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
@@ -644,6 +646,14 @@
         }
         recordResults = TRUE;
     }
+    if([elementName isEqualToString:@"result"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
 
 
 }
@@ -747,6 +757,13 @@
         _soapResults = nil;
     }
     
+    if([elementName isEqualToString:@"result"])
+    {
+        recordResults = FALSE;
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        _soapResults = nil;
+    }
 
 
 }
@@ -1011,6 +1028,16 @@
         [alert show];
         
     }
+    else if (([_yearscompleted.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length ==0))
+    {
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Year is required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    
+
+    
     else{
     Validation*val=[[Validation alloc]init];
     int value1=[val isNumeric:_yearscompleted.text];

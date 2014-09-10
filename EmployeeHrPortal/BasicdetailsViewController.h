@@ -163,5 +163,6 @@
 
 -(IBAction)returnkey:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *uploadlbl;
+@property (strong, nonatomic) IBOutlet UIButton *fileuploadbtnlbl;
 
 @end

@@ -20,6 +20,8 @@
     if (self) {
         // Custom initialization
         self.title=NSLocalizedString(@"Jobsite Details", @"Jobsite Details");
+       self.tabBarItem.image = [UIImage imageNamed:@"workicon"];
+
     }
     return self;
 }
