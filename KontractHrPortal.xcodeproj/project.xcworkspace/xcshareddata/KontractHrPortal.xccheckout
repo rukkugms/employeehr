@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CCA719E1-AAF2-42A2-BB8A-73449D16021A</string>
+	<string>76235787-9344-49D4-B5D9-9B336E5A2BB4</string>
 	<key>IDESourceControlProjectName</key>
 	<string>KontractHrPortal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>FE34B26D-E4D2-483F-BE59-93A43DA31417</key>
-		<string>https://github.com/rukkugms/Employeehr.git</string>
+		<key>91124037-164F-4CFF-8208-55C1274AD3CB</key>
+		<string>https://github.com/Riagms/Employeehr.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>KontractHrPortal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>FE34B26D-E4D2-483F-BE59-93A43DA31417</key>
+		<key>91124037-164F-4CFF-8208-55C1274AD3CB</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/rukkugms/Employeehr.git</string>
+	<string>https://github.com/Riagms/Employeehr.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>FE34B26D-E4D2-483F-BE59-93A43DA31417</string>
+	<string>91124037-164F-4CFF-8208-55C1274AD3CB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FE34B26D-E4D2-483F-BE59-93A43DA31417</string>
+			<string>91124037-164F-4CFF-8208-55C1274AD3CB</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Employeehr</string>
+			<string>Portal</string>
 		</dict>
 	</array>
 </dict>

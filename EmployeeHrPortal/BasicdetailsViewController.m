@@ -87,11 +87,14 @@
     [self.navigationItem setRightBarButtonItems:buttons animated:YES];
     self.navigationController.navigationBarHidden=NO;
     
-    //if (x==1) {
+    
+    
+   // if (x==1) {
         [self GetApplicantDetails];
-        //x=2;
+      //  x=2;
+       
 
-  //  }
+  // }
     
     
     
@@ -1332,9 +1335,15 @@
     {
         recordResults = FALSE;
         photostring=_soapResults;
-        [self FetchImage];
+        if (x==1) {
+           [self FetchImage];
+            x=2;
+            
+            
+        }
 
-     _soapResults=nil;
+       
+  _soapResults=nil;
         
     }
 
