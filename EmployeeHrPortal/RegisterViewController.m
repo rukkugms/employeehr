@@ -174,7 +174,7 @@
     {
        
         
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter atleast 5 charectors" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter atleast 5 charactors" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
                 
                 [alert show];
                 
@@ -910,7 +910,17 @@
               if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
               {
                   _tabbarcntrl=[[UITabBarController alloc]init];
-                  _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
+                 // _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
+                  _tabbarcntrl.tabBar.barTintColor=[UIColor colorWithRed:0/255.0f green:104/255.0f blue:139.0/255.0f alpha:1.0f];
+                  // _tabbarcntrl.tabBar.tintColor=[[UIColor alloc]initWithRed:0.22 green:0.33 blue:0.52 alpha:1];
+                  
+                  [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
+                  // _tabbarcntrl.tabBar.barTintColor=[UIColor blueColor];
+                  
+                  
+                  
+                  [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica Neue" size:14.0f], NSFontAttributeName,  [UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateHighlighted];
+
                   
                   BasicdetailsViewController *viewController2 = [[BasicdetailsViewController alloc] initWithNibName:@"BasicdetailsViewController" bundle:nil];
                   viewController2.Applicantid=Applicantid;
@@ -1106,7 +1116,7 @@ if([elementName isEqualToString:@"result"])
     {
         
         
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter atleast 5 charectors" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:nil message:@"Please enter atleast 5 characters" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
         
         [alert show];
         

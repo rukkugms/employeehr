@@ -23,6 +23,7 @@
     NSString *pickerstring;
     NSInteger btnidfr;
     NSInteger webidfr,selectedseg;
+    NSString *msgstrg;
       int j;
 }
 @property(strong,nonatomic)NSMutableDictionary*passdict;
