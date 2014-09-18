@@ -225,6 +225,7 @@
         
     {
         Coursemdl*coursemdl1=(Coursemdl *)[_requirementArray objectAtIndex:indexPath.row];
+        NSLog(@"indexpat%d",indexPath.row);
         _requirmentlbl=(UILabel *)[cell viewWithTag:1];
         _requirmentlbl.text=coursemdl1.itemname;
         //NSLog(@"lbl%@",)
@@ -251,15 +252,19 @@
             
             [_selectpass setTitle:@"fail" forState:UIControlStateNormal];
         }
+        NSLog(@"expdate%@",coursemdl1.HaveExpiryDate);
 
         if([coursemdl1.HaveExpiryDate isEqualToString:@"true"]){
-          
             _monthbtn.enabled=YES;
             _yearbtn.enabled=YES;
+
+            
             
         }
         else{
-           _monthbtn.enabled=NO;
+          //  _monthbtn.hidden=YES;
+          //  _yearbtn.hidden=YES;
+            _monthbtn.enabled=NO;
             _yearbtn.enabled=NO;
         }
         
@@ -603,7 +608,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<InsertApplicantRequirements xmlns=\"http://ios.kontract360.com/\">\n"
+                   "<InsertApplicantRequirements xmlns=\"http://testUSA.kontract360.com/\">\n"
                    "<JobId>%d</JobId>\n"
                    "<CraftId>%d</CraftId>\n"
                    "<AppId>%d</AppId>\n"
@@ -613,8 +618,8 @@
     NSLog(@"soapmsg%@",soapMessage);
     
     
-   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
-     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -622,7 +627,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://ios.kontract360.com/InsertApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://testUSA.kontract360.com/InsertApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -678,7 +683,7 @@
                    
                    
                    "<soap:Body>\n"
-                   "<UpdateApplicantRequirements xmlns=\"http://ios.kontract360.com/\">\n"
+                   "<UpdateApplicantRequirements xmlns=\"http://testUSA.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
                    "<JobId>%d</JobId>\n"
                    "<ReqId>%d</ReqId>\n"
@@ -695,8 +700,8 @@
     NSLog(@"soapmsg%@",soapMessage);
     
     
-   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
-     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -704,7 +709,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://ios.kontract360.com/UpdateApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://testUSA.kontract360.com/UpdateApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -754,7 +759,7 @@
                            
                            "<soap:Body>\n"
                            
-                           "<UpdateApplicantRequirements xmlns=\"http://ios.kontract360.com/\">\n"
+                           "<UpdateApplicantRequirements xmlns=\"http://testUSA.kontract360.com/\">\n"
                            "<AppId>%d</AppId>\n"
                            "<JobId>%d</JobId>\n"
                            "<ReqId>%d</ReqId>\n"
@@ -769,8 +774,8 @@
             NSLog(@"soapmsg%@",soapMessage);
             
             
-           NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
-             //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+           NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+             //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
             
             NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
             
@@ -778,7 +783,7 @@
             
             [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
             
-            [theRequest addValue:@"http://ios.kontract360.com/UpdateApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
+            [theRequest addValue:@"http://testUSA.kontract360.com/UpdateApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
             
             [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
             [theRequest setHTTPMethod:@"POST"];
@@ -814,7 +819,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<DeleteApplicantRequirements xmlns=\"http://ios.kontract360.com/\">\n"
+                   "<DeleteApplicantRequirements xmlns=\"http://testUSA.kontract360.com/\">\n"
                     "<AppId>%d</AppId>\n"
                    "</DeleteApplicantRequirements>\n"
                    "</soap:Body>\n"
@@ -822,8 +827,8 @@
     NSLog(@"soapmsg%@",soapMessage);
     
     
-   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
-    //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+    //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -831,7 +836,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://ios.kontract360.com/DeleteApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://testUSA.kontract360.com/DeleteApplicantRequirements" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -1102,7 +1107,7 @@
     {
         recordResults = FALSE;
         _coursemdl.HaveExpiryDate=_soapResults;
-       
+        [_requirementArray addObject:_coursemdl];
         
         _soapResults=nil;
     }
@@ -1176,7 +1181,7 @@
         }
      
 
-        [_requirementArray addObject:_coursemdl];
+       
 
           _soapResults=nil;
     }
