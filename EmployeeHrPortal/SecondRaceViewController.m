@@ -104,7 +104,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<UpdateApplicantInformations xmlns=\"http://ios.kontract360.com/\">\n"
+                   "<UpdateApplicantInformations xmlns=\"http://testUSA.kontract360.com/\">\n"
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<IsConvict>%d</IsConvict>\n"
                    "<ConvictExplanation>%@</ConvictExplanation>\n"
@@ -128,8 +128,8 @@
                    "</soap:Envelope>\n",_applicantId,_race1.isConvicted,_race1.convictexplanation,_race1.twiccardno,_race1.agelimit,_race1.legalrights,_race1.WorkOverTime,_race1.WorkedEarlier,_race1.WorkedPeriod,_race1.WorkedOutofTown,_race1.reffered,_race1.reffereagency,_IsProtectedVeteranValue,_IsDisablevalue,_IsVietnamEravalue,_IsActiveReservistvalue,_IsDisabledVeteranvalue,_IsSeperatedVeteranvalue];
     NSLog(@"soapmsg%@",soapMessage);
         
-   NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
-     //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
+   NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+     //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -137,7 +137,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://ios.kontract360.com/UpdateApplicantInformations" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://testUSA.kontract360.com/UpdateApplicantInformations" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
