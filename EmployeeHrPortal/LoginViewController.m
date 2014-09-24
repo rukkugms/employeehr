@@ -374,6 +374,7 @@ _homestring=@"";
          
          
          NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+          //NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
          // NSURL *url = [NSURL URLWithString:@"http://arvin.kontract360.com/service.asmx"];
          
          NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -420,7 +421,7 @@ _homestring=@"";
                         "</soap:Body>\n"
                         "</soap:Envelope>\n",_connectstring,_passwordtxtfld_iphone.text];
          NSLog(@"soapmsg%@",soapMessage);
-         
+         //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
          
         NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
           //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
@@ -497,7 +498,15 @@ _homestring=@"";
 #pragma mark - XMLParser
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *) namespaceURI qualifiedName:(NSString *)qName
    attributes: (NSDictionary *)attributeDict{
-    
+    if([elementName isEqualToString:@"GetApplicantId1Response"])
+    {
+        if(!_soapResults)
+        {
+            _soapResults = [[NSMutableString alloc] init];
+        }
+        recordResults = TRUE;
+    }
+
     
     if([elementName isEqualToString:@"applicant_Id"])
     {
@@ -690,6 +699,7 @@ _homestring=@"";
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:_soapResults delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
         [alert show];
     }
+    _soapResults=nil;
 
 }
 #pragma mark -Ipad Action

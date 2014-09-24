@@ -756,7 +756,7 @@
     
    NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
       //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
-    
+     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
@@ -809,7 +809,7 @@
     NSLog(@"soapmsg%@",soapMessage);
     
      NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
-   
+    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
    //  //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -851,7 +851,7 @@
                        "</soap:Body>\n"
                        "</soap:Envelope>\n",_skilltextflield_iphone.text];
         NSLog(@"soapmsg%@",soapMessage);
-        
+         // NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
          NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
        
        //  //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
@@ -901,7 +901,7 @@
                    "</soap:Body>\n"
                    "</soap:Envelope>\n"];
     NSLog(@"soapmsg%@",soapMessage);
-    
+      //NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
      NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
    
    //  //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
@@ -954,7 +954,7 @@
     NSLog(@"soapmsg%@",soapMessage);
     
      NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
-   
+     //NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
    //  //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -1118,8 +1118,8 @@
                    "<UpdateApplicantDetails xmlns=\"http://testUSA.kontract360.com/\">\n"
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<JobsiteId>%@</JobsiteId>\n"
-                   "<ApplicantSafetyCouncilStatus>%d</ApplicantSafetyCouncilStatus>\n"
-                   "<ApplicantSafetyCouncilExpiry>%@</ApplicantSafetyCouncilExpiry>\n"
+                   "<BasicPlus>%d</BasicPlus>\n"
+                   "<BasicPlusExpiry>%@</BasicPlusExpiry>\n"
                    "<ApplicantNCERStatus>%d</ApplicantNCERStatus>\n"
                    "<ApplicantNCERDescription>%@</ApplicantNCERDescription>\n"
                    "<Skill>%@</Skill>\n"
@@ -1130,7 +1130,7 @@
     NSLog(@"soapmsg%@",soapMessage);
     
      NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
-  
+    //NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
    //  //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -1238,8 +1238,8 @@
                        "<UpdateApplicantDetails xmlns=\"http://testUSA.kontract360.com/\">\n"
                        "<ApplicantId>%d</ApplicantId>\n"
                        "<JobsiteId>%@</JobsiteId>\n"
-                       "<ApplicantSafetyCouncilStatus>%d</ApplicantSafetyCouncilStatus>\n"
-                       "<ApplicantSafetyCouncilExpiry>%@</ApplicantSafetyCouncilExpiry>\n"
+                       "<BasicPlus>%d</BasicPlus>\n"
+                       "<BasicPlusExpiry>%@</BasicPlusExpiry>\n"
                        "<ApplicantNCERStatus>%d</ApplicantNCERStatus>\n"
                        "<ApplicantNCERDescription>%@</ApplicantNCERDescription>\n"
                        "<Skill>%@</Skill>\n"
@@ -1248,9 +1248,9 @@
                        "</soap:Body>\n"
                        "</soap:Envelope>\n",_Applicantid,jobsite,basicPlus,date1,ncer,ncerdesc,skill,craft];
         NSLog(@"soapmsg%@",soapMessage);
+         // NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
         
-        
-       NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+      NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
        //  //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
         
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -1477,7 +1477,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"SafetyCouncilStatus"])
+    if([elementName isEqualToString:@"BasicPlus"])
     {
         if(!_soapResults)
         {
@@ -1486,7 +1486,7 @@
         recordResults = TRUE;
     }
     
-    if([elementName isEqualToString:@"SafetyCouncilExpiry"])
+    if([elementName isEqualToString:@"BasicPlusExpiry"])
     {
         if(!_soapResults)
         {
@@ -1696,17 +1696,17 @@
         
     }
     
-    if([elementName isEqualToString:@"SafetyCouncilStatus"])
+    if([elementName isEqualToString:@"BasicPlus"])
     {
         recordResults = FALSE;
         _jobsite.safetycouncilstatus=_soapResults;
         
-        if ([_soapResults isEqualToString:@"true"]) {
+        if ([_soapResults isEqualToString:@"1"]) {
             _basicPlussegment.selectedSegmentIndex=0;
             _saftysegment_iphone.selectedSegmentIndex=0;
             
         }
-        else  if ([_soapResults isEqualToString:@"false"]) {
+        else  if ([_soapResults isEqualToString:@"0"]) {
             _basicPlussegment.selectedSegmentIndex=1;
             _saftysegment_iphone.selectedSegmentIndex=1;
 
@@ -1715,7 +1715,7 @@
         _soapResults = nil;
     }
     
-    if([elementName isEqualToString:@"SafetyCouncilExpiry"])
+    if([elementName isEqualToString:@"BasicPlusExpiry"])
     {
         recordResults = FALSE;
         _jobsite.safetycouncilexpiry=_soapResults;
@@ -1744,13 +1744,13 @@
         recordResults = FALSE;
         
         _jobsite.nccertstatus=_soapResults;
-        if ([_soapResults isEqualToString:@"true"]) {
+        if ([_soapResults isEqualToString:@"1"]) {
             _ncerSegment.selectedSegmentIndex=0;
             _nccersegment_iphone.selectedSegmentIndex=0;
             
             
         }
-        else  if ([_soapResults isEqualToString:@"false"]) {
+        else  if ([_soapResults isEqualToString:@"0"]) {
             _ncerSegment.selectedSegmentIndex=1;
             _nccersegment_iphone.selectedSegmentIndex=1;
 
