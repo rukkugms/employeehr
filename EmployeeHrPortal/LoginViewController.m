@@ -422,6 +422,7 @@ _homestring=@"";
          NSLog(@"soapmsg%@",soapMessage);
          //  NSURL *url = [NSURL URLWithString:@"http://192.168.0.100/service.asmx"];
          
+         
        NSURL *url = [NSURL URLWithString:@"http://192.168.0.175/service.asmx"];
           // NSURL *url = [NSURL URLWithString:@"http://192.168.0.175/service.asmx"];
          
