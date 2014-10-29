@@ -124,7 +124,7 @@
                    "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
                    
                    "<soap:Body>\n"
-                   "<SelectDocs xmlns=\"http://testUSA.kontract360.com/\">\n"
+                   "<SelectDocs xmlns=\"http://ios.kontract360.com/\">\n"
                    "<AppId>%d</AppId>\n"
                    "</SelectDocs>\n"
                    "</soap:Body>\n"
@@ -132,8 +132,8 @@
     NSLog(@"soapmsg%@",soapMessage);
     
     
-   NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
-     //  NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+  NSURL *url = [NSURL URLWithString:@"http://192.168.0.175/service.asmx"];
+     // NSURL *url = [NSURL URLWithString:@"http://192.168.0.175/service.asmx"];
     
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
@@ -142,7 +142,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://testUSA.kontract360.com/SelectDocs" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/SelectDocs" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];

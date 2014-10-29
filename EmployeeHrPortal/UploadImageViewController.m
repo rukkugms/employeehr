@@ -102,7 +102,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<UploadImage xmlns=\"http://testUSA.kontract360.com/\">\n"
+                   "<UploadImage xmlns=\"http://ios.kontract360.com/\">\n"
                    "<f>%@</f>\n"
                    "<fileName>%@</fileName>\n"
                     "<appid>%d</appid>\n"
@@ -113,7 +113,7 @@
     
     
    // NSURL *url = [NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
-     NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://192.168.0.175/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -121,7 +121,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://testUSA.kontract360.com/UploadImage" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/UploadImage" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
@@ -159,7 +159,7 @@
                    
                    "<soap:Body>\n"
                    
-                   "<FetchImage xmlns=\"http://testUSA.kontract360.com/\">\n"
+                   "<FetchImage xmlns=\"http://ios.kontract360.com/\">\n"
                    
                    "<appid>%d</appid>\n"
                    "</FetchImage>\n"
@@ -169,7 +169,7 @@
     
     
     //NSURL *url = [NSURL URLWithString:@"http://192.168.0.1/service.asmx"];
-     NSURL *url = [NSURL URLWithString:@"http://testusa.kontract360.com/service.asmx"];
+    NSURL *url = [NSURL URLWithString:@"http://192.168.0.175/service.asmx"];
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -177,7 +177,7 @@
     
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [theRequest addValue:@"http://testUSA.kontract360.com/FetchImage" forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue:@"http://ios.kontract360.com/FetchImage" forHTTPHeaderField:@"Soapaction"];
     
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
