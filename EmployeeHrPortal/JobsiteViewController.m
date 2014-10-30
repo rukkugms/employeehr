@@ -1119,7 +1119,7 @@
                    "<ApplicantId>%d</ApplicantId>\n"
                    "<JobsiteId>%@</JobsiteId>\n"
                    "<BasicPlus>%d</BasicPlus>\n"
-                   "<ApplicantSafetyCouncilExpiry>%@</ApplicantSafetyCouncilExpiry>\n"
+                   "<BasicPlusExpiry>%@</BasicPlusExpiry>\n"
                    "<ApplicantNCERStatus>%d</ApplicantNCERStatus>\n"
                    "<ApplicantNCERDescription>%@</ApplicantNCERDescription>\n"
                    "<Skill>%@</Skill>\n"
